@@ -1,0 +1,83 @@
+/* ─────────────────────────────────────────────────────────────
+   Portfolio design tokens
+   Change colours, fonts and spacing here. Project-specific colours
+   live in src/data/projects.ts (theme) and are NOT overridden here.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Colour */
+  --c-bg: #fff8f1;            /* warm cream background */
+  --c-bg-deep: #f6ece0;       /* slightly darker cream for panels */
+  --c-surface: #fffdf9;       /* cards */
+  --c-ink: #1f2430;           /* main text */
+  --c-ink-soft: #474d5c;      /* secondary text and captions (≈7.5:1 on the paper background) */
+  --c-line: #e7dccf;          /* hairlines */
+  --c-accent: #789bc4;        /* primary accent: fills, strokes, large type */
+  --c-accent-strong: #6f93bd; /* nav pill + hero type: same hue, just enough contrast for white/large text */
+  --c-accent-ink: #3d628f;    /* accent for small text (AA on cream) */
+  --c-accent-wash: #e3ebf5;   /* tinted backgrounds */
+  --c-highlight: #f7d87c;     /* crayon highlighter, used sparingly */
+  --c-coral: #e5806a;         /* rare doodle accent */
+  --c-placeholder-bg: #fff1b8;
+  --c-placeholder-ink: #6b4e00;
+
+  /* Type */
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-hand: 'Patrick Hand', 'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive;
+
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --fs-2xl: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  --fs-3xl: clamp(2.6rem, 1.6rem + 4.6vw, 5.5rem);
+
+  /* Type roles: use these so the same kind of text is the same size on every page */
+  --fs-h1: clamp(2.1rem, 1.4rem + 2.6vw, 3.4rem);      /* section titles: About Me, Featured Works, Experience, Contact */
+  --fs-h2: clamp(1.6rem, 1.25rem + 1.3vw, 2.25rem);    /* case-study section headings */
+  --fs-h3: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);  /* card titles and sub-headings */
+  --fs-lead: 1.1875rem;                                /* intros and running text in case studies */
+  --fs-kicker: clamp(1.3rem, 1.05rem + 0.9vw, 1.75rem);/* handwritten line above a title */
+  --fs-note: 1.4rem;                                   /* small handwritten notes */
+
+  /* Space (4px base) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max-w: 1200px;
+  --prose-w: 68ch;
+
+  /* Shape */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --border: 1.5px solid var(--c-ink);
+
+  /* Shadow: a soft "paper on paper" lift */
+  --shadow-sm: 0 1px 0 rgba(31, 36, 48, 0.06), 0 2px 6px rgba(31, 36, 48, 0.05);
+  --shadow-md: 0 2px 0 rgba(31, 36, 48, 0.08), 0 14px 30px -12px rgba(31, 36, 48, 0.22);
+  --shadow-hard: 4px 4px 0 var(--c-ink);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 160ms;
+  --t-med: 320ms;
+
+  /* Background: soft silk photo from the Figma design, blended into cream,
+     with a paper texture photo multiplied on top for grain */
+  --silk: url('/images/bg-silk.webp');
+  --silk-opacity: 0.55;
+  --paper-bg: url('/images/bg-paper.webp');
+  --paper-bg-opacity: 0.85;
+
+  /* Paper texture: tiny inline SVG noise (used on cards) */
+  --paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

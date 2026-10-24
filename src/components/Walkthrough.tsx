@@ -5,7 +5,7 @@ import { DeviceFrame } from './DeviceFrame'
 type Step = { title: string; note: string; figure: Figure }
 
 /**
- * Click-through prototype: one real screen at a time inside a laptop,
+ * Click through prototype: one real screen at a time inside a laptop,
  * with numbered step tabs and previous / next buttons.
  */
 export function Walkthrough({ steps, caption }: { steps: Step[]; caption?: string }) {

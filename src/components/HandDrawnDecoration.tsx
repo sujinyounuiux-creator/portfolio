@@ -1,4 +1,4 @@
-// Hand-drawn doodles shared across the site.
+// Hand drawn doodles shared across the site.
 // All are decorative (aria-hidden). The "crayon" filter defined in
 // <CrayonDefs /> roughens the strokes so they feel drawn rather than vector-perfect.
 

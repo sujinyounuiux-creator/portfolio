@@ -121,7 +121,7 @@ function BlockView({ block }: { block: Block }) {
         </dl>
       )
     case 'feature': {
-      // very wide images (e.g. a full-width panel) read better stacked under the text
+      // very wide images (e.g. a full width panel) read better stacked under the text
       const wide = block.figures.every((f) => f.width / f.height > 2.4)
       return (
         <div className={`cs-feature ${block.reverse ? 'cs-feature--reverse' : ''} ${wide ? 'cs-feature--stack' : ''}`}>

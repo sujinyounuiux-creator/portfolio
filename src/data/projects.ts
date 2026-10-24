@@ -40,9 +40,9 @@ export type Block =
   | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean }
   /** Icon set from the project, grouped, with what each group is for. */
   | { kind: 'icons'; groups: { title: string; note: string; items: { src: string; label: string }[] }[] }
-  /** Several draggable comparisons shown side by side inside phones (e.g. wireframe → hi-fi). */
+  /** Several draggable comparisons shown side by side inside phones (e.g. wireframe → hi fi). */
   | { kind: 'compareSet'; labels: [string, string]; items: { label: string; before: Figure; after: Figure }[] }
-  /** Click-through prototype: real screens shown one step at a time in a laptop. */
+  /** Click through prototype: real screens shown one step at a time in a laptop. */
   | { kind: 'walkthrough'; caption?: string; steps: { title: string; note: string; figure: Figure }[] }
   /** Embedded live Figma file, with an optional link to the interactive prototype. */
   | { kind: 'embed'; title: string; src: string; caption?: string; link?: { href: string; label: string }; variant?: 'phone' }
@@ -95,6 +95,8 @@ export type Project = {
   hero: Figure
   /** The project's own brand colours: used for the hero band and accents. */
   theme: { accent: string; ink: string; surface: string }
+  /** Short summary shown at the top of the case study: label → one sentence. */
+  tldr?: { label: string; text: string }[]
   /** Small handwritten note on the homepage card (optional). */
   cardNote?: string
   sections: Section[]
@@ -108,7 +110,7 @@ const img = (name: string, alt: string, caption?: string, width = 1600, height =
   height,
 })
 
-/** A grayscale low-fi wireframe (SVG, 960 px wide) drawn by scripts/build-profitkey-wireframes.mjs. */
+/** A grayscale low fi wireframe (SVG, 960 px wide) drawn by scripts/build-profitkey-wireframes.mjs. */
 const wire = (name: string, alt: string, caption: string, height: number): Figure => ({
   src: `/images/wireframes/profitkey-${name}.svg`,
   alt,
@@ -148,13 +150,19 @@ export const projects: Project[] = [
     category: 'Responsive web · Redesign',
     platform: 'Responsive web (desktop & mobile)',
     role: 'UI/UX Design',
-    timeline: '2024.11 – 2025.01',
+    timeline: '2024.11 to 2025.01',
     team: 'Personal project',
     tools: ['Figma'],
     // cover: "Overview" frame (1:2139), the first Cookpad slide in the Portfolio Figma file
     thumbnail: img('cookpad-cover', 'Cookpad UI/UX improvement project cover with the redesigned search page on tablet and mobile.'),
     hero: img('cookpad-cover', 'Cookpad UI/UX improvement project cover with the redesigned search page on tablet and mobile.'),
     theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
+    tldr: [
+      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling; users found search hard to narrow down and the UI complex.' },
+      { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
+      { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
+      { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
+    ],
     sections: [
       {
         // Sources: the Cookpad frames in the Portfolio Figma file ("Overview", "Research", "Goal",
@@ -166,7 +174,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'Cookpad is a recipe-sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
+              'Cookpad is a recipe sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
             ],
           },
           {
@@ -196,9 +204,9 @@ export const projects: Project[] = [
             source: 'What users said: recurring opinions I gathered from public ratings and reviews',
             items: [
               'Please strengthen the search filter feature',
-              'Complex and difficult-to-use UI',
+              'Complex and difficult to use UI',
               'Too many restrictions for free members',
-              'Lack of community-related features',
+              'Lack of community related features',
             ],
           },
           {
@@ -213,7 +221,7 @@ export const projects: Project[] = [
             takeaway:
               'Nearly half of active users reach Cookpad through a smartphone browser, more than through the app. So the redesign had to work as a responsive website, with larger controls that are easy to use on small screens.',
           },
-          { kind: 'placeholder', label: '[DATA SOURCE]', hint: 'Add where the device-share figures came from, so they can be cited.' },
+          { kind: 'placeholder', label: '[DATA SOURCE]', hint: 'Add where the device share figures came from, so they can be cited.' },
         ],
       },
       {
@@ -235,7 +243,7 @@ export const projects: Project[] = [
               },
               {
                 title: 'Free members feel restricted',
-                body: 'Free members felt limited. → Enhanced free-membership features became one of the planned solutions.',
+                body: 'Free members felt limited. → Enhanced free membership features became one of the planned solutions.',
               },
               {
                 title: 'Little sense of community',
@@ -254,7 +262,7 @@ export const projects: Project[] = [
             kind: 'text',
             body: ['I planned the layout around the user flow: a login modal, then the main page with its search, the search results, and the recipe page.'],
           },
-          { kind: 'figure', figure: cook('wireframes', 'Low-fidelity wireframes for the login modal, main page, search page and recipe page.', 'Login modal → main page → search page → recipe page.', 1600, 762) },
+          { kind: 'figure', figure: cook('wireframes', 'Low fidelity wireframes for the login modal, main page, search page and recipe page.', 'Login modal → main page → search page → recipe page.', 1600, 762) },
         ],
       },
       {
@@ -383,7 +391,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'This project taught me how valuable user research is in guiding design decisions. Moving forward, I want to strengthen my skills in user research, interactive prototyping, and developer handoff to translate user insights into practical, production-ready designs.',
+              'This project taught me how valuable user research is in guiding design decisions. Moving forward, I want to strengthen my skills in user research, interactive prototyping, and developer handoff to translate user insights into practical, production ready designs.',
             ],
           },
         ],
@@ -401,16 +409,22 @@ export const projects: Project[] = [
     featured: true,
     tagline: 'Last tickets. Best prices.',
     summary:
-      'A mobile app concept that helps people aged 18–40 find last-minute and discounted tickets to live events before they sell out.',
+      'A mobile app concept that helps people aged 18 to 40 find last minute and discounted tickets to live events before they sell out.',
     category: 'Mobile app · Event ticketing',
     platform: 'iOS mobile app',
     role: 'UX/UI design · User interviews',
-    timeline: '2026.07 – 2026.08',
+    timeline: '2026.07 to 2026.08',
     team: '2 designers',
     tools: ['Figma'],
-    thumbnail: img('lastcow-cover', 'LastCow cover: the cow-and-ticket logo, the tagline "Last tickets. Best prices." and the app splash screen on an iPhone.'),
-    hero: img('lastcow-cover', 'LastCow cover: the cow-and-ticket logo, the tagline "Last tickets. Best prices." and the app splash screen on an iPhone.'),
+    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo, the tagline "Last tickets. Best prices." and the app splash screen on an iPhone.'),
+    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo, the tagline "Last tickets. Best prices." and the app splash screen on an iPhone.'),
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
+    tldr: [
+      { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
+      { label: 'My role', text: 'I ran the user interviews, and designed and prototyped the app together with one teammate.' },
+      { label: 'Solution', text: 'A ticket discovery app with last minute and discounted tickets, related event suggestions and an in app calendar.' },
+      { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants.' },
+    ],
     cardNote: 'newest!',
     sections: [
       {
@@ -422,8 +436,8 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'Adults aged 18–40 often miss live events because they discover them too late: tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
-              'LastCow is a ticket-discovery app that surfaces last-minute and discounted tickets and matches events to personal taste.',
+              'Adults aged 18 to 40 often miss live events because they discover them too late: tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
+              'LastCow is a ticket discovery app that surfaces last minute and discounted tickets and matches events to personal taste.',
             ],
           },
           {
@@ -452,7 +466,7 @@ export const projects: Project[] = [
             source: 'User interviews (four participants), conducted by me',
             items: [
               'There are a lot of events, but they’re all on different platforms. Sometimes it takes a lot of searching to find something I actually like.',
-              'I found an event I really wanted to go to, but by the time I checked, the tickets were either sold out or too expensive. If there was a cheaper last-minute ticket, I’d probably go.',
+              'I found an event I really wanted to go to, but by the time I checked, the tickets were either sold out or too expensive. If there was a cheaper last minute ticket, I’d probably go.',
               'I usually check Instagram first. I follow pages that post about local events, cafés, and things happening around the city.',
             ],
           },
@@ -460,7 +474,7 @@ export const projects: Project[] = [
             kind: 'cards',
             items: [
               { title: 'Discovered too late', body: 'Events are often found after tickets sell out or prices rise.' },
-              { title: 'No way to track deals', body: 'People want last-minute or discounted tickets but can’t track availability.' },
+              { title: 'No way to track deals', body: 'People want last minute or discounted tickets but can’t track availability.' },
               { title: 'Scattered and generic', body: 'Event information is spread across platforms, and listings aren’t matched to personal taste.' },
             ],
           },
@@ -469,7 +483,7 @@ export const projects: Project[] = [
             kind: 'figure',
             figure: img(
               'lastcow-persona',
-              'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last-minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
+              'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
               'Persona: Steven Karney, built from the interview findings.',
               1600,
               645,
@@ -491,7 +505,7 @@ export const projects: Project[] = [
               },
               {
                 title: 'Upcoming events are easy to forget',
-                body: 'Upcoming and registered events appear directly in the in-app calendar, so plans stay visible in one place.',
+                body: 'Upcoming and registered events appear directly in the in app calendar, so plans stay visible in one place.',
               },
             ],
           },
@@ -499,8 +513,8 @@ export const projects: Project[] = [
       },
       {
         id: 'wireframes',
-        label: 'Wireframes → hi-fi',
-        title: 'From wireframes to hi-fi screens',
+        label: 'Wireframes → hi fi',
+        title: 'From wireframes to hi fi screens',
         note: 'drag to compare',
         blocks: [
           {
@@ -510,27 +524,27 @@ export const projects: Project[] = [
           {
             // pairs exported from the "Wireframe" and "Phone Final UI" sections of the LastCow design file
             kind: 'compareSet',
-            labels: ['Wireframe', 'Hi-fi'],
+            labels: ['Wireframe', 'Hi fi'],
             items: [
               {
                 label: 'Home',
                 before: screen('lastcow-home-wire', 'Home wireframe: location, search bar and grey placeholder event cards.', 'Home wireframe', 600, 1304),
-                after: screen('lastcow-home-hifi', 'Home hi-fi: event cards for Tame Impala and The Strokes with prices and 24-hour price changes.', 'Home hi-fi', 600, 1304),
+                after: screen('lastcow-home-hifi', 'Home hi fi: event cards for Tame Impala and The Strokes with prices and 24 hour price changes.', 'Home hi fi', 600, 1304),
               },
               {
                 label: 'Event details',
                 before: screen('lastcow-event-wire', 'Event details wireframe: image placeholder, title, overview, location and a Get Tickets bar.', 'Event details wireframe', 600, 1304),
-                after: screen('lastcow-event-hifi', 'Event details hi-fi: concert photo, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details hi-fi', 600, 1304),
+                after: screen('lastcow-event-hifi', 'Event details hi fi: concert photo, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details hi fi', 600, 1304),
               },
               {
                 label: 'Saved events',
                 before: screen('lastcow-saved-wire', 'Saved events wireframe: a list of placeholder event cards with filled hearts.', 'Saved events wireframe', 600, 1304),
-                after: screen('lastcow-saved-hifi', 'Saved events hi-fi: saved Tame Impala and birthday events with prices.', 'Saved events hi-fi', 600, 1304),
+                after: screen('lastcow-saved-hifi', 'Saved events hi fi: saved Tame Impala and birthday events with prices.', 'Saved events hi fi', 600, 1304),
               },
               {
                 label: 'Ticket calendar',
                 before: screen('lastcow-calendar-wire', 'Calendar wireframe: upcoming and past events tabs above a monthly ticket calendar.', 'Calendar wireframe', 600, 1304),
-                after: screen('lastcow-calendar-hifi', 'Calendar hi-fi: the monthly ticket calendar with the selected date and its events.', 'Calendar hi-fi', 600, 1304),
+                after: screen('lastcow-calendar-hifi', 'Calendar hi fi: the monthly ticket calendar with the selected date and its events.', 'Calendar hi fi', 600, 1304),
               },
             ],
           },
@@ -544,7 +558,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'We built the screens from a component library organised with Atomic Design: atoms such as inputs, icons and controls, combined into molecules such as buttons, menus, the location drop-down and event detail blocks.',
+              'We built the screens from a component library organised with Atomic Design: atoms such as inputs, icons and controls, combined into molecules such as buttons, menus, the location drop down and event detail blocks.',
             ],
           },
           {
@@ -552,7 +566,7 @@ export const projects: Project[] = [
             kind: 'gallery',
             figures: [
               img('lastcow-atoms', 'Atoms: input field states, the logo, the icon set and carousel and filter controls.', 'Atoms: inputs, logo, icons and controls.', 1368, 1055),
-              img('lastcow-molecules', 'Molecules: input field states, location drop-down menu, tab bar menus, buttons in four styles and three sizes, list rows, profile card and event detail blocks.', 'Molecules: buttons, menus, drop-down and event details.', 1600, 908),
+              img('lastcow-molecules', 'Molecules: input field states, location drop down menu, tab bar menus, buttons in four styles and three sizes, list rows, profile card and event detail blocks.', 'Molecules: buttons, menus, drop down and event details.', 1600, 908),
             ],
           },
         ],
@@ -566,7 +580,7 @@ export const projects: Project[] = [
             kind: 'devices',
             device: 'phone',
             screens: [
-              screen('lastcow-phone-home', 'LastCow home screen: Vancouver location, search bar and event cards for the Vancouver Bird Celebration and The Strokes with prices and 24-hour price changes.', 'Home: events near you', 600, 1303),
+              screen('lastcow-phone-home', 'LastCow home screen: Vancouver location, search bar and event cards for the Vancouver Bird Celebration and The Strokes with prices and 24 hour price changes.', 'Home: events near you', 600, 1303),
               screen('lastcow-phone-event', 'LastCow event details screen: event photo, title, venue, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details', 600, 1305),
             ],
           },
@@ -587,7 +601,7 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'list',
-            intro: 'My teammate ran task-based usability tests followed by the System Usability Scale (SUS). The tasks:',
+            intro: 'My teammate ran task based usability tests followed by the System Usability Scale (SUS). The tasks:',
             items: [
               'Buy a ticket to an event.',
               'You have already purchased two tickets for an event. Where would you check for your tickets?',
@@ -600,7 +614,7 @@ export const projects: Project[] = [
             items: [
               { value: '92.5', label: 'Average SUS score' },
               { value: '4', label: 'Participants' },
-              { value: '87.5–100', label: 'Range of individual scores' },
+              { value: '87.5 to 100', label: 'Range of individual scores' },
             ],
           },
           {
@@ -643,16 +657,22 @@ export const projects: Project[] = [
     featured: true,
     tagline: 'Finding the key to investment success',
     summary:
-      'A beginner-friendly investment website with AI stock recommendations and plain-language explanations of financial terms.',
+      'A beginner friendly investment website with AI stock recommendations and plain language explanations of financial terms.',
     category: 'Responsive web · Fintech',
     platform: 'Desktop web',
     role: 'Design 100%, Planning 70%',
-    timeline: '2025.01 – 2025.03',
-    team: '6 people: 5 front-end/back-end engineers and 1 designer (me)',
+    timeline: '2025.01 to 2025.03',
+    team: '6 people: 5 front end/back end engineers and 1 designer (me)',
     tools: ['Figma'],
     thumbnail: img('profitkey-cover', 'PROFITKEY home page and stock analysis page with an AI comment panel.'),
     hero: img('profitkey-cover', 'PROFITKEY home page and stock analysis page with an AI comment panel.'),
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
+    tldr: [
+      { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
+      { label: 'My role', text: 'The only designer on a team of six: all of the design work and 70% of the planning.' },
+      { label: 'Solution', text: 'AI stock recommendations with reasons, a plain language AI comment on every stock, and glossary tooltips.' },
+      { label: 'Result', text: 'Wireframes for seven pages and the final desktop design, shaped by interviews with 10 beginners.' },
+    ],
     cardNote: 'sole designer',
     sections: [
       {
@@ -664,7 +684,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'PROFITKEY lets people view domestic and international stocks and financial news at a glance. Our concept: a beginner-friendly investment website, supported by AI.',
+              'PROFITKEY lets people view domestic and international stocks and financial news at a glance. Our concept: a beginner friendly investment website, supported by AI.',
             ],
           },
           {
@@ -705,19 +725,19 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'text',
-            body: ['Low-fidelity wireframes set the layout and hierarchy for each page before any visual design: what comes first, how stocks and news are grouped, and where AI comments and the community sit.'],
+            body: ['Low fidelity wireframes set the layout and hierarchy for each page before any visual design: what comes first, how stocks and news are grouped, and where AI comments and the community sit.'],
           },
           {
             // redrawn from the original wireframe slide by scripts/build-profitkey-wireframes.mjs
             kind: 'gallery',
             figures: [
-              wire('main', 'Main page wireframe: title and sub text, AI recommended stocks with a chart, soaring, domestic/overseas and market-trend stock lists, and a news row.', 'Main', 1120),
+              wire('main', 'Main page wireframe: title and sub text, AI recommended stocks with a chart, soaring, domestic/overseas and market trend stock lists, and a news row.', 'Main', 1120),
               wire('stock-analysis', 'Stock analysis wireframe: item name and price, Stock analysis / Community tabs, indicator rows beside a price chart, an AI comment box and financial indicators.', 'Stock analysis', 800),
               wire('community', 'Stock community wireframe: comment box with a Post button and a list of comments with avatars and reactions.', 'Stock community', 840),
               wire('notice-faq', 'Notice / FAQ wireframe: Notice and FAQ tabs above a list of posts with pagination.', 'Notice / FAQ', 800),
               wire('my-page', 'My page wireframe: tabs for my interests, comments I wrote and edit member info; avatar and nickname beside four watchlist charts.', 'My page: my interests', 720),
               wire('my-comments', 'My page wireframe, comments tab: a dated list of comments the member wrote, with pagination.', 'My page: comments I wrote', 760),
-              wire('news', 'News wireframe: a row of latest news cards with title and source, then an all-news list with pagination.', 'News', 840),
+              wire('news', 'News wireframe: a row of latest news cards with title and source, then an all news list with pagination.', 'News', 840),
             ],
           },
         ],
@@ -733,7 +753,7 @@ export const projects: Project[] = [
             tag: '“I don’t know where to start.”',
             title: 'AI stock recommendations',
             body: [
-              'The home page opens with AI-recommended stocks. Stocks expected to rise are suggested from data such as stability, growth rate, profitability and financial health, along with the reason for each recommendation, giving beginners a clear place to start.',
+              'The home page opens with AI recommended stocks. Stocks expected to rise are suggested from data such as stability, growth rate, profitability and financial health, along with the reason for each recommendation, giving beginners a clear place to start.',
             ],
             figures: [screen('profitkey-crop-ai-picks', 'AI Recommended Stocks card: Apple, +20%, $28 usd, a price chart, key figures and an AI comment explaining the pick.', 'AI Recommended Stocks on the home page.', 500, 595)],
           },
@@ -754,7 +774,7 @@ export const projects: Project[] = [
             body: [
               'Terms such as PER, PBR, EPS and dividends carry a “?” mark. Hovering shows a short explanation, making unfamiliar terms easier for beginners.',
             ],
-            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52-week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Indicators with “?” glossary marks.', 600, 340)],
+            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Indicators with “?” glossary marks.', 600, 340)],
           },
         ],
       },
@@ -777,7 +797,7 @@ export const projects: Project[] = [
             // screens: the English Home and Stock detail frames, plus the complete Korean screens
             // from the "Outview" slide (straightened by scripts/prepare-profitkey-outview.mjs)
             kind: 'walkthrough',
-            caption: 'Click through the website screens. Each scrolls inside the laptop; click a screen to enlarge it. Notices, FAQ and profile screens are the Korean UI.',
+            caption: 'Click through the website screens. Each scrolls inside the laptop; click a screen to enlarge it. The site was built in Korean: Notices, FAQ and Edit profile show the Korean interface, described in English above.',
             steps: [
               {
                 title: 'Home',
@@ -786,22 +806,22 @@ export const projects: Project[] = [
               },
               {
                 title: 'Stock detail',
-                note: 'Price chart, key indicators with “?” glossary tooltips, the AI comment, quarterly financials and investment-firm opinions.',
-                figure: { ...screen('profitkey-web-detail', 'PROFITKEY stock detail page: price chart, key indicators, AI comment, quarterly financial indicators and investment-firm opinions.', 'Stock detail with AI comment', 1400, 2349), tall: true },
+                note: 'Price chart, key indicators with “?” glossary tooltips, the AI comment, quarterly financials and investment firm opinions.',
+                figure: { ...screen('profitkey-web-detail', 'PROFITKEY stock detail page: price chart, key indicators, AI comment, quarterly financial indicators and investment firm opinions.', 'Stock detail with AI comment', 1400, 2349), tall: true },
               },
               {
                 title: 'Notices',
-                note: 'Service notices from the operations team.',
+                note: 'Korean interface. A list of service notices from the operations team, such as a maintenance notice with its date and author.',
                 figure: { ...screen('profitkey-ov-notice', 'PROFITKEY notices page (Korean): a service maintenance notice with date and author.', 'Notices', 1400, 777), tall: true },
               },
               {
                 title: 'FAQ',
-                note: 'Frequently asked questions in an accordion, with a 1:1 inquiry button.',
+                note: 'Korean interface. Frequently asked questions in an accordion, with a 1:1 inquiry button.',
                 figure: { ...screen('profitkey-ov-faq', 'PROFITKEY FAQ page (Korean): questions in an expandable accordion with a 1:1 inquiry button.', 'FAQ', 1400, 1073), tall: true },
               },
               {
                 title: 'Edit profile',
-                note: 'Members can change their nickname and email address.',
+                note: 'Korean interface. Members can change their nickname and email address from their profile menu.',
                 figure: { ...screen('profitkey-ov-edit-profile', 'PROFITKEY edit profile page (Korean): nickname change and email address fields beside the member menu.', 'Edit profile', 1400, 755), tall: true },
               },
             ],
@@ -818,7 +838,7 @@ export const projects: Project[] = [
             items: [
               {
                 title: 'What I learned',
-                body: 'To deepen my user research skills and improve team efficiency, I applied usability testing and brought modern design tools into our workflow, aiming for practical, user-centered designs and smoother collaboration.',
+                body: 'To deepen my user research skills and improve team efficiency, I applied usability testing and brought modern design tools into our workflow, aiming for practical, user centered designs and smoother collaboration.',
               },
               {
                 title: 'What I want to learn next',
@@ -843,15 +863,22 @@ export const projects: Project[] = [
     category: 'Responsive web · Redesign',
     platform: 'Desktop & mobile web',
     role: 'UX/UI Design',
-    timeline: '2026.08 – 2026.09',
+    timeline: '2026.08 to 2026.09',
     team: 'Group project, 3 designers',
     tools: ['Figma', 'html.to.design'],
     // cover: "Banner 1" (452:777) on the "Presentation - Elements" page of the Open Door Yoga Figma file
     // (this project is not in the Portfolio file)
-    thumbnail: img('yoga-cover', 'Laptop on a wooden chair showing the redesigned Open Door Yoga home page with large "YOGA" lettering.', undefined, 1600, 939),
+    // card photo: the same image as the case study's hero
+    thumbnail: img('yoga-hero', 'Open Door Yoga logo beside a laptop on a wooden chair showing the redesigned home page with large "YOGA" lettering.', undefined, 1600, 900),
     // hero: the first slide of the Open Door Yoga presentation (Figma Slides, slide 1:42)
     hero: img('yoga-hero', 'Open Door Yoga logo beside a laptop on a wooden chair showing the redesigned home page with large "YOGA" lettering.', undefined, 1600, 900),
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
+    tldr: [
+      { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },
+      { label: 'My role', text: 'One of three designers on a class brief; I mainly designed the About and Pricing pages.' },
+      { label: 'Solution', text: 'Clearer page structures, a style guide and component library, and redesigned Home, Pricing, Teacher Training and About pages.' },
+      { label: 'Feedback', text: 'Testing showed that imagery and visual style need to stay consistent across every page.' },
+    ],
     sections: [
       {
         id: 'overview',
@@ -861,7 +888,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'Open Door Yoga is a studio at Main & 14th in East Vancouver offering hatha, vinyasa, yin and prenatal classes. For this class brief, our group redesigned the website’s home, pricing, teacher-training and about pages, starting from a usability review of the existing site.',
+              'Open Door Yoga is a studio at Main & 14th in East Vancouver offering hatha, vinyasa, yin and prenatal classes. For this class brief, our group redesigned the website’s home, pricing, teacher training and about pages, starting from a usability review of the existing site.',
             ],
           },
           {
@@ -869,7 +896,7 @@ export const projects: Project[] = [
             items: [
               { title: 'Team', body: 'Three designers. We worked on every stage together, from the heuristic evaluation to the style guide, components and final pages.' },
               { title: 'My focus', body: 'I mainly designed the About and Pricing pages.' },
-              { title: 'Target user', body: 'First-time yoga students in Vancouver looking for an in-studio class.' },
+              { title: 'Target user', body: 'First time yoga students in Vancouver looking for an in studio class.' },
             ],
           },
         ],
@@ -883,7 +910,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'We imported the live opendooryoga.bc.ca pages into Figma (with html.to.design) and reviewed them with Nielsen’s 10 usability heuristics, walking through three key tasks a first-time student would try.',
+              'We imported the live opendooryoga.bc.ca pages into Figma (with html.to.design) and reviewed them with Nielsen’s 10 usability heuristics, walking through three key tasks a first time student would try.',
             ],
           },
           {
@@ -898,7 +925,7 @@ export const projects: Project[] = [
             kind: 'list',
             intro: 'We evaluated three key tasks:',
             items: [
-              'Find a beginner-friendly yoga class and its schedule. Can you understand the types, levels, dates and locations?',
+              'Find a beginner friendly yoga class and its schedule. Can you understand the types, levels, dates and locations?',
               'Compare the introductory pass options and decide which one to purchase. Are the price, duration, target audience and next steps clear?',
               'Find the studio location, entry instructions and what to know before attending. Are the address, entrance, contact information and what to bring easy to find?',
             ],
@@ -924,11 +951,11 @@ export const projects: Project[] = [
               },
               {
                 title: 'Issue: schedule is hard to scan',
-                body: 'The time commitment wasn’t clear at a glance. Recommendation: keep the schedule on the same page but turn it into an easy-to-scan table or timeline (weekend intensive, weekly practice, practicum).',
+                body: 'The time commitment wasn’t clear at a glance. Recommendation: keep the schedule on the same page but turn it into an easy to scan table or timeline (weekend intensive, weekly practice, practicum).',
               },
               {
-                title: 'Issue: dense, hard-to-read sections',
-                body: 'Three-column long testimonials and full faculty bios were difficult to read, especially on mobile. Recommendation: keep 2–3 concise quotes, use photo cards with one sentence per teacher, and keep the FAQ as an accordion at the bottom.',
+                title: 'Issue: dense, hard to read sections',
+                body: 'Three column long testimonials and full faculty bios were difficult to read, especially on mobile. Recommendation: keep 2 to 3 concise quotes, use photo cards with one sentence per teacher, and keep the FAQ as an accordion at the bottom.',
               },
             ],
           },
@@ -940,7 +967,7 @@ export const projects: Project[] = [
               {
                 title: 'Hero / At a glance',
                 points: [
-                  '200-hour Hatha Teacher Training',
+                  '200 hour Hatha Teacher Training',
                   'Next start date | Vancouver | Format | Total tuition',
                   'Apply now, Attend an info session',
                   'The price should be clearly displayed here, or at least “Tuition from $X,” so that readers don’t have to scroll halfway through the page to find it.',
@@ -954,7 +981,7 @@ export const projects: Project[] = [
               {
                 title: 'Training schedule',
                 points: [
-                  'Keep it on the same page, but change it to an easy-to-scan table or timeline',
+                  'Keep it on the same page, but change it to an easy to scan table or timeline',
                   'For example: Weekend intensive / Weekly practice / Practicum, making the time commitment clear at a glance',
                 ],
               },
@@ -973,15 +1000,15 @@ export const projects: Project[] = [
               {
                 title: 'Student testimonials',
                 points: [
-                  'Keep 2–3 concise quotes, including name and graduation year',
-                  'Avoid three-column long texts, especially difficult to read on mobile devices',
+                  'Keep 2 to 3 concise quotes, including name and graduation year',
+                  'Avoid three column long texts, especially difficult to read on mobile devices',
                 ],
               },
               {
                 title: 'FAQ',
                 points: [
                   'Keep it at the bottom; the accordion is reasonable',
-                  'Most frequently asked questions: qualifications, attendance, make-up classes, payment, certificates, cancellation rules',
+                  'Most frequently asked questions: qualifications, attendance, make up classes, payment, certificates, cancellation rules',
                 ],
               },
             ],
@@ -1044,7 +1071,7 @@ export const projects: Project[] = [
               'Class style cards and teacher profile cards',
               'Schedule items and curriculum accordions',
               'Header and footer variants for desktop and mobile',
-              'Gift card and call-to-action buttons',
+              'Gift card and call to action buttons',
             ],
           },
           { kind: 'figure', figure: img('yoga-components', 'Component sheet: pricing cards, gift card, class style cards, teacher cards, schedule items, curriculum accordion, headers and footers.', 'Molecules from the component library.', 1600, 939) },
@@ -1064,7 +1091,7 @@ export const projects: Project[] = [
             kind: 'compare',
             label: 'Pricing page',
             caption: 'Pricing: original site vs redesign',
-            before: screen('yoga-pricing-before', 'Original Open Door Yoga passes and pricing page: purple header with small navigation and a green first-time student section.', 'Pricing, before', 1600, 1000),
+            before: screen('yoga-pricing-before', 'Original Open Door Yoga passes and pricing page: purple header with small navigation and a green first time student section.', 'Pricing, before', 1600, 1000),
             after: screen('yoga-pricing-after', 'Redesigned Passes & Pricing page: lilac hero with a large serif title, a short introduction and a calm photo background.', 'Pricing, after', 1600, 1000),
           },
           {
@@ -1072,7 +1099,7 @@ export const projects: Project[] = [
             label: 'About page',
             caption: 'About: original site vs redesign',
             before: screen('yoga-about-before', 'Original Open Door Yoga about page: photo header with a promotion banner and a long block of centred text below.', 'About, before', 1600, 1000),
-            after: screen('yoga-about-after', 'Redesigned About page: full-width photo hero with the large serif title “Welcome to Open Door Yoga!”.', 'About, after', 1600, 1000),
+            after: screen('yoga-about-after', 'Redesigned About page: full width photo hero with the large serif title “Welcome to Open Door Yoga!”.', 'About, after', 1600, 1000),
           },
         ],
       },
@@ -1086,7 +1113,7 @@ export const projects: Project[] = [
             device: 'desktop',
             screens: [
               { ...img('yoga-home', 'Final home page: hero, class style cards, about us and the teacher team.', 'Home', 1075, 2400), tall: true },
-              { ...img('yoga-pricing', 'Final pricing page with first-time student offer, pass cards and gift section.', 'Pricing', 1114, 2400), tall: true },
+              { ...img('yoga-pricing', 'Final pricing page with first time student offer, pass cards and gift section.', 'Pricing', 1114, 2400), tall: true },
               { ...img('yoga-training', 'Teacher training page with program details, video and a curriculum timeline.', 'Teacher training', 766, 2400), tall: true },
               { ...img('yoga-about', 'About page with program promotion, vision and free month program.', 'About', 1046, 2400), tall: true },
             ],
@@ -1103,11 +1130,11 @@ export const projects: Project[] = [
             items: [
               {
                 title: 'Testing & Feedback',
-                body: 'Feedback highlighted inconsistencies in the use of imagery and visual styles across different pages of the website. This showed that even well-designed individual sections can feel disconnected when they don’t follow a consistent visual direction.',
+                body: 'Feedback highlighted inconsistencies in the use of imagery and visual styles across different pages of the website. This showed that even well designed individual sections can feel disconnected when they don’t follow a consistent visual direction.',
               },
               {
                 title: 'What I Learned',
-                body: 'This project taught me the importance of research before jumping into design. Through heuristic evaluation, I learned to identify usability issues and use them to guide design decisions rather than relying only on visual preferences. I also gained a better understanding of how consistent imagery, typography, and UI components contribute to a cohesive user experience. Moving forward, I want to strengthen my research process and use evidence to create more thoughtful, user-centered designs.',
+                body: 'This project taught me the importance of research before jumping into design. Through heuristic evaluation, I learned to identify usability issues and use them to guide design decisions rather than relying only on visual preferences. I also gained a better understanding of how consistent imagery, typography, and UI components contribute to a cohesive user experience. Moving forward, I want to strengthen my research process and use evidence to create more thoughtful, user centered designs.',
               },
             ],
           },

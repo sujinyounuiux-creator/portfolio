@@ -16,7 +16,7 @@ type Props = {
 /**
  * CSS-only device mockup (laptop or iPhone-style phone).
  * The screen keeps the real screenshot's proportions. Screens marked `tall`
- * (full-length pages) get a fixed viewport and scroll inside the device instead.
+ * (full length pages) get a fixed viewport and scroll inside the device instead.
  */
 export function DeviceFrame({ device, figure, children, caption, className = '' }: Props) {
   const scroll = Boolean(figure?.tall)

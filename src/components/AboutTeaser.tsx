@@ -5,7 +5,7 @@ import { PhotoCollage } from './PhotoCollage'
 
 /**
  * "About Me" on Home.
- * Left: self-introduction, specialties and background.
+ * Left: self introduction, specialties and background.
  * Right: a Polaroid collage of personal photos.
  * All text comes from src/data/about.ts.
  */

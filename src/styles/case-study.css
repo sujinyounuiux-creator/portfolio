@@ -316,6 +316,99 @@
   line-height: 1.55;
 }
 
+/* pages: website pages as small browser windows */
+.cs-pages {
+  margin: var(--s-2) 0 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--r-lg);
+  background: var(--p-surface);
+}
+.cs-pages__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2.5vw, 1.5rem) clamp(0.75rem, 2vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .cs-pages__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  .cs-pages__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.cs-pages__window {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--c-ink) 16%, transparent);
+  border-radius: var(--r-sm);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+}
+.cs-pages__item:hover .cs-pages__window {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.cs-pages__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 1.6rem;
+  padding: 0 0.55rem;
+  border-bottom: 1px solid var(--c-line);
+  background: #f3f1f4;
+}
+/* three little window dots */
+.cs-pages__dots {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d9d4dc;
+  box-shadow: 10px 0 0 #d9d4dc, 20px 0 0 #d9d4dc;
+  margin-right: 20px;
+}
+.cs-pages__url {
+  overflow: hidden;
+  flex: 1;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--c-ink-soft);
+  font-size: 0.625rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* show the top of each page; the whole page opens in the lightbox */
+.cs-pages__window .zoom img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+}
+.cs-pages__label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+.cs-pages__num {
+  font-size: var(--fs-xs);
+  color: var(--p-accent);
+  font-variant-numeric: tabular-nums;
+}
+.cs-pages figcaption {
+  margin-top: var(--s-4);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-soft);
+  text-align: center;
+}
+
 /* stats: a row of key numbers */
 .cs-stats {
   display: grid;

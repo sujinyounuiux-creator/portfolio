@@ -159,6 +159,31 @@ function BlockView({ block }: { block: Block }) {
           ))}
         </div>
       )
+    case 'pages':
+      return (
+        <figure className="cs-pages">
+          <ol className="cs-pages__list">
+            {block.items.map((p, i) => (
+              <li key={p.label} className="cs-pages__item">
+                <div className="cs-pages__window">
+                  <div className="cs-pages__bar" aria-hidden="true">
+                    <span className="cs-pages__dots" />
+                    <span className="cs-pages__url">{p.label}</span>
+                  </div>
+                  <ZoomImage figure={p.figure} />
+                </div>
+                <p className="cs-pages__label">
+                  <span className="cs-pages__num" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  {p.label}
+                </p>
+              </li>
+            ))}
+          </ol>
+          {block.caption && <figcaption>{block.caption}</figcaption>}
+        </figure>
+      )
     case 'compareSet':
       return (
         <div className="devices devices--phone compare-set">

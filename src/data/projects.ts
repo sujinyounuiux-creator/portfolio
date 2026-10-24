@@ -46,6 +46,8 @@ export type Block =
   | { kind: 'compareSet'; labels: [string, string]; items: { label: string; before: Figure; after: Figure }[] }
   /** Click through prototype: real screens shown one step at a time in a laptop. */
   | { kind: 'walkthrough'; caption?: string; steps: { title: string; note: string; figure: Figure }[] }
+  /** Website pages shown as small browser windows (top of each page; click to see all of it). */
+  | { kind: 'pages'; caption?: string; items: { label: string; figure: Figure }[] }
   /** Embedded live Figma file, with an optional link to the interactive prototype. */
   | { kind: 'embed'; title: string; src: string; caption?: string; link?: { href: string; label: string }; variant?: 'phone' }
   /** Simple horizontal bar chart of percentages, with its source and what it means. */
@@ -119,6 +121,15 @@ const wire = (name: string, alt: string, caption: string, height: number): Figur
   caption,
   width: 960,
   height,
+})
+
+/** A full page of the original Open Door Yoga site (see scripts/prepare-yoga-audit.mjs). */
+const audit = (name: string, alt: string, height: number): Figure => ({
+  src: `/images/yoga-audit/${name}.webp`,
+  alt,
+  width: 1000,
+  height,
+  tall: true,
 })
 
 /** A clean UI export from the Cookpad frames in the Portfolio file (see scripts/prepare-cookpad.mjs). */
@@ -952,17 +963,19 @@ export const projects: Project[] = [
             ],
           },
           {
-            kind: 'figure',
-            figure: {
-              ...img(
-                'yoga-audit-board',
-                'Audit board: the existing site’s Homepage, About, Schedule, Teacher Training, Passes, Workshops and Contact pages laid out side by side, with the three evaluation tasks marked against them.',
-                'Audit board showing the seven existing website pages reviewed across three key user tasks.',
-                1600,
-                753,
-              ),
-              wide: true,
-            },
+            // the seven pages from the "Heuristic Evaluation" section of the Yoga Figma file
+            // (scripts/prepare-yoga-audit.mjs); this replaces the dark audit board image
+            kind: 'pages',
+            caption: 'The seven existing pages we reviewed across the three key tasks. Click a page to see all of it.',
+            items: [
+              { label: 'Home', figure: audit('home', 'Original Open Door Yoga home page: hero photo, class and training promos, pass offers, teachers and workshops.', 3828) },
+              { label: 'About', figure: audit('about', 'Original About page: photo header, a long welcome text, our story and our vision.', 2091) },
+              { label: 'Schedule', figure: audit('schedule', 'Original Schedule page: notes about booking and an embedded class schedule.', 1141) },
+              { label: 'Teacher Training', figure: audit('training', 'Original Teacher Training page: long program description, curriculum, schedule, tuition, faculty and FAQ.', 3634) },
+              { label: 'Passes', figure: audit('passes', 'Original Passes & Pricing page: first time student offer and pass options.', 1576) },
+              { label: 'Workshops', figure: audit('workshops', 'Original Workshops page: a list of upcoming workshops with dates and descriptions.', 927) },
+              { label: 'Contact', figure: audit('contact', 'Original Contact page: address, entry instructions and a contact form.', 1354) },
+            ],
           },
         ],
       },

@@ -47,7 +47,7 @@ export type Block =
   /** Embedded live Figma file, with an optional link to the interactive prototype. */
   | { kind: 'embed'; title: string; src: string; caption?: string; link?: { href: string; label: string }; variant?: 'phone' }
   /** Simple horizontal bar chart of percentages, with its source and what it means. */
-  | { kind: 'bars'; title: string; source: string; items: { label: string; value: number }[]; takeaway?: string }
+  | { kind: 'bars'; title: string; eyebrow?: string; source: string; sourceUrl?: string; items: { label: string; value: number }[]; takeaway?: string }
   /** Numbered page structure (e.g. recommended section order), rendered as live text. */
   | { kind: 'outline'; caption?: string; steps: { title: string; note?: string; points: string[] }[] }
   | { kind: 'placeholder'; label: string; hint?: string }
@@ -196,7 +196,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'I reviewed what users said in public ratings and reviews, compared Cookpad with competing recipe services (kurashiru and Delish Kitchen), and looked at how people access the service.',
+              'I reviewed what users said in public ratings and reviews and compared Cookpad with competing recipe services (kurashiru and Delish Kitchen). Secondary research on website traffic then showed how people reach the site.',
             ],
           },
           {
@@ -210,18 +210,19 @@ export const projects: Project[] = [
             ],
           },
           {
+            // secondary research: estimated website traffic (not my own user research)
             kind: 'bars',
-            title: 'Active users by device',
-            source: 'Secondary data recorded in my research slides; the original source was not noted, so it is shown as recorded and not as my own finding.',
+            eyebrow: 'Secondary research',
+            title: 'Website traffic by device',
+            source: 'Estimated website traffic to cookpad.com. Source: Exploding Topics,',
+            sourceUrl: 'https://analytics.explodingtopics.com/website/cookpad.com',
             items: [
-              { label: 'Mobile web', value: 49 },
-              { label: 'Web (desktop)', value: 27 },
-              { label: 'App', value: 23 },
+              { label: 'Mobile web', value: 92.34 },
+              { label: 'Desktop web', value: 7.66 },
             ],
             takeaway:
-              'Nearly half of active users reach Cookpad through a smartphone browser, more than through the app. So the redesign had to work as a responsive website, with larger controls that are easy to use on small screens.',
+              'Website traffic estimates show that mobile devices account for the majority of visits to Cookpad.com. This highlighted the importance of designing a responsive experience that works well across different screen sizes.',
           },
-          { kind: 'placeholder', label: '[DATA SOURCE]', hint: 'Add where the device share figures came from, so they can be cited.' },
         ],
       },
       {
@@ -329,7 +330,6 @@ export const projects: Project[] = [
               },
             ],
           },
-          { kind: 'figure', figure: cook('devices', 'The redesigned Cookpad search page on phone, tablet, laptop and desktop.', 'One responsive layout from phone to desktop, with larger controls on small screens.', 1600, 439) },
         ],
       },
       {
@@ -342,6 +342,16 @@ export const projects: Project[] = [
             body: [
               'Usability testing helped me identify navigation challenges and friction points in Cookpad’s features. Based on these insights, I refined the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
             ],
+          },
+          {
+            // the devices image is the "Overall UI" frame (27:3888): phone, tablet, laptop and desktop layouts
+            kind: 'feature',
+            tag: 'Secondary research: most visits come from mobile',
+            title: 'A responsive experience across devices',
+            body: [
+              'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
+            ],
+            figures: [cook('devices', 'The redesigned Cookpad search page on phone, tablet, laptop and desktop.', 'The search page on phone, tablet, laptop and desktop.', 1600, 439)],
           },
           {
             kind: 'feature',

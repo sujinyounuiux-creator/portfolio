@@ -3,22 +3,11 @@ import { disciplineHref, disciplineLabel, featuredProjects, projects, type Proje
 import { Editable } from './Editable'
 import { Tape } from './HandDrawnDecoration'
 
-/** Picks white or ink text for a project's colour band (WCAG relative luminance). */
-function textOn(hex: string) {
-  const [r, g, b] = [1, 3, 5].map((i) => {
-    const c = parseInt(hex.slice(i, i + 2), 16) / 255
-    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
-  })
-  const L = 0.2126 * r + 0.7152 * g + 0.0722 * b
-  const vsWhite = 1.05 / (L + 0.05)
-  const vsInk = (L + 0.05) / (0.0175 + 0.05) // ink #1F2430 has luminance ≈ 0.0175
-  return vsWhite >= vsInk ? '#FFFFFF' : '#1F2430'
-}
-
 /** Compact folder card for the Case Study page: coloured tab, small thumbnail, title. */
 export function ProjectFolder({ project, index }: { project: Project; index: number }) {
   const { slug, title, category, thumbnail, theme } = project
-  const style = { '--f-bg': theme.accent, '--f-fg': textOn(theme.accent) } as React.CSSProperties
+  // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
+  const style = { '--f-accent': theme.accent } as React.CSSProperties
 
   return (
     <article className="folder" style={style}>
@@ -46,11 +35,12 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
 /** Large folder-tab project card for Featured Works on Home. */
 export function FeatureCard({ project, index }: { project: Project; index: number }) {
   const { slug, title, tagline, summary, timeline, thumbnail, theme, disciplines, category } = project
-  const style = { '--f-bg': theme.accent, '--f-fg': textOn(theme.accent) } as React.CSSProperties
+  // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
+  const style = { '--f-accent': theme.accent } as React.CSSProperties
 
   return (
     <article className="feature" style={style}>
-      <p className="feature__tab">Project{String(index + 1).padStart(2, '0')}</p>
+      <p className="feature__tab">Project {String(index + 1).padStart(2, '0')}</p>
       <div className="feature__body">
         <div className="feature__text">
           <p className="feature__date">

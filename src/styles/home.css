@@ -364,6 +364,13 @@ button.wiggle {
   padding: 0;
   list-style: none;
 }
+/* Folder colour: a soft tint of each project's brand colour with dark text,
+   matching the site's low-contrast pastel surfaces (Home cards and Case Study folders) */
+.feature,
+.folder {
+  --f-bg: color-mix(in srgb, var(--f-accent) 22%, var(--c-surface));
+  --f-fg: var(--c-ink);
+}
 .feature {
   position: relative;
   padding-top: 2.4rem;

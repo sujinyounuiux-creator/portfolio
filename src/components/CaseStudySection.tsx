@@ -189,6 +189,7 @@ function BlockView({ block }: { block: Block }) {
     case 'bars':
       return (
         <figure className="cs-bars">
+          {block.eyebrow && <p className="cs-bars__eyebrow">{block.eyebrow}</p>}
           <h4 className="cs-bars__title">{block.title}</h4>
           <ul className="cs-bars__list">
             {block.items.map((it) => (
@@ -201,13 +202,25 @@ function BlockView({ block }: { block: Block }) {
               </li>
             ))}
           </ul>
+          {/* source sits directly under the chart */}
+          <figcaption>
+            {block.source}
+            {block.sourceUrl && (
+              <>
+                {' '}
+                <a className="text-link" href={block.sourceUrl} target="_blank" rel="noreferrer">
+                  {new URL(block.sourceUrl).hostname}
+                  <span className="visually-hidden"> (opens in a new tab)</span>
+                </a>
+              </>
+            )}
+          </figcaption>
           {block.takeaway && (
             <p className="cs-bars__takeaway">
               <strong>What it means: </strong>
               {block.takeaway}
             </p>
           )}
-          <figcaption>{block.source}</figcaption>
         </figure>
       )
     case 'outline':

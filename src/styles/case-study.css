@@ -472,6 +472,15 @@
   border-radius: var(--r-md);
   background: var(--c-surface);
 }
+.cs-bars__eyebrow {
+  justify-self: start;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--p-accent) 18%, transparent);
+  color: var(--p-ink, var(--c-ink));
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
 .cs-bars__title {
   font-size: var(--fs-h3);
   font-weight: 800;
@@ -485,13 +494,14 @@
 }
 .cs-bars__list li {
   display: grid;
-  grid-template-columns: 7.5rem 1fr 3rem;
+  grid-template-columns: 6.5rem 1fr 4.25rem;
   align-items: center;
   gap: var(--s-3);
   font-size: var(--fs-sm);
+  font-weight: 600;
 }
 .cs-bars__track {
-  height: 0.9rem;
+  height: 1.6rem;
   border-radius: 999px;
   background: color-mix(in srgb, var(--p-accent) 14%, transparent);
   overflow: hidden;
@@ -503,6 +513,7 @@
   background: var(--p-accent);
 }
 .cs-bars__value {
+  font-size: var(--fs-lg);
   font-weight: 800;
   text-align: right;
   font-variant-numeric: tabular-nums;

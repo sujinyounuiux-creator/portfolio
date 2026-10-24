@@ -713,6 +713,64 @@ button.wiggle {
   }
 }
 
+/* key facts row under a Home section heading (ASCLO, volunteer work) */
+.side-facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-2) var(--s-3);
+  max-width: 860px;
+  margin: calc(-1 * var(--s-4)) auto var(--s-6);
+}
+.side-facts > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border: 1.5px solid var(--c-line);
+  border-radius: 999px;
+  background: var(--c-surface);
+  font-size: var(--fs-sm);
+}
+.side-facts dt {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+.side-facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ── Volunteer work (Home only): designs side by side at the same height ── */
+.volunteer__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+/* flex-grow = width / height, so every design ends up the same height */
+.volunteer__grid li {
+  flex-basis: 0;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 559px) {
+  .volunteer__grid {
+    flex-direction: column;
+  }
+  .volunteer__grid li {
+    flex-basis: auto;
+  }
+}
+
 /* ── ASCLO photo gallery (Home only) ── */
 .asclo__label {
   padding: 0.3rem 0.85rem;

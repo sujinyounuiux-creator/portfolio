@@ -51,7 +51,7 @@ design-exports/           ← original PNG exports from Figma
 
 **Categories:** each project has `disciplines` (`'ux-ui'`, `'graphic'`, `'visual'`). They drive the filter chips on the Case Study page and the hashtags under the homepage hero (`heroTags` in `site.ts`). To add a category, add it to `disciplines` at the top of `projects.ts`.
 
-**Homepage flow:** hero (illustrated character + name, "portfolio", slogan, specialties) → About Me → Featured Works (projects with `featured: true`, shown as folder-tab cards in each project's own colour) → ASCLO — Photo Editing gallery → contact. Every case study also appears on `/work`.
+**Homepage flow:** hero (illustrated character + name, "portfolio", slogan, specialties) → About Me → Featured Works (projects with `featured: true`, shown as folder-tab cards in each project's own colour) → ASCLO: Photo Editing gallery → contact. Every case study also appears on `/work`.
 
 **Specialties:** `specialties` in `site.ts` controls the order and links of the hero/About Me pills. UX/UI Design stays first and is styled as the primary one (`primary: true`).
 

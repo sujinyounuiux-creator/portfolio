@@ -121,6 +121,13 @@
 .collage--page {
   max-width: 960px;
 }
+/* "Outside of work": heading and photos centred on the page */
+.about-block--center .about-heading {
+  text-align: center;
+}
+.about-block--center .collage--page {
+  margin-inline: auto;
+}
 @media (min-width: 700px) {
   .collage--page {
     grid-template-columns: repeat(3, 1fr);

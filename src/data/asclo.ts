@@ -4,7 +4,7 @@
 // originals any time; keep the names or update the paths below.
 
 export const asclo = {
-  title: 'ASCLO — Photo Editing',
+  title: 'ASCLO: Photo Editing',
   label: 'Freelance',
   photos: [
     { src: '/images/projects/asclo-1.webp', alt: 'Model in a brown sweatshirt and wide trousers standing on grass, with the ASCLO logo.' },

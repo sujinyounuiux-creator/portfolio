@@ -61,7 +61,7 @@ export function AboutPage() {
         </section>
 
         {/* Outside of work */}
-        <section className="about-block" aria-labelledby="outside-title">
+        <section className="about-block about-block--center" aria-labelledby="outside-title">
           <h2 id="outside-title" className="section-title about-heading">
             Outside of work
           </h2>

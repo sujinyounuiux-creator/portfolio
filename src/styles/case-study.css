@@ -323,6 +323,15 @@
   gap: var(--s-3);
   margin: 0;
 }
+/* three numbers always sit in one even row, even on phones */
+.cs-stats--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 559px) {
+  .cs-stats--3 > div {
+    padding: var(--s-3);
+  }
+}
 .cs-stats > div {
   display: flex;
   flex-direction: column-reverse;
@@ -631,6 +640,21 @@
   margin-top: var(--s-2);
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
+}
+/* wide showcase image (e.g. the Yoga audit board): fills the content column,
+   on a background that matches the board itself instead of a white frame */
+.cs-figure--wide {
+  margin-top: var(--s-2);
+}
+.cs-figure--wide .cs-figure__frame {
+  border: 0;
+  border-radius: var(--r-lg);
+  background: #444444;
+  box-shadow: var(--shadow-md);
+}
+.cs-figure--wide figcaption {
+  margin-top: var(--s-3);
+  text-align: center;
 }
 .cs-gallery {
   display: grid;

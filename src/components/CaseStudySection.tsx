@@ -8,7 +8,7 @@ import { Walkthrough } from './Walkthrough'
 function FigureView({ figure }: { figure: Figure }) {
   const img = <ZoomImage figure={figure} />
   return (
-    <figure className={`cs-figure ${figure.tall ? 'cs-figure--tall' : ''}`}>
+    <figure className={`cs-figure ${figure.tall ? 'cs-figure--tall' : ''} ${figure.wide ? 'cs-figure--wide' : ''}`}>
       {figure.tall ? (
         // Long page captures scroll inside a frame instead of stretching the page.
         <div className="cs-figure__scroll" tabIndex={0} role="region" aria-label={`${figure.caption ?? 'Full page'} (scrollable)`}>
@@ -111,7 +111,7 @@ function BlockView({ block }: { block: Block }) {
       )
     case 'stats':
       return (
-        <dl className="cs-stats">
+        <dl className={`cs-stats cs-stats--${block.items.length}`}>
           {block.items.map((s) => (
             <div key={s.label}>
               <dt>{s.label}</dt>

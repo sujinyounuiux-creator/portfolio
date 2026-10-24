@@ -16,6 +16,8 @@ export type Figure = {
   caption?: string
   /** Very tall page captures are shown in a scrollable frame. */
   tall?: boolean
+  /** Large showcase image: full content width, framed to match its own dark background. */
+  wide?: boolean
 }
 
 export type Swatch = { name: string; hex: string; usage?: string }
@@ -932,15 +934,36 @@ export const projects: Project[] = [
             ],
           },
           {
-            kind: 'list',
-            intro: 'We evaluated three key tasks:',
+            // the three evaluation tasks, as scannable cards
+            kind: 'cards',
             items: [
-              'Find a beginner friendly yoga class and its schedule. Can you understand the types, levels, dates and locations?',
-              'Compare the introductory pass options and decide which one to purchase. Are the price, duration, target audience and next steps clear?',
-              'Find the studio location, entry instructions and what to know before attending. Are the address, entrance, contact information and what to bring easy to find?',
+              {
+                title: 'Task 1: Find a beginner class',
+                body: 'Find a beginner friendly class and its schedule. Are the class types, levels, dates and locations easy to understand?',
+              },
+              {
+                title: 'Task 2: Choose an intro pass',
+                body: 'Compare the introductory passes and pick one. Are the price, duration, who it’s for and the next step clear?',
+              },
+              {
+                title: 'Task 3: Plan the first visit',
+                body: 'Find the studio and what to know before attending. Are the address, entrance, contact details and what to bring easy to find?',
+              },
             ],
           },
-          { kind: 'figure', figure: img('yoga-audit-board', 'Audit board: the existing site’s Homepage, About, Schedule, Teacher Training, Passes, Workshops and Contact pages, with the three evaluation tasks mapped onto them.', 'The existing site’s pages mapped to the three evaluation tasks.', 1600, 753) },
+          {
+            kind: 'figure',
+            figure: {
+              ...img(
+                'yoga-audit-board',
+                'Audit board: the existing site’s Homepage, About, Schedule, Teacher Training, Passes, Workshops and Contact pages laid out side by side, with the three evaluation tasks marked against them.',
+                'Audit board showing the seven existing website pages reviewed across three key user tasks.',
+                1600,
+                753,
+              ),
+              wide: true,
+            },
+          },
         ],
       },
       {

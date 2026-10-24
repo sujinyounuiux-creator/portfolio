@@ -583,6 +583,22 @@
   background: #fff;
   color: var(--c-ink);
 }
+/* full-length web pages: readable width, scroll down the page */
+.lightbox.is-page .lightbox__stage {
+  display: block;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.lightbox.is-page .lightbox__img {
+  display: block;
+  width: min(100%, 1100px);
+  max-width: none;
+  max-height: none;
+  margin: 0 auto;
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  cursor: default;
+  transition: none;
+}
 html:has(.lightbox[open]) {
   overflow: hidden;
 }

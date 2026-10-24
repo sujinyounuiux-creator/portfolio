@@ -96,13 +96,15 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
   }
 
   const zoomed = view.scale > 1
+  // full-length web pages open at a readable width and scroll, instead of shrinking to fit
+  const page = Boolean(figure?.tall)
 
   return (
     <LightboxContext.Provider value={open}>
       {children}
       <dialog
         ref={dialog}
-        className={`lightbox ${zoomed ? 'is-zoomed' : ''}`}
+        className={`lightbox ${zoomed ? 'is-zoomed' : ''} ${page ? 'is-page' : ''}`}
         aria-label={figure ? `Enlarged image: ${figure.caption ?? figure.alt}` : undefined}
         onClose={() => {
           setFigure(null)
@@ -124,14 +126,18 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
                 width={figure.width}
                 height={figure.height}
                 draggable={false}
-                style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})` }}
-                onPointerDown={onDown}
-                onPointerMove={onMove}
-                onPointerUp={onUp}
-                onPointerCancel={() => {
-                  drag.current = null
-                  setDragging(false)
-                }}
+                {...(page
+                  ? {}
+                  : {
+                      style: { transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})` },
+                      onPointerDown: onDown,
+                      onPointerMove: onMove,
+                      onPointerUp: onUp,
+                      onPointerCancel: () => {
+                        drag.current = null
+                        setDragging(false)
+                      },
+                    })}
               />
             </div>
             {figure.caption && <figcaption>{figure.caption}</figcaption>}
@@ -139,11 +145,13 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
         )}
         <div className="lightbox__tools">
           <span className="lightbox__hint" aria-hidden="true">
-            {zoomed ? 'Drag to look around · click to fit' : 'Click the image to zoom in'}
+            {page ? 'Scroll to see the whole page' : zoomed ? 'Drag to look around · click to fit' : 'Click the image to zoom in'}
           </span>
-          <button type="button" className="lightbox__btn" onClick={() => toggleAt()} aria-pressed={zoomed}>
-            {zoomed ? 'Fit' : 'Zoom'}
-          </button>
+          {!page && (
+            <button type="button" className="lightbox__btn" onClick={() => toggleAt()} aria-pressed={zoomed}>
+              {zoomed ? 'Fit' : 'Zoom'}
+            </button>
+          )}
           <button type="button" className="lightbox__btn lightbox__btn--close" onClick={close} aria-label="Close enlarged image">
             ×
           </button>

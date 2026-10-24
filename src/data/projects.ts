@@ -123,11 +123,11 @@ const wire = (name: string, alt: string, caption: string, height: number): Figur
   height,
 })
 
-/** A full page of the original Open Door Yoga site (see scripts/prepare-yoga-audit.mjs). */
+/** A full page of the original Open Door Yoga site, captured from the live site (see scripts/prepare-yoga-audit.mjs). */
 const audit = (name: string, alt: string, height: number): Figure => ({
   src: `/images/yoga-audit/${name}.webp`,
   alt,
-  width: 1000,
+  width: 1600,
   height,
   tall: true,
 })
@@ -963,18 +963,18 @@ export const projects: Project[] = [
             ],
           },
           {
-            // the seven pages from the "Heuristic Evaluation" section of the Yoga Figma file
+            // the seven pages we audited, captured at full length from opendooryoga.bc.ca
             // (scripts/prepare-yoga-audit.mjs); this replaces the dark audit board image
             kind: 'pages',
-            caption: 'The seven existing pages we reviewed across the three key tasks. Click a page to see all of it.',
+            caption: 'The seven existing pages we reviewed across the three key tasks (captured from the studio’s live site). Click a page to see all of it.',
             items: [
-              { label: 'Home', figure: audit('home', 'Original Open Door Yoga home page: hero photo, class and training promos, pass offers, teachers and workshops.', 3828) },
-              { label: 'About', figure: audit('about', 'Original About page: photo header, a long welcome text, our story and our vision.', 2091) },
-              { label: 'Schedule', figure: audit('schedule', 'Original Schedule page: notes about booking and an embedded class schedule.', 1141) },
-              { label: 'Teacher Training', figure: audit('training', 'Original Teacher Training page: long program description, curriculum, schedule, tuition, faculty and FAQ.', 3634) },
-              { label: 'Passes', figure: audit('passes', 'Original Passes & Pricing page: first time student offer and pass options.', 1576) },
-              { label: 'Workshops', figure: audit('workshops', 'Original Workshops page: a list of upcoming workshops with dates and descriptions.', 927) },
-              { label: 'Contact', figure: audit('contact', 'Original Contact page: address, entry instructions and a contact form.', 1354) },
+              { label: 'Home', figure: audit('home', 'Original Open Door Yoga home page: hero photo, class and training promos, pass offers, teachers and workshops.', 8938) },
+              { label: 'About', figure: audit('about', 'Original About page: photo header, a long welcome text, our story and our vision.', 4968) },
+              { label: 'Schedule', figure: audit('schedule', 'Original Schedule page: notes about booking and an embedded class schedule.', 2431) },
+              { label: 'Teacher Training', figure: audit('training', 'Original Teacher Training page: long program description, curriculum, schedule, tuition, faculty and FAQ.', 8444) },
+              { label: 'Passes', figure: audit('passes', 'Original Passes & Pricing page: first time student offer and pass options.', 3521) },
+              { label: 'Workshops', figure: audit('workshops', 'Original Workshops page: a list of upcoming workshops with dates and descriptions.', 1833) },
+              { label: 'Contact', figure: audit('contact', 'Original Contact page: address, entry instructions and a contact form.', 3991) },
             ],
           },
         ],

@@ -27,8 +27,8 @@ const projects = {
     tags: ['Responsive web', 'Search filters', 'Custom icons'],
     back: { src: 'design-exports/cookpad-list.png' },
     front: { src: 'design-exports/cookpad-recipe.png' },
-    // the mobile home screen, cut from the original cover frame
-    extra: { kind: 'phone', src: 'design-exports/cookpad-cover-frame.png', extract: { left: 1424, top: 386, width: 272, height: 585 } },
+    // the iPhone mockup from the devices frame (Portfolio Figma 77:1519, exported at 4x with its own frame)
+    extra: { kind: 'device', src: 'design-exports/cookpad/phone.png', h: 540, x: 1290, y: 290 },
   },
   profitkey: {
     out: 'profitkey-cover',
@@ -158,11 +158,40 @@ async function build(p) {
   )
 
   const e = p.extra
-  if (e.kind === 'phone') {
-    const ph = { x: 1300, y: 300, w: 236, h: 500, pad: 9 }
+  if (e.kind === 'device') {
+    // a transparent device mockup, placed as it is with a soft shadow behind it
+    // the export has a white backdrop outside the phone: flood fill it to transparent from the edges
+    // (the white screen is enclosed by the bezel, so it stays)
+    const raw = await sharp(e.src).resize({ height: e.h }).ensureAlpha().raw().toBuffer({ resolveWithObject: true })
+    const { data, info } = raw
+    const seen = new Uint8Array(info.width * info.height)
+    const stack = []
+    for (let x = 0; x < info.width; x++) stack.push(x, (info.height - 1) * info.width + x)
+    for (let y = 0; y < info.height; y++) stack.push(y * info.width, y * info.width + info.width - 1)
+    while (stack.length) {
+      const q = stack.pop()
+      const k = q * 4
+      if (seen[q] || (data[k + 3] > 10 && Math.min(data[k], data[k + 1], data[k + 2]) < 240)) continue
+      seen[q] = 1
+      data[k + 3] = 0
+      const x = q % info.width
+      if (x > 0) stack.push(q - 1)
+      if (x < info.width - 1) stack.push(q + 1)
+      if (q >= info.width) stack.push(q - info.width)
+      if (q < info.width * (info.height - 1)) stack.push(q + info.width)
+    }
+    const dev = { data: await sharp(data, { raw: info }).png().toBuffer(), info }
+    // shadow: the phone's own silhouette, darkened, blurred and dropped a little
+    const sil = Buffer.from(data)
+    for (let i = 0; i < sil.length; i += 4) {
+      sil[i] = sil[i + 1] = sil[i + 2] = 40
+      sil[i + 3] = Math.round(sil[i + 3] * 0.32)
+    }
+    const PADS = 50
+    const shadow = await sharp(sil, { raw: info }).extend({ top: PADS, bottom: PADS, left: PADS, right: PADS, background: { r: 0, g: 0, b: 0, alpha: 0 } }).blur(18).png().toBuffer()
     layers.push(
-      { input: svg(ph.w + 80, ph.h + 80, shadowDef(p.shadow, 0.22, 20, 22) + `<rect x="40" y="30" width="${ph.w}" height="${ph.h}" rx="34" fill="#2b1a12" filter="url(#s)"/>`), left: ph.x - 40, top: ph.y - 30 },
-      { input: await rounded(e.src, ph.w - ph.pad * 2, ph.h - ph.pad * 2, 26, e.extract), left: ph.x + ph.pad, top: ph.y + ph.pad },
+      { input: shadow, left: e.x - PADS, top: e.y - PADS + 18 },
+      { input: dev.data, left: e.x, top: e.y },
     )
   } else {
     // a floating UI card in front of the windows' lower right corner

@@ -1,5 +1,4 @@
 import { asclo } from '../data/asclo'
-import { ZoomImage } from './Lightbox'
 
 /** Home-only gallery of side-job photo editing: heading, short summary, key facts, photos. */
 export function AscloGallery() {
@@ -26,7 +25,7 @@ export function AscloGallery() {
         <ul className="asclo__grid">
           {asclo.photos.map((p) => (
             <li key={p.src}>
-              <ZoomImage figure={{ src: p.src, alt: p.alt, width: asclo.width, height: asclo.height }} />
+              <img src={p.src} alt={p.alt} width={asclo.width} height={asclo.height} loading="lazy" decoding="async" />
             </li>
           ))}
         </ul>

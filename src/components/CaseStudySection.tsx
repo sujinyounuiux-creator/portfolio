@@ -5,10 +5,15 @@ import { PlaceholderBlock } from './Editable'
 import { ZoomImage } from './Lightbox'
 import { Walkthrough } from './Walkthrough'
 
-function FigureView({ figure }: { figure: Figure }) {
-  const img = <ZoomImage figure={figure} />
+function FigureView({ figure, zoom = figure.zoom }: { figure: Figure; zoom?: boolean }) {
+  // only mockups, small crops and detailed images zoom; large photos are shown as they are
+  const img = zoom ? (
+    <ZoomImage figure={figure} />
+  ) : (
+    <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" decoding="async" />
+  )
   return (
-    <figure className={`cs-figure ${figure.tall ? 'cs-figure--tall' : ''} ${figure.wide ? 'cs-figure--wide' : ''}`}>
+    <figure className={`cs-figure ${figure.tall ? 'cs-figure--tall' : ''} ${figure.wide ? 'cs-figure--wide' : ''} ${figure.frameless ? 'cs-figure--frameless' : ''}`}>
       {figure.tall ? (
         // Long page captures scroll inside a frame instead of stretching the page.
         <div className="cs-figure__scroll" tabIndex={0} role="region" aria-label={`${figure.caption ?? 'Full page'} (scrollable)`}>
@@ -73,7 +78,7 @@ function BlockView({ block }: { block: Block }) {
       return (
         <div className={`cs-gallery cs-gallery--${Math.min(block.figures.length, 4)}`}>
           {block.figures.map((f) => (
-            <FigureView key={f.src} figure={f} />
+            <FigureView key={f.src} figure={f} zoom />
           ))}
         </div>
       )
@@ -134,7 +139,7 @@ function BlockView({ block }: { block: Block }) {
           </div>
           <div className="cs-feature__media">
             {block.figures.map((f) => (
-              <FigureView key={f.src} figure={f} />
+              <FigureView key={f.src} figure={f} zoom />
             ))}
           </div>
         </div>
@@ -158,6 +163,21 @@ function BlockView({ block }: { block: Block }) {
             </section>
           ))}
         </div>
+      )
+    case 'kit':
+      return (
+        <ul className="cs-kit">
+          {block.items.map((k) => (
+            // landscape tiles (e.g. the full button set) span the whole row
+            <li key={k.label} className={`cs-kit__item ${k.figure.width / k.figure.height > 2.5 ? 'cs-kit__item--wide' : ''}`}>
+              <div className="cs-kit__tile">
+                <ZoomImage figure={{ ...k.figure, caption: k.label }} />
+              </div>
+              <p className="cs-kit__label">{k.label}</p>
+              <p className="cs-kit__note">{k.note}</p>
+            </li>
+          ))}
+        </ul>
       )
     case 'pages':
       return (

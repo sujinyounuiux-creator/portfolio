@@ -425,10 +425,14 @@
     padding: var(--s-3);
   }
 }
+/* every tile: number and label centred, at the same height across the row */
 .cs-stats > div {
   display: flex;
   flex-direction: column-reverse;
-  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
   padding: var(--s-4) var(--s-5);
   border-radius: var(--r-md);
   background: var(--p-surface);
@@ -1285,4 +1289,46 @@
   line-height: 1.15;
   color: var(--p-ink, var(--c-ink));
   overflow-wrap: anywhere;
+}
+
+/* images that already have their own rounded card shape (e.g. the LastCow persona) */
+.cs-figure--frameless .cs-figure__frame {
+  border: 0;
+  border-radius: var(--r-lg);
+  background: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+/* kit: UI components as labelled white tiles */
+.cs-kit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
+  margin: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--r-lg);
+  background: var(--p-surface);
+  list-style: none;
+}
+@media (min-width: 900px) {
+  .cs-kit {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.cs-kit__item--wide {
+  grid-column: 1 / -1;
+}
+.cs-kit__tile {
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.cs-kit__label {
+  margin-top: var(--s-2);
+  font-weight: 700;
+}
+.cs-kit__note {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-soft);
 }

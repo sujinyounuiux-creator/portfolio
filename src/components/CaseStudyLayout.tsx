@@ -6,7 +6,6 @@ import { CaseStudySection } from './CaseStudySection'
 import { ContactCTA } from './ContactCTA'
 import { Editable } from './Editable'
 import { Underline } from './HandDrawnDecoration'
-import { ZoomImage } from './Lightbox'
 
 /** Highlights the table-of-contents entry for the section currently in view. */
 function useActiveSection(ids: string[]) {
@@ -119,7 +118,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
 
         <div className="container">
           <div className="cs-hero__media">
-            <ZoomImage figure={project.hero} eager />
+            <img src={project.hero.src} alt={project.hero.alt} width={project.hero.width} height={project.hero.height} fetchPriority="high" />
           </div>
         </div>
       </header>

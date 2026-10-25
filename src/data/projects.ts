@@ -16,6 +16,10 @@ export type Figure = {
   caption?: string
   /** Very tall page captures are shown in a scrollable frame. */
   tall?: boolean
+  /** No white frame or border: for images with their own rounded card shape. */
+  frameless?: boolean
+  /** Show a zoom button and open the image in the lightbox when clicked (mockups, small or detailed images). */
+  zoom?: boolean
   /** Large showcase image: full content width, framed to match its own dark background. */
   wide?: boolean
 }
@@ -48,6 +52,8 @@ export type Block =
   | { kind: 'walkthrough'; caption?: string; steps: { title: string; note: string; figure: Figure }[] }
   /** Website pages shown as small browser windows (top of each page; click to see all of it). */
   | { kind: 'pages'; caption?: string; items: { label: string; figure: Figure }[] }
+  /** UI kit: real components as labelled tiles in a grid (wide tiles span the full row). */
+  | { kind: 'kit'; items: { label: string; note: string; figure: Figure }[] }
   /** Embedded live Figma file, with an optional link to the interactive prototype. */
   | { kind: 'embed'; title: string; src: string; caption?: string; link?: { href: string; label: string }; variant?: 'phone' }
   /** Simple horizontal bar chart of percentages, with its source and what it means. */
@@ -130,6 +136,15 @@ const audit = (name: string, alt: string, height: number): Figure => ({
   width: 1600,
   height,
   tall: true,
+})
+
+/** A grayscale low fi Cookpad wireframe (SVG, 960 px wide) drawn by scripts/build-cookpad-wireframes.mjs. */
+const cwire = (name: string, alt: string, caption: string, height: number): Figure => ({
+  src: `/images/wireframes/cookpad-${name}.svg`,
+  alt,
+  caption,
+  width: 960,
+  height,
 })
 
 /** A clean UI export from the Cookpad frames in the Portfolio file (see scripts/prepare-cookpad.mjs). */
@@ -274,9 +289,18 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'text',
-            body: ['I planned the layout around the user flow: a login modal, then the main page with its search, the search results, and the recipe page.'],
+            body: ['I planned the layout around the user flow: from the main page’s search, to the search results, to a recipe. A login modal opens over any page.'],
           },
-          { kind: 'figure', figure: cook('wireframes', 'Low fidelity wireframes for the login modal, main page, search page and recipe page.', 'Login modal → main page → search page → recipe page.', 1600, 762) },
+          {
+            // redrawn from the original wireframe frame by scripts/build-cookpad-wireframes.mjs
+            kind: 'gallery',
+            figures: [
+              cwire('main', 'Main page wireframe: logo and ingredient search, a category grid and popular recipes.', '1. Main page', 1240),
+              cwire('search', 'Search page wireframe: search bar with a filter button, sort options and a list of recipe results.', '2. Search results', 1120),
+              cwire('recipe', 'Recipe page wireframe: food photo beside the title and ingredients, numbered steps, point, comments and more recipes.', '3. Recipe page', 1360),
+              cwire('login', 'Login modal wireframe: email and password fields, a log in button and a sign up link.', 'Login modal', 720),
+            ],
+          },
         ],
       },
       {
@@ -502,15 +526,18 @@ export const projects: Project[] = [
             ],
           },
           {
-            // "Persona" slide (40:188) in the revised UX research slides, cropped to the card
+            // "Persona" slide (40:188) in the revised UX research slides, cropped exactly to the card (transparent corners)
             kind: 'figure',
-            figure: img(
-              'lastcow-persona',
-              'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
-              'Persona: Steven Karney, built from the interview findings.',
-              1600,
-              645,
-            ),
+            figure: {
+              ...img(
+                'lastcow-persona',
+                'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
+                'Persona: Steven Karney, built from the interview findings.',
+                1600,
+                649,
+              ),
+              frameless: true,
+            },
           },
         ],
       },
@@ -585,11 +612,16 @@ export const projects: Project[] = [
             ],
           },
           {
-            // the Atoms and Molecules sections of the design file's Components page
-            kind: 'gallery',
-            figures: [
-              img('lastcow-atoms', 'Atoms: input field states, the logo, the icon set and carousel and filter controls.', 'Atoms: inputs, logo, icons and controls.', 1368, 1055),
-              img('lastcow-molecules', 'Molecules: input field states, location drop down menu, tab bar menus, buttons in four styles and three sizes, list rows, profile card and event detail blocks.', 'Molecules: buttons, menus, drop down and event details.', 1600, 908),
+            // individual components from the design file's Components page (scripts/prepare-lastcow-kit.mjs)
+            kind: 'kit',
+            items: [
+              { label: 'Buttons', note: 'Atom · primary, secondary, dark and disabled, in three sizes', figure: { src: '/images/lastcow-kit/buttons.webp', alt: 'Buttons in four colour styles and three sizes.', width: 1600, height: 520 } },
+              { label: 'Input field', note: 'Atom · default, focused and error states', figure: { src: '/images/lastcow-kit/input.webp', alt: 'Input field in default, focused and error states, with an error message.', width: 800, height: 640 } },
+              { label: 'Location drop down', note: 'Molecule · closed and open', figure: { src: '/images/lastcow-kit/location.webp', alt: 'Location drop down, closed and open with a list of locations.', width: 800, height: 640 } },
+              { label: 'Event card', note: 'Molecule · image, name, date, price and price change', figure: { src: '/images/lastcow-kit/event-card.webp', alt: 'Event card with an image, name, date and location, price and 24 hour price change.', width: 800, height: 640 } },
+              { label: 'Ticket bar', note: 'Molecule · before and after purchase', figure: { src: '/images/lastcow-kit/ticket-bar.webp', alt: 'Ticket bar showing Get Tickets before purchase and My Tickets after.', width: 800, height: 520 } },
+              { label: 'Tab bar', note: 'Organism · home, saved, calendar and profile', figure: { src: '/images/lastcow-kit/menu-bar.webp', alt: 'Bottom tab bar with home, saved, calendar and profile icons, default and active.', width: 800, height: 520 } },
+              { label: 'Calendar', note: 'Organism · month view with the selected day', figure: { src: '/images/lastcow-kit/calendar.webp', alt: 'Month calendar for August 2026 with the 14th selected.', width: 800, height: 800 } },
             ],
           },
         ],
@@ -1088,7 +1120,7 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'figure',
-            figure: { ...img('yoga-wireframe-home', 'Home page wireframe: hero, class styles, about and team sections.', 'Home page wireframe.', 1179, 2400), tall: true },
+            figure: { ...img('yoga-wireframe-home', 'Home page wireframe: hero, class styles, about and team sections.', 'Home page wireframe.', 1179, 2400), tall: true, zoom: true },
           },
         ],
       },
@@ -1140,7 +1172,7 @@ export const projects: Project[] = [
               'Gift card and call to action buttons',
             ],
           },
-          { kind: 'figure', figure: img('yoga-components', 'Component sheet: pricing cards, gift card, class style cards, teacher cards, schedule items, curriculum accordion, headers and footers.', 'Molecules from the component library.', 1600, 939) },
+          { kind: 'figure', figure: { ...img('yoga-components', 'Component sheet: pricing cards, gift card, class style cards, teacher cards, schedule items, curriculum accordion, headers and footers.', 'Molecules from the component library.', 1600, 939), zoom: true } },
         ],
       },
       {

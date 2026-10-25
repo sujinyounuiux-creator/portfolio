@@ -467,8 +467,9 @@ export const projects: Project[] = [
     timeline: '2026.07 to 2026.08',
     team: '2 designers',
     tools: ['Figma'],
-    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo, the tagline "Last tickets. Best prices." and the app splash screen on an iPhone.'),
-    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo, the tagline "Last tickets. Best prices." and the app splash screen on an iPhone.'),
+    // cover: built by scripts/build-covers.mjs
+    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
+    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },

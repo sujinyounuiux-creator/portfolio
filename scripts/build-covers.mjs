@@ -1,4 +1,4 @@
-// Builds the project covers (Cookpad, PROFITKEY, Open Door Yoga) in one shared layout:
+// Builds the project covers (Cookpad, LastCow, PROFITKEY, Open Door Yoga) in one shared layout:
 // title block on the left, two real screens in browser windows on the right, and a
 // third real piece (a phone or a floating UI card) in front. Everything inside the
 // windows, phone and cards is cut from the real Figma exports; nothing new is drawn there.
@@ -47,6 +47,27 @@ const projects = {
     front: { src: 'public/images/screens/profitkey-web-detail.webp', extract: { left: 0, top: 0, width: 1400, height: 788 } },
     // the AI Recommended Stocks card with its AI Comment
     extra: { kind: 'card', src: 'public/images/screens/profitkey-ai-pick.webp', w: 262, h: 288 },
+  },
+  lastcow: {
+    out: 'lastcow-cover',
+    bg: '#F4F1FC',
+    accent: '#4B17C1',
+    ink: '#24105F',
+    grey: '#5E5A6B',
+    line: '#DED5F5',
+    shadow: '#1d0b5c',
+    // the cow and ticket logo, cut from the original cover
+    logo: { src: 'design-exports/lastcow-cover.png', extract: { left: 280, top: 350, width: 190, height: 185 }, w: 112, h: 109, r: 26 },
+    eyebrow: 'MOBILE APP',
+    title: ['LastCow'],
+    subtitle: ['Last tickets. Best prices.', 'Last minute deals on live events'],
+    tags: ['User interviews', 'iOS app', 'UI kit'],
+    // the real hi-fi screens: Calendar, Home (front) and Event
+    phones: [
+      { src: 'public/images/screens/lastcow-calendar-hifi.webp', h: 560, x: 760, y: 200 },
+      { src: 'public/images/screens/lastcow-event-hifi.webp', h: 560, x: 1260, y: 200 },
+      { src: 'public/images/screens/lastcow-home-hifi.webp', h: 660, x: 990, y: 130 },
+    ],
   },
   'open-door-yoga': {
     out: 'yoga-cover',
@@ -148,6 +169,21 @@ async function build(p) {
       `<circle cx="560" cy="820" r="70" fill="${p.accent}" opacity="0.12"/>` +
       text,
   )
+
+  if (p.phones) {
+    // a mobile app: three real screens in simple phone bodies, the middle one in front
+    for (const ph of p.phones) {
+      const w = Math.round((ph.h * 600) / 1304)
+      const pad = 10
+      layers.push(
+        { input: svg(w + 80, ph.h + 80, shadowDef(p.shadow, 0.24, 22, 24) + `<rect x="40" y="30" width="${w}" height="${ph.h}" rx="44" fill="#1b1530" filter="url(#s)"/>`), left: ph.x - 40, top: ph.y - 30 },
+        { input: await rounded(ph.src, w - pad * 2, ph.h - pad * 2, 34), left: ph.x + pad, top: ph.y + pad },
+      )
+    }
+    const out = await sharp(bg).composite(layers).webp({ quality: 88 }).toFile(`public/images/projects/${p.out}.webp`)
+    console.log(p.out, out.width, out.height)
+    return
+  }
 
   const screen = (s) => rounded(s.src, WIN_W, WIN_H, 14, s.extract)
   layers.push(

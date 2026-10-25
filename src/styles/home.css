@@ -221,6 +221,7 @@ button.wiggle {
   animation: none;
 }
 .stampable__hit {
+  position: relative;
   display: block;
   width: 100%;
   padding: 0;
@@ -228,6 +229,17 @@ button.wiggle {
   border-radius: var(--r-lg);
   background: none;
   cursor: pointer;
+}
+/* the tappable area reaches past the illustration, so stamps can go around her too */
+.stampable__hit::before {
+  content: '';
+  position: absolute;
+  inset: -12% -18%;
+}
+@media (max-width: 479px) {
+  .stampable__hit::before {
+    inset: -10% -12%;
+  }
 }
 .stampable__hit:focus-visible {
   outline: 3px dashed var(--c-accent-ink);

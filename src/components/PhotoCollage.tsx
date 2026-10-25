@@ -19,10 +19,12 @@ type Props = {
   className?: string
   /** Limit to these photo paths (in this order). Defaults to every photo. */
   only?: string[]
+  /** Open photos in the lightbox when clicked (default true). */
+  zoom?: boolean
 }
 
 /** Scrapbook-style Polaroid collage of personal photos. Photos keep their full frame. */
-export function PhotoCollage({ className = '', only }: Props) {
+export function PhotoCollage({ className = '', only, zoom = true }: Props) {
   const photos = only
     ? only.map((src) => about.outsideOfWork.find((p) => p.src === src)).filter((p) => p !== undefined)
     : about.outsideOfWork
@@ -39,7 +41,11 @@ export function PhotoCollage({ className = '', only }: Props) {
           >
             <figure className="collage__polaroid">
               <Tape className="collage__tape" />
-              <ZoomImage figure={{ src: p.src, alt: p.alt, width: p.width, height: p.height, caption: p.caption }} />
+              {zoom ? (
+                <ZoomImage figure={{ src: p.src, alt: p.alt, width: p.width, height: p.height, caption: p.caption }} />
+              ) : (
+                <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+              )}
               <figcaption className="hand">{p.caption}</figcaption>
             </figure>
           </li>

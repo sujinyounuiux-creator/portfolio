@@ -1,6 +1,7 @@
 // Sujin's illustrated character (provided artwork, background removed with
-// scripts/prepare-character.mjs). To swap the art, replace
-// design-exports/character-source.webp and re-run that script.
+// scripts/prepare-character.mjs, and the drawn star and heart erased with
+// scripts/erase-character-doodles.mjs). To swap the art, replace
+// design-exports/character-source.webp and re-run those scripts.
 
 type Props = {
   className?: string

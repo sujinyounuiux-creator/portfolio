@@ -3,10 +3,11 @@ import { AscloGallery } from '../components/AscloGallery'
 import { ContactCTA } from '../components/ContactCTA'
 import { FeaturedWorks } from '../components/FeaturedWorks'
 import { HeroSection } from '../components/HeroSection'
+import { VolunteerWork } from '../components/VolunteerWork'
 import { site } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 
-// hero → about me → featured works → ASCLO gallery → contact
+// hero → about me → featured works → volunteer work → ASCLO gallery → contact
 export function HomePage() {
   usePageMeta(
     null,
@@ -18,6 +19,7 @@ export function HomePage() {
       <HeroSection />
       <AboutTeaser />
       <FeaturedWorks />
+      <VolunteerWork />
       <AscloGallery />
       <ContactCTA />
     </>

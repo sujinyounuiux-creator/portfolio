@@ -717,7 +717,7 @@ export const projects: Project[] = [
     platform: 'Desktop web',
     role: 'UX/UI design (sole designer), planning with the team',
     timeline: '2025.01 to 2025.03',
-    team: '6 people: 5 front end/back end engineers and 1 designer (me)',
+    team: '6 people: 5 front end/back end engineers and 1 designer',
     tools: ['Figma'],
     thumbnail: img('profitkey-cover', 'PROFITKEY home page and stock analysis page with an AI comment panel.'),
     hero: img('profitkey-cover', 'PROFITKEY home page and stock analysis page with an AI comment panel.'),

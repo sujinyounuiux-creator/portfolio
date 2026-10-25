@@ -713,9 +713,9 @@ export const projects: Project[] = [
     tagline: 'Finding the key to investment success',
     summary:
       'A beginner friendly investment website with AI stock recommendations and plain language explanations of financial terms.',
-    category: 'Responsive web · Fintech',
+    category: 'Website · Fintech',
     platform: 'Desktop web',
-    role: 'Design 100%, Planning 70%',
+    role: 'Sole UX/UI designer, planning lead',
     timeline: '2025.01 to 2025.03',
     team: '6 people: 5 front end/back end engineers and 1 designer (me)',
     tools: ['Figma'],
@@ -724,9 +724,9 @@ export const projects: Project[] = [
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
-      { label: 'My role', text: 'The only designer on a team of six: all of the design work and 70% of the planning.' },
+      { label: 'My role', text: 'The only designer on a team of six: every screen, plus most of the planning, from the sitemap to the final UI.' },
       { label: 'Solution', text: 'AI stock recommendations with reasons, a plain language AI comment on every stock, and glossary tooltips.' },
-      { label: 'Result', text: 'Wireframes for seven pages and the final desktop design, shaped by interviews with 10 beginners.' },
+      { label: 'Delivered', text: 'A sitemap, wireframes for 7 pages, a design system and 11 final screens, including 404 and 500 error states.' },
     ],
     cardNote: 'sole designer',
     sections: [
@@ -739,16 +739,17 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'PROFITKEY lets people view domestic and international stocks and financial news at a glance. Our concept: a beginner friendly investment website, supported by AI.',
+              'Investment beginners told us they didn’t know where to start and found securities websites hard to understand because of all the technical terms. PROFITKEY is a desktop website that shows domestic and international stocks and financial news at a glance, with AI support written for beginners.',
+              'I was the only designer on a team of six, working with five front end and back end engineers. I designed every screen and led most of the planning, from the sitemap to the final UI.',
             ],
           },
           {
             kind: 'stats',
             items: [
-              { value: '1 of 6', label: 'The only designer on a team of six' },
-              { value: '100%', label: 'Of the design work' },
-              { value: '70%', label: 'Of the planning' },
               { value: '10', label: 'Investment beginners interviewed' },
+              { value: '8', label: 'Page groups in the sitemap' },
+              { value: '7', label: 'Pages wireframed' },
+              { value: '11', label: 'Final screens, incl. error states' },
             ],
           },
         ],
@@ -770,6 +771,37 @@ export const projects: Project[] = [
               'Securities websites were difficult to understand because of all the technical terms.',
               'I am afraid of risk and anxious about how to make a decision.',
             ],
+          },
+          {
+            kind: 'text',
+            body: [
+              'I also collected reference designs from investment services and fintech dashboards to compare how they present prices, charts, watchlists and notices before designing our own layouts.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'structure',
+        label: 'Sitemap',
+        title: 'Information architecture',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'I mapped the whole site before any screens. The home page links to every main area: AI stock picks, market trends, stock analysis, news and notices. Each link is marked by who can reach it, so the team could see at a glance which pages need a login.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Public', body: 'Home, Stock Analysis (stock details, AI commentary, community), News and Notices / FAQ.' },
+              { title: 'Logged in', body: 'Login with social sign in, and My Account: watchlist, my comments and edit profile.' },
+              { title: 'External', body: 'Full news articles open on the original publisher’s site.' },
+            ],
+          },
+          {
+            kind: 'figure',
+            figure: { ...screen('profitkey-sitemap', 'PROFITKEY sitemap: Home Page links to Stock Analysis, News (with external articles), Notices / FAQ and the Login Page, which leads to My Account. Links are colour coded as public, logged in or external.', 'Sitemap. Orange: public links, grey: logged in, black: external.', 1344, 854), zoom: true },
           },
         ],
       },
@@ -800,7 +832,7 @@ export const projects: Project[] = [
       {
         // each feature shown with a crop of the real page (scripts/crop-profitkey-features.mjs)
         id: 'features',
-        label: 'Key features',
+        label: 'Key decisions',
         title: 'Key design decisions',
         blocks: [
           {
@@ -831,6 +863,51 @@ export const projects: Project[] = [
             ],
             figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Indicators with “?” glossary marks.', 600, 340)],
           },
+          {
+            kind: 'feature',
+            tag: 'Every state designed',
+            title: 'Friendly error pages',
+            reverse: true,
+            body: [
+              'I designed the 404 and 500 pages too, so a broken link or server problem keeps the PROFITKEY header and logo, explains what happened in one plain sentence and offers a clear Go Back button.',
+            ],
+            figures: [
+              screen('profitkey-404', 'PROFITKEY 404 page: lock and key icon, “Page not found. We couldn’t find the page you’re looking for.” and a yellow Go Back button.', '404: page not found.', 944, 630),
+              screen('profitkey-500', 'PROFITKEY 500 page: lock and key icon, “Internal Server Error. Sorry for the inconvenience. Please try again shortly.” and a yellow Go Back button.', '500: internal server error.', 944, 630),
+            ],
+          },
+        ],
+      },
+      {
+        id: 'design-system',
+        label: 'Design system',
+        title: 'Design system & components',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'A small, consistent system kept the screens easy to build for five engineers: one typeface (Inter), a yellow key colour taken from the logo, red kept for price rises and destructive actions, and one shadow and corner style for cards.',
+            ],
+          },
+          {
+            kind: 'swatches',
+            swatches: [
+              { name: 'Key yellow', hex: '#FFB400', usage: 'Logo, highlights, main buttons' },
+              { name: 'Ink', hex: '#333333', usage: 'Text, headings' },
+              { name: 'Red', hex: '#D9001B', usage: 'Price rise, delete' },
+              { name: 'Grey', hex: '#6E6E6E', usage: 'Secondary text' },
+              { name: 'Light grey', hex: '#D4D4D4', usage: 'Lines, disabled' },
+            ],
+            note: 'From the project’s colour styles in Figma.',
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Navigation', body: 'Header with search, tab bars for Stock Analysis / Community, Notices / FAQ and My Account, and pagination.' },
+              { title: 'Content', body: 'Stock cards with price change, news cards, comment threads with replies, FAQ accordions and notice rows.' },
+              { title: 'Account', body: 'Social sign in buttons (Google, Kakao, Naver), profile card, edit and delete actions and confirmation dialogs.' },
+            ],
+          },
         ],
       },
       {
@@ -838,16 +915,6 @@ export const projects: Project[] = [
         label: 'Final design',
         title: 'Final design',
         blocks: [
-          {
-            kind: 'swatches',
-            note: 'Sampled from the final screens. The source file has no documented palette.',
-            swatches: [
-              { name: 'Key yellow', hex: '#FFB400', usage: 'Logo, highlights' },
-              { name: 'Rise', hex: '#D9001B', usage: 'Price up' },
-              { name: 'Fall', hex: '#0074D9', usage: 'Price down' },
-              { name: 'Ink', hex: '#333333', usage: 'Text' },
-            ],
-          },
           {
             // screens: the English Home and Stock detail frames, plus Sujin's English versions of the
             // other pages (Portfolio Figma frames 355:*, prepared by scripts/prepare-profitkey-english.mjs)
@@ -934,9 +1001,9 @@ export const projects: Project[] = [
     featured: true,
     tagline: 'A calmer, clearer website for an East Vancouver yoga studio',
     summary:
-      'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing, on desktop and mobile.',
-    category: 'Responsive web · Redesign',
-    platform: 'Desktop & mobile web',
+      'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing.',
+    category: 'Website · Redesign',
+    platform: 'Website',
     role: 'UX/UI Design',
     timeline: '2026.08 to 2026.09',
     team: 'Group project, 3 designers',
@@ -1168,7 +1235,7 @@ export const projects: Project[] = [
               'Pass and pricing cards, with a highlighted “Good Deal” variant',
               'Class style cards and teacher profile cards',
               'Schedule items and curriculum accordions',
-              'Header and footer variants for desktop and mobile',
+              'Header and footer variants',
               'Gift card and call to action buttons',
             ],
           },

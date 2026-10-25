@@ -840,11 +840,12 @@ export const projects: Project[] = [
             kind: 'feature',
             plain: true,
             tag: '“I don’t know where to start.”',
-            title: 'AI stock recommendations',
+            title: 'AI picks that explain why',
             body: [
-              'The home page opens with AI recommended stocks. Stocks expected to rise are suggested from data such as stability, growth rate, profitability and financial health, along with the reason for each recommendation, giving beginners a clear place to start.',
+              'The home page opens with AI recommended stocks, chosen from data such as stability, growth rate, profitability and financial health.',
+              'The key part is the AI Comment under each pick. Instead of leaving beginners with only a price and a percentage, it explains in a few plain sentences why the stock was recommended, so they understand the reason before they decide.',
             ],
-            figures: [{ ...screen('profitkey-ai-picks-card', 'AI Recommended Stocks card: Apple, +20%, $28 usd, a price chart, highest and lowest price, PER, PBR, EPS, dividends and an AI comment explaining the pick.', 'AI Recommended Stocks on the home page.', 593, 708), frameless: true }],
+            figures: [screen('profitkey-ai-pick', 'AI Recommended Stocks card: Apple, +20%, a price chart and key figures, ending in a yellow AI Comment box that explains the pick in plain sentences.', 'The AI Comment under each recommended stock explains the pick.', 566, 622)],
           },
           {
             kind: 'feature',

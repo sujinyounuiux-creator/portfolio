@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { about } from '../data/about'
 import { Tape } from './HandDrawnDecoration'
+import { ZoomImage } from './Lightbox'
 
 // Hand-picked tilts and nudges so the collage looks casually pinned
 // rather than randomly scattered (same values every render).
@@ -38,7 +39,7 @@ export function PhotoCollage({ className = '', only }: Props) {
           >
             <figure className="collage__polaroid">
               <Tape className="collage__tape" />
-              <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" decoding="async" />
+              <ZoomImage figure={{ src: p.src, alt: p.alt, width: p.width, height: p.height, caption: p.caption }} />
               <figcaption className="hand">{p.caption}</figcaption>
             </figure>
           </li>

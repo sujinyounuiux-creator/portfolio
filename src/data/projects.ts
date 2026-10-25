@@ -817,10 +817,10 @@ export const projects: Project[] = [
             ],
           },
           {
-            // screens: the English Home and Stock detail frames, plus the complete Korean screens
-            // from the "Outview" slide (straightened by scripts/prepare-profitkey-outview.mjs)
+            // screens: the English Home and Stock detail frames, plus Sujin's English versions of the
+            // other pages (Portfolio Figma frames 355:*, prepared by scripts/prepare-profitkey-english.mjs)
             kind: 'walkthrough',
-            caption: 'Click through the website screens. Each scrolls inside the laptop; click a screen to enlarge it. The site was built in Korean: Notices, FAQ and Edit profile show the Korean interface, described in English above.',
+            caption: 'Click through the website screens. Each scrolls inside the laptop; click a screen to enlarge it.',
             steps: [
               {
                 title: 'Home',
@@ -833,19 +833,39 @@ export const projects: Project[] = [
                 figure: { ...screen('profitkey-web-detail', 'PROFITKEY stock detail page: price chart, key indicators, AI comment, quarterly financial indicators and investment firm opinions.', 'Stock detail with AI comment', 1400, 2349), tall: true },
               },
               {
+                title: 'Community',
+                note: 'Each stock has its own community, with threaded comments and replies.',
+                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 1400, 1770), tall: true },
+              },
+              {
+                title: 'News',
+                note: 'Market headlines as cards, then a list of all news with pagination.',
+                figure: { ...screen('profitkey-en-news', 'PROFITKEY news page: market headline cards above a list of all news.', 'News', 1400, 1377), tall: true },
+              },
+              {
                 title: 'Notices',
-                note: 'Korean interface. A list of service notices from the operations team, such as a maintenance notice with its date and author.',
-                figure: { ...screen('profitkey-ov-notice', 'PROFITKEY notices page (Korean): a service maintenance notice with date and author.', 'Notices', 1400, 777), tall: true },
+                note: 'Service notices from the support team, such as scheduled maintenance.',
+                figure: { ...screen('profitkey-en-notice', 'PROFITKEY notices page: an important notice about scheduled maintenance, with date and author.', 'Notices', 1400, 780), tall: true },
               },
               {
                 title: 'FAQ',
-                note: 'Korean interface. Frequently asked questions in an accordion, with a 1:1 inquiry button.',
-                figure: { ...screen('profitkey-ov-faq', 'PROFITKEY FAQ page (Korean): questions in an expandable accordion with a 1:1 inquiry button.', 'FAQ', 1400, 1073), tall: true },
+                note: 'Frequently asked questions in an accordion, with a Contact Us button.',
+                figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 1400, 1073), tall: true },
+              },
+              {
+                title: 'My watchlist',
+                note: 'Saved stocks with their price charts.',
+                figure: { ...screen('profitkey-en-watchlist', 'PROFITKEY my page, watchlist tab: saved stocks shown as cards with price charts.', 'My watchlist', 1400, 941), tall: true },
+              },
+              {
+                title: 'My comments',
+                note: 'A dated list of the comments a member has written.',
+                figure: { ...screen('profitkey-en-my-comments', 'PROFITKEY my page, comments tab: a dated list of the member’s comments.', 'My comments', 1400, 1144), tall: true },
               },
               {
                 title: 'Edit profile',
-                note: 'Korean interface. Members can change their nickname and email address from their profile menu.',
-                figure: { ...screen('profitkey-ov-edit-profile', 'PROFITKEY edit profile page (Korean): nickname change and email address fields beside the member menu.', 'Edit profile', 1400, 755), tall: true },
+                note: 'Members can change their nickname and email address, log out or delete their account.',
+                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: change nickname and email address, with log out and delete account buttons.', 'Edit profile', 1400, 756), tall: true },
               },
             ],
           },

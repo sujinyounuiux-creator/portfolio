@@ -383,6 +383,7 @@ export const projects: Project[] = [
           {
             // the devices image is the "Overall UI" frame (27:3888): phone, tablet, laptop and desktop layouts
             kind: 'feature',
+            plain: true,
             tag: 'Secondary research: most visits come from mobile',
             title: 'A responsive experience across devices',
             body: [
@@ -392,6 +393,7 @@ export const projects: Project[] = [
           },
           {
             kind: 'feature',
+            plain: true,
             tag: 'Insight: search is hard to narrow down',
             title: 'Search filters that match how people cook',
             body: [
@@ -404,6 +406,7 @@ export const projects: Project[] = [
           },
           {
             kind: 'feature',
+            plain: true,
             tag: 'Insight: little sense of community',
             title: 'Threaded comments',
             reverse: true,

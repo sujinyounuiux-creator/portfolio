@@ -43,7 +43,7 @@ export type Block =
   /** A row of key numbers (only real figures from the project). */
   | { kind: 'stats'; items: { value: string; label: string }[] }
   /** One design decision: a real screen or crop beside the reasoning. */
-  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean }
+  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean }
   /** Icon set from the project, grouped, with what each group is for. */
   | { kind: 'icons'; groups: { title: string; note: string; items: { src: string; label: string }[] }[] }
   /** Several draggable comparisons shown side by side inside phones (e.g. wireframe → hi fi). */
@@ -838,15 +838,17 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'feature',
+            plain: true,
             tag: '“I don’t know where to start.”',
             title: 'AI stock recommendations',
             body: [
               'The home page opens with AI recommended stocks. Stocks expected to rise are suggested from data such as stability, growth rate, profitability and financial health, along with the reason for each recommendation, giving beginners a clear place to start.',
             ],
-            figures: [{ ...screen('profitkey-home-hero', 'PROFITKEY home page hero: “Finding the key to success” beside an AI Recommended Stocks card with Apple, +20%, a price chart, key figures and an AI comment explaining the pick.', 'The home page leads with AI Recommended Stocks.', 1144, 591), frameless: true }],
+            figures: [{ ...screen('profitkey-ai-picks-card', 'AI Recommended Stocks card: Apple, +20%, $28 usd, a price chart, highest and lowest price, PER, PBR, EPS, dividends and an AI comment explaining the pick.', 'AI Recommended Stocks on the home page.', 593, 708), frameless: true }],
           },
           {
             kind: 'feature',
+            plain: true,
             tag: '“Too many technical terms.”',
             title: 'An AI comment on every stock',
             reverse: true,
@@ -857,6 +859,7 @@ export const projects: Project[] = [
           },
           {
             kind: 'feature',
+            plain: true,
             tag: '“Too many technical terms.”',
             title: 'Glossary tooltips',
             body: [
@@ -866,6 +869,7 @@ export const projects: Project[] = [
           },
           {
             kind: 'feature',
+            plain: true,
             tag: 'Every state designed',
             title: 'Friendly error pages',
             reverse: true,

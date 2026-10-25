@@ -499,6 +499,16 @@
   border-radius: var(--r-md);
   box-shadow: 0 12px 28px -14px rgba(31, 36, 48, 0.35);
 }
+/* plain: images sit straight on the page, no tinted panel behind them */
+.cs-feature__media--plain {
+  padding: 0;
+  background: transparent;
+}
+/* frameless images (e.g. a card exported with its own shadow) need no extra shadow */
+.cs-feature__media--plain .cs-figure--frameless .cs-figure__frame {
+  box-shadow: none;
+  background: transparent;
+}
 .cs-feature__media .cs-figure__frame img {
   max-height: 460px;
   object-fit: contain;

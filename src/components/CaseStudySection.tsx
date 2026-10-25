@@ -139,7 +139,7 @@ function BlockView({ block }: { block: Block }) {
               <p key={i}>{p}</p>
             ))}
           </div>
-          <div className={`cs-feature__media ${pair ? 'cs-feature__media--pair' : ''}`}>
+          <div className={`cs-feature__media ${pair ? 'cs-feature__media--pair' : ''} ${block.plain ? 'cs-feature__media--plain' : ''}`}>
             {block.figures.map((f) => (
               <FigureView key={f.src} figure={f} zoom />
             ))}

@@ -531,7 +531,7 @@ export const projects: Project[] = [
             ],
           },
           {
-            // "Persona" slide (40:188) in the revised UX research slides, cropped exactly to the card (transparent corners)
+            // "Persona" slide (40:188) in the revised UX research slides, cropped to the card (scripts/prepare-lastcow-kit.mjs)
             kind: 'figure',
             figure: {
               ...img(
@@ -539,9 +539,8 @@ export const projects: Project[] = [
                 'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
                 'Persona: Steven Karney, built from the interview findings.',
                 1600,
-                649,
+                644,
               ),
-              frameless: true,
             },
           },
         ],

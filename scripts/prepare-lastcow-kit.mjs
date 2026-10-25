@@ -2,7 +2,7 @@
 // (Atoms / Molecules / Organisms), cleaned into uniform tiles for the case study.
 // Each export's lavender section fill (#E8E8F7-ish) and dashed component-set outline are made
 // transparent, then the component is trimmed and centred on a white tile of a fixed shape.
-// Also: the persona card is cropped from the revised persona slide (transparent rounded corners).
+// Also: the persona card is cropped from the revised persona slide (its stroke painted out of the corners).
 // Sources: design-exports/lastcow-kit/*.png, design-exports/lastcow-persona-v2.png
 import { mkdirSync } from 'node:fs'
 import sharp from 'sharp'
@@ -48,7 +48,7 @@ for (const [name, [tw, th, share]] of Object.entries(tiles)) {
   console.log(name, info2.width, info2.height)
 }
 
-// persona card, cropped to the card with transparent rounded corners
+// persona card, cropped to the card
 {
   const src = 'design-exports/lastcow-persona-v2.png'
   const { data, info } = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true })
@@ -70,8 +70,29 @@ for (const [name, [tw, th, share]] of Object.entries(tiles)) {
   const w = r - l + 1
   const h = b - t + 1
   const rad = Math.round(w * 0.022)
-  const mask = Buffer.from(`<svg width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${rad}" fill="#fff"/></svg>`)
-  const card = await sharp(src).extract({ left: l, top: t, width: w, height: h }).composite([{ input: mask, blend: 'dest-in' }]).png().toBuffer()
-  const i = await sharp(card).resize({ width: 1600 }).webp({ quality: 88 }).toFile('public/images/projects/lastcow-persona.webp')
+  // the card's purple stroke still curves through the four corners: paint each corner, outside
+  // a slightly tighter rounded rect, with the card's own background next to it (the photo
+  // backdrop on the left, white on the right). The site's figure frame rounds the corners.
+  // also trim a few px off every side: the stroke and its shadow leave a thin grey line on the edges
+  const IN = Math.round(w * 0.003)
+  const { data: cd, info: ci } = await sharp(src).extract({ left: l + IN, top: t + IN, width: w - IN * 2, height: h - IN * 2 }).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+  const R = rad + Math.round(w * 0.014)
+  const fill = (x0, y0, sx, sy) => {
+    const k = (sy * ci.width + sx) * 3
+    const c = [cd[k], cd[k + 1], cd[k + 2]]
+    for (let y = 0; y < R; y++)
+      for (let x = 0; x < R; x++) {
+        const dx = R - x, dy = R - y
+        if (dx * dx + dy * dy <= (R - rad * 0.9) ** 2) continue
+        const px = x0 < 0 ? ci.width - 1 - x : x, py = y0 < 0 ? ci.height - 1 - y : y
+        const j = (py * ci.width + px) * 3
+        cd[j] = c[0]; cd[j + 1] = c[1]; cd[j + 2] = c[2]
+      }
+  }
+  fill(0, 0, R + 2, R + 2)
+  fill(0, -1, R + 2, ci.height - R - 3)
+  fill(-1, 0, ci.width - R - 3, R + 2)
+  fill(-1, -1, ci.width - R - 3, ci.height - R - 3)
+  const i = await sharp(cd, { raw: ci }).resize({ width: 1600 }).webp({ quality: 88 }).toFile('public/images/projects/lastcow-persona.webp')
   console.log('persona', i.width, i.height)
 }

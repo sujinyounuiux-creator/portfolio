@@ -182,8 +182,8 @@ export const projects: Project[] = [
     team: 'Personal project',
     tools: ['Figma'],
     // cover: "Overview" frame (1:2139), the first Cookpad slide in the Portfolio Figma file
-    thumbnail: img('cookpad-cover', 'Cookpad UI/UX improvement project cover with the redesigned search page on tablet and mobile.'),
-    hero: img('cookpad-cover', 'Cookpad UI/UX improvement project cover with the redesigned search page on tablet and mobile.'),
+    thumbnail: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
+    hero: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
     theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
     tldr: [
       { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling; users found search hard to narrow down and the UI complex.' },
@@ -400,7 +400,7 @@ export const projects: Project[] = [
               'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
             ],
             figures: [
-              cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', 'Search bar with the filter button.', 1600, 143),
+              { ...cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', 'Search bar with the filter button.', 1600, 143), frameless: true },
               cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 532),
             ],
           },

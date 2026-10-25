@@ -9,20 +9,37 @@ const SRC = 'design-exports/cookpad'
 const OUT = 'public/images/cookpad'
 mkdirSync(OUT, { recursive: true })
 
-// [x, y, w, h] of each icon inside its 42 px tall row (from Figma)
+// x position of each icon inside its row (from Figma). Each icon is cut over the full row
+// height, trimmed to its own ink, then centred at its
+// native size on one shared square tile, so no icon is clipped and stroke weights match.
 const rows = {
-  'icons-row1.svg': [[0, 0, 34, 42], [109, 0, 42, 42], [226, 5, 42, 31], [343, 0, 42, 42], [460, 0, 42, 42], [577, 0, 42, 42]],
-  'icons-row2.svg': [[0, 0, 42, 42], [117, 0, 42, 42], [234, 0, 42, 42], [351, 0, 42, 42], [468, 0, 42, 42], [585, 0, 31, 42]],
+  'icons-row1.svg': [0, 109, 226, 343, 460, 577],
+  'icons-row2.svg': [0, 117, 234, 351, 468, 585],
 }
 const SCALE = 4
+const TILE = 52 * SCALE
 let n = 1
-for (const [file, cells] of Object.entries(rows)) {
-  const row = await sharp(`${SRC}/${file}`, { density: 72 * SCALE }).png().toBuffer()
-  for (const [x, y, w, h] of cells) {
-    // centre each icon on a square tile so they line up in the grid
-    const icon = await sharp(row).extract({ left: x * SCALE, top: y * SCALE, width: w * SCALE, height: h * SCALE }).png().toBuffer()
-    await sharp({ create: { width: 42 * SCALE, height: 42 * SCALE, channels: 3, background: '#ffffff' } })
-      .composite([{ input: icon, left: Math.round(((42 - w) / 2) * SCALE), top: Math.round(((42 - h) / 2) * SCALE) }])
+for (const [file, xs] of Object.entries(rows)) {
+  const row = await sharp(`${SRC}/${file}`, { density: 72 * SCALE }).flatten({ background: '#ffffff' }).png().toBuffer()
+  const { width: rw, height: rh } = await sharp(row).metadata()
+  for (const [i, x] of xs.entries()) {
+    // cut halfway into the gaps: some icons are drawn a little past their Figma box
+    const left = i > 0 ? (x - 20) * SCALE : 0
+    const right = i < xs.length - 1 ? (xs[i + 1] - 20) * SCALE : rw
+    const cell = await sharp(row).extract({ left, top: 0, width: right - left, height: rh }).png().toBuffer()
+    // bounding box of the icon's ink (anything clearly darker than white)
+    const { data, info } = await sharp(cell).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+    let x0 = info.width, y0 = info.height, x1 = -1, y1 = -1
+    for (let yy = 0; yy < info.height; yy++)
+      for (let xx = 0; xx < info.width; xx++) {
+        const k = (yy * info.width + xx) * 3
+        if (Math.min(data[k], data[k + 1], data[k + 2]) < 235) {
+          x0 = Math.min(x0, xx); y0 = Math.min(y0, yy); x1 = Math.max(x1, xx); y1 = Math.max(y1, yy)
+        }
+      }
+    const icon = await sharp(cell).extract({ left: x0, top: y0, width: x1 - x0 + 1, height: y1 - y0 + 1 }).png().toBuffer({ resolveWithObject: true })
+    await sharp({ create: { width: TILE, height: TILE, channels: 3, background: '#ffffff' } })
+      .composite([{ input: icon.data, left: Math.round((TILE - icon.info.width) / 2), top: Math.round((TILE - icon.info.height) / 2) }])
       .png()
       .toFile(`${OUT}/icon-${n}.png`)
     n++
@@ -39,4 +56,34 @@ for (const [src, out, w] of [
 ]) {
   const i = await webp(src, out, w)
   console.log(out, i.width, i.height)
+}
+
+// search bar: make the white area around the bar transparent (flood fill from the edges),
+// so it sits straight on the page; the white inside the input box stays
+{
+  const { data, info } = await sharp(`${SRC}/search-bar.png`).resize({ width: 1600, withoutEnlargement: true }).ensureAlpha().raw().toBuffer({ resolveWithObject: true })
+  const { width: w, height: h } = info
+  const light = (k) => Math.min(data[k], data[k + 1], data[k + 2]) >= 236
+  const seen = new Uint8Array(w * h)
+  const stack = []
+  for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x)
+  for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1)
+  while (stack.length) {
+    const p = stack.pop()
+    if (seen[p] || !light(p * 4)) continue
+    seen[p] = 1
+    const x = p % w
+    if (x > 0) stack.push(p - 1)
+    if (x < w - 1) stack.push(p + 1)
+    if (p >= w) stack.push(p - w)
+    if (p < w * (h - 1)) stack.push(p + w)
+  }
+  for (let p = 0; p < w * h; p++) {
+    if (!seen[p]) continue
+    // fully white goes clear; near-white anti-aliased edges keep a little opacity
+    const m = Math.min(data[p * 4], data[p * 4 + 1], data[p * 4 + 2])
+    data[p * 4 + 3] = Math.round(((255 - m) / 19) * 255) > 255 ? 255 : Math.round(((255 - m) / 19) * 255)
+  }
+  const i = await sharp(data, { raw: info }).webp({ quality: 90, alphaQuality: 100 }).toFile(`${OUT}/search-bar.webp`)
+  console.log('search-bar (transparent)', i.width, i.height)
 }

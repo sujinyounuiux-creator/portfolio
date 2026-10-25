@@ -107,6 +107,17 @@ const screens = {
       Array.from({ length: 9 }, (_, i) => text(130, 96 + i * 26, 'My comment', 8) + rect(190, 91 + i * 26, 140, 5, C.block, 2) + text(440, 96 + i * 26, 'YYYY-MM-DD', 7, 400, 'end') + line(130, 104 + i * 26, 440, 104 + i * 26)).join('') +
       pager(352),
   ],
+  'edit-profile': [
+    340,
+    'My page (edit member info) wireframe',
+    tabs(62, ['My interests', 'Comments I wrote', 'Edit member info'], 2) +
+      circle(70, 108, 22) + text(70, 144, 'Nickname', 8, 700, 'middle', C.ink) +
+      text(150, 104, 'Change nickname', 9, 700, 'start', C.ink) + rect(150, 112, 200, 22, '#f3f3f3', 4) + box(358, 112, 52, 22, 4) + text(384, 126, 'Check', 8, 700, 'middle') +
+      text(150, 162, 'Email address', 9, 700, 'start', C.ink) + rect(150, 170, 200, 22, '#f3f3f3', 4) +
+      box(150, 214, 92, 26, 13) + text(196, 231, 'Save changes', 8, 700, 'middle') +
+      line(150, 266, 440, 266) +
+      text(150, 290, 'Log out', 8, 400, 'start') + text(220, 290, 'Delete account', 8, 400, 'start'),
+  ],
   news: [
     420,
     'News page wireframe',

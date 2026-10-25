@@ -715,7 +715,7 @@ export const projects: Project[] = [
       'A beginner friendly investment website with AI stock recommendations and plain language explanations of financial terms.',
     category: 'Website · Fintech',
     platform: 'Desktop web',
-    role: 'Sole UX/UI designer, planning lead',
+    role: 'UX/UI design (sole designer), planning with the team',
     timeline: '2025.01 to 2025.03',
     team: '6 people: 5 front end/back end engineers and 1 designer (me)',
     tools: ['Figma'],
@@ -724,9 +724,9 @@ export const projects: Project[] = [
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
-      { label: 'My role', text: 'The only designer on a team of six: every screen, plus most of the planning, from the sitemap to the final UI.' },
+      { label: 'My role', text: 'The only designer on a team of six. We planned the website together, and I designed almost all of it myself.' },
       { label: 'Solution', text: 'AI stock recommendations with reasons, a plain language AI comment on every stock, and glossary tooltips.' },
-      { label: 'Delivered', text: 'A sitemap, wireframes for 7 pages, a design system and 11 final screens, including 404 and 500 error states.' },
+      { label: 'Delivered', text: 'A sitemap, 11 wireframe screens, a design system and 14 final screens, including 404 and 500 error pages.' },
     ],
     cardNote: 'sole designer',
     sections: [
@@ -740,7 +740,7 @@ export const projects: Project[] = [
             kind: 'text',
             body: [
               'Investment beginners told us they didn’t know where to start and found securities websites hard to understand because of all the technical terms. PROFITKEY is a desktop website that shows domestic and international stocks and financial news at a glance, with AI support written for beginners.',
-              'I was the only designer on a team of six, working with five front end and back end engineers. I designed every screen and led most of the planning, from the sitemap to the final UI.',
+              'I was the only designer on a team of six, working with five front end and back end engineers. We planned the website together as a team, and I did almost all of the design myself, from the sitemap and wireframes to the final UI and components.',
             ],
           },
           {
@@ -748,8 +748,8 @@ export const projects: Project[] = [
             items: [
               { value: '10', label: 'Investment beginners interviewed' },
               { value: '8', label: 'Page groups in the sitemap' },
-              { value: '7', label: 'Pages wireframed' },
-              { value: '11', label: 'Final screens, incl. error states' },
+              { value: '11', label: 'Wireframe screens' },
+              { value: '14', label: 'Final screens, incl. 404 and 500' },
             ],
           },
         ],
@@ -801,7 +801,7 @@ export const projects: Project[] = [
           },
           {
             kind: 'figure',
-            figure: { ...screen('profitkey-sitemap', 'PROFITKEY sitemap: Home Page links to Stock Analysis, News (with external articles), Notices / FAQ and the Login Page, which leads to My Account. Links are colour coded as public, logged in or external.', 'Sitemap. Orange: public links, grey: logged in, black: external.', 1344, 854), zoom: true },
+            figure: { src: '/images/screens/profitkey-sitemap.svg', alt: 'PROFITKEY sitemap: Home links to Stock Analysis (stock details, AI commentary, community), News (latest and all news, opening external articles), Notices / FAQ (with notice details) and Log in (social login), which leads to My Account (watchlist, my comments, edit profile).', caption: 'Sitemap: every page and who can reach it.', width: 1200, height: 640, zoom: true },
           },
         ],
       },
@@ -824,6 +824,7 @@ export const projects: Project[] = [
               wire('notice-faq', 'Notice / FAQ wireframe: Notice and FAQ tabs above a list of posts with pagination.', 'Notice / FAQ', 800),
               wire('my-page', 'My page wireframe: tabs for my interests, comments I wrote and edit member info; avatar and nickname beside four watchlist charts.', 'My page: my interests', 720),
               wire('my-comments', 'My page wireframe, comments tab: a dated list of comments the member wrote, with pagination.', 'My page: comments I wrote', 760),
+              wire('edit-profile', 'My page wireframe, edit member info tab: change nickname with a check button, email address, save changes, log out and delete account.', 'My page: edit member info', 680),
               wire('news', 'News wireframe: a row of latest news cards with title and source, then an all news list with pagination.', 'News', 840),
             ],
           },
@@ -842,7 +843,7 @@ export const projects: Project[] = [
             body: [
               'The home page opens with AI recommended stocks. Stocks expected to rise are suggested from data such as stability, growth rate, profitability and financial health, along with the reason for each recommendation, giving beginners a clear place to start.',
             ],
-            figures: [screen('profitkey-crop-ai-picks', 'AI Recommended Stocks card: Apple, +20%, $28 usd, a price chart, key figures and an AI comment explaining the pick.', 'AI Recommended Stocks on the home page.', 500, 595)],
+            figures: [{ ...screen('profitkey-home-hero', 'PROFITKEY home page hero: “Finding the key to success” beside an AI Recommended Stocks card with Apple, +20%, a price chart, key figures and an AI comment explaining the pick.', 'The home page leads with AI Recommended Stocks.', 1144, 591), frameless: true }],
           },
           {
             kind: 'feature',

@@ -5,7 +5,6 @@ import sharp from 'sharp'
 
 const crops = [
   // [output, source screen, left, top, width, height] in the 1400 px wide screens
-  ['profitkey-crop-ai-picks', 'profitkey-web-home', 715, 140, 500, 595],
   ['profitkey-crop-ai-comment', 'profitkey-web-detail', 90, 700, 1220, 290],
   ['profitkey-crop-glossary', 'profitkey-web-detail', 90, 320, 600, 340],
 ]

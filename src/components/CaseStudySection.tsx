@@ -128,8 +128,10 @@ function BlockView({ block }: { block: Block }) {
     case 'feature': {
       // very wide images (e.g. a full width panel) read better stacked under the text
       const wide = block.figures.every((f) => f.width / f.height > 2.4)
+      // several screens side by side (e.g. two error pages) also sit under the text
+      const pair = block.figures.length > 1 && !wide
       return (
-        <div className={`cs-feature ${block.reverse ? 'cs-feature--reverse' : ''} ${wide ? 'cs-feature--stack' : ''}`}>
+        <div className={`cs-feature ${block.reverse ? 'cs-feature--reverse' : ''} ${wide || pair ? 'cs-feature--stack' : ''}`}>
           <div className="cs-feature__text">
             {block.tag && <p className="cs-feature__tag">{block.tag}</p>}
             <h3>{block.title}</h3>
@@ -137,7 +139,7 @@ function BlockView({ block }: { block: Block }) {
               <p key={i}>{p}</p>
             ))}
           </div>
-          <div className="cs-feature__media">
+          <div className={`cs-feature__media ${pair ? 'cs-feature__media--pair' : ''}`}>
             {block.figures.map((f) => (
               <FigureView key={f.src} figure={f} zoom />
             ))}

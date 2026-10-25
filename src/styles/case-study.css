@@ -454,25 +454,28 @@
 /* feature: one design decision, image beside the reasoning */
 .cs-feature {
   display: grid;
-  gap: var(--s-5);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
   align-items: center;
-  padding: clamp(1rem, 3vw, 1.75rem);
-  border: 1px solid var(--c-line);
-  border-radius: var(--r-lg);
-  background: var(--c-surface);
+  padding-block: var(--s-4);
+}
+.cs-feature + .cs-feature {
+  border-top: 1px solid var(--c-line);
+  padding-top: var(--s-6);
 }
 .cs-feature__text {
   display: grid;
-  gap: var(--s-2);
+  gap: var(--s-3);
+  align-content: center;
 }
+/* the user need this decision answers, as a small pull quote */
 .cs-feature__tag {
   justify-self: start;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--p-accent) 18%, transparent);
-  color: var(--p-ink, var(--c-ink));
-  font-size: var(--fs-xs);
-  font-weight: 700;
+  padding-left: var(--s-3);
+  border-left: 3px solid var(--p-accent);
+  color: var(--c-ink-soft);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  line-height: 1.4;
 }
 .cs-feature__text h3 {
   font-size: var(--fs-h3);
@@ -483,18 +486,35 @@
   color: var(--c-ink-soft);
   line-height: 1.6;
 }
+/* screenshots float on a soft panel in the project colour */
 .cs-feature__media {
   display: grid;
-  gap: var(--s-3);
+  gap: var(--s-4);
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--r-lg);
+  background: var(--p-surface);
 }
-/* keep tall crops from towering over the text */
+.cs-feature__media .cs-figure__frame {
+  border: 0;
+  border-radius: var(--r-md);
+  box-shadow: 0 12px 28px -14px rgba(31, 36, 48, 0.35);
+}
 .cs-feature__media .cs-figure__frame img {
   max-height: 460px;
   object-fit: contain;
 }
+.cs-feature__media figcaption {
+  font-size: var(--fs-xs);
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .cs-feature__media--pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (min-width: 900px) {
   .cs-feature {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.45fr);
   }
   .cs-feature--reverse .cs-feature__text {
     order: 2;

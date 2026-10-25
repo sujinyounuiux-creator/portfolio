@@ -182,6 +182,7 @@ export const projects: Project[] = [
     team: 'Personal project',
     tools: ['Figma'],
     // cover: "Overview" frame (1:2139), the first Cookpad slide in the Portfolio Figma file
+    // cover: built by scripts/build-covers.mjs
     thumbnail: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
     hero: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
     theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
@@ -722,8 +723,8 @@ export const projects: Project[] = [
     timeline: '2025.01 to 2025.03',
     team: '6 people: 5 front end/back end engineers and 1 designer',
     tools: ['Figma'],
-    thumbnail: img('profitkey-cover', 'PROFITKEY home page and stock analysis page with an AI comment panel.'),
-    hero: img('profitkey-cover', 'PROFITKEY home page and stock analysis page with an AI comment panel.'),
+    thumbnail: img('profitkey-cover', 'PROFITKEY cover: the home page and stock detail page in browser windows, and the AI Recommended Stocks card with its AI Comment.'),
+    hero: img('profitkey-cover', 'PROFITKEY cover: the home page and stock detail page in browser windows, and the AI Recommended Stocks card with its AI Comment.'),
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
@@ -1017,12 +1018,9 @@ export const projects: Project[] = [
     timeline: '2026.08 to 2026.09',
     team: 'Group project, 3 designers',
     tools: ['Figma', 'html.to.design'],
-    // cover: "Banner 1" (452:777) on the "Presentation - Elements" page of the Open Door Yoga Figma file
-    // (this project is not in the Portfolio file)
-    // card photo: the same image as the case study's hero
-    thumbnail: img('yoga-hero', 'Open Door Yoga logo beside a laptop on a wooden chair showing the redesigned home page with large "YOGA" lettering.', undefined, 1600, 900),
-    // hero: the first slide of the Open Door Yoga presentation (Figma Slides, slide 1:42)
-    hero: img('yoga-hero', 'Open Door Yoga logo beside a laptop on a wooden chair showing the redesigned home page with large "YOGA" lettering.', undefined, 1600, 900),
+    // cover: built by scripts/build-covers.mjs from the real redesigned pages
+    thumbnail: img('yoga-cover', 'Open Door Yoga redesign cover: the new Home and Passes & Pricing pages in browser windows, and the 12 Month Pass card.', undefined, 1600, 900),
+    hero: img('yoga-cover', 'Open Door Yoga redesign cover: the new Home and Passes & Pricing pages in browser windows, and the 12 Month Pass card.', undefined, 1600, 900),
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },

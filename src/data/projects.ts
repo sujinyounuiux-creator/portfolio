@@ -166,548 +166,6 @@ const screen = (name: string, alt: string, caption: string, width: number, heigh
 })
 
 export const projects: Project[] = [
-  // ───────────────────────────────────────────── Cookpad
-  {
-    slug: 'cookpad',
-    title: 'Cookpad',
-    disciplines: ['ux-ui'],
-    featured: true,
-    tagline: 'UI/UX improvement project',
-    summary:
-      'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
-    category: 'Responsive web · Redesign',
-    platform: 'Responsive web (desktop & mobile)',
-    role: 'UI/UX Design',
-    timeline: '2024.11 to 2025.01',
-    team: 'Personal project',
-    tools: ['Figma'],
-    // cover: "Overview" frame (1:2139), the first Cookpad slide in the Portfolio Figma file
-    // cover: built by scripts/build-covers.mjs
-    thumbnail: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
-    hero: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
-    theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
-    tldr: [
-      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling; users found search hard to narrow down and the UI complex.' },
-      { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
-      { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
-      { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
-    ],
-    sections: [
-      {
-        // Sources: the Cookpad frames in the Portfolio Figma file ("Overview", "Research", "Goal",
-        // "wireframe", "Design", "UI", "Filter", "Comment", "Main", "List", "Recipe").
-        id: 'overview',
-        label: 'Overview',
-        title: 'The challenge',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Cookpad is a recipe sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'Problem', body: 'Low ratings and reviews, a decrease in users, strong competitors and usability issues raised in feedback.' },
-              { title: 'Goal', body: 'A simpler, better experience that keeps existing users, wins new ones and makes the community more active.' },
-              { title: 'My role', body: 'A personal project: research, UX strategy, wireframes, visual design and usability testing.' },
-            ],
-          },
-        ],
-      },
-      {
-        // The competitor chart in the Research frame has no units or source, so its numbers are left out.
-        id: 'research',
-        label: 'Research',
-        title: 'Research findings',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'I reviewed what users said in public ratings and reviews and compared Cookpad with competing recipe services (kurashiru and Delish Kitchen). Secondary research on website traffic then showed how people reach the site.',
-            ],
-          },
-          {
-            kind: 'quotes',
-            source: 'What users said: recurring opinions I gathered from public ratings and reviews',
-            items: [
-              'Please strengthen the search filter feature',
-              'Complex and difficult to use UI',
-              'Too many restrictions for free members',
-              'Lack of community related features',
-            ],
-          },
-          {
-            // secondary research: estimated website traffic (not my own user research)
-            kind: 'bars',
-            eyebrow: 'Secondary research',
-            title: 'Website traffic by device',
-            source: 'Estimated website traffic to cookpad.com. Source: Exploding Topics,',
-            sourceUrl: 'https://analytics.explodingtopics.com/website/cookpad.com',
-            items: [
-              { label: 'Mobile web', value: 92.34 },
-              { label: 'Desktop web', value: 7.66 },
-            ],
-            takeaway:
-              'Website traffic estimates show that mobile devices account for the majority of visits to Cookpad.com. This highlighted the importance of designing a responsive experience that works well across different screen sizes.',
-          },
-        ],
-      },
-      {
-        id: 'insights',
-        label: 'Insights',
-        title: 'Key insights',
-        note: 'search first!',
-        blocks: [
-          {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Search is hard to narrow down',
-                body: 'Users asked for stronger search filters. → Filters for cooking time, difficulty, dish type, ingredients and allergies.',
-              },
-              {
-                title: 'The interface feels complex',
-                body: 'Reviews called the UI complex, and testing showed navigation friction. → A simpler UI with a clear icon set.',
-              },
-              {
-                title: 'Free members feel restricted',
-                body: 'Free members felt limited. → Enhanced free membership features became one of the planned solutions.',
-              },
-              {
-                title: 'Little sense of community',
-                body: 'Users missed community features. → Threaded comments so questions get answered and conversations stay easy to follow.',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'wireframes',
-        label: 'Wireframes',
-        title: 'Wireframes',
-        blocks: [
-          {
-            kind: 'text',
-            body: ['I planned the layout around the user flow: from the main page’s search, to the search results, to a recipe. A login modal opens over any page.'],
-          },
-          {
-            // redrawn from the original wireframe frame by scripts/build-cookpad-wireframes.mjs
-            kind: 'gallery',
-            figures: [
-              cwire('main', 'Main page wireframe: logo and ingredient search, a category grid and popular recipes.', '1. Main page', 1240),
-              cwire('search', 'Search page wireframe: search bar with a filter button, sort options and a list of recipe results.', '2. Search results', 1120),
-              cwire('recipe', 'Recipe page wireframe: food photo beside the title and ingredients, numbered steps, point, comments and more recipes.', '3. Recipe page', 1360),
-              cwire('login', 'Login modal wireframe: email and password fields, a log in button and a sign up link.', 'Login modal', 720),
-            ],
-          },
-        ],
-      },
-      {
-        id: 'visual-language',
-        label: 'Visual language',
-        title: 'Colour, type & icons',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'The palette builds on Cookpad’s brand image of friendliness, homely warmth and naturalness. The background is uniformly white, orange and dark red highlight the key areas, and text is dark grey for better readability.',
-            ],
-          },
-          {
-            kind: 'swatches',
-            swatches: [
-              { name: 'Main', hex: '#FF9934', usage: 'Key actions and highlights' },
-              { name: 'Sub', hex: '#FFD9B4', usage: 'Soft highlight areas' },
-              { name: 'Dark red', hex: '#370000', usage: 'Headings and emphasis' },
-              { name: 'Text', hex: '#646464', usage: 'Body text' },
-              { name: 'Black', hex: '#000000', usage: 'Strong text' },
-              { name: 'Base', hex: '#FFFFFF', usage: 'Background' },
-            ],
-          },
-          {
-            // sizes and weights taken from the real Recipe, List and Main frames
-            kind: 'type',
-            note: 'One typeface, Noto Sans KR, in three weights. Sizes and weights are taken from the real recipe and list pages.',
-            styles: [
-              { name: 'Recipe title', font: 'Noto Sans KR', weight: 700, size: 40, sample: 'Butter Pancake' },
-              { name: 'Section heading', font: 'Noto Sans KR', weight: 700, size: 32, sample: 'Ingredients' },
-              { name: 'Author', font: 'Noto Sans KR', weight: 500, size: 32, sample: 'ChefMario' },
-              { name: 'Card title', font: 'Noto Sans KR', weight: 700, size: 24, sample: 'Hearty Spaghetti Bolognese' },
-              { name: 'Body', font: 'Noto Sans KR', weight: 400, size: 24, sample: 'Flour 180g · Sugar 60 g · Milk 250 ml' },
-              { name: 'Meta', font: 'Noto Sans KR', weight: 400, size: 16, sample: 'Newest First · 25 minutes · ChefAnna89' },
-            ],
-          },
-          {
-            // icons cut from the "Icon" rows of the Design frame (scripts/prepare-cookpad.mjs)
-            kind: 'icons',
-            groups: [
-              {
-                title: 'Recipe actions',
-                note: 'In Cookpad orange: the things people do with a recipe.',
-                items: [
-                  { src: '/images/cookpad/icon-1.png', label: 'Save' },
-                  { src: '/images/cookpad/icon-4.png', label: 'Saved' },
-                  { src: '/images/cookpad/icon-2.png', label: 'Add' },
-                  { src: '/images/cookpad/icon-3.png', label: 'Filter' },
-                  { src: '/images/cookpad/icon-5.png', label: 'Premium badge' },
-                ],
-              },
-              {
-                title: 'Navigation & tools',
-                note: 'The same rounded outline style in neutral grey: menus and page tools.',
-                items: [
-                  { src: '/images/cookpad/icon-7.png', label: 'Menu' },
-                  { src: '/images/cookpad/icon-9.png', label: 'Search' },
-                  { src: '/images/cookpad/icon-10.png', label: 'Time' },
-                  { src: '/images/cookpad/icon-11.png', label: 'Notifications' },
-                  { src: '/images/cookpad/icon-12.png', label: 'Share' },
-                  { src: '/images/cookpad/icon-8.png', label: 'Print' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'decisions',
-        label: 'Key decisions',
-        title: 'Key design decisions',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Usability testing helped me identify navigation challenges and friction points in Cookpad’s features. Based on these insights, I refined the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
-            ],
-          },
-          {
-            // the devices image is the "Overall UI" frame (27:3888): phone, tablet, laptop and desktop layouts
-            kind: 'feature',
-            plain: true,
-            tag: 'Secondary research: most visits come from mobile',
-            title: 'A responsive experience across devices',
-            body: [
-              'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
-            ],
-            figures: [cook('devices', 'The redesigned Cookpad search page on phone, tablet, laptop and desktop.', 'The search page on phone, tablet, laptop and desktop.', 1600, 439)],
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Insight: search is hard to narrow down',
-            title: 'Search filters that match how people cook',
-            body: [
-              'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
-            ],
-            figures: [
-              { ...cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', 'Search bar with the filter button.', 1600, 143), frameless: true },
-              cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 532),
-            ],
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Insight: little sense of community',
-            title: 'Threaded comments',
-            reverse: true,
-            body: [
-              'Replies sit under the comment they answer, so a question and its answers stay together. This makes discussions easier to follow and questions more likely to get an answer.',
-            ],
-            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 672)],
-          },
-        ],
-      },
-      {
-        id: 'final',
-        label: 'Final design',
-        title: 'Final interface',
-        blocks: [
-          {
-            kind: 'devices',
-            device: 'desktop',
-            screens: [
-              img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
-              img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
-              img('cookpad-recipe', 'Recipe detail for butter pancakes with ingredients and steps.', 'Recipe detail'),
-            ],
-          },
-        ],
-      },
-      {
-        id: 'reflection',
-        label: 'Reflection',
-        title: 'What I learned & next steps',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'This project taught me how valuable user research is in guiding design decisions. Moving forward, I want to strengthen my skills in user research, interactive prototyping, and developer handoff to translate user insights into practical, production ready designs.',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  // ───────────────────────────────────────────── LastCow
-  // Sources: LastCow frames in the Portfolio Figma file + the team's UX research deck
-  // (used as a reference only; its link is intentionally not shown on the site).
-  {
-    slug: 'lastcow',
-    title: 'LastCow',
-    disciplines: ['ux-ui'],
-    featured: true,
-    tagline: 'Last tickets. Best prices.',
-    summary:
-      'A mobile app concept that helps people aged 18 to 40 find last minute and discounted tickets to live events before they sell out.',
-    category: 'Mobile app · Event ticketing',
-    platform: 'iOS mobile app',
-    role: 'UX/UI design · User interviews',
-    timeline: '2026.07 to 2026.08',
-    team: '2 designers',
-    tools: ['Figma'],
-    // cover: built by scripts/build-covers.mjs
-    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
-    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
-    theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
-    tldr: [
-      { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
-      { label: 'My role', text: 'I ran the user interviews, and designed and prototyped the app together with one teammate.' },
-      { label: 'Solution', text: 'A ticket discovery app with last minute and discounted tickets, related event suggestions and an in app calendar.' },
-      { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants.' },
-    ],
-    cardNote: 'newest!',
-    sections: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        title: 'The challenge',
-        note: 'the "too late" problem',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Adults aged 18 to 40 often miss live events because they discover them too late: tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
-              'LastCow is a ticket discovery app that surfaces last minute and discounted tickets and matches events to personal taste.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'Team', body: 'Two designers working together in Figma, on research, wireframes, UI design and prototyping.' },
-              { title: 'My focus', body: 'I conducted the user interviews.' },
-              { title: 'My teammate’s focus', body: 'My teammate conducted the usability testing.' },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'research',
-        label: 'Research',
-        title: 'User research',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Goal: understand why people who enjoy live entertainment miss out on events, and where the discovery process breaks down. I interviewed four people to learn their needs and motivations.',
-            ],
-          },
-          {
-            kind: 'quotes',
-            source: 'User interviews (four participants), conducted by me',
-            items: [
-              'There are a lot of events, but they’re all on different platforms. Sometimes it takes a lot of searching to find something I actually like.',
-              'I found an event I really wanted to go to, but by the time I checked, the tickets were either sold out or too expensive. If there was a cheaper last minute ticket, I’d probably go.',
-              'I usually check Instagram first. I follow pages that post about local events, cafés, and things happening around the city.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'Discovered too late', body: 'Events are often found after tickets sell out or prices rise.' },
-              { title: 'No way to track deals', body: 'People want last minute or discounted tickets but can’t track availability.' },
-              { title: 'Scattered and generic', body: 'Event information is spread across platforms, and listings aren’t matched to personal taste.' },
-            ],
-          },
-          {
-            // "Persona" slide (40:188) in the revised UX research slides, cropped to the card (scripts/prepare-lastcow-kit.mjs)
-            kind: 'figure',
-            figure: {
-              ...img(
-                'lastcow-persona',
-                'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
-                'Persona: Steven Karney, built from the interview findings.',
-                1600,
-                644,
-              ),
-            },
-          },
-        ],
-      },
-      {
-        id: 'decisions',
-        label: 'Key decisions',
-        title: 'Design challenges & solutions',
-        blocks: [
-          {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Hard to discover similar events',
-                body: 'A “You Might Also Like” section on the event page, so people can move straight to related events instead of searching again.',
-              },
-              {
-                title: 'Upcoming events are easy to forget',
-                body: 'Upcoming and registered events appear directly in the in app calendar, so plans stay visible in one place.',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'wireframes',
-        label: 'Wireframes → hi fi',
-        title: 'From wireframes to hi fi screens',
-        note: 'drag to compare',
-        blocks: [
-          {
-            kind: 'text',
-            body: ['Each pair is the same screen from the LastCow design file. Drag the handle (or use the arrow keys) to move between the wireframe and the final design.'],
-          },
-          {
-            // pairs exported from the "Wireframe" and "Phone Final UI" sections of the LastCow design file
-            kind: 'compareSet',
-            labels: ['Wireframe', 'Hi fi'],
-            items: [
-              {
-                label: 'Home',
-                before: screen('lastcow-home-wire', 'Home wireframe: location, search bar and grey placeholder event cards.', 'Home wireframe', 600, 1304),
-                after: screen('lastcow-home-hifi', 'Home hi fi: event cards for Tame Impala and The Strokes with prices and 24 hour price changes.', 'Home hi fi', 600, 1304),
-              },
-              {
-                label: 'Event details',
-                before: screen('lastcow-event-wire', 'Event details wireframe: image placeholder, title, overview, location and a Get Tickets bar.', 'Event details wireframe', 600, 1304),
-                after: screen('lastcow-event-hifi', 'Event details hi fi: concert photo, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details hi fi', 600, 1304),
-              },
-              {
-                label: 'Saved events',
-                before: screen('lastcow-saved-wire', 'Saved events wireframe: a list of placeholder event cards with filled hearts.', 'Saved events wireframe', 600, 1304),
-                after: screen('lastcow-saved-hifi', 'Saved events hi fi: saved Tame Impala and birthday events with prices.', 'Saved events hi fi', 600, 1304),
-              },
-              {
-                label: 'Ticket calendar',
-                before: screen('lastcow-calendar-wire', 'Calendar wireframe: upcoming and past events tabs above a monthly ticket calendar.', 'Calendar wireframe', 600, 1304),
-                after: screen('lastcow-calendar-hifi', 'Calendar hi fi: the monthly ticket calendar with the selected date and its events.', 'Calendar hi fi', 600, 1304),
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'ui-kit',
-        label: 'UI kit',
-        title: 'UI kit',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'We built the screens from a component library organised with Atomic Design: atoms such as inputs, icons and controls, combined into molecules such as buttons, menus, the location drop down and event detail blocks.',
-            ],
-          },
-          {
-            // individual components from the design file's Components page (scripts/prepare-lastcow-kit.mjs)
-            kind: 'kit',
-            items: [
-              { label: 'Buttons', note: 'Atom · primary, secondary, dark and disabled, in three sizes', figure: { src: '/images/lastcow-kit/buttons.webp', alt: 'Buttons in four colour styles and three sizes.', width: 1600, height: 520 } },
-              { label: 'Input field', note: 'Atom · default, focused and error states', figure: { src: '/images/lastcow-kit/input.webp', alt: 'Input field in default, focused and error states, with an error message.', width: 800, height: 640 } },
-              { label: 'Location drop down', note: 'Molecule · closed and open', figure: { src: '/images/lastcow-kit/location.webp', alt: 'Location drop down, closed and open with a list of locations.', width: 800, height: 640 } },
-              { label: 'Event card', note: 'Molecule · image, name, date, price and price change', figure: { src: '/images/lastcow-kit/event-card.webp', alt: 'Event card with an image, name, date and location, price and 24 hour price change.', width: 800, height: 640 } },
-              { label: 'Ticket bar', note: 'Molecule · before and after purchase', figure: { src: '/images/lastcow-kit/ticket-bar.webp', alt: 'Ticket bar showing Get Tickets before purchase and My Tickets after.', width: 800, height: 520 } },
-              { label: 'Tab bar', note: 'Organism · home, saved, calendar and profile', figure: { src: '/images/lastcow-kit/menu-bar.webp', alt: 'Bottom tab bar with home, saved, calendar and profile icons, default and active.', width: 800, height: 520 } },
-              { label: 'Calendar', note: 'Organism · month view with the selected day', figure: { src: '/images/lastcow-kit/calendar.webp', alt: 'Month calendar for August 2026 with the 14th selected.', width: 800, height: 800 } },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'final',
-        label: 'Prototype',
-        title: 'Final screens & prototype',
-        blocks: [
-          {
-            kind: 'devices',
-            device: 'phone',
-            screens: [
-              screen('lastcow-phone-home', 'LastCow home screen: Vancouver location, search bar and event cards for the Vancouver Bird Celebration and The Strokes with prices and 24 hour price changes.', 'Home: events near you', 600, 1303),
-              screen('lastcow-phone-event', 'LastCow event details screen: event photo, title, venue, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details', 600, 1305),
-            ],
-          },
-          {
-            // Sujin's Figma prototype (node 632:2106), embedded with Figma's prototype embed URL
-            kind: 'embed',
-            title: 'LastCow interactive prototype (Figma)',
-            caption: 'Interactive prototype: click or tap inside the phone to move through the app.',
-            src: 'https://embed.figma.com/proto/W31BDdO58GhHsFuggHq4iK/LastCow---Design?node-id=632-2106&starting-point-node-id=632-2106&scaling=scale-down&content-scaling=fixed&embed-host=share',
-            variant: 'phone',
-          },
-        ],
-      },
-      {
-        id: 'testing',
-        label: 'Usability testing',
-        title: 'Usability testing & results',
-        blocks: [
-          {
-            kind: 'list',
-            intro: 'My teammate ran task based usability tests followed by the System Usability Scale (SUS). The tasks:',
-            items: [
-              'Buy a ticket to an event.',
-              'You have already purchased two tickets for an event. Where would you check for your tickets?',
-              'Change your interests.',
-              'Check your past events.',
-            ],
-          },
-          {
-            kind: 'stats',
-            items: [
-              { value: '92.5', label: 'Average SUS score' },
-              { value: '4', label: 'Participants' },
-              { value: '87.5 to 100', label: 'Range of individual scores' },
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'What worked', body: 'Users found the app easy to learn and navigate, and most expected to find their ticket information on their profile.' },
-              { title: 'What to improve', body: 'Some found the flow between past and upcoming events in the calendar confusing, so those screens needed simplifying.' },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'reflection',
-        label: 'Reflection',
-        title: 'Reflection & next steps',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'UX research helped us uncover real user needs and revealed problems we might not have noticed ourselves. Users had different expectations, so we compared their feedback to identify common patterns.',
-            ],
-          },
-          {
-            kind: 'list',
-            intro: 'Next steps:',
-            items: [
-              'Run another round of usability testing and refine the flows, starting with the calendar’s past and upcoming events.',
-              'Consolidate event discovery in one place, since users currently piece it together from Instagram, Eventbrite and word of mouth.',
-            ],
-          },
-        ],
-      },
-    ],
-  },
   // ───────────────────────────────────────────── PROFITKEY
   {
     slug: 'profitkey',
@@ -996,6 +454,549 @@ export const projects: Project[] = [
                 title: 'What I want to learn next',
                 body: 'I want to further develop my design skills and strengthen my understanding of UX research, so I can make more informed design decisions based on user needs.',
               },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // ───────────────────────────────────────────── LastCow
+  // Sources: LastCow frames in the Portfolio Figma file + the team's UX research deck
+  // (used as a reference only; its link is intentionally not shown on the site).
+  {
+    slug: 'lastcow',
+    title: 'LastCow',
+    disciplines: ['ux-ui'],
+    featured: true,
+    tagline: 'Last tickets. Best prices.',
+    summary:
+      'A mobile app concept that helps people aged 18 to 40 find last minute and discounted tickets to live events before they sell out.',
+    category: 'Mobile app · Event ticketing',
+    platform: 'iOS mobile app',
+    role: 'UX/UI design · User interviews',
+    timeline: '2026.07 to 2026.08',
+    team: '2 designers',
+    tools: ['Figma'],
+    // cover: built by scripts/build-covers.mjs
+    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
+    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
+    theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
+    tldr: [
+      { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
+      { label: 'My role', text: 'I ran the user interviews, and designed and prototyped the app together with one teammate.' },
+      { label: 'Solution', text: 'A ticket discovery app with last minute and discounted tickets, related event suggestions and an in app calendar.' },
+      { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants.' },
+    ],
+    cardNote: 'newest!',
+    sections: [
+      {
+        id: 'overview',
+        label: 'Overview',
+        title: 'The challenge',
+        note: 'the "too late" problem',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Adults aged 18 to 40 often miss live events because they discover them too late: tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
+              'LastCow is a ticket discovery app that surfaces last minute and discounted tickets and matches events to personal taste.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Team', body: 'Two designers working together in Figma, on research, wireframes, UI design and prototyping.' },
+              { title: 'My focus', body: 'I conducted the user interviews.' },
+              { title: 'My teammate’s focus', body: 'My teammate conducted the usability testing.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'research',
+        label: 'Research',
+        title: 'User research',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Goal: understand why people who enjoy live entertainment miss out on events, and where the discovery process breaks down. I interviewed four people to learn their needs and motivations.',
+            ],
+          },
+          {
+            kind: 'quotes',
+            source: 'User interviews (four participants), conducted by me',
+            items: [
+              'There are a lot of events, but they’re all on different platforms. Sometimes it takes a lot of searching to find something I actually like.',
+              'I found an event I really wanted to go to, but by the time I checked, the tickets were either sold out or too expensive. If there was a cheaper last minute ticket, I’d probably go.',
+              'I usually check Instagram first. I follow pages that post about local events, cafés, and things happening around the city.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Discovered too late', body: 'Events are often found after tickets sell out or prices rise.' },
+              { title: 'No way to track deals', body: 'People want last minute or discounted tickets but can’t track availability.' },
+              { title: 'Scattered and generic', body: 'Event information is spread across platforms, and listings aren’t matched to personal taste.' },
+            ],
+          },
+          {
+            // "Persona" slide (40:188) in the revised UX research slides, cropped to the card (scripts/prepare-lastcow-kit.mjs)
+            kind: 'figure',
+            figure: {
+              ...img(
+                'lastcow-persona',
+                'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
+                'Persona: Steven Karney, built from the interview findings.',
+                1600,
+                644,
+              ),
+            },
+          },
+        ],
+      },
+      {
+        id: 'decisions',
+        label: 'Key decisions',
+        title: 'Design challenges & solutions',
+        blocks: [
+          {
+            kind: 'cards',
+            items: [
+              {
+                title: 'Hard to discover similar events',
+                body: 'A “You Might Also Like” section on the event page, so people can move straight to related events instead of searching again.',
+              },
+              {
+                title: 'Upcoming events are easy to forget',
+                body: 'Upcoming and registered events appear directly in the in app calendar, so plans stay visible in one place.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'wireframes',
+        label: 'Wireframes → hi fi',
+        title: 'From wireframes to hi fi screens',
+        note: 'drag to compare',
+        blocks: [
+          {
+            kind: 'text',
+            body: ['Each pair is the same screen from the LastCow design file. Drag the handle (or use the arrow keys) to move between the wireframe and the final design.'],
+          },
+          {
+            // pairs exported from the "Wireframe" and "Phone Final UI" sections of the LastCow design file
+            kind: 'compareSet',
+            labels: ['Wireframe', 'Hi fi'],
+            items: [
+              {
+                label: 'Home',
+                before: screen('lastcow-home-wire', 'Home wireframe: location, search bar and grey placeholder event cards.', 'Home wireframe', 600, 1304),
+                after: screen('lastcow-home-hifi', 'Home hi fi: event cards for Tame Impala and The Strokes with prices and 24 hour price changes.', 'Home hi fi', 600, 1304),
+              },
+              {
+                label: 'Event details',
+                before: screen('lastcow-event-wire', 'Event details wireframe: image placeholder, title, overview, location and a Get Tickets bar.', 'Event details wireframe', 600, 1304),
+                after: screen('lastcow-event-hifi', 'Event details hi fi: concert photo, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details hi fi', 600, 1304),
+              },
+              {
+                label: 'Saved events',
+                before: screen('lastcow-saved-wire', 'Saved events wireframe: a list of placeholder event cards with filled hearts.', 'Saved events wireframe', 600, 1304),
+                after: screen('lastcow-saved-hifi', 'Saved events hi fi: saved Tame Impala and birthday events with prices.', 'Saved events hi fi', 600, 1304),
+              },
+              {
+                label: 'Ticket calendar',
+                before: screen('lastcow-calendar-wire', 'Calendar wireframe: upcoming and past events tabs above a monthly ticket calendar.', 'Calendar wireframe', 600, 1304),
+                after: screen('lastcow-calendar-hifi', 'Calendar hi fi: the monthly ticket calendar with the selected date and its events.', 'Calendar hi fi', 600, 1304),
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'ui-kit',
+        label: 'UI kit',
+        title: 'UI kit',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'We built the screens from a component library organised with Atomic Design: atoms such as inputs, icons and controls, combined into molecules such as buttons, menus, the location drop down and event detail blocks.',
+            ],
+          },
+          {
+            // individual components from the design file's Components page (scripts/prepare-lastcow-kit.mjs)
+            kind: 'kit',
+            items: [
+              { label: 'Buttons', note: 'Atom · primary, secondary, dark and disabled, in three sizes', figure: { src: '/images/lastcow-kit/buttons.webp', alt: 'Buttons in four colour styles and three sizes.', width: 1600, height: 520 } },
+              { label: 'Input field', note: 'Atom · default, focused and error states', figure: { src: '/images/lastcow-kit/input.webp', alt: 'Input field in default, focused and error states, with an error message.', width: 800, height: 640 } },
+              { label: 'Location drop down', note: 'Molecule · closed and open', figure: { src: '/images/lastcow-kit/location.webp', alt: 'Location drop down, closed and open with a list of locations.', width: 800, height: 640 } },
+              { label: 'Event card', note: 'Molecule · image, name, date, price and price change', figure: { src: '/images/lastcow-kit/event-card.webp', alt: 'Event card with an image, name, date and location, price and 24 hour price change.', width: 800, height: 640 } },
+              { label: 'Ticket bar', note: 'Molecule · before and after purchase', figure: { src: '/images/lastcow-kit/ticket-bar.webp', alt: 'Ticket bar showing Get Tickets before purchase and My Tickets after.', width: 800, height: 520 } },
+              { label: 'Tab bar', note: 'Organism · home, saved, calendar and profile', figure: { src: '/images/lastcow-kit/menu-bar.webp', alt: 'Bottom tab bar with home, saved, calendar and profile icons, default and active.', width: 800, height: 520 } },
+              { label: 'Calendar', note: 'Organism · month view with the selected day', figure: { src: '/images/lastcow-kit/calendar.webp', alt: 'Month calendar for August 2026 with the 14th selected.', width: 800, height: 800 } },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'final',
+        label: 'Prototype',
+        title: 'Final screens & prototype',
+        blocks: [
+          {
+            kind: 'devices',
+            device: 'phone',
+            screens: [
+              screen('lastcow-phone-home', 'LastCow home screen: Vancouver location, search bar and event cards for the Vancouver Bird Celebration and The Strokes with prices and 24 hour price changes.', 'Home: events near you', 600, 1303),
+              screen('lastcow-phone-event', 'LastCow event details screen: event photo, title, venue, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details', 600, 1305),
+            ],
+          },
+          {
+            // Sujin's Figma prototype (node 632:2106), embedded with Figma's prototype embed URL
+            kind: 'embed',
+            title: 'LastCow interactive prototype (Figma)',
+            caption: 'Interactive prototype: click or tap inside the phone to move through the app.',
+            src: 'https://embed.figma.com/proto/W31BDdO58GhHsFuggHq4iK/LastCow---Design?node-id=632-2106&starting-point-node-id=632-2106&scaling=scale-down&content-scaling=fixed&embed-host=share',
+            variant: 'phone',
+          },
+        ],
+      },
+      {
+        id: 'testing',
+        label: 'Usability testing',
+        title: 'Usability testing & results',
+        blocks: [
+          {
+            kind: 'list',
+            intro: 'My teammate ran task based usability tests followed by the System Usability Scale (SUS). The tasks:',
+            items: [
+              'Buy a ticket to an event.',
+              'You have already purchased two tickets for an event. Where would you check for your tickets?',
+              'Change your interests.',
+              'Check your past events.',
+            ],
+          },
+          {
+            kind: 'stats',
+            items: [
+              { value: '92.5', label: 'Average SUS score' },
+              { value: '4', label: 'Participants' },
+              { value: '87.5 to 100', label: 'Range of individual scores' },
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'What worked', body: 'Users found the app easy to learn and navigate, and most expected to find their ticket information on their profile.' },
+              { title: 'What to improve', body: 'Some found the flow between past and upcoming events in the calendar confusing, so those screens needed simplifying.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'reflection',
+        label: 'Reflection',
+        title: 'Reflection & next steps',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'UX research helped us uncover real user needs and revealed problems we might not have noticed ourselves. Users had different expectations, so we compared their feedback to identify common patterns.',
+            ],
+          },
+          {
+            kind: 'list',
+            intro: 'Next steps:',
+            items: [
+              'Run another round of usability testing and refine the flows, starting with the calendar’s past and upcoming events.',
+              'Consolidate event discovery in one place, since users currently piece it together from Instagram, Eventbrite and word of mouth.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // ───────────────────────────────────────────── Cookpad
+  {
+    slug: 'cookpad',
+    title: 'Cookpad',
+    disciplines: ['ux-ui'],
+    featured: true,
+    tagline: 'UI/UX improvement project',
+    summary:
+      'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
+    category: 'Responsive web · Redesign',
+    platform: 'Responsive web (desktop & mobile)',
+    role: 'UI/UX Design',
+    timeline: '2024.11 to 2025.01',
+    team: 'Personal project',
+    tools: ['Figma'],
+    // cover: "Overview" frame (1:2139), the first Cookpad slide in the Portfolio Figma file
+    // cover: built by scripts/build-covers.mjs
+    thumbnail: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
+    hero: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
+    theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
+    tldr: [
+      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling; users found search hard to narrow down and the UI complex.' },
+      { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
+      { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
+      { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
+    ],
+    sections: [
+      {
+        // Sources: the Cookpad frames in the Portfolio Figma file ("Overview", "Research", "Goal",
+        // "wireframe", "Design", "UI", "Filter", "Comment", "Main", "List", "Recipe").
+        id: 'overview',
+        label: 'Overview',
+        title: 'The challenge',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Cookpad is a recipe sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Problem', body: 'Low ratings and reviews, a decrease in users, strong competitors and usability issues raised in feedback.' },
+              { title: 'Goal', body: 'A simpler, better experience that keeps existing users, wins new ones and makes the community more active.' },
+              { title: 'My role', body: 'A personal project: research, UX strategy, wireframes, visual design and usability testing.' },
+            ],
+          },
+        ],
+      },
+      {
+        // The competitor chart in the Research frame has no units or source, so its numbers are left out.
+        id: 'research',
+        label: 'Research',
+        title: 'Research findings',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'I reviewed what users said in public ratings and reviews and compared Cookpad with competing recipe services (kurashiru and Delish Kitchen). Secondary research on website traffic then showed how people reach the site.',
+            ],
+          },
+          {
+            kind: 'quotes',
+            source: 'What users said: recurring opinions I gathered from public ratings and reviews',
+            items: [
+              'Please strengthen the search filter feature',
+              'Complex and difficult to use UI',
+              'Too many restrictions for free members',
+              'Lack of community related features',
+            ],
+          },
+          {
+            // secondary research: estimated website traffic (not my own user research)
+            kind: 'bars',
+            eyebrow: 'Secondary research',
+            title: 'Website traffic by device',
+            source: 'Estimated website traffic to cookpad.com. Source: Exploding Topics,',
+            sourceUrl: 'https://analytics.explodingtopics.com/website/cookpad.com',
+            items: [
+              { label: 'Mobile web', value: 92.34 },
+              { label: 'Desktop web', value: 7.66 },
+            ],
+            takeaway:
+              'Website traffic estimates show that mobile devices account for the majority of visits to Cookpad.com. This highlighted the importance of designing a responsive experience that works well across different screen sizes.',
+          },
+        ],
+      },
+      {
+        id: 'insights',
+        label: 'Insights',
+        title: 'Key insights',
+        note: 'search first!',
+        blocks: [
+          {
+            kind: 'cards',
+            items: [
+              {
+                title: 'Search is hard to narrow down',
+                body: 'Users asked for stronger search filters. → Filters for cooking time, difficulty, dish type, ingredients and allergies.',
+              },
+              {
+                title: 'The interface feels complex',
+                body: 'Reviews called the UI complex, and testing showed navigation friction. → A simpler UI with a clear icon set.',
+              },
+              {
+                title: 'Free members feel restricted',
+                body: 'Free members felt limited. → Enhanced free membership features became one of the planned solutions.',
+              },
+              {
+                title: 'Little sense of community',
+                body: 'Users missed community features. → Threaded comments so questions get answered and conversations stay easy to follow.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'wireframes',
+        label: 'Wireframes',
+        title: 'Wireframes',
+        blocks: [
+          {
+            kind: 'text',
+            body: ['I planned the layout around the user flow: from the main page’s search, to the search results, to a recipe. A login modal opens over any page.'],
+          },
+          {
+            // redrawn from the original wireframe frame by scripts/build-cookpad-wireframes.mjs
+            kind: 'gallery',
+            figures: [
+              cwire('main', 'Main page wireframe: logo and ingredient search, a category grid and popular recipes.', '1. Main page', 1240),
+              cwire('search', 'Search page wireframe: search bar with a filter button, sort options and a list of recipe results.', '2. Search results', 1120),
+              cwire('recipe', 'Recipe page wireframe: food photo beside the title and ingredients, numbered steps, point, comments and more recipes.', '3. Recipe page', 1360),
+              cwire('login', 'Login modal wireframe: email and password fields, a log in button and a sign up link.', 'Login modal', 720),
+            ],
+          },
+        ],
+      },
+      {
+        id: 'visual-language',
+        label: 'Visual language',
+        title: 'Colour, type & icons',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'The palette builds on Cookpad’s brand image of friendliness, homely warmth and naturalness. The background is uniformly white, orange and dark red highlight the key areas, and text is dark grey for better readability.',
+            ],
+          },
+          {
+            kind: 'swatches',
+            swatches: [
+              { name: 'Main', hex: '#FF9934', usage: 'Key actions and highlights' },
+              { name: 'Sub', hex: '#FFD9B4', usage: 'Soft highlight areas' },
+              { name: 'Dark red', hex: '#370000', usage: 'Headings and emphasis' },
+              { name: 'Text', hex: '#646464', usage: 'Body text' },
+              { name: 'Black', hex: '#000000', usage: 'Strong text' },
+              { name: 'Base', hex: '#FFFFFF', usage: 'Background' },
+            ],
+          },
+          {
+            // sizes and weights taken from the real Recipe, List and Main frames
+            kind: 'type',
+            note: 'One typeface, Noto Sans KR, in three weights. Sizes and weights are taken from the real recipe and list pages.',
+            styles: [
+              { name: 'Recipe title', font: 'Noto Sans KR', weight: 700, size: 40, sample: 'Butter Pancake' },
+              { name: 'Section heading', font: 'Noto Sans KR', weight: 700, size: 32, sample: 'Ingredients' },
+              { name: 'Author', font: 'Noto Sans KR', weight: 500, size: 32, sample: 'ChefMario' },
+              { name: 'Card title', font: 'Noto Sans KR', weight: 700, size: 24, sample: 'Hearty Spaghetti Bolognese' },
+              { name: 'Body', font: 'Noto Sans KR', weight: 400, size: 24, sample: 'Flour 180g · Sugar 60 g · Milk 250 ml' },
+              { name: 'Meta', font: 'Noto Sans KR', weight: 400, size: 16, sample: 'Newest First · 25 minutes · ChefAnna89' },
+            ],
+          },
+          {
+            // icons cut from the "Icon" rows of the Design frame (scripts/prepare-cookpad.mjs)
+            kind: 'icons',
+            groups: [
+              {
+                title: 'Recipe actions',
+                note: 'In Cookpad orange: the things people do with a recipe.',
+                items: [
+                  { src: '/images/cookpad/icon-1.png', label: 'Save' },
+                  { src: '/images/cookpad/icon-4.png', label: 'Saved' },
+                  { src: '/images/cookpad/icon-2.png', label: 'Add' },
+                  { src: '/images/cookpad/icon-3.png', label: 'Filter' },
+                  { src: '/images/cookpad/icon-5.png', label: 'Premium badge' },
+                ],
+              },
+              {
+                title: 'Navigation & tools',
+                note: 'The same rounded outline style in neutral grey: menus and page tools.',
+                items: [
+                  { src: '/images/cookpad/icon-7.png', label: 'Menu' },
+                  { src: '/images/cookpad/icon-9.png', label: 'Search' },
+                  { src: '/images/cookpad/icon-10.png', label: 'Time' },
+                  { src: '/images/cookpad/icon-11.png', label: 'Notifications' },
+                  { src: '/images/cookpad/icon-12.png', label: 'Share' },
+                  { src: '/images/cookpad/icon-8.png', label: 'Print' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'decisions',
+        label: 'Key decisions',
+        title: 'Key design decisions',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Usability testing helped me identify navigation challenges and friction points in Cookpad’s features. Based on these insights, I refined the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
+            ],
+          },
+          {
+            // the devices image is the "Overall UI" frame (27:3888): phone, tablet, laptop and desktop layouts
+            kind: 'feature',
+            plain: true,
+            tag: 'Secondary research: most visits come from mobile',
+            title: 'A responsive experience across devices',
+            body: [
+              'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
+            ],
+            figures: [cook('devices', 'The redesigned Cookpad search page on phone, tablet, laptop and desktop.', 'The search page on phone, tablet, laptop and desktop.', 1600, 439)],
+          },
+          {
+            kind: 'feature',
+            plain: true,
+            tag: 'Insight: search is hard to narrow down',
+            title: 'Search filters that match how people cook',
+            body: [
+              'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
+            ],
+            figures: [
+              { ...cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', 'Search bar with the filter button.', 1600, 143), frameless: true },
+              cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 532),
+            ],
+          },
+          {
+            kind: 'feature',
+            plain: true,
+            tag: 'Insight: little sense of community',
+            title: 'Threaded comments',
+            reverse: true,
+            body: [
+              'Replies sit under the comment they answer, so a question and its answers stay together. This makes discussions easier to follow and questions more likely to get an answer.',
+            ],
+            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 672)],
+          },
+        ],
+      },
+      {
+        id: 'final',
+        label: 'Final design',
+        title: 'Final interface',
+        blocks: [
+          {
+            kind: 'devices',
+            device: 'desktop',
+            screens: [
+              img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
+              img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
+              img('cookpad-recipe', 'Recipe detail for butter pancakes with ingredients and steps.', 'Recipe detail'),
+            ],
+          },
+        ],
+      },
+      {
+        id: 'reflection',
+        label: 'Reflection',
+        title: 'What I learned & next steps',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'This project taught me how valuable user research is in guiding design decisions. Moving forward, I want to strengthen my skills in user research, interactive prototyping, and developer handoff to translate user insights into practical, production ready designs.',
             ],
           },
         ],

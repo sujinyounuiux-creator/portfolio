@@ -1194,7 +1194,8 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'figure',
-            figure: { ...img('yoga-wireframe-home', 'Home page wireframe: hero, class styles, about and team sections.', 'Home page wireframe.', 1179, 2400), tall: true, zoom: true },
+            // Sujin's Pricing page wireframe: "Price" frame (111:179) in the Open Door Yoga file (scripts/prepare-yoga-wireframe.mjs)
+            figure: { ...img('yoga-wireframe-pricing', 'Pricing page wireframe: a "Yoga Passes & Pricing" hero, a First time student offer, two rows of pass cards with Join buttons, a Give a Gift of Health section with a gift photo, and the footer.', 'Pricing page wireframe, which I designed.', 1122, 2400), tall: true, zoom: true },
           },
         ],
       },

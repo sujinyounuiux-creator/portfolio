@@ -253,8 +253,9 @@ button.wiggle {
 .stamp {
   position: absolute;
   transform: translate(-50%, -50%) rotate(var(--r));
-  filter: drop-shadow(1px 2px 0 rgba(31, 36, 48, 0.18));
-  animation: stamp-pop 380ms var(--ease) both;
+  /* drawn on like crayon: no sticker shadow, and the grain lets a little of the art show through */
+  opacity: 0.92;
+  animation: stamp-pop 420ms var(--ease) both;
 }
 .stamp svg {
   display: block;
@@ -262,9 +263,9 @@ button.wiggle {
   height: auto;
 }
 @keyframes stamp-pop {
-  0% { transform: translate(-50%, -50%) rotate(var(--r)) scale(0.2); opacity: 0; }
-  60% { transform: translate(-50%, -50%) rotate(var(--r)) scale(1.18); opacity: 1; }
-  100% { transform: translate(-50%, -50%) rotate(var(--r)) scale(1); }
+  0% { transform: translate(-50%, -50%) rotate(var(--r)) scale(0.4); opacity: 0; }
+  60% { transform: translate(-50%, -50%) rotate(var(--r)) scale(1.06); opacity: 0.92; }
+  100% { transform: translate(-50%, -50%) rotate(var(--r)) scale(1); opacity: 0.92; }
 }
 
 .stamp-bar {

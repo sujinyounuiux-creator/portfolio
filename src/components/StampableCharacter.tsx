@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react'
 import { CharacterIllustration } from './CharacterIllustration'
 
@@ -6,7 +6,10 @@ import { CharacterIllustration } from './CharacterIllustration'
  * The home character, which visitors can decorate: pick a stamp (star, heart,
  * diamond, flower) and tap anywhere on or around the character to stick it on.
  * The tappable area reaches a little past the illustration (see .stampable__hit
- * in home.css). Stamps are kept in this browser and can be undone or cleared.
+ * in home.css). Stamps last only while the page is open: reloading or leaving the
+ * page starts the character clean again. They are drawn like the illustration
+ * (its colours, a darker line of the same hue, crayon grain and a hand-drawn wobble)
+ * and can be undone or cleared.
  * Keyboard: focus the character and press Enter or Space to add the chosen stamp
  * at a random spot.
  */
@@ -14,17 +17,39 @@ import { CharacterIllustration } from './CharacterIllustration'
 type Kind = 'star' | 'heart' | 'diamond' | 'flower'
 type Stamp = { id: number; kind: Kind; x: number; y: number; r: number; s: number }
 
-const KINDS: { kind: Kind; label: string; color: string }[] = [
-  { kind: 'star', label: 'Star', color: '#f7d87c' },
-  { kind: 'heart', label: 'Heart', color: '#f29bb0' },
-  { kind: 'diamond', label: 'Diamond', color: '#9fc0e6' },
-  { kind: 'flower', label: 'Flower', color: '#f4a98f' },
+// colours taken from the illustration: cheek coral, mouth rose, the blue doodles, a warm yellow
+const KINDS: { kind: Kind; label: string; fill: string; line: string }[] = [
+  { kind: 'star', label: 'Star', fill: '#f8d47e', line: '#d9a04a' },
+  { kind: 'heart', label: 'Heart', fill: '#f5a182', line: '#c2635d' },
+  { kind: 'diamond', label: 'Diamond', fill: '#b6c7df', line: '#7a96c4' },
+  { kind: 'flower', label: 'Flower', fill: '#feb9a0', line: '#e2856f' },
 ]
-const STORE = 'character-stamps'
 const MAX = 60
+// an earlier version kept stamps between visits; clear what it left behind
+try {
+  localStorage.removeItem('character-stamps')
+} catch {
+  /* storage unavailable: nothing to clear */
+}
 
-function StampShape({ kind, color }: { kind: Kind; color: string }) {
-  const common = { fill: color, stroke: 'var(--c-ink)', strokeWidth: 1.6, strokeLinejoin: 'round' as const }
+/** Crayon look shared by every stamp: a slight hand-drawn wobble plus paper grain. */
+function CrayonFilter() {
+  return (
+    <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
+      <filter id="stamp-crayon" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="1" seed="7" result="wobble" />
+        <feDisplacementMap in="SourceGraphic" in2="wobble" scale="1.3" xChannelSelector="R" yChannelSelector="G" result="drawn" />
+        <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="3" result="grain" />
+        <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 2.05" result="speckle" />
+        <feComposite in="drawn" in2="speckle" operator="in" />
+      </filter>
+    </svg>
+  )
+}
+
+function StampShape({ kind }: { kind: Kind }) {
+  const k = KINDS.find((x) => x.kind === kind)!
+  const common = { fill: k.fill, stroke: k.line, strokeWidth: 1.3, strokeLinejoin: 'round' as const, strokeLinecap: 'round' as const }
   switch (kind) {
     case 'star':
       return <path {...common} d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17.1 6.1 20.3l1.3-6.5L2.5 9.3l6.6-.8z" />
@@ -34,7 +59,7 @@ function StampShape({ kind, color }: { kind: Kind; color: string }) {
       return (
         <>
           <path {...common} d="M6.5 4h11l4 5.2L12 20.5 2.5 9.2z" />
-          <path d="M2.5 9.2h19M9 4l3 16.5L15 4" fill="none" stroke="var(--c-ink)" strokeWidth={1.1} strokeLinejoin="round" />
+          <path d="M2.5 9.2h19M9 4l3 16.5L15 4" fill="none" stroke={k.line} strokeWidth={0.9} strokeLinejoin="round" strokeLinecap="round" />
         </>
       )
     case 'flower':
@@ -43,34 +68,16 @@ function StampShape({ kind, color }: { kind: Kind; color: string }) {
           {[0, 72, 144, 216, 288].map((a) => (
             <ellipse key={a} {...common} cx="12" cy="6.6" rx="3.6" ry="4.4" transform={`rotate(${a} 12 12)`} />
           ))}
-          <circle cx="12" cy="12" r="3" fill="#f7d87c" stroke="var(--c-ink)" strokeWidth={1.4} />
+          <circle cx="12" cy="12" r="2.8" fill="#f8d47e" stroke="#d9a04a" strokeWidth={1.1} />
         </>
       )
   }
 }
 
-function load(): Stamp[] {
-  try {
-    const raw = localStorage.getItem(STORE)
-    const list = raw ? (JSON.parse(raw) as Stamp[]) : []
-    return Array.isArray(list) ? list.slice(-MAX) : []
-  } catch {
-    return []
-  }
-}
-
 export function StampableCharacter({ label, children }: { label: string; children?: ReactNode }) {
-  const [stamps, setStamps] = useState<Stamp[]>(load)
+  const [stamps, setStamps] = useState<Stamp[]>([])
   const [kind, setKind] = useState<Kind>('star')
   const [announce, setAnnounce] = useState('')
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORE, JSON.stringify(stamps))
-    } catch {
-      /* storage unavailable: stamps just last for this visit */
-    }
-  }, [stamps])
 
   const current = KINDS.find((k) => k.kind === kind)!
 
@@ -97,6 +104,7 @@ export function StampableCharacter({ label, children }: { label: string; childre
 
   return (
     <>
+      <CrayonFilter />
       {/* the figure keeps the hero's floating labels positioned around the character */}
       <div className="hero__figure">
         {children}
@@ -112,20 +120,19 @@ export function StampableCharacter({ label, children }: { label: string; childre
             <CharacterIllustration className="hero__character" eager />
           </button>
           <div className="stampable__layer" aria-hidden="true">
-            {stamps.map((st) => {
-              const k = KINDS.find((x) => x.kind === st.kind) ?? KINDS[0]
-              return (
-                <span
-                  key={st.id}
-                  className="stamp"
-                  style={{ left: `${st.x * 100}%`, top: `${st.y * 100}%`, width: `${9 * st.s}%`, ['--r' as string]: `${st.r}deg` }}
-                >
-                  <svg viewBox="0 0 24 24" overflow="visible">
-                    <StampShape kind={st.kind} color={k.color} />
-                  </svg>
-                </span>
-              )
-            })}
+            {stamps.map((st) => (
+              <span
+                key={st.id}
+                className="stamp"
+                style={{ left: `${st.x * 100}%`, top: `${st.y * 100}%`, width: `${9 * st.s}%`, ['--r' as string]: `${st.r}deg` }}
+              >
+                <svg viewBox="0 0 24 24" overflow="visible">
+                  <g filter="url(#stamp-crayon)">
+                    <StampShape kind={st.kind} />
+                  </g>
+                </svg>
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -145,7 +152,9 @@ export function StampableCharacter({ label, children }: { label: string; childre
               onClick={() => setKind(k.kind)}
             >
               <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" overflow="visible">
-                <StampShape kind={k.kind} color={k.color} />
+                <g filter="url(#stamp-crayon)">
+                  <StampShape kind={k.kind} />
+                </g>
               </svg>
             </button>
           ))}

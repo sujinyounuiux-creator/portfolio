@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom'
 /**
  * Site-wide scroll motion, added on top of the pages without changing them:
  * - reveal: headings, text blocks, cards and images rise and fade in as they
- *   scroll into view (siblings one after another); images also grow into place
+ *   scroll into view (siblings one after another), clearing a soft blur; images
+ *   grow into place and cards, folders and Polaroids swing in with a slight tilt
  * - parallax: the Home hero's character and floating labels drift at slightly
  *   different speeds while scrolling
  * - progress: a thin bar on case studies that fills as you read
@@ -13,15 +14,17 @@ import { useLocation } from 'react-router-dom'
  */
 
 // what to reveal, and how; listed outer elements win over anything inside them
-const REVEAL: [string, 'title' | 'up' | 'media'][] = [
+const REVEAL: [string, 'title' | 'up' | 'media' | 'pop'][] = [
   ['.section-title, .cs-section__head, .cs-hero__title, .contact__title, .about-hello', 'title'],
   ['.cs-hero__media, .cs-figure, .cs-feature__media, .devices, .compare-set, .cs-embed, .cs-pages, .walkthrough, .feature__media, .folder__thumb', 'media'],
+  // card-like pieces swing in with a slight tilt
+  ['.cs-card, .folder, .collage__item, .cs-swatch, .cs-stats > div, .cs-kit__item, .cs-pager__card, .cs-tldr__list > div', 'pop'],
   [
     [
-      '.section-kicker', '.section-lede', '.cs-hero__tagline', '.cs-hero__summary', '.cs-facts', '.cs-tldr__title', '.cs-tldr__list > div',
-      '.cs-prose', '.cs-card', '.cs-quotes li', '.cs-stats > div', '.cs-swatch', '.type-specimen li', '.cs-kit__item', '.cs-outline__step',
-      '.cs-bars', '.cs-icons__group', '.cs-feature__text', '.cs-pager__card', '.folder', '.feature__body', '.filters',
-      '.about-home__col', '.collage__item', '.about-block', '.experience > li', '.skills > li', '.tools > li', '.side-facts',
+      '.section-kicker', '.section-lede', '.cs-hero__tagline', '.cs-hero__summary', '.cs-facts', '.cs-tldr__title',
+      '.cs-prose', '.cs-quotes li', '.type-specimen li', '.cs-outline__step',
+      '.cs-bars', '.cs-icons__group', '.cs-feature__text', '.feature__body', '.filters',
+      '.about-home__col', '.about-block', '.experience > li', '.skills > li', '.tools > li', '.side-facts',
       '.volunteer__grid > *', '.asclo__grid > *', '.contact__lede', '.contact__actions', '.stamp-bar',
     ].join(', '),
     'up',
@@ -30,12 +33,12 @@ const REVEAL: [string, 'title' | 'up' | 'media'][] = [
 
 // [selector, speed]: positive drifts up faster than the page as it scrolls, negative lags behind
 const PARALLAX: [string, number][] = [
-  ['.hero__label--role', 0.16],
-  ['.hero__label--1', -0.1],
-  ['.hero__label--2', 0.12],
-  ['.hero__label--place', -0.14],
-  ['.hero__blob', -0.05],
-  ['.hero__copy', 0.05],
+  ['.hero__label--role', 0.32],
+  ['.hero__label--1', -0.2],
+  ['.hero__label--2', 0.24],
+  ['.hero__label--place', -0.28],
+  ['.hero__blob', -0.1],
+  ['.hero__copy', 0.12],
 ]
 
 export function ScrollMotion() {
@@ -65,7 +68,7 @@ export function ScrollMotion() {
       const parent = el.parentElement!
       const i = order.get(parent) ?? 0
       order.set(parent, i + 1)
-      ;(el as HTMLElement).style.setProperty('--d', `${Math.min(i, 6) * 80}ms`)
+      ;(el as HTMLElement).style.setProperty('--d', `${Math.min(i, 6) * 120}ms`)
       el.setAttribute('data-reveal', picked.get(el)!)
     }
 
@@ -75,7 +78,7 @@ export function ScrollMotion() {
       el.classList.add('is-in')
       io.unobserve(el)
       // hand transitions back to the element's own hover styles once it has arrived
-      window.setTimeout(() => el.classList.add('is-done'), 1600)
+      window.setTimeout(() => el.classList.add('is-done'), 2400)
     }
     const io = new IntersectionObserver(
       (entries) => {

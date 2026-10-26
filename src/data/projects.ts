@@ -822,6 +822,10 @@ export const projects: Project[] = [
                 body: 'Users asked for stronger search filters. → Filters for cooking time, difficulty, dish type, ingredients and allergies.',
               },
               {
+                title: 'Search results are hard to read',
+                body: 'Search results weren’t clear to read. → Clearer results, so people can easily see what their search found.',
+              },
+              {
                 title: 'The interface feels complex',
                 body: 'Reviews called the UI complex, and testing showed navigation friction. → A simpler UI with a clear icon set.',
               },
@@ -1308,7 +1312,7 @@ export const projects: Project[] = [
               },
               {
                 title: 'What I Learned',
-                body: 'This project taught me the importance of research before jumping into design. Through heuristic evaluation, I learned to identify usability issues and use them to guide design decisions rather than relying only on visual preferences. I also gained a better understanding of how consistent imagery, typography, and UI components contribute to a cohesive user experience. Moving forward, I want to strengthen my research process and use evidence to create more thoughtful, user centered designs.',
+                body: 'This project taught me the importance of researching usability issues before jumping into design. I learned to use heuristic evaluation to guide design decisions with evidence rather than visual preferences alone. I also gained a better understanding of how consistent imagery, typography, and UI components create a cohesive user experience.',
               },
             ],
           },

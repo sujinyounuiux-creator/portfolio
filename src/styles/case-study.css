@@ -297,6 +297,18 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+/* five cards: three on top, two wider ones below, so no row is left with a gap */
+@media (min-width: 900px) {
+  .cs-cards--5 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .cs-cards--5 > :nth-child(-n + 3) {
+    grid-column: span 2;
+  }
+  .cs-cards--5 > :nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
 .cs-card {
   padding: var(--s-5);
   border: 1px solid var(--c-line);

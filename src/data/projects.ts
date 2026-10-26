@@ -448,7 +448,7 @@ export const projects: Project[] = [
             items: [
               {
                 title: 'What I learned',
-                body: 'To deepen my user research skills and improve team efficiency, I applied usability testing and brought modern design tools into our workflow, aiming for practical, user centered designs and smoother collaboration.',
+                body: 'Working with frontend and backend engineers taught me that not every design is easy to implement. Some ideas I thought were simple turned out to be technically challenging, so I had to adjust my designs based on their feedback. This experience helped me understand developers’ challenges and the importance of designing with technical feasibility in mind while balancing user needs and implementation constraints.',
               },
               {
                 title: 'What I want to learn next',

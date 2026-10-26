@@ -1,0 +1,71 @@
+/* ── Scroll motion (see components/ScrollMotion.tsx) ──
+   Everything here is scoped to html.motion, which the script only adds when the
+   visitor hasn't asked for reduced motion, so content is never hidden without it.
+   Moves use the individual translate / scale properties, so they stack with each
+   element's own transform (tilted stickers, Polaroids, hover lifts). */
+
+.motion [data-reveal] {
+  opacity: 0;
+  translate: 0 var(--ry, 32px);
+}
+.motion [data-reveal]:not(.is-done) {
+  transition:
+    opacity 700ms var(--ease) var(--d, 0ms),
+    translate 900ms var(--ease) var(--d, 0ms),
+    scale 1000ms var(--ease) var(--d, 0ms),
+    clip-path 900ms var(--ease) var(--d, 0ms);
+}
+/* images and mockups grow into place */
+.motion [data-reveal='media'] {
+  --ry: 48px;
+  scale: 0.93;
+}
+/* headings rise out of a mask */
+.motion [data-reveal='title'] {
+  --ry: 0.45em;
+  clip-path: inset(0 0 100% 0);
+}
+.motion [data-reveal].is-in {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+.motion [data-reveal='title'].is-in {
+  /* open wider than the box so descenders, underlines and doodles aren't cut */
+  clip-path: inset(-30% -10% -40% -10%);
+}
+.motion [data-reveal='title'].is-done {
+  clip-path: none;
+}
+
+/* Home hero layers drift at their own speed */
+.motion [data-parallax] {
+  translate: 0 var(--py, 0px);
+  will-change: translate;
+}
+
+/* reading progress on case studies */
+.read-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 3px;
+  background: var(--c-accent-strong);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion [data-reveal],
+  .motion [data-parallax] {
+    opacity: 1;
+    translate: none;
+    scale: none;
+    clip-path: none;
+    transition: none;
+  }
+  .read-progress {
+    display: none;
+  }
+}

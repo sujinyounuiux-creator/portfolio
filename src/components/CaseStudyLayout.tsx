@@ -126,7 +126,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
       {project.tldr && (
         <section className="container cs-tldr" aria-labelledby="tldr-title">
           <h2 id="tldr-title" className="cs-tldr__title">
-            TL;DR
+            Overview
           </h2>
           <dl className="cs-tldr__list">
             {project.tldr.map((t) => (

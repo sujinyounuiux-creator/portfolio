@@ -93,7 +93,7 @@
   width: 100%;
 }
 
-/* ── TL;DR: four-line summary under the hero ── */
+/* ── Overview: four-line summary under the hero ── */
 .cs-tldr {
   display: grid;
   gap: var(--s-4);

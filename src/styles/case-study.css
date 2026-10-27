@@ -84,7 +84,6 @@
 
 .cs-hero__media {
   overflow: hidden;
-  border: var(--border);
   border-radius: var(--r-lg);
   background: #fff;
   box-shadow: var(--shadow-md);
@@ -122,7 +121,6 @@
 }
 .cs-tldr__list > div {
   padding: var(--s-4) var(--s-5);
-  border-top: 4px solid var(--p-accent);
   border-radius: var(--r-md);
   background: var(--p-surface);
 }
@@ -312,7 +310,6 @@
 .cs-card {
   padding: var(--s-5);
   border: 1px solid var(--c-line);
-  border-top: 4px solid var(--p-accent);
   border-radius: var(--r-md);
   background: var(--c-surface);
 }
@@ -355,7 +352,6 @@
 }
 .cs-pages__window {
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--c-ink) 16%, transparent);
   border-radius: var(--r-sm);
   background: #fff;
   box-shadow: var(--shadow-sm);
@@ -758,7 +754,6 @@
 .cs-figure__frame,
 .cs-figure__scroll {
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--c-ink) 18%, transparent);
   border-radius: var(--r-md);
   background: #fff;
   box-shadow: var(--shadow-sm);
@@ -866,7 +861,6 @@
 .cs-pager__card {
   display: grid;
   overflow: hidden;
-  border: var(--border);
   border-radius: var(--r-lg);
   background: var(--c-surface);
   text-decoration: none;
@@ -880,7 +874,6 @@
 .cs-pager__media {
   display: block;
   overflow: hidden;
-  border-bottom: var(--border);
   background: #fff;
 }
 .cs-pager__media img {
@@ -896,7 +889,6 @@
   display: grid;
   gap: 0.2rem;
   padding: var(--s-4) var(--s-5) var(--s-5);
-  border-top: 5px solid var(--pager-accent);
 }
 .cs-pager__card--next .cs-pager__text {
   text-align: right;
@@ -1273,7 +1265,6 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--r-md);
   background: #fff;
   box-shadow: var(--shadow-sm);

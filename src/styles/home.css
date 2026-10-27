@@ -463,7 +463,10 @@ button.wiggle {
 .about-home__col > .about-home__h3:first-child {
   margin-top: 0;
 }
+/* the dot sits on the date line's centre and the dashed line runs through the dot's centre */
 .about-home__timeline {
+  --dot: 1rem;
+  --dot-top: calc(var(--fs-xs) * 0.75 - var(--dot) / 2); /* date line is font size × 1.5 tall */
   position: relative;
   display: grid;
   gap: var(--s-5);
@@ -474,8 +477,8 @@ button.wiggle {
 .about-home__timeline::before {
   content: '';
   position: absolute;
-  left: 0.4rem;
-  top: 0.4rem;
+  left: calc(var(--dot) / 2 - 1.25px);
+  top: calc(var(--dot-top) + var(--dot) / 2);
   bottom: 0.4rem;
   border-left: 2.5px dashed var(--c-accent);
 }
@@ -489,15 +492,17 @@ button.wiggle {
   content: '';
   position: absolute;
   left: -1.75rem;
-  top: 0.25rem;
-  width: 0.9rem;
-  height: 0.9rem;
+  top: var(--dot-top);
+  box-sizing: border-box;
+  width: var(--dot);
+  height: var(--dot);
   border: 2px solid var(--c-ink);
   border-radius: 50% 45% 52% 48%;
   background: var(--c-highlight);
 }
 .about-home__when {
   font-size: var(--fs-xs);
+  line-height: 1.5;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--c-accent-ink);

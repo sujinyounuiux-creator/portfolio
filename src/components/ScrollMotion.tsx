@@ -6,14 +6,16 @@ import { useLocation } from 'react-router-dom'
  * - reveal: headings, text blocks, cards and images rise and fade in as they
  *   scroll into view (siblings one after another), clearing a soft blur; images
  *   grow into place and cards, folders and Polaroids swing in with a slight tilt
- * - parallax: the Home hero's character and floating labels drift at slightly
- *   different speeds while scrolling
+ * - parallax: the Home hero's soft blob and the name and slogan drift at slightly
+ *   different speeds while scrolling (the hashtag labels stay where they are)
  * - progress: a thin bar on case studies that fills as you read
  * Nothing moves for people who ask for reduced motion, and content is only ever
  * hidden after this script has started (styles in motion.css are scoped to .motion).
  */
 
-// what to reveal, and how; listed outer elements win over anything inside them
+// what to reveal, and how; listed outer elements win over anything inside them.
+// Hashtag tags never move: the hero labels, the About Me specialties, the project tags
+// and the Case Study filters stay put, so blocks holding them reveal their other parts only.
 const REVEAL: [string, 'title' | 'up' | 'media' | 'pop'][] = [
   ['.section-title, .cs-section__head, .cs-hero__title, .contact__title, .about-hello', 'title'],
   ['.cs-hero__media, .cs-figure, .cs-feature__media, .devices, .compare-set, .cs-embed, .cs-pages, .walkthrough, .feature__media, .folder__thumb', 'media'],
@@ -23,8 +25,8 @@ const REVEAL: [string, 'title' | 'up' | 'media' | 'pop'][] = [
     [
       '.section-kicker', '.section-lede', '.cs-hero__tagline', '.cs-hero__summary', '.cs-facts', '.cs-tldr__title',
       '.cs-prose', '.cs-quotes li', '.type-specimen li', '.cs-outline__step',
-      '.cs-bars', '.cs-icons__group', '.cs-feature__text', '.feature__body', '.filters',
-      '.about-home__col', '.about-block', '.experience > li', '.skills > li', '.tools > li', '.side-facts',
+      '.cs-bars', '.cs-icons__group', '.cs-feature__text', '.feature__text > :not(.feature__tags)',
+      '.about-home__col > :not(.about-home__specialties):not(.collage)', '.about-block', '.experience > li', '.skills > li', '.tools > li', '.side-facts',
       '.volunteer__grid > *', '.asclo__grid > *', '.contact__lede', '.contact__actions', '.stamp-bar',
     ].join(', '),
     'up',
@@ -33,10 +35,6 @@ const REVEAL: [string, 'title' | 'up' | 'media' | 'pop'][] = [
 
 // [selector, speed]: positive drifts up faster than the page as it scrolls, negative lags behind
 const PARALLAX: [string, number][] = [
-  ['.hero__label--role', 0.32],
-  ['.hero__label--1', -0.2],
-  ['.hero__label--2', 0.24],
-  ['.hero__label--place', -0.28],
   ['.hero__blob', -0.1],
   ['.hero__copy', 0.12],
 ]

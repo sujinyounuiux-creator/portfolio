@@ -392,9 +392,7 @@ button.wiggle {
 .hero__label--tag5 { top: 60%; left: -14%; }
 
 .hero__label--place { bottom: 2%; left: -6%; }
-.hero__label--place .sticker { --tilt: -5deg; color: var(--c-ink); }
-.hero__label--place .sticker:hover,
-.hero__label--place .sticker:focus-visible { box-shadow: 3px 4px 0 var(--c-ink); }
+.hero__label--place .sticker { color: var(--c-ink); transform: rotate(-5deg); }
 
 @media (max-width: 479px) {
   /* keep the floating labels inside narrow screens */

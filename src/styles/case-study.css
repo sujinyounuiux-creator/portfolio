@@ -965,12 +965,6 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 960px) {
-  .cs-more {
-    grid-template-columns: 2fr 1fr;
-    align-items: stretch;
-  }
-}
 .cs-pager__card {
   display: grid;
   overflow: hidden;
@@ -1468,7 +1462,8 @@
 .type-specimen li {
   display: grid;
   gap: var(--s-2);
-  align-items: baseline;
+  /* the label block sits level with the middle of its sample, whatever the size */
+  align-items: center;
   padding-block: var(--s-4);
   border-bottom: 1px solid var(--c-line);
 }

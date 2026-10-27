@@ -186,8 +186,8 @@ export const projects: Project[] = [
     timeline: '2025.01 to 2025.03',
     team: '6 people: 5 front end/back end engineers and 1 designer',
     tools: ['Figma'],
-    thumbnail: img('profitkey-cover', 'PROFITKEY cover: the home page and stock detail page in browser windows, and the AI Recommended Stocks card with its AI Comment.'),
-    hero: img('profitkey-cover', 'PROFITKEY cover: the home page and stock detail page in browser windows, and the AI Recommended Stocks card with its AI Comment.'),
+    thumbnail: img('profitkey-cover', 'PROFITKEY cover: the key shaped logo and "Finding the Key to Investment Success" beside the home page and the stock analysis page with its AI Comment.'),
+    hero: img('profitkey-cover', 'PROFITKEY cover: the key shaped logo and "Finding the Key to Investment Success" beside the home page and the stock analysis page with its AI Comment.'),
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
@@ -482,9 +482,9 @@ export const projects: Project[] = [
     timeline: '2026.07 to 2026.08',
     team: '2 designers',
     tools: ['Figma'],
-    // cover: built by scripts/build-covers.mjs
-    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
-    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices.", beside the Calendar, Home and Event screens on phones.'),
+    // cover: Sujin's original cover design from Figma
+    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices." beside the app splash screen on an iPhone.'),
+    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices." beside the app splash screen on an iPhone.'),
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
@@ -733,9 +733,8 @@ export const projects: Project[] = [
     team: 'Personal project',
     tools: ['Figma'],
     // cover: "Overview" frame (1:2139), the first Cookpad slide in the Portfolio Figma file
-    // cover: built by scripts/build-covers.mjs
-    thumbnail: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
-    hero: img('cookpad-cover', 'Cookpad UI/UX redesign cover: the recipe list and recipe detail pages in browser windows, and the mobile home screen in a phone.'),
+    thumbnail: img('cookpad-cover', 'Cookpad UI/UX improvements project cover: the redesigned search page on a tablet and a phone.'),
+    hero: img('cookpad-cover', 'Cookpad UI/UX improvements project cover: the redesigned search page on a tablet and a phone.'),
     theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
     tldr: [
       { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling; users found search hard to narrow down and the UI complex.' },
@@ -1020,9 +1019,9 @@ export const projects: Project[] = [
     timeline: '2026.08 to 2026.09',
     team: '3 designers',
     tools: ['Figma', 'html.to.design'],
-    // cover: built by scripts/build-covers.mjs from the real redesigned pages
-    thumbnail: img('yoga-cover', 'Open Door Yoga redesign cover: the new Home and Passes & Pricing pages in browser windows, and the 12 Month Pass card.', undefined, 1600, 900),
-    hero: img('yoga-cover', 'Open Door Yoga redesign cover: the new Home and Passes & Pricing pages in browser windows, and the 12 Month Pass card.', undefined, 1600, 900),
+    // cover: Sujin's original cover design from Figma
+    thumbnail: img('yoga-hero', 'Open Door Yoga logo beside a laptop on a wooden chair showing the redesigned home page with large "YOGA" lettering.', undefined, 1600, 900),
+    hero: img('yoga-hero', 'Open Door Yoga logo beside a laptop on a wooden chair showing the redesigned home page with large "YOGA" lettering.', undefined, 1600, 900),
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },

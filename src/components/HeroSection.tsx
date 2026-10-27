@@ -1,17 +1,16 @@
-import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { StampableCharacter } from './StampableCharacter'
 import { Underline } from './HandDrawnDecoration'
 
 /**
  * Home hero. The illustrated character is the focal point. The role, a few
- * hashtags (site.heroTags) and the location float around it as stickers;
+ * hashtags (site.heroTags) and the location float around it as plain labels
+ * (no links or hover motion);
  * name, "portfolio" and slogan sit beside it. Visitors can decorate the
  * character with stamps.
  */
 export function HeroSection() {
   const [lead, last] = splitSlogan(site.slogan)
-  const [primary] = site.specialties
 
   return (
     <section className="hero" aria-labelledby="hero-title">
@@ -39,25 +38,15 @@ export function HeroSection() {
 
             <ul className="hero__labels" aria-label="Role, skills, languages and location">
               <li className="hero__label hero__label--role">
-                <Link to={primary.href} className="specialty specialty--primary specialty--role">
-                  {site.role}
-                </Link>
+                <span className="specialty specialty--primary specialty--role">{site.role}</span>
               </li>
               {site.heroTags.map((t, i) => (
                 <li key={t.label} className={`hero__label hero__label--tag${i + 1}`}>
-                  {t.href ? (
-                    <Link to={t.href} className={`specialty specialty--${t.group}`}>
-                      #{t.label}
-                    </Link>
-                  ) : (
-                    <span className={`specialty specialty--${t.group}`}>#{t.label}</span>
-                  )}
+                  <span className={`specialty specialty--${t.group}`}>#{t.label}</span>
                 </li>
               ))}
               <li className="hero__label hero__label--place">
-                <Link to="/about" className="sticker sticker--yellow wiggle" aria-label={`${site.location}: more about me`}>
-                  {site.location}
-                </Link>
+                <span className="sticker sticker--yellow">{site.location}</span>
               </li>
             </ul>
           </StampableCharacter>

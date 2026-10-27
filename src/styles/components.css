@@ -458,12 +458,27 @@
 /* Contact as a small square card (case studies): heading and email actions only */
 .contact-card {
   display: grid;
-  align-content: center;
-  gap: var(--s-3);
-  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  gap: var(--s-4);
+  width: min(100%, 860px);
+  justify-self: center;
+  margin-top: var(--s-5);
+  padding: clamp(1.1rem, 2.5vw, 1.6rem) clamp(1.1rem, 3vw, 2rem);
   border: var(--border);
   border-radius: var(--r-lg);
   background: var(--c-accent-wash);
+}
+/* wider screens: the heading on the left, the email actions on the right */
+@media (min-width: 760px) {
+  .contact-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--s-6);
+  }
+}
+.contact-card__text,
+.contact-card__actions {
+  display: grid;
+  gap: var(--s-2);
 }
 .contact-card .contact__kicker {
   font-size: var(--fs-note);

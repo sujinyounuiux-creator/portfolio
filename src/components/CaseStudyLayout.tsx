@@ -160,17 +160,17 @@ export function CaseStudyLayout({ project }: { project: Project }) {
         </div>
       </div>
 
-      {/* the previous and next projects and a small Contact square share one row,
-          so they fit on one screen together */}
+      {/* the previous and next projects with "View all projects", then a small
+          Contact card below them, set apart so it doesn't read as another project */}
       <div className="container cs-more">
         <nav className="cs-pager" aria-label="More projects">
           <PagerCard project={prev} dir="prev" />
           <PagerCard project={next} dir="next" />
         </nav>
-        <ContactCTA card />
         <Link to="/work" className="cs-pager__all">
           View all projects
         </Link>
+        <ContactCTA card />
       </div>
     </article>
   )

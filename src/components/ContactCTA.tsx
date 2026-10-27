@@ -9,7 +9,7 @@ type Props = {
   /** Show a link back to the projects (used outside the homepage). */
   showProjectsLink?: boolean
   headingLevel?: 'h2' | 'h3'
-  /** A small square card (case studies): heading and email actions only, no illustration. */
+  /** A small card (end of case studies): heading and email actions only, no illustration. */
   card?: boolean
 }
 
@@ -57,16 +57,18 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
   if (card) {
     return (
       <section id="contact" className="contact-card" aria-labelledby="contact-title">
-        <p className="hand contact__kicker">say hi!</p>
-        <H id="contact-title" className="contact-card__title">
-          Let’s make a{' '}
-          <span className="marked">
-            connection,
-            <Underline className="marked__line" />
-          </span>{' '}
-          not just a network.
-        </H>
-        {actions}
+        <div className="contact-card__text">
+          <p className="hand contact__kicker">say hi!</p>
+          <H id="contact-title" className="contact-card__title">
+            Let’s make a{' '}
+            <span className="marked">
+              connection,
+              <Underline className="marked__line" />
+            </span>{' '}
+            not just a network.
+          </H>
+        </div>
+        <div className="contact-card__actions">{actions}</div>
       </section>
     )
   }

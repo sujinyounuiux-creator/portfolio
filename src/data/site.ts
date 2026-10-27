@@ -32,15 +32,15 @@ export const site = {
   ],
 
   // Hashtags floating around the character on Home (the "UX/UI Designer" and
-  // location stickers are separate). Tags with an href link somewhere; the rest are labels.
+  // location stickers are separate). They are plain labels, not links.
   // group sets the colour: design (blue), language (coral), it (teal).
   heroTags: [
     { label: 'English', group: 'language' },
-    { label: 'Graphic Design', href: '/#asclo', group: 'design' },
+    { label: 'Graphic Design', group: 'design' },
     { label: 'Korean', group: 'language' },
-    { label: '6 YEARS IN NETWORK ENGINEERING', href: '/about', group: 'it' },
+    { label: '6 YEARS IN NETWORK ENGINEERING', group: 'it' },
     { label: 'Japanese', group: 'language' },
-  ] as { label: string; href?: string; group: 'design' | 'language' | 'it' }[],
+  ] as { label: string; group: 'design' | 'language' | 'it' }[],
 
   // Optional: path to a résumé PDF in /public (e.g. "/resume.pdf").
   resumeUrl: '[RESUME PDF]',

@@ -836,9 +836,12 @@ button.wiggle {
 .filter:hover {
   box-shadow: 2px 3px 0 var(--c-ink);
 }
+/* the selected filter looks like the hero's "UX/UI Designer" label */
 .filter[aria-pressed='true'] {
-  background: var(--c-accent-strong);
+  border-color: var(--c-ink);
+  background: var(--c-accent-ink);
   color: #fff;
+  box-shadow: 3px 3px 0 var(--c-ink);
 }
 .filter__count {
   display: inline-grid;

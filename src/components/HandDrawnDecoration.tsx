@@ -34,12 +34,14 @@ export function CrayonDefs() {
   )
 }
 
+/** Both strokes start at the first letter and end at the last: the round caps
+ *  reach exactly the edges of the 200 wide box, which is sized to the text. */
 export function Underline({ className = '', color, draw, style }: DoodleProps) {
   return (
     <svg className={`doodle doodle-underline ${draw ? 'draw' : ''} ${className}`} viewBox="0 0 200 22" preserveAspectRatio="none" aria-hidden="true" focusable="false" style={style}>
       <g filter="url(#crayon)">
-        <path d="M4 13 C 42 6, 84 16, 122 9 S 180 6, 196 11" {...stroke(color, 6)} />
-        <path d="M18 17 C 60 12, 120 18, 176 13" {...stroke(color, 3)} opacity="0.55" />
+        <path d="M3 13 C 42 6, 84 16, 122 9 S 180 7, 197 11" {...stroke(color, 6)} />
+        <path d="M1.5 16 C 60 12, 120 18, 198.5 14" {...stroke(color, 3)} opacity="0.55" />
       </g>
     </svg>
   )

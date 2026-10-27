@@ -28,11 +28,12 @@
   white-space: nowrap;
   z-index: 0;
 }
+/* the line runs exactly under the text, first letter to last */
 .marked__line {
   position: absolute;
-  left: -4%;
+  left: 0;
   bottom: -0.12em;
-  width: 108%;
+  width: 100%;
   height: 0.38em;
   z-index: -1;
 }

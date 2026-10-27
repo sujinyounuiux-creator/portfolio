@@ -1164,36 +1164,65 @@
   height: 100%;
   object-fit: cover;
 }
+/* a quiet hairline: only there once the before side is showing */
 .compare__divider {
   position: absolute;
   top: 0;
   bottom: 0;
   left: var(--pos);
-  width: 3px;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(31, 36, 48, 0.25);
+  width: 1.5px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 6px rgba(31, 36, 48, 0.18);
   transform: translateX(-50%);
   pointer-events: none;
 }
+.compare:not(.is-touched) .compare__divider {
+  opacity: 0;
+}
+/* frosted handle with two outward chevrons: the familiar "slide sideways" sign.
+   It stays a little inside the edges so it is always easy to grab. */
 .compare__handle {
   position: absolute;
   top: 50%;
-  left: var(--pos);
+  left: clamp(26px, var(--pos), calc(100% - 26px));
+  z-index: 2;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   padding: 0;
-  border: 2px solid var(--c-ink);
+  border: 0;
   border-radius: 50%;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: var(--c-ink);
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: -0.05em;
-  box-shadow: 2px 3px 0 var(--c-ink);
+  box-shadow:
+    0 0 0 1px rgba(31, 36, 48, 0.06),
+    0 6px 18px -4px rgba(31, 36, 48, 0.35);
   transform: translate(-50%, -50%);
   cursor: ew-resize;
+  transition: background-color var(--t-fast), box-shadow var(--t-fast);
+}
+.compare__handle:hover {
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(31, 36, 48, 0.08),
+    0 8px 22px -4px rgba(31, 36, 48, 0.42);
+}
+/* until it's used, the handle nudges right a few times to invite a swipe */
+.compare:not(.is-touched) .compare__handle {
+  animation: compare-nudge 2.2s var(--ease) 0.8s 3;
+}
+@keyframes compare-nudge {
+  0%, 60%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-50%, -50%) translateX(12px); }
+  40% { transform: translate(-50%, -50%) translateX(2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .compare:not(.is-touched) .compare__handle {
+    animation: none;
+  }
 }
 .compare__handle:focus-visible {
   outline: 3px solid var(--c-accent-ink);
@@ -1205,13 +1234,20 @@
   z-index: 1;
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
-  background: rgba(31, 36, 48, 0.82);
+  background: rgba(31, 36, 48, 0.62);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease);
   color: #fff;
   font-size: var(--fs-xs);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   pointer-events: none;
+}
+.compare__label.is-shown {
+  opacity: 1;
 }
 .compare__label--before {
   left: 12px;

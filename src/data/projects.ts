@@ -583,7 +583,7 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'text',
-            body: ['Each pair is the same screen from the LastCow design file. Drag the handle (or use the arrow keys) to move between the wireframe and the final design.'],
+            body: ['Each pair is the same screen from the LastCow design file. Each opens on the final design; drag the handle to the right (or use the arrow keys) to reveal the wireframe.'],
           },
           {
             // pairs exported from the "Wireframe" and "Phone Final UI" sections of the LastCow design file
@@ -1255,7 +1255,7 @@ export const projects: Project[] = [
         blocks: [
           {
             kind: 'text',
-            body: ['The original site (before) and our redesign (after) for the two pages I mainly designed, About and Pricing. Drag the handle, or use the arrow keys, to compare.'],
+            body: ['The original site (before) and our redesign (after) for the two pages I mainly designed, About and Pricing. Each opens on the redesign; drag the handle to the right, or use the arrow keys, to reveal the original.'],
           },
           {
             kind: 'compare',

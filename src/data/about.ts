@@ -50,7 +50,7 @@ export const about = {
     { src: '/images/about/photo-4.webp', width: 660, height: 900, caption: 'on the drums', alt: 'Sujin taking a mirror selfie behind a drum kit in an orange rehearsal studio.' },
     { src: '/images/about/photo-7.webp', width: 675, height: 900, caption: 'cake & coffee', alt: 'A slice of cookies and cream cheesecake with whipped cream next to a takeaway coffee.' },
     { src: '/images/about/photo-10.webp', width: 675, height: 900, caption: 'my lovebird', alt: 'A green lovebird with a peach orange face, tucked in with its eyes closed.' },
-    { src: '/images/about/photo-8.webp', width: 506, height: 900, caption: 'color swatching', alt: 'A collage of red finds around Vancouver: “I love you” candy boxes, Mozartkugeln tins, a candy wall, Canada sweaters, a parking sign and a FIFA banner.' },
+    { src: '/images/about/photo-8.webp', width: 675, height: 900, caption: 'color swatching', alt: 'A collage of red finds around Vancouver: “I love you” candy boxes, Mozartkugeln tins, a candy wall, Canada sweaters, a parking sign and a FIFA banner.' },
     { src: '/images/about/photo-1.webp', width: 900, height: 672, caption: 'With Canadian goose', alt: 'Sujin smiling on a sandy beach in a blue cap, with a hand drawn note "With Canadian goose" pointing to a goose nearby.' },
     { src: '/images/about/photo-6.webp', width: 900, height: 675, caption: 'RIBFEST', alt: 'Pulled pork sandwich, barbecue ribs and corn on the cob on an outdoor table at Ribfest.' },
     { src: '/images/about/photo-9.webp', width: 900, height: 675, caption: 'KDD workshop', alt: 'A projected workshop slide titled “Core Values” listing six values, from continuous self development to aiming for a positive change.' },

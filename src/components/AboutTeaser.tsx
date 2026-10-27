@@ -52,7 +52,6 @@ export function AboutTeaser() {
 
           <div className="about-home__col about-home__col--photos">
             <h3 className="about-home__h3">Outside of work</h3>
-            <p className="about-home__note hand">I enjoy finding inspiration in everyday details.</p>
             {/* on Home the photos are just a glimpse: no lightbox */}
             <PhotoCollage className="collage--home" only={about.homePhotos} zoom={false} />
             <Link to="/about" className="text-link about-home__all-photos">

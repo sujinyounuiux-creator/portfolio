@@ -86,7 +86,6 @@
   overflow: hidden;
   border-radius: var(--r-lg);
   background: #fff;
-  box-shadow: var(--shadow-md);
 }
 .cs-hero__media img {
   width: 100%;
@@ -273,7 +272,6 @@
   border-left: 4px solid var(--p-accent);
   border-radius: var(--r-sm);
   background: var(--c-surface);
-  box-shadow: var(--shadow-sm);
   font-weight: 600;
 }
 .cs-quotes figcaption {
@@ -356,12 +354,10 @@
   overflow: hidden;
   border-radius: var(--r-sm);
   background: #fff;
-  box-shadow: var(--shadow-sm);
   transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
 }
 .cs-pages__item:hover .cs-pages__window {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
 }
 .cs-pages__bar {
   display: flex;
@@ -507,7 +503,6 @@
 .cs-feature__media .cs-figure__frame {
   border: 0;
   border-radius: var(--r-md);
-  box-shadow: 0 12px 28px -14px rgba(31, 36, 48, 0.35);
 }
 /* plain: images sit straight on the page, no tinted panel behind them */
 .cs-feature__media--plain {
@@ -758,7 +753,6 @@
   overflow: hidden;
   border-radius: var(--r-md);
   background: #fff;
-  box-shadow: var(--shadow-sm);
 }
 .cs-figure__frame img,
 .cs-figure__scroll img {
@@ -786,7 +780,6 @@
   border: 0;
   border-radius: var(--r-lg);
   background: #444444;
-  box-shadow: var(--shadow-md);
 }
 .cs-figure--wide figcaption {
   margin-top: var(--s-3);
@@ -850,14 +843,26 @@
 }
 
 /* prev / next: preview cards with each project's main image */
-.cs-pager {
+/* end of a case study: previous, next and a Contact square in one row */
+.cs-more {
   display: grid;
   gap: var(--s-4);
   margin-top: var(--s-7);
+  padding-bottom: var(--s-7);
+}
+.cs-pager {
+  display: grid;
+  gap: var(--s-4);
 }
 @media (min-width: 640px) {
   .cs-pager {
     grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 960px) {
+  .cs-more {
+    grid-template-columns: 2fr 1fr;
+    align-items: stretch;
   }
 }
 .cs-pager__card {
@@ -889,8 +894,8 @@
 }
 .cs-pager__text {
   display: grid;
-  gap: 0.2rem;
-  padding: var(--s-4) var(--s-5) var(--s-5);
+  gap: 0.15rem;
+  padding: var(--s-3) var(--s-4) var(--s-4);
 }
 .cs-pager__card--next .cs-pager__text {
   text-align: right;
@@ -913,7 +918,7 @@
   transform: translateX(4px);
 }
 .cs-pager__title {
-  font-size: var(--fs-h3);
+  font-size: var(--fs-lg);
   font-weight: 800;
   line-height: 1.15;
 }
@@ -939,13 +944,15 @@
 }
 
 /* ── Device mockups (CSS only; screens keep their real proportions) ──
-   Drawn after a current MacBook and iPhone: thin even bezels, a camera notch on the
-   laptop, a flat aluminium base, and on the phone a frame band, Dynamic Island and side buttons. */
+   Drawn after a current MacBook and iPhone, with no drop shadows (so captions stay clear):
+   brushed metal edges that catch the light, deep black glass with a glare streak, a camera
+   notch and an aluminium base on the laptop, and a titanium band, Dynamic Island and side
+   buttons on the phone. */
 .device {
   margin: 0;
 }
 .device figcaption {
-  margin-top: var(--s-3);
+  margin-top: var(--s-4);
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
   text-align: center;
@@ -956,60 +963,48 @@
 .device__laptop {
   position: relative;
 }
-/* soft contact shadow where the laptop meets the surface */
-.device__laptop::after {
-  content: '';
-  position: absolute;
-  left: -2%;
-  right: -2%;
-  bottom: -14px;
-  height: 18px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(31, 36, 48, 0.28), transparent);
-  z-index: -1;
-}
 .device__lid {
   position: relative;
-  padding: 1.5% 1.5% 1.8%;
-  border-radius: 18px 18px 8px 8px;
-  /* glossy black bezel, a touch lighter at the top edge */
-  background: linear-gradient(#1c1c20, #0a0a0c 6%, #0a0a0c);
-  /* the thin aluminium rim around the lid */
-  box-shadow:
-    0 0 0 1.5px #c3c5ca,
-    0 0 0 2.5px #9a9ca2,
-    0 24px 40px -24px rgba(31, 36, 48, 0.55);
+  padding: 1.35% 1.35% 1.6%;
+  border: clamp(2px, 0.32vw, 4px) solid transparent;
+  border-radius: 20px 20px 10px 10px;
+  /* black glass inside a brushed aluminium edge, lit from above */
+  background:
+    linear-gradient(180deg, #19191c, #050506 7%, #050506) padding-box,
+    linear-gradient(180deg, #f6f7f9 0%, #c7c9ce 16%, #e7e8eb 48%, #b4b6bb 78%, #8c8e94 100%) border-box;
 }
 .device__notch {
-  /* camera notch at the top of the display */
+  /* camera notch at the top of the display, with the lens */
   position: absolute;
-  top: 1.4%;
+  top: 1.3%;
   left: 50%;
   z-index: 2;
-  width: 11%;
-  height: 3.2%;
+  width: 10.5%;
+  height: 3.1%;
   border-radius: 0 0 9px 9px;
-  background: radial-gradient(circle at 50% 42%, #26303a 0 2px, #0b0b0d 3px);
+  background: radial-gradient(circle at 50% 44%, #3a4a5c 0 1.5px, #141c25 2.5px, #050506 3.5px);
   transform: translateX(-50%);
-}
-.device__laptop .device__screen {
-  border-radius: 10px 10px 2px 2px;
-}
-/* a faint diagonal reflection on the glass of both devices */
-.device__screen::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(118deg, rgba(255, 255, 255, 0.1) 0 28%, rgba(255, 255, 255, 0) 28.4%);
-  border-radius: inherit;
 }
 .device__screen {
   position: relative;
   overflow: hidden;
   border-radius: 3px;
   background: #fff;
+}
+.device__laptop .device__screen {
+  border-radius: 8px 8px 2px 2px;
+  /* a fine black edge where the glass meets the bezel */
+  outline: 1px solid #000;
+}
+/* glare on the glass: a soft diagonal streak, strongest at the top left */
+.device__screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(112deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 32%, rgba(255, 255, 255, 0) 32.4%);
 }
 .device__screen img {
   display: block;
@@ -1030,16 +1025,12 @@
   display: none;
 }
 .device__base {
-  /* flat aluminium base, a little wider than the lid, with a soft front lip */
+  /* aluminium base: bright top edge, then the curved front lip falling into shade */
   position: relative;
-  height: clamp(9px, 1.25vw, 16px);
-  margin-inline: -6%;
-  border-radius: 3px 3px 16px 16px / 3px 3px 12px 12px;
-  background: linear-gradient(#f2f3f5, #d7d9dd 40%, #b9bbc0 75%, #9fa1a7);
-  box-shadow:
-    inset 0 2px 0 #6f7177,
-    inset 0 3px 0 rgba(255, 255, 255, 0.6),
-    0 12px 20px -12px rgba(31, 36, 48, 0.5);
+  height: clamp(11px, 1.5vw, 20px);
+  margin-inline: -6.5%;
+  border-radius: 2px 2px 26px 26px / 2px 2px 16px 16px;
+  background: linear-gradient(180deg, #fbfbfc 0%, #e6e8eb 20%, #d0d2d6 52%, #a7a9af 80%, #7e8086 100%);
 }
 .device__base::after {
   /* thumb scoop for opening the lid */
@@ -1047,42 +1038,41 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 15%;
-  height: 46%;
-  border-radius: 0 0 12px 12px;
-  background: linear-gradient(#c3c5ca, #b1b3b8);
+  width: 14%;
+  height: 44%;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(#b3b5ba, #d6d8dc);
   transform: translateX(-50%);
 }
 
 .device--phone {
-  width: min(290px, 100%);
+  width: min(300px, 100%);
 }
 .device__phone {
   position: relative;
-  padding: 7px;
-  border: 3.5px solid transparent;
-  border-radius: 52px;
-  /* black glass inside a brushed metal band that catches the light */
+  padding: 6px;
+  border: 4px solid transparent;
+  border-radius: 54px;
+  /* black glass in a polished titanium band with several highlights */
   background:
-    linear-gradient(#0b0b0d, #0b0b0d) padding-box,
-    linear-gradient(140deg, #f0f1f3, #9b9ea4 22%, #e2e4e7 48%, #8c8f95 74%, #d4d6da) border-box;
-  box-shadow:
-    0 0 0 0.5px #6f7177,
-    0 26px 40px -22px rgba(31, 36, 48, 0.6);
+    linear-gradient(#050506, #050506) padding-box,
+    linear-gradient(145deg, #f8f9fa 0%, #a1a4aa 15%, #eff1f3 33%, #878a90 57%, #dcdee1 79%, #989ba1 100%) border-box;
+  /* a thin dark line where the band meets the glass */
+  box-shadow: inset 0 0 0 1.5px #202024;
 }
 .device__phone .device__screen {
-  border-radius: 43px;
+  border-radius: 45px;
 }
 /* side buttons: action and volume on the left, power on the right */
 .device__btn {
   position: absolute;
-  width: 3px;
-  background: linear-gradient(90deg, #a7a9ae, #d6d8dc);
+  width: 3.5px;
+  background: linear-gradient(90deg, #8f9298, #e3e5e8 60%, #a6a9ae);
 }
 .device__btn--action,
 .device__btn--vol-up,
 .device__btn--vol-down {
-  left: -9px;
+  left: -10.5px;
   border-radius: 2px 0 0 2px;
 }
 .device__btn--action { top: 17%; height: 4.5%; }
@@ -1090,7 +1080,7 @@
 .device__btn--vol-down { top: 35%; height: 8%; }
 .device__btn--power {
   top: 27%;
-  right: -9px;
+  right: -10.5px;
   height: 12%;
   border-radius: 0 2px 2px 0;
 }
@@ -1098,14 +1088,15 @@
   aspect-ratio: 402 / 874;
 }
 .device__island {
+  /* Dynamic Island with the front camera lens on its right */
   position: absolute;
-  top: 15px;
+  top: 14px;
   left: 50%;
   z-index: 2;
   width: 29%;
-  height: 21px;
+  height: 22px;
   border-radius: 999px;
-  background: #000;
+  background: radial-gradient(circle at 80% 50%, #34465a 0 2px, #101820 3px, #000 4.5px);
   transform: translateX(-50%);
 }
 
@@ -1132,11 +1123,11 @@
   align-items: flex-start;
 }
 .devices--phone .device--phone {
-  width: min(280px, 100%);
+  width: min(300px, 100%);
 }
 @media (min-width: 560px) {
   .devices--phone .device--phone {
-    width: min(280px, calc(50% - 1.25rem));
+    width: min(300px, calc(50% - 1.25rem));
   }
 }
 
@@ -1258,7 +1249,7 @@
 
 /* phone comparisons: a tidy 2 × 2 grid */
 .compare-set {
-  max-width: 640px;
+  max-width: 700px;
   margin-inline: auto;
 }
 /* keep the labels clear of the dynamic island */
@@ -1338,7 +1329,6 @@
   overflow: hidden;
   border-radius: var(--r-md);
   background: #fff;
-  box-shadow: var(--shadow-sm);
 }
 .cs-embed__frame iframe {
   display: block;
@@ -1400,7 +1390,6 @@
   border: 0;
   border-radius: var(--r-lg);
   background: transparent;
-  box-shadow: var(--shadow-md);
 }
 
 /* kit: UI components as labelled white tiles */
@@ -1426,7 +1415,6 @@
   overflow: hidden;
   border-radius: var(--r-md);
   background: #fff;
-  box-shadow: var(--shadow-sm);
 }
 .cs-kit__label {
   margin-top: var(--s-2);

@@ -455,46 +455,38 @@
   }
 }
 
-/* compact Contact (case studies): one slim row under the project cards */
-.contact--compact {
-  padding-block: var(--s-5) var(--s-7);
-}
-.contact--compact .contact__inner {
-  gap: var(--s-3);
-  padding: clamp(1.1rem, 3vw, 1.6rem) clamp(1.25rem, 4vw, 2.25rem);
-  box-shadow: 4px 4px 0 var(--c-ink);
-}
-.contact--compact .contact__text {
+/* Contact as a small square card (case studies): heading and email actions only */
+.contact-card {
   display: grid;
-  gap: var(--s-3) var(--s-5);
-  align-items: center;
+  align-content: center;
+  gap: var(--s-3);
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  border: var(--border);
+  border-radius: var(--r-lg);
+  background: var(--c-accent-wash);
 }
-.contact--compact .contact__kicker {
+.contact-card .contact__kicker {
   font-size: var(--fs-note);
 }
-.contact--compact .contact__title {
-  font-size: clamp(1.35rem, 1.05rem + 1vw, 1.9rem);
+.contact-card__title {
+  font-size: clamp(1.2rem, 1rem + 0.6vw, 1.45rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
-.contact--compact .contact__actions,
-.contact--compact .contact__email {
+.contact-card .contact__actions,
+.contact-card .contact__email {
   margin-top: 0;
 }
-.contact--compact .contact__email-btn {
-  min-height: 48px;
+.contact-card .contact__actions {
+  gap: var(--s-2);
+}
+.contact-card .btn {
+  min-height: 44px;
+  padding-inline: 1.05rem;
   font-size: var(--fs-sm);
 }
-@media (min-width: 860px) {
-  .contact--compact .contact__inner {
-    grid-template-columns: 1fr;
-  }
-  .contact--compact .contact__text {
-    grid-template-columns: 1fr auto;
-    grid-template-areas: 'kicker actions' 'title actions' 'title email';
-  }
-  .contact--compact .contact__kicker { grid-area: kicker; }
-  .contact--compact .contact__title { grid-area: title; }
-  .contact--compact .contact__actions { grid-area: actions; justify-content: flex-end; }
-  .contact--compact .contact__email { grid-area: email; justify-content: flex-end; }
+.contact-card .contact__email {
+  font-size: var(--fs-sm);
 }
 
 /* ── Zoomable photos + lightbox (used on every page) ── */

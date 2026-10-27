@@ -9,11 +9,11 @@ type Props = {
   /** Show a link back to the projects (used outside the homepage). */
   showProjectsLink?: boolean
   headingLevel?: 'h2' | 'h3'
-  /** A slim one-row version (case studies): heading and email actions only. */
-  compact?: boolean
+  /** A small square card (case studies): heading and email actions only, no illustration. */
+  card?: boolean
 }
 
-export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', compact = false }: Props) {
+export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', card = false }: Props) {
   const [copied, setCopied] = useState<'idle' | 'ok' | 'fail'>('idle')
 
   const copy = async () => {
@@ -26,8 +26,53 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
     window.setTimeout(() => setCopied('idle'), 2500)
   }
 
+  const actions = (
+    <>
+      <div className="contact__actions">
+        {/* the main action: dark with white text, like the "UX/UI Designer" label */}
+        <a className="btn contact__email-btn" href={`mailto:${site.email}`}>
+          Email me <span className="arrow" aria-hidden="true">→</span>
+        </a>
+        <button type="button" className="btn btn--ghost" onClick={copy}>
+          Copy email
+        </button>
+        {showProjectsLink && (
+          <Link className="btn btn--ghost" to="/work">
+            See projects
+          </Link>
+        )}
+      </div>
+      <p className="contact__email">
+        <a className="text-link" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+        <span className="contact__status" role="status" aria-live="polite">
+          {copied === 'ok' && 'Copied!'}
+          {copied === 'fail' && 'Couldn’t copy. Please select the address instead.'}
+        </span>
+      </p>
+    </>
+  )
+
+  if (card) {
+    return (
+      <section id="contact" className="contact-card" aria-labelledby="contact-title">
+        <p className="hand contact__kicker">say hi!</p>
+        <H id="contact-title" className="contact-card__title">
+          Let’s make a{' '}
+          <span className="marked">
+            connection,
+            <Underline className="marked__line" />
+          </span>{' '}
+          not just a network.
+        </H>
+        {actions}
+      </section>
+    )
+  }
+
   return (
-    <section id="contact" className={`contact ${compact ? 'contact--compact' : ''}`} aria-labelledby="contact-title">
+    <section id="contact" className="contact" aria-labelledby="contact-title">
       <div className="container contact__inner">
         <div className="contact__text">
           <p className="hand contact__kicker">say hi!</p>
@@ -41,45 +86,19 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
             </span>{' '}
             <span className="contact__line">not just a network.</span>
           </H>
-          {!compact && (
           <p className="contact__lede">
             I’m looking for junior UI/UX and product design roles in Canada. I’d love to hear about your team and the problems
             you’re solving.
           </p>
-          )}
 
-          <div className="contact__actions">
-            {/* the main action: dark with white text, like the "UX/UI Designer" label */}
-            <a className="btn contact__email-btn" href={`mailto:${site.email}`}>
-              Email me <span className="arrow" aria-hidden="true">→</span>
-            </a>
-            <button type="button" className="btn btn--ghost" onClick={copy}>
-              Copy email
-            </button>
-            {showProjectsLink && (
-              <Link className="btn btn--ghost" to="/work">
-                See projects
-              </Link>
-            )}
-          </div>
-          <p className="contact__email">
-            <a className="text-link" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
-            <span className="contact__status" role="status" aria-live="polite">
-              {copied === 'ok' && 'Copied!'}
-              {copied === 'fail' && 'Couldn’t copy. Please select the address instead.'}
-            </span>
-          </p>
-          {!compact && <SocialLinks />}
+          {actions}
+          <SocialLinks />
         </div>
 
-        {!compact && (
-          <div className="contact__art" aria-hidden="true">
-            <Sparkle className="contact__sparkle" />
-            <CharacterIllustration />
-          </div>
-        )}
+        <div className="contact__art" aria-hidden="true">
+          <Sparkle className="contact__sparkle" />
+          <CharacterIllustration />
+        </div>
       </div>
     </section>
   )

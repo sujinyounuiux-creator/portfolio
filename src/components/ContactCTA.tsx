@@ -30,12 +30,14 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2' }:
         <div className="contact__text">
           <p className="hand contact__kicker">say hi!</p>
           <H id="contact-title" className="contact__title">
-            Let’s build something{' '}
-            <span className="marked">
-              useful
-              <Underline className="marked__line" draw />
+            <span className="contact__line">
+              Let’s make a{' '}
+              <span className="marked">
+                connection,
+                <Underline className="marked__line" draw />
+              </span>
             </span>{' '}
-            together.
+            <span className="contact__line">not just a network.</span>
           </H>
           <p className="contact__lede">
             I’m looking for junior UI/UX and product design roles in Canada. I’d love to hear about your team and the problems
@@ -43,7 +45,8 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2' }:
           </p>
 
           <div className="contact__actions">
-            <a className="btn btn--accent" href={`mailto:${site.email}`}>
+            {/* the main action: dark with white text, like the "UX/UI Designer" label */}
+            <a className="btn contact__email-btn" href={`mailto:${site.email}`}>
               Email me <span className="arrow" aria-hidden="true">→</span>
             </a>
             <button type="button" className="btn btn--ghost" onClick={copy}>

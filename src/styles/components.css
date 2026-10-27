@@ -381,7 +381,16 @@
 .contact__title {
   font-size: var(--fs-h1);
   letter-spacing: -0.03em;
-  max-width: 16ch;
+}
+/* two lines on wider screens: "Let’s make a connection," / "not just a network." */
+@media (min-width: 860px) {
+  .contact__title {
+    font-size: clamp(2.1rem, 1.1rem + 2.1vw, 3rem);
+  }
+  .contact__line {
+    display: block;
+    white-space: nowrap;
+  }
 }
 .contact__lede {
   margin-top: var(--s-4);
@@ -391,8 +400,22 @@
 .contact__actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--s-3);
   margin-top: var(--s-5);
+}
+/* Email me is the section's focus: dark with white text, like the "UX/UI Designer" label */
+.contact__email-btn {
+  --btn-bg: var(--c-accent-ink);
+  --btn-fg: #fff;
+  min-height: 56px;
+  padding-inline: 1.75rem;
+  border-color: var(--c-ink);
+  font-size: var(--fs-base);
+  box-shadow: 3px 3px 0 var(--c-ink);
+}
+.contact__email-btn:hover {
+  box-shadow: 5px 5px 0 var(--c-ink);
 }
 .contact__email {
   display: flex;
@@ -412,9 +435,8 @@
 }
 .contact__art {
   position: relative;
-  display: none;
-  width: 220px;
-  justify-self: end;
+  width: min(260px, 64vw);
+  justify-self: center;
 }
 .contact__sparkle {
   position: absolute;
@@ -427,7 +449,8 @@
     grid-template-columns: 1fr auto;
   }
   .contact__art {
-    display: block;
+    width: clamp(300px, 32vw, 380px);
+    justify-self: end;
   }
 }
 

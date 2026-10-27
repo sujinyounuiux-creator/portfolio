@@ -31,6 +31,16 @@ export const site = {
     { label: 'Visual Design', href: '/work?category=visual', primary: false },
   ],
 
+  // Hashtags floating around the character on Home (the "UX/UI Designer" and
+  // location stickers are separate). Tags with an href link somewhere; the rest are labels.
+  heroTags: [
+    { label: 'English' },
+    { label: 'Graphic Design', href: '/#asclo' },
+    { label: 'Korean' },
+    { label: '6 years network engineer', href: '/about' },
+    { label: 'Japanese' },
+  ] as { label: string; href?: string }[],
+
   // Optional: path to a résumé PDF in /public (e.g. "/resume.pdf").
   resumeUrl: '[RESUME PDF]',
 }

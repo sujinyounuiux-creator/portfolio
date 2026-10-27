@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { StampableCharacter } from './StampableCharacter'
-import { Arrow, Underline } from './HandDrawnDecoration'
+import { Underline } from './HandDrawnDecoration'
 
 /**
- * Home hero. The illustrated character is the focal point. The role and
- * design specialties float around it as stickers (UX/UI first and largest);
+ * Home hero. The illustrated character is the focal point. The role, a few
+ * hashtags (site.heroTags) and the location float around it as stickers;
  * name, "portfolio" and slogan sit beside it. Visitors can decorate the
  * character with stamps.
  */
 export function HeroSection() {
   const [lead, last] = splitSlogan(site.slogan)
-  const [primary, ...others] = site.specialties
+  const [primary] = site.specialties
 
   return (
     <section className="hero" aria-labelledby="hero-title">
@@ -19,7 +19,7 @@ export function HeroSection() {
         <div className="hero__copy">
           <h1 id="hero-title" className="hero__title">
             <span className="hero__hi hand">
-              hi, I’m <Arrow className="hero__hi-arrow" />
+              hi, I’m
             </span>
             <span className="hero__name">{site.name}</span>
             <span className="hero__word">portfolio</span>
@@ -37,17 +37,21 @@ export function HeroSection() {
           <StampableCharacter label={`Illustrated portrait of ${site.name}, smiling and waving`}>
             <div className="hero__blob" aria-hidden="true" />
 
-            <ul className="hero__labels" aria-label="Role and design specialties">
+            <ul className="hero__labels" aria-label="Role, skills, languages and location">
               <li className="hero__label hero__label--role">
                 <Link to={primary.href} className="specialty specialty--primary specialty--role">
                   {site.role}
                 </Link>
               </li>
-              {others.map((s, i) => (
-                <li key={s.label} className={`hero__label hero__label--${i + 1}`}>
-                  <Link to={s.href} className="specialty">
-                    #{s.label}
-                  </Link>
+              {site.heroTags.map((t, i) => (
+                <li key={t.label} className={`hero__label hero__label--tag${i + 1}`}>
+                  {t.href ? (
+                    <Link to={t.href} className="specialty">
+                      #{t.label}
+                    </Link>
+                  ) : (
+                    <span className="specialty">#{t.label}</span>
+                  )}
                 </li>
               ))}
               <li className="hero__label hero__label--place">

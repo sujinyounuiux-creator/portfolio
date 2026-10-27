@@ -158,9 +158,6 @@ button.wiggle {
   color: var(--c-accent-ink);
   transform: rotate(-3deg);
 }
-.hero__hi-arrow {
-  display: none;
-}
 .hero__name {
   margin-top: 0.2em;
   font-size: clamp(1.6rem, 1.05rem + 2.2vw, 2.9rem);
@@ -374,9 +371,12 @@ button.wiggle {
 }
 .hero__label--role { top: -10%; left: -6%; }
 .hero__label--role .specialty { font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); min-height: 50px; padding-inline: 1.4rem; }
-.hero__label--1 { top: 36%; right: -12%; }
-
-.hero__label--2 { bottom: 20%; right: -8%; }
+/* hashtags: four down the right side, one on the left under the waving hand */
+.hero__label--tag1 { top: 4%; right: -4%; }
+.hero__label--tag2 { top: 28%; right: -14%; }
+.hero__label--tag3 { top: 52%; right: -10%; }
+.hero__label--tag4 { bottom: 16%; right: -16%; }
+.hero__label--tag5 { top: 60%; left: -14%; }
 
 .hero__label--place { bottom: 2%; left: -6%; }
 .hero__label--place .sticker { --tilt: -5deg; color: var(--c-ink); }
@@ -386,8 +386,13 @@ button.wiggle {
 @media (max-width: 479px) {
   /* keep the floating labels inside narrow screens */
   .hero__label--role { left: -4%; }
-  .hero__label--1 { right: -4%; top: 40%; }
-  .hero__label--2 { right: -2%; bottom: 16%; }
+  .hero__label--tag1 { top: 2%; right: -2%; }
+  .hero__label--tag2 { top: 27%; right: -4%; }
+  .hero__label--tag3 { top: 50%; right: -4%; }
+  /* the longest tag drops just below the hoodie, clear of "Vancouver, BC" */
+  .hero__label--tag4 { bottom: -14%; right: -2%; }
+  .hero__figure + .stamp-bar { margin-top: 3.4rem; }
+  .hero__label--tag5 { top: 58%; left: -4%; }
   .hero__label--place { left: -2%; }
   .hero__label .specialty:not(.specialty--role) { min-height: 36px; padding: 0.3rem 0.75rem; font-size: var(--fs-xs); }
 }
@@ -410,14 +415,6 @@ button.wiggle {
     width: 100%;
     max-width: 500px;
     justify-self: center;
-  }
-  .hero__hi-arrow {
-    display: block;
-    position: absolute;
-    left: calc(100% + 0.5rem);
-    top: -0.4em;
-    width: 72px;
-    transform: rotate(-8deg);
   }
 }
 

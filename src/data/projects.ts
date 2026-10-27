@@ -642,18 +642,11 @@ export const projects: Project[] = [
         ],
       },
       {
+        // the final screens already appear in Wireframes → hi fi, so this section is just the prototype
         id: 'final',
         label: 'Prototype',
-        title: 'Final screens & prototype',
+        title: 'Interactive prototype',
         blocks: [
-          {
-            kind: 'devices',
-            device: 'phone',
-            screens: [
-              screen('lastcow-phone-home', 'LastCow home screen: Vancouver location, search bar and event cards for the Vancouver Bird Celebration and The Strokes with prices and 24 hour price changes.', 'Home: events near you', 600, 1303),
-              screen('lastcow-phone-event', 'LastCow event details screen: event photo, title, venue, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details', 600, 1305),
-            ],
-          },
           {
             // Sujin's Figma prototype (node 632:2106), embedded with Figma's prototype embed URL
             kind: 'embed',

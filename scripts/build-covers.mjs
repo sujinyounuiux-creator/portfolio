@@ -81,7 +81,7 @@ const projects = {
     title: ['Open Door', 'Yoga'],
     titleFont: "Georgia, 'Times New Roman', serif",
     titleSize: 80,
-    subtitle: ['A calmer, clearer website for', 'an East Vancouver yoga studio'],
+    subtitle: ['Redesigning the', 'Open Door Yoga Website'],
     tags: ['Heuristic review', 'Style guide', 'Pricing & About'],
     back: { src: 'design-exports/yoga-home.png', extract: { left: 0, top: 0, width: 1075, height: 605 } },
     front: { src: 'design-exports/yoga-pricing.png', extract: { left: 0, top: 0, width: 1114, height: 627 } },

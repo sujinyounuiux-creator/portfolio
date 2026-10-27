@@ -414,6 +414,112 @@
   color: var(--c-ink-soft);
   text-align: center;
 }
+/* full: every page shown whole, side by side (e.g. wireframes); click to see one larger */
+.cs-pages--full .cs-pages__list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+.cs-pages--full .cs-pages__window .zoom img {
+  aspect-ratio: auto;
+}
+
+/* annotated: real screens with problem areas boxed, a colour key and numbered notes */
+.cs-annotated {
+  --h-visibility: #7c4dbd;
+  --h-recognition: #d64545;
+  --h-consistency: #c67a0c; /* a touch darker than the box colour so the text stays readable */
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: var(--s-2);
+}
+.cs-annotated__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+.cs-annotated__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+/* a small dashed box, like the ones on the screens */
+.cs-annotated__key::before {
+  content: '';
+  width: 1.1rem;
+  height: 0.8rem;
+  border: 2px dashed var(--c);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+}
+.cs-annotated__key--visibility,
+.cs-annotated__note--visibility { --c: var(--h-visibility); }
+.cs-annotated__key--recognition,
+.cs-annotated__note--recognition { --c: var(--h-recognition); }
+.cs-annotated__key--consistency,
+.cs-annotated__note--consistency { --c: var(--h-consistency); }
+.cs-annotated__panel {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: clamp(0.75rem, 2.5vw, 1.25rem);
+  border-radius: var(--r-lg);
+  background: var(--p-surface);
+}
+@media (min-width: 900px) {
+  .cs-annotated__panel {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+  }
+}
+.cs-annotated__shot {
+  overflow: hidden;
+  border-radius: var(--r-sm);
+}
+.cs-annotated__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cs-annotated__label {
+  margin: 0 0 var(--s-3);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+.cs-annotated__notes ol {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cs-annotated__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.55;
+}
+.cs-annotated__num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--c);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
 
 /* stats: a row of key numbers */
 .cs-stats {

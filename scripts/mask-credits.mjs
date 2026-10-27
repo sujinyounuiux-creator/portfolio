@@ -13,6 +13,8 @@ const jobs = [
   { file: 'yoga-about.png', frameW: 1440, rects: [[68, 3284, 266, 14]] },
   { file: 'yoga-mobile-pricing.png', frameW: 402, yOffset: 14, rects: [[25, 4506, 233, 13]] },
   { file: 'yoga-wireframe-pricing.png', frameW: 1440, rects: [[44, 3037, 160, 12]] },
+  { file: 'yoga-wireframe-home.png', frameW: 1440, rects: [[45, 2891, 160, 12]] },
+  { file: 'yoga-wireframe-training.png', frameW: 1440, rects: [[44, 4420, 160, 12]] },
   { file: 'yoga-components.png', frameW: 3587, rects: [[2119, 1764, 266, 14], [2119, 2169, 266, 14]] },
   // LastCow cover: team names line under the tagline (stops before the phone mockup)
   { file: 'lastcow-cover.png', frameW: 1920, rects: [[594, 657, 530, 56]] },

@@ -181,9 +181,41 @@ function BlockView({ block }: { block: Block }) {
           ))}
         </ul>
       )
+    case 'annotated':
+      return (
+        <div className="cs-annotated">
+          <ul className="cs-annotated__legend" aria-label="Colour key">
+            {block.legend.map((l) => (
+              <li key={l.type} className={`cs-annotated__key cs-annotated__key--${l.type}`}>
+                {l.label}
+              </li>
+            ))}
+          </ul>
+          {block.panels.map((p) => (
+            <figure key={p.label} className="cs-annotated__panel">
+              <div className="cs-annotated__shot">
+                <ZoomImage figure={p.figure} />
+              </div>
+              <figcaption className="cs-annotated__notes">
+                <p className="cs-annotated__label">{p.label}</p>
+                <ol>
+                  {p.notes.map((n) => (
+                    <li key={n.n} className={`cs-annotated__note cs-annotated__note--${n.type}`}>
+                      <span className="cs-annotated__num" aria-hidden="true">
+                        {n.n}
+                      </span>
+                      <span>{n.text}</span>
+                    </li>
+                  ))}
+                </ol>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )
     case 'pages':
       return (
-        <figure className="cs-pages">
+        <figure className={`cs-pages ${block.full ? 'cs-pages--full' : ''}`}>
           <ol className="cs-pages__list">
             {block.items.map((p, i) => (
               <li key={p.label} className="cs-pages__item">

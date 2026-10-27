@@ -26,6 +26,9 @@ export type Figure = {
 
 export type Swatch = { name: string; hex: string; usage?: string }
 
+/** Heuristics marked on the annotated screens (colours match scripts/build-yoga-annotations.mjs). */
+export type Heuristic = 'visibility' | 'recognition' | 'consistency'
+
 export type Block =
   | { kind: 'text'; body: string[] }
   | { kind: 'list'; intro?: string; items: string[] }
@@ -51,7 +54,9 @@ export type Block =
   /** Click through prototype: real screens shown one step at a time in a laptop. */
   | { kind: 'walkthrough'; steps: { title: string; note: string; figure: Figure }[] }
   /** Website pages shown as small browser windows (top of each page; click to see all of it). */
-  | { kind: 'pages'; caption?: string; items: { label: string; figure: Figure }[] }
+  | { kind: 'pages'; caption?: string; full?: boolean; items: { label: string; figure: Figure }[] }
+  /** Screens of a page with the problem areas boxed and numbered, a colour legend, and a note per number. */
+  | { kind: 'annotated'; legend: { type: Heuristic; label: string }[]; panels: { label: string; figure: Figure; notes: { n: number; type: Heuristic; text: string }[] }[] }
   /** UI kit: real components as labelled tiles in a grid (wide tiles span the full row). */
   | { kind: 'kit'; items: { label: string; note: string; figure: Figure }[] }
   /** Embedded live Figma file, with an optional link to the interactive prototype. */
@@ -129,13 +134,13 @@ const wire = (name: string, alt: string, caption: string, height: number): Figur
   height,
 })
 
-/** A full page of the original Open Door Yoga site, captured from the live site (see scripts/prepare-yoga-audit.mjs). */
-const audit = (name: string, alt: string, height: number): Figure => ({
-  src: `/images/yoga-audit/${name}.webp`,
+/** Part of an original Open Door Yoga page with its problem areas marked (see scripts/build-yoga-annotations.mjs). */
+const issues = (name: string, alt: string, height: number): Figure => ({
+  src: `/images/projects/yoga-issues-${name}.webp`,
   alt,
-  width: 1600,
+  width: 1200,
   height,
-  tall: true,
+  zoom: true,
 })
 
 /** A grayscale low fi Cookpad wireframe (SVG, 960 px wide) drawn by scripts/build-cookpad-wireframes.mjs. */
@@ -1006,14 +1011,14 @@ export const projects: Project[] = [
     title: 'Open Door Yoga',
     disciplines: ['ux-ui', 'visual'],
     featured: true,
-    tagline: 'A calmer, clearer website for an East Vancouver yoga studio',
+    tagline: 'Redesigning the Open Door Yoga Website',
     summary:
       'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing.',
     category: 'Website · Redesign',
     platform: 'Website',
     role: 'UX/UI Design',
     timeline: '2026.08 to 2026.09',
-    team: 'Group project, 3 designers',
+    team: '3 designers',
     tools: ['Figma', 'html.to.design'],
     // cover: built by scripts/build-covers.mjs from the real redesigned pages
     thumbnail: img('yoga-cover', 'Open Door Yoga redesign cover: the new Home and Passes & Pricing pages in browser windows, and the 12 Month Pass card.', undefined, 1600, 900),
@@ -1056,7 +1061,7 @@ export const projects: Project[] = [
           {
             kind: 'text',
             body: [
-              'We imported the live opendooryoga.bc.ca pages into Figma (with html.to.design) and reviewed them with Nielsen’s 10 usability heuristics, walking through three key tasks a first time student would try.',
+              'We imported the live opendooryoga.bc.ca pages into Figma (with html.to.design) and reviewed them with Nielsen’s 10 usability heuristics, walking through three key tasks a first time student would try. The screens below mark the problem areas we found, coloured by the heuristic each one breaks.',
             ],
           },
           {
@@ -1086,18 +1091,45 @@ export const projects: Project[] = [
             ],
           },
           {
-            // the seven pages we audited, captured at full length from opendooryoga.bc.ca
-            // (scripts/prepare-yoga-audit.mjs); this replaces the dark audit board image
-            kind: 'pages',
-            caption: 'The seven existing pages we reviewed across the three key tasks (captured from the studio’s live site). Click a page to see all of it.',
-            items: [
-              { label: 'Home', figure: audit('home', 'Original Open Door Yoga home page: hero photo, class and training promos, pass offers, teachers and workshops.', 8938) },
-              { label: 'About', figure: audit('about', 'Original About page: photo header, a long welcome text, our story and our vision.', 4968) },
-              { label: 'Schedule', figure: audit('schedule', 'Original Schedule page: notes about booking and an embedded class schedule.', 2431) },
-              { label: 'Teacher Training', figure: audit('training', 'Original Teacher Training page: long program description, curriculum, schedule, tuition, faculty and FAQ.', 8444) },
-              { label: 'Passes', figure: audit('passes', 'Original Passes & Pricing page: first time student offer and pass options.', 3521) },
-              { label: 'Workshops', figure: audit('workshops', 'Original Workshops page: a list of upcoming workshops with dates and descriptions.', 1833) },
-              { label: 'Contact', figure: audit('contact', 'Original Contact page: address, entry instructions and a contact form.', 3991) },
+            // problem areas on the live opendooryoga.bc.ca pages, boxed by the heuristic they break
+            // (scripts/build-yoga-annotations.mjs); findings from the team's evaluation slides in Figma
+            kind: 'annotated',
+            legend: [
+              { type: 'visibility', label: 'Visibility of system status' },
+              { type: 'recognition', label: 'Recognition rather than recall' },
+              { type: 'consistency', label: 'Consistency and standards' },
+            ],
+            panels: [
+              {
+                label: 'Home, top of the page',
+                figure: issues('home-top', 'Original home page header: the menu over the hero photo, with Current Schedule highlighted in green and boxed.', 480),
+                notes: [{ n: 1, type: 'visibility', text: 'The menu doesn’t show where you are. On the Home page, the highlighted item is Current Schedule.' }],
+              },
+              {
+                label: 'Home, passes',
+                figure: issues('home-passes', 'Original pass offers on the home page: the First Time Student Special card and the Other passes card boxed in red, and four different looking buttons boxed in orange.', 1260),
+                notes: [
+                  { n: 2, type: 'recognition', text: 'Two intro offers, 5 weeks for $109 and 6 weeks for $109, share one card, so a first time student has to read closely to tell them apart.' },
+                  { n: 3, type: 'recognition', text: 'All the other passes are hidden behind Learn More, so their prices can’t be compared at a glance.' },
+                  { n: 4, type: 'consistency', text: 'Buttons on the same screen use different shapes, colours and wording: Buy 5 Week Pass, Learn More, Click here to subscribe.' },
+                ],
+              },
+              {
+                label: 'Schedule',
+                figure: issues('schedule', 'Original Schedule page: the block of booking notes and the small email screenshots, both boxed in red.', 863),
+                notes: [
+                  { n: 5, type: 'recognition', text: 'Prices, booking steps and cancellation rules sit in one long centred block of text.' },
+                  { n: 6, type: 'recognition', text: 'Help with online booking is given as small screenshots of emails, which are hard to read.' },
+                ],
+              },
+              {
+                label: 'Teacher Training',
+                figure: issues('training', 'Original Teacher Training page: the collapsed curriculum sections boxed in violet, the program schedule, and Prices & Payment boxed in red further down.', 1268),
+                notes: [
+                  { n: 7, type: 'visibility', text: 'Collapsed curriculum sections show up arrows, which suggest they are already open.' },
+                  { n: 8, type: 'recognition', text: 'The tuition only appears about halfway down a long page.' },
+                ],
+              },
             ],
           },
         ],
@@ -1190,9 +1222,16 @@ export const projects: Project[] = [
         title: 'Wireframes',
         blocks: [
           {
-            kind: 'figure',
-            // Sujin's Pricing page wireframe: "Price" frame (111:179) in the Open Door Yoga file (scripts/prepare-yoga-wireframe.mjs)
-            figure: { ...img('yoga-wireframe-pricing', 'Pricing page wireframe: a "Yoga Passes & Pricing" hero, a First time student offer, two rows of pass cards with Join buttons, a Give a Gift of Health section with a gift photo, and the footer.', 'Pricing page wireframe, which I designed.', 1122, 2400), tall: true, zoom: true },
+            // Wireframe page frames in the Open Door Yoga file: Home Page (119:479), Price (111:179,
+            // Sujin's) and Training 1 (238:639), prepared by scripts/prepare-yoga-wireframe.mjs
+            kind: 'pages',
+            full: true,
+            caption: 'Our wireframes for the Home, Pricing and Teacher Training pages. I designed the Pricing page. Click a page to see it larger.',
+            items: [
+              { label: 'Home', figure: { ...img('yoga-wireframe-home', 'Home page wireframe: a YOGA hero with a Schedule your Yoga Class button, four class cards (Hatha, Restorative, Vinyasa, Yin) with Pricing and Schedule buttons, About Us, Our Team with three teachers, and the footer.', undefined, 1122, 2285), tall: true } },
+              { label: 'Pricing (mine)', figure: { ...img('yoga-wireframe-pricing', 'Pricing page wireframe: a "Yoga Passes & Pricing" hero, a First time student offer, two rows of pass cards with Join buttons, a Give a Gift of Health section with a gift photo, and the footer.', undefined, 1122, 2399), tall: true } },
+              { label: 'Teacher Training', figure: { ...img('yoga-wireframe-training', 'Teacher Training page wireframe: a 200 hour teacher training hero, Apply Now and Have Questions buttons, About, What You Will Gain, The Complete Learning Process with the curriculum hours as a timeline, accreditation badges, and the footer.', undefined, 1122, 3476), tall: true } },
+            ],
           },
         ],
       },

@@ -58,11 +58,11 @@ export function FeatureCard({ project, index }: { project: Project; index: numbe
           </span>
           <ul className="feature__tags" aria-label="Categories">
             <li>
-              <span className="feature__tag wiggle">{category}</span>
+              <span className="feature__tag">{category}</span>
             </li>
             {disciplines.map((d) => (
               <li key={d}>
-                <Link to={disciplineHref(d)} className="feature__tag feature__tag--link wiggle">
+                <Link to={disciplineHref(d)} className="feature__tag feature__tag--link">
                   #{disciplineLabel(d)}
                 </Link>
               </li>

@@ -36,7 +36,7 @@ export function WorkPage() {
 
         <div className="filters" role="group" aria-label="Filter projects by category">
           {filters.map((f) => (
-            <button key={f.id} type="button" className="filter wiggle" aria-pressed={active === f.id} onClick={() => select(f.id)}>
+            <button key={f.id} type="button" className="filter" aria-pressed={active === f.id} onClick={() => select(f.id)}>
               {f.id === 'all' ? f.label : `#${f.label}`}
               <span className="filter__count">{f.count}</span>
             </button>

@@ -61,9 +61,8 @@
 }
 
 /* Specialties: UX/UI always first and visually primary.
-   Tags sit slightly tilted, like stickers, and wiggle when hovered. */
+   Hashtag tags sit straight and stay still: hover only changes their shadow. */
 .specialty {
-  --tilt: 0deg;
   display: inline-flex;
   align-items: center;
   min-height: 40px;
@@ -76,7 +75,6 @@
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
-  transform: rotate(var(--tilt));
   box-shadow: 2px 2px 0 color-mix(in srgb, var(--c-accent-strong) 55%, transparent);
   transition: box-shadow var(--t-fast) var(--ease), background-color var(--t-fast);
 }
@@ -91,10 +89,9 @@
 }
 a.specialty:hover,
 a.specialty:focus-visible {
-  animation: tag-wiggle 620ms var(--ease) forwards;
-  box-shadow: 4px 5px 0 var(--c-ink);
+  box-shadow: 3px 3px 0 var(--c-ink);
 }
-/* The same playful hover for every other sticker, label and tag on the site */
+/* The playful hover for the other stickers and labels (not the hashtag tags) */
 .wiggle {
   --tilt: 0deg;
   display: inline-flex;
@@ -119,17 +116,16 @@ button.wiggle {
   100% { transform: translateY(-3px) rotate(0deg) scale(1.02); }
 }
 @media (prefers-reduced-motion: reduce) {
-  a.specialty:hover,
-  a.specialty:focus-visible,
   .wiggle:hover,
   .wiggle:focus-visible {
     animation: none;
     transform: translateY(-2px);
   }
 }
-/* gentle alternating tilt wherever tags sit in a row */
-.tag-row li:nth-child(odd) .specialty { --tilt: -2deg; }
-.tag-row li:nth-child(even) .specialty { --tilt: 1.5deg; }
+/* tags in a row line up on one even line */
+.tag-row {
+  align-items: center;
+}
 
 /* ── Hero: the character leads; name, "portfolio" and slogan beside it ── */
 .hero {
@@ -377,11 +373,11 @@ button.wiggle {
   z-index: 3;
 }
 .hero__label--role { top: -10%; left: -6%; }
-.hero__label--role .specialty { --tilt: -6deg; font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); min-height: 50px; padding-inline: 1.4rem; }
+.hero__label--role .specialty { font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); min-height: 50px; padding-inline: 1.4rem; }
 .hero__label--1 { top: 36%; right: -12%; }
-.hero__label--1 .specialty { --tilt: 5deg; }
+
 .hero__label--2 { bottom: 20%; right: -8%; }
-.hero__label--2 .specialty { --tilt: -3deg; }
+
 .hero__label--place { bottom: 2%; left: -6%; }
 .hero__label--place .sticker { --tilt: -5deg; color: var(--c-ink); }
 .hero__label--place .sticker:hover,
@@ -568,6 +564,11 @@ button.wiggle {
   transform: translateY(-4px);
   box-shadow: 0 22px 40px -22px rgba(31, 36, 48, 0.55);
 }
+/* pointing at a hashtag tag keeps the card (and the tag) still */
+.feature:has(.feature__tags:hover) .feature__body,
+.feature:has(.feature__tag:focus-visible) .feature__body {
+  transform: none;
+}
 .feature__text {
   display: grid;
   gap: var(--s-3);
@@ -629,6 +630,7 @@ button.wiggle {
 .feature__tags {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--s-2);
   margin: var(--s-2) 0 0;
   padding: 0;
@@ -640,6 +642,9 @@ button.wiggle {
   z-index: 2;
 }
 .feature__tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
   padding: 0.25rem 0.65rem;
   border: 1.5px solid currentColor;
   border-radius: 999px;
@@ -647,8 +652,6 @@ button.wiggle {
   font-size: var(--fs-xs);
   font-weight: 700;
 }
-.feature__tags li:nth-child(odd) .feature__tag { --tilt: -1.5deg; }
-.feature__tags li:nth-child(even) .feature__tag { --tilt: 1.5deg; }
 .feature__tag--link:hover,
 .feature__tag--link:focus-visible {
   background: color-mix(in srgb, currentColor 14%, transparent);
@@ -810,6 +813,7 @@ button.wiggle {
 .filters {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: var(--s-3);
   margin-block: 0 var(--s-7);
@@ -827,7 +831,7 @@ button.wiggle {
   font-weight: 700;
   font-size: var(--fs-sm);
   cursor: pointer;
-  transition: background-color var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease);
+  transition: background-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
 }
 .filter:hover {
   box-shadow: 2px 3px 0 var(--c-ink);

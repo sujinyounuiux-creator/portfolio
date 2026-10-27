@@ -46,11 +46,11 @@ export function HeroSection() {
               {site.heroTags.map((t, i) => (
                 <li key={t.label} className={`hero__label hero__label--tag${i + 1}`}>
                   {t.href ? (
-                    <Link to={t.href} className="specialty">
+                    <Link to={t.href} className={`specialty specialty--${t.group}`}>
                       #{t.label}
                     </Link>
                   ) : (
-                    <span className="specialty">#{t.label}</span>
+                    <span className={`specialty specialty--${t.group}`}>#{t.label}</span>
                   )}
                 </li>
               ))}

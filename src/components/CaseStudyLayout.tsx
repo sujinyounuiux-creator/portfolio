@@ -168,7 +168,8 @@ export function CaseStudyLayout({ project }: { project: Project }) {
         </Link>
       </nav>
 
-      <ContactCTA showProjectsLink />
+      {/* slim, so the other projects and Contact fit on one screen together */}
+      <ContactCTA compact />
     </article>
   )
 }

@@ -87,6 +87,19 @@
   font-size: var(--fs-base);
   box-shadow: 3px 3px 0 var(--c-ink);
 }
+/* hero hashtag groups: languages in coral, IT in teal (design keeps the blue) */
+.specialty--language {
+  border-color: #c4664c;
+  background: color-mix(in srgb, #fbe4dc 85%, transparent);
+  color: #94402a;
+  box-shadow: 2px 2px 0 color-mix(in srgb, #c4664c 55%, transparent);
+}
+.specialty--it {
+  border-color: #3d8a83;
+  background: color-mix(in srgb, #dcefec 85%, transparent);
+  color: #23605a;
+  box-shadow: 2px 2px 0 color-mix(in srgb, #3d8a83 55%, transparent);
+}
 a.specialty:hover,
 a.specialty:focus-visible {
   box-shadow: 3px 3px 0 var(--c-ink);

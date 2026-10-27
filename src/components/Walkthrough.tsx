@@ -5,13 +5,13 @@ import { DeviceFrame } from './DeviceFrame'
 type Step = { title: string; note: string; figure: Figure }
 
 /**
- * Click through prototype: one real screen at a time inside a laptop,
- * with numbered step tabs and previous / next buttons.
+ * Click through prototype: one real screen at a time inside a laptop, picked
+ * with the numbered step tabs. No arrows, counter or caption: the tabs say it all.
  */
-export function Walkthrough({ steps, caption }: { steps: Step[]; caption?: string }) {
+export function Walkthrough({ steps }: { steps: Step[] }) {
   const [i, setI] = useState(0)
   const step = steps[i]
-  const go = (n: number) => setI((n + steps.length) % steps.length)
+  const go = (n: number) => setI(n)
 
   return (
     <figure className="walk">
@@ -31,21 +31,10 @@ export function Walkthrough({ steps, caption }: { steps: Step[]; caption?: strin
       {/* key resets the inner scroll position when the screen changes */}
       <DeviceFrame key={step.figure.src} device="desktop" figure={step.figure} caption="" />
 
-      <div className="walk__bar">
-        <button type="button" className="walk__nav" onClick={() => go(i - 1)} aria-label="Previous screen">
-          ←
-        </button>
-        <p className="walk__note" aria-live="polite">
-          <strong>
-            {i + 1} / {steps.length} · {step.title}
-          </strong>{' '}
-          {step.note}
-        </p>
-        <button type="button" className="walk__nav" onClick={() => go(i + 1)} aria-label="Next screen">
-          →
-        </button>
-      </div>
-      {caption && <figcaption>{caption}</figcaption>}
+      {/* screen readers still hear which screen is showing */}
+      <p className="visually-hidden" aria-live="polite">
+        {step.title}: {step.note}
+      </p>
     </figure>
   )
 }

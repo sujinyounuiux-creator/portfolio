@@ -9,9 +9,11 @@ type Props = {
   /** Show a link back to the projects (used outside the homepage). */
   showProjectsLink?: boolean
   headingLevel?: 'h2' | 'h3'
+  /** A slim one-row version (case studies): heading and email actions only. */
+  compact?: boolean
 }
 
-export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2' }: Props) {
+export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', compact = false }: Props) {
   const [copied, setCopied] = useState<'idle' | 'ok' | 'fail'>('idle')
 
   const copy = async () => {
@@ -25,7 +27,7 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2' }:
   }
 
   return (
-    <section id="contact" className="contact" aria-labelledby="contact-title">
+    <section id="contact" className={`contact ${compact ? 'contact--compact' : ''}`} aria-labelledby="contact-title">
       <div className="container contact__inner">
         <div className="contact__text">
           <p className="hand contact__kicker">say hi!</p>
@@ -39,10 +41,12 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2' }:
             </span>{' '}
             <span className="contact__line">not just a network.</span>
           </H>
+          {!compact && (
           <p className="contact__lede">
             I’m looking for junior UI/UX and product design roles in Canada. I’d love to hear about your team and the problems
             you’re solving.
           </p>
+          )}
 
           <div className="contact__actions">
             {/* the main action: dark with white text, like the "UX/UI Designer" label */}
@@ -67,13 +71,15 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2' }:
               {copied === 'fail' && 'Couldn’t copy. Please select the address instead.'}
             </span>
           </p>
-          <SocialLinks />
+          {!compact && <SocialLinks />}
         </div>
 
-        <div className="contact__art" aria-hidden="true">
-          <Sparkle className="contact__sparkle" />
-          <CharacterIllustration />
-        </div>
+        {!compact && (
+          <div className="contact__art" aria-hidden="true">
+            <Sparkle className="contact__sparkle" />
+            <CharacterIllustration />
+          </div>
+        )}
       </div>
     </section>
   )

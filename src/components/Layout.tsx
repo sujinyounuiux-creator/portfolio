@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { CrayonDefs } from './HandDrawnDecoration'
 import { LightboxProvider } from './Lightbox'
+import { AutoScroll } from './AutoScroll'
 import { ScrollMotion } from './ScrollMotion'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
@@ -37,6 +38,7 @@ export function Layout() {
       <CrayonDefs />
       <ScrollManager />
       <ScrollMotion />
+      <AutoScroll />
       <SiteHeader />
       <main id="main" tabIndex={-1}>
         <Outlet />

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
 import type { Figure } from '../data/projects'
 
 type Props = { before: Figure; after: Figure; label: string; labels?: [string, string] }
@@ -8,11 +8,41 @@ type Props = { before: Figure; after: Figure; label: string; labels?: [string, s
  * original is revealed from the left up to the divider.
  * Works with mouse, touch (horizontal drag; vertical page scroll still works)
  * and keyboard (arrow keys, Home/End on the handle).
+ * While on screen it sweeps gently side to side by itself (not for reduced motion)
+ * until someone drags, taps or uses the keyboard on it.
  */
 export function CompareSlider({ before, after, label, labels = ['Before', 'After'] }: Props) {
   const [pos, setPos] = useState(50)
   const box = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
+  const touched = useRef(false)
+
+  useEffect(() => {
+    const el = box.current
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let visible = false
+    let frame = 0
+    let t = 0
+    let last = performance.now()
+    const io = new IntersectionObserver(([e]) => (visible = e.intersectionRatio >= 0.4), { threshold: [0, 0.4] })
+    io.observe(el)
+    const tick = (now: number) => {
+      const dt = Math.min(64, now - last)
+      last = now
+      if (touched.current) return
+      if (visible && !document.hidden) {
+        t += dt
+        // 50% → 22% → 78% → 50% over seven seconds, eased by a sine
+        setPos(50 + 28 * Math.sin((t / 7000) * Math.PI * 2))
+      }
+      frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => {
+      cancelAnimationFrame(frame)
+      io.disconnect()
+    }
+  }, [])
 
   const moveTo = useCallback((clientX: number) => {
     const r = box.current?.getBoundingClientRect()
@@ -21,6 +51,7 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
   }, [])
 
   const onDown = (e: PointerEvent<HTMLDivElement>) => {
+    touched.current = true
     dragging.current = true
     e.currentTarget.setPointerCapture(e.pointerId)
     moveTo(e.clientX)
@@ -33,6 +64,7 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
   }
 
   const onKey = (e: KeyboardEvent<HTMLButtonElement>) => {
+    touched.current = true
     const step = e.shiftKey ? 10 : 2
     const next: Record<string, number> = { ArrowLeft: pos - step, ArrowRight: pos + step, Home: 0, End: 100 }
     if (e.key in next) {

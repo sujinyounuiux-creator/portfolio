@@ -217,7 +217,7 @@ function BlockView({ block }: { block: Block }) {
         </div>
       )
     case 'walkthrough':
-      return <Walkthrough steps={block.steps} caption={block.caption} />
+      return <Walkthrough steps={block.steps} />
     case 'embed':
       return (
         <figure className={`cs-embed ${block.variant ? `cs-embed--${block.variant}` : ''}`}>

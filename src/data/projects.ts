@@ -49,7 +49,7 @@ export type Block =
   /** Several draggable comparisons shown side by side inside phones (e.g. wireframe → hi fi). */
   | { kind: 'compareSet'; labels: [string, string]; items: { label: string; before: Figure; after: Figure }[] }
   /** Click through prototype: real screens shown one step at a time in a laptop. */
-  | { kind: 'walkthrough'; caption?: string; steps: { title: string; note: string; figure: Figure }[] }
+  | { kind: 'walkthrough'; steps: { title: string; note: string; figure: Figure }[] }
   /** Website pages shown as small browser windows (top of each page; click to see all of it). */
   | { kind: 'pages'; caption?: string; items: { label: string; figure: Figure }[] }
   /** UI kit: real components as labelled tiles in a grid (wide tiles span the full row). */
@@ -387,7 +387,6 @@ export const projects: Project[] = [
             // screens: the English Home and Stock detail frames, plus Sujin's English versions of the
             // other pages (Portfolio Figma frames 355:*, prepared by scripts/prepare-profitkey-english.mjs)
             kind: 'walkthrough',
-            caption: 'Click through the website screens. Each scrolls inside the laptop; click a screen to enlarge it.',
             steps: [
               {
                 title: 'Home',

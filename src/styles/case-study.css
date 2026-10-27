@@ -207,15 +207,17 @@
   border-top: 0;
   padding-top: 0;
 }
+/* the section number sits on the heading's vertical centre */
 .cs-section__head {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: var(--s-3) var(--s-4);
   margin-bottom: var(--s-5);
 }
 .cs-section__num {
+  line-height: 1;
   font-size: var(--fs-sm);
   font-weight: 700;
   color: var(--c-accent-ink);
@@ -951,11 +953,27 @@
 .device--desktop {
   padding-inline: 5%; /* room for the laptop base, which is wider than the lid */
 }
+.device__laptop {
+  position: relative;
+}
+/* soft contact shadow where the laptop meets the surface */
+.device__laptop::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -14px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(31, 36, 48, 0.28), transparent);
+  z-index: -1;
+}
 .device__lid {
   position: relative;
   padding: 1.5% 1.5% 1.8%;
   border-radius: 18px 18px 8px 8px;
-  background: #0b0b0d;
+  /* glossy black bezel, a touch lighter at the top edge */
+  background: linear-gradient(#1c1c20, #0a0a0c 6%, #0a0a0c);
   /* the thin aluminium rim around the lid */
   box-shadow:
     0 0 0 1.5px #c3c5ca,
@@ -976,6 +994,16 @@
 }
 .device__laptop .device__screen {
   border-radius: 10px 10px 2px 2px;
+}
+/* a faint diagonal reflection on the glass of both devices */
+.device__screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.1) 0 28%, rgba(255, 255, 255, 0) 28.4%);
+  border-radius: inherit;
 }
 .device__screen {
   position: relative;
@@ -1007,9 +1035,10 @@
   height: clamp(9px, 1.25vw, 16px);
   margin-inline: -6%;
   border-radius: 3px 3px 16px 16px / 3px 3px 12px 12px;
-  background: linear-gradient(#eceef1, #d3d5d9 45%, #a9abb1);
+  background: linear-gradient(#f2f3f5, #d7d9dd 40%, #b9bbc0 75%, #9fa1a7);
   box-shadow:
-    inset 0 1.5px 0 #8d8f95,
+    inset 0 2px 0 #6f7177,
+    inset 0 3px 0 rgba(255, 255, 255, 0.6),
     0 12px 20px -12px rgba(31, 36, 48, 0.5);
 }
 .device__base::after {
@@ -1031,12 +1060,14 @@
 .device__phone {
   position: relative;
   padding: 7px;
-  border-radius: 50px;
-  background: #0b0b0d;
-  /* the metal frame band around the glass */
+  border: 3.5px solid transparent;
+  border-radius: 52px;
+  /* black glass inside a brushed metal band that catches the light */
+  background:
+    linear-gradient(#0b0b0d, #0b0b0d) padding-box,
+    linear-gradient(140deg, #f0f1f3, #9b9ea4 22%, #e2e4e7 48%, #8c8f95 74%, #d4d6da) border-box;
   box-shadow:
-    0 0 0 2.5px #c6c8cd,
-    0 0 0 3.5px #8f9197,
+    0 0 0 0.5px #6f7177,
     0 26px 40px -22px rgba(31, 36, 48, 0.6);
 }
 .device__phone .device__screen {
@@ -1051,7 +1082,7 @@
 .device__btn--action,
 .device__btn--vol-up,
 .device__btn--vol-down {
-  left: -5.5px;
+  left: -9px;
   border-radius: 2px 0 0 2px;
 }
 .device__btn--action { top: 17%; height: 4.5%; }
@@ -1059,7 +1090,7 @@
 .device__btn--vol-down { top: 35%; height: 8%; }
 .device__btn--power {
   top: 27%;
-  right: -5.5px;
+  right: -9px;
   height: 12%;
   border-radius: 0 2px 2px 0;
 }
@@ -1258,43 +1289,6 @@
   color: #fff;
   font-size: var(--fs-xs);
 }
-.walk__bar {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: var(--s-3);
-}
-.walk__nav {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: var(--border);
-  border-radius: 50%;
-  background: var(--c-surface);
-  font-size: 1.15rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
-}
-.walk__nav:hover {
-  transform: translate(-1px, -2px);
-  box-shadow: 2px 3px 0 var(--c-ink);
-}
-.walk__note {
-  font-size: var(--fs-sm);
-  color: var(--c-ink-soft);
-  text-align: center;
-}
-.walk__note strong {
-  color: var(--c-ink);
-}
-.walk figcaption {
-  font-size: var(--fs-sm);
-  color: var(--c-ink-soft);
-  text-align: center;
-}
-
 /* ── Embedded Figma file ── */
 .cs-embed {
   display: grid;

@@ -1,14 +1,5 @@
 @import './tokens.css';
 
-/* Handwritten font: Autumn in September by Misti's Fonts (public/fonts) */
-@font-face {
-  font-family: 'Autumn in September';
-  src: url('/fonts/autumn-in-september.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 *,
 *::before,
 *::after {
@@ -136,20 +127,20 @@ button {
   padding-inline: var(--gutter);
 }
 
-/* Autumn in September (one weight): font-size-adjust keeps its lowercase at the same visual
-   height (0.56 of the font size), so it reads as clearly as the body text */
+/* Caveat runs smaller than the sizes were set for: font-size-adjust keeps its lowercase
+   at the same visual height (0.467 of the font size), and 500 weight keeps it readable */
 .hand {
   font-family: var(--font-hand);
-  font-weight: 400;
-  font-size-adjust: 0.56;
+  font-weight: 500;
+  font-size-adjust: 0.467;
   letter-spacing: 0;
 }
 
 /* Handwritten self-introduction: identical on Home (About Me) and the About page */
 .intro-hand {
   font-family: var(--font-hand);
-  font-weight: 400;
-  font-size-adjust: 0.56;
+  font-weight: 500;
+  font-size-adjust: 0.467;
   font-size: clamp(1.25rem, 1rem + 0.9vw, 1.7rem);
   line-height: 1.6;
   letter-spacing: 0;

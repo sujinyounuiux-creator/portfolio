@@ -1,4 +1,5 @@
 import type { Block, Figure, Section } from '../data/projects'
+import { Arrow } from './Arrow'
 import { CompareSlider } from './CompareSlider'
 import { DeviceFrame } from './DeviceFrame'
 import { PlaceholderBlock } from './Editable'
@@ -259,7 +260,7 @@ function BlockView({ block }: { block: Block }) {
           {block.caption && <figcaption>{block.caption}</figcaption>}
           {block.link && (
             <a className="btn btn--accent cs-embed__link" href={block.link.href} target="_blank" rel="noreferrer">
-              {block.link.label} <span className="arrow" aria-hidden="true">↗</span>
+              {block.link.label} <Arrow dir="up-right" />
               <span className="visually-hidden"> (opens in a new tab)</span>
             </a>
           )}

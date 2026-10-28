@@ -17,6 +17,7 @@
 .cs-breadcrumb .text-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.35em;
   min-height: 44px;
 }
 .cs-hero__grid {
@@ -216,6 +217,12 @@
   margin-bottom: var(--s-5);
 }
 .cs-section__num {
+  /* as tall as one line of the heading, so it stays centred on the first line
+     when a long title wraps (phones) */
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  height: calc(var(--fs-h2) * 1.1);
   line-height: 1;
   font-size: var(--fs-sm);
   font-weight: 700;
@@ -225,6 +232,22 @@
 .cs-section__head h2 {
   font-size: var(--fs-h2);
   letter-spacing: -0.03em;
+}
+/* phones: a long title wraps beside its number instead of dropping below it */
+@media (max-width: 639px) {
+  .cs-section__num {
+    width: 1.5rem;
+  }
+  .cs-section__head h2 {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  /* the handwritten note gets its own line, lined up with the title */
+  .cs-section__note {
+    flex-basis: 100%;
+    padding-left: calc(1.5rem + var(--s-4));
+    transform-origin: left center;
+  }
 }
 .cs-section__note {
   font-size: var(--fs-note);
@@ -510,6 +533,8 @@
 .cs-annotated__num {
   display: grid;
   flex: none;
+  /* centred on the first line of the note (line height 1.55) */
+  margin-top: calc((1.55em - 1.75rem) / 2);
   place-items: center;
   width: 1.75rem;
   height: 1.75rem;

@@ -313,7 +313,8 @@
 .site-footer__inner {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  /* the copyright line, links and Back to top share one baseline */
+  align-items: baseline;
   justify-content: space-between;
   gap: var(--s-4);
 }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { about } from '../data/about'
 import { site } from '../data/site'
+import { Arrow } from './Arrow'
 import { PhotoCollage } from './PhotoCollage'
 
 /**
@@ -46,7 +47,7 @@ export function AboutTeaser() {
             </ol>
 
             <Link to="/about" className="btn btn--ghost about-home__more">
-              More about me <span className="arrow" aria-hidden="true">→</span>
+              More about me <Arrow />
             </Link>
           </div>
 
@@ -55,7 +56,7 @@ export function AboutTeaser() {
             {/* on Home the photos are just a glimpse: no lightbox */}
             <PhotoCollage className="collage--home" only={about.homePhotos} zoom={false} />
             <Link to="/about" className="text-link about-home__all-photos">
-              See more photos on my About page →
+              See more photos on my About page <Arrow />
             </Link>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Project } from '../data/projects'
 import { getNeighbours } from '../data/projects'
+import { Arrow } from './Arrow'
 import { CaseStudySection } from './CaseStudySection'
 import { ContactCTA } from './ContactCTA'
 import { Editable } from './Editable'
@@ -43,11 +44,11 @@ function PagerCard({ project, dir }: { project: Project; dir: 'prev' | 'next' })
         <span className="cs-pager__dir">
           {dir === 'prev' ? (
             <>
-              <span className="arrow" aria-hidden="true">←</span> Previous project
+              <Arrow dir="left" /> Previous project
             </>
           ) : (
             <>
-              Next project <span className="arrow" aria-hidden="true">→</span>
+              Next project <Arrow />
             </>
           )}
         </span>
@@ -86,7 +87,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
         <div className="container">
           <nav aria-label="Breadcrumb" className="cs-breadcrumb">
             <Link to="/work" className="text-link">
-              ← All projects
+              <Arrow dir="left" /> All projects
             </Link>
           </nav>
 

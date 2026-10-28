@@ -770,10 +770,15 @@ button.wiggle {
   object-position: top center;
   transition: transform 600ms var(--ease);
 }
+.folder__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
 .folder__text {
   display: grid;
   gap: 0.2rem;
-  padding-right: 1.8rem;
 }
 .folder__title {
   font-size: clamp(1.15rem, 0.9rem + 1.2vw, 1.9rem);
@@ -805,11 +810,8 @@ button.wiggle {
   opacity: 0.88;
 }
 .folder__arrow {
-  position: absolute;
-  right: clamp(0.75rem, 2.5vw, 1.5rem);
-  bottom: clamp(1rem, 2.5vw, 1.6rem);
+  flex: none;
   font-size: var(--fs-lg);
-  font-weight: 800;
   color: inherit;
   transition: transform var(--t-fast) var(--ease);
 }

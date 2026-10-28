@@ -1,4 +1,5 @@
 import { site } from '../data/site'
+import { Arrow } from './Arrow'
 import { SocialLinks } from './SocialLinks'
 
 export function SiteFooter() {
@@ -15,7 +16,7 @@ export function SiteFooter() {
         </p>
         <SocialLinks className="social-links--footer" />
         <button type="button" className="text-link link-button" onClick={toTop}>
-          Back to top ↑
+          Back to top <Arrow dir="up" />
         </button>
       </div>
     </footer>

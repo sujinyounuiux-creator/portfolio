@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { disciplineHref, disciplineLabel, featuredProjects, projects, type Project } from '../data/projects'
+import { Arrow } from './Arrow'
 import { Editable } from './Editable'
 import { Tape } from './HandDrawnDecoration'
 
@@ -16,17 +17,18 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
         <div className="folder__thumb">
           <img src={thumbnail.src} alt="" width={thumbnail.width} height={thumbnail.height} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
         </div>
-        <div className="folder__text">
-          <h2 className="folder__title">
-            <Link to={`/work/${slug}`} className="folder__link">
-              {title}
-            </Link>
-          </h2>
-          <p className="folder__meta">{category}</p>
+        {/* title and meta on the left, the arrow centred beside them */}
+        <div className="folder__row">
+          <div className="folder__text">
+            <h2 className="folder__title">
+              <Link to={`/work/${slug}`} className="folder__link">
+                {title}
+              </Link>
+            </h2>
+            <p className="folder__meta">{category}</p>
+          </div>
+          <Arrow className="folder__arrow" />
         </div>
-        <span className="folder__arrow" aria-hidden="true">
-          →
-        </span>
       </div>
     </article>
   )
@@ -54,7 +56,7 @@ export function FeatureCard({ project, index }: { project: Project; index: numbe
           <p className="feature__tagline">{tagline}</p>
           <p className="feature__summary">{summary}</p>
           <span className="feature__cta" aria-hidden="true">
-            View project <span className="arrow">↗</span>
+            View project <Arrow dir="up-right" />
           </span>
           <ul className="feature__tags" aria-label="Categories">
             <li>
@@ -102,7 +104,7 @@ export function FeaturedWorks() {
 
         <p className="featured__more">
           <Link to="/work" className="btn btn--ghost">
-            View all {projects.length} projects <span className="arrow" aria-hidden="true">→</span>
+            View all {projects.length} projects <Arrow />
           </Link>
         </p>
       </div>

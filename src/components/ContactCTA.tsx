@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../data/site'
+import { Arrow } from './Arrow'
 import { CharacterIllustration } from './CharacterIllustration'
 import { Sparkle, Underline } from './HandDrawnDecoration'
 import { SocialLinks } from './SocialLinks'
@@ -31,7 +32,7 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
       <div className="contact__actions">
         {/* the main action: dark with white text, like the "UX/UI Designer" label */}
         <a className="btn contact__email-btn" href={`mailto:${site.email}`}>
-          Email me <span className="arrow" aria-hidden="true">→</span>
+          Email me <Arrow />
         </a>
         <button type="button" className="btn btn--ghost" onClick={copy}>
           Copy email

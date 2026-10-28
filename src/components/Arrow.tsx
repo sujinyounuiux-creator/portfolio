@@ -6,16 +6,16 @@
 type Dir = 'right' | 'left' | 'up' | 'up-right'
 
 const PATHS: Record<Dir, string> = {
-  right: 'M4 12h15M13 6l6 6-6 6',
-  left: 'M20 12H5M11 6l-6 6 6 6',
-  up: 'M12 20V5M6 11l6-6 6 6',
-  'up-right': 'M7 17 17 7M8.5 7H17v8.5',
+  right: 'M3 12h17.5M13.5 5l7 7-7 7',
+  left: 'M21 12H3.5M10.5 5l-7 7 7 7',
+  up: 'M12 21V3.5M5 10.5l7-7 7 7',
+  'up-right': 'M5.5 18.5 18.5 5.5M8.5 5.5h10v10',
 }
 
 export function Arrow({ dir = 'right', className = '' }: { dir?: Dir; className?: string }) {
   return (
     <svg className={`arrow ${className}`} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d={PATHS[dir]} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d={PATHS[dir]} fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }

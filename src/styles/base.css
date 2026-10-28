@@ -226,14 +226,15 @@ p.intro-hand {
   opacity: 0.45;
   pointer-events: none;
 }
-/* the SVG arrow (components/Arrow.tsx): one text-size square whose centre sits level
-   with the middle of the capital letters beside it, in any font or size */
+/* the SVG arrow (components/Arrow.tsx): larger than the text and drawn with a thick
+   stroke so it stands out; its centre sits level with the middle of the capital letters
+   beside it, in any font or size */
 .arrow {
   display: inline-block;
   flex: none;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.14em;
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -0.29em;
 }
 .btn .arrow {
   transition: transform var(--t-fast) var(--ease);

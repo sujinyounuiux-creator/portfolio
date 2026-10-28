@@ -127,20 +127,20 @@ button {
   padding-inline: var(--gutter);
 }
 
-/* Caveat runs smaller than the sizes were set for: font-size-adjust keeps its lowercase
-   at the same visual height (0.467 of the font size), and 500 weight keeps it readable */
+/* Kalam: font-size-adjust keeps its lowercase at the same visual height (0.53 of the
+   font size) the sizes were set for, so it never looks oversized next to the body text */
 .hand {
   font-family: var(--font-hand);
-  font-weight: 500;
-  font-size-adjust: 0.467;
+  font-weight: 400;
+  font-size-adjust: 0.53;
   letter-spacing: 0;
 }
 
 /* Handwritten self-introduction: identical on Home (About Me) and the About page */
 .intro-hand {
   font-family: var(--font-hand);
-  font-weight: 500;
-  font-size-adjust: 0.467;
+  font-weight: 400;
+  font-size-adjust: 0.53;
   font-size: clamp(1.25rem, 1rem + 0.9vw, 1.7rem);
   line-height: 1.6;
   letter-spacing: 0;

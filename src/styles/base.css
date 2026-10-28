@@ -127,12 +127,12 @@ button {
   padding-inline: var(--gutter);
 }
 
-/* Gamja Flower (one weight): font-size-adjust keeps its lowercase at the same visual
-   height (0.467 of the font size) the sizes were set for */
+/* Gloria Hallelujah (one weight): font-size-adjust keeps its lowercase at the same visual
+   height (0.56 of the font size), so it reads as clearly as the body text */
 .hand {
   font-family: var(--font-hand);
   font-weight: 400;
-  font-size-adjust: 0.467;
+  font-size-adjust: 0.56;
   letter-spacing: 0;
 }
 
@@ -140,7 +140,7 @@ button {
 .intro-hand {
   font-family: var(--font-hand);
   font-weight: 400;
-  font-size-adjust: 0.467;
+  font-size-adjust: 0.56;
   font-size: clamp(1.25rem, 1rem + 0.9vw, 1.7rem);
   line-height: 1.6;
   letter-spacing: 0;

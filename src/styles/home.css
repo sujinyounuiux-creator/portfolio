@@ -619,22 +619,6 @@ button.wiggle {
   max-width: 46ch;
   opacity: 0.88;
 }
-.feature__cta {
-  margin-top: var(--s-2);
-  padding-bottom: 2px;
-  border-bottom: 2px solid currentColor;
-  font-size: var(--fs-xs);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.feature__cta .arrow {
-  display: inline-block;
-  transition: transform var(--t-fast) var(--ease);
-}
-.feature:hover .feature__cta .arrow {
-  transform: translate(3px, -3px);
-}
 .feature__tags {
   display: flex;
   flex-wrap: wrap;
@@ -643,11 +627,6 @@ button.wiggle {
   margin: var(--s-2) 0 0;
   padding: 0;
   list-style: none;
-}
-.feature__tags {
-  /* sit above the card's stretched link so tags can be hovered and clicked */
-  position: relative;
-  z-index: 2;
 }
 .feature__tag {
   display: inline-flex;
@@ -659,10 +638,6 @@ button.wiggle {
   color: inherit;
   font-size: var(--fs-xs);
   font-weight: 700;
-}
-.feature__tag--link:hover,
-.feature__tag--link:focus-visible {
-  background: color-mix(in srgb, currentColor 14%, transparent);
 }
 .feature__media {
   position: relative;
@@ -770,12 +745,6 @@ button.wiggle {
   object-position: top center;
   transition: transform 600ms var(--ease);
 }
-.folder__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-3);
-}
 .folder__text {
   display: grid;
   gap: 0.2rem;
@@ -808,15 +777,6 @@ button.wiggle {
   font-size: var(--fs-sm);
   line-height: 1.35;
   opacity: 0.88;
-}
-.folder__arrow {
-  flex: none;
-  font-size: var(--fs-lg);
-  color: inherit;
-  transition: transform var(--t-fast) var(--ease);
-}
-.folder:hover .folder__arrow {
-  transform: translateX(3px);
 }
 
 /* ── Case Study page: category filters ── */

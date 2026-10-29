@@ -177,11 +177,10 @@
   display: block;
   margin-left: -2px;
   padding: 0.35rem 0.85rem;
-  border-left: 2px solid transparent;
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
   text-decoration: none;
-  transition: color var(--t-fast), border-color var(--t-fast);
+  transition: color var(--t-fast);
 }
 .cs-toc a:hover {
   color: var(--c-ink);
@@ -189,7 +188,6 @@
 .cs-toc a[aria-current='true'] {
   color: var(--c-ink);
   font-weight: 700;
-  border-left-color: var(--p-accent);
 }
 
 .cs-content {
@@ -260,9 +258,9 @@
 }
 
 .cs-prose {
+  /* as wide as the cards and images below it; lines break only at that width */
   display: grid;
   gap: var(--s-3);
-  max-width: var(--prose-w);
   font-size: var(--fs-lead);
   line-height: 1.65;
 }
@@ -292,7 +290,6 @@
   height: 100%;
   margin: 0;
   padding: var(--s-4) var(--s-5);
-  border-left: 4px solid var(--p-accent);
   border-radius: var(--r-sm);
   background: var(--c-surface);
   font-weight: 600;
@@ -607,8 +604,6 @@
 /* the user need this decision answers, as a small pull quote */
 .cs-feature__tag {
   justify-self: start;
-  padding-left: var(--s-3);
-  border-left: 3px solid var(--p-accent);
   color: var(--c-ink-soft);
   font-size: var(--fs-sm);
   font-style: italic;
@@ -670,7 +665,6 @@
   }
   .cs-feature--stack .cs-feature__text {
     order: 0;
-    max-width: var(--prose-w);
   }
 }
 
@@ -1108,7 +1102,8 @@
 }
 
 /* studio backdrop: behind a group of devices, or a laptop shown on its own */
-.devices,
+/* (not the wireframe → hi fi phones, which sit straight on the page) */
+.devices:not(.compare-set),
 .walk,
 .device--desktop:not(.devices .device, .walk .device) {
   --stage: color-mix(in srgb, var(--p-accent) 16%, #f6f4f8);
@@ -1799,8 +1794,7 @@
 .persona__quote {
   margin: 0;
   padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.1rem, 3vw, 2rem);
-  border-left: 5px solid var(--p-accent);
-  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+  border-radius: var(--r-lg);
   background: color-mix(in srgb, var(--p-accent) 9%, #fff);
   font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
   font-weight: 600;
@@ -1868,4 +1862,88 @@
   border-color: var(--c-ink);
   background: var(--c-ink);
   color: #fff;
+}
+
+/* ── Self-playing prototype: a cursor clicks through real screens in a phone ── */
+.autoproto {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-3);
+}
+.autoproto .device--phone {
+  width: min(320px, 100%);
+}
+.autoproto__screen {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 600 / 1304;
+}
+.autoproto__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: translateX(10%);
+  transition: opacity 420ms var(--ease), transform 420ms var(--ease);
+}
+.autoproto__img.is-current {
+  opacity: 1;
+  transform: none;
+}
+.autoproto__cursor {
+  /* resting: part way between the last click and the middle of the screen */
+  position: absolute;
+  z-index: 3;
+  left: calc(var(--x) * 0.65 + 17.5%);
+  top: calc(var(--y) * 0.65 + 17.5%);
+  width: 26px;
+  height: 26px;
+  /* the arrow's tip is the click point */
+  margin: -3px 0 0 -5px;
+  pointer-events: none;
+  transition: left 900ms cubic-bezier(0.45, 0, 0.2, 1), top 900ms cubic-bezier(0.45, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+}
+.autoproto__cursor.is-move,
+.autoproto__cursor.is-press {
+  left: var(--x);
+  top: var(--y);
+}
+.autoproto__cursor svg {
+  display: block;
+  transition: transform 140ms var(--ease);
+}
+.autoproto__cursor.is-press svg {
+  transform: scale(0.82);
+}
+/* click ring around the tip */
+.autoproto__ring {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--p-accent) 35%, transparent);
+  opacity: 0;
+  transform: scale(0.3);
+}
+.autoproto__cursor.is-press .autoproto__ring {
+  animation: autoproto-click 520ms var(--ease);
+}
+@keyframes autoproto-click {
+  0% { opacity: 0.9; transform: scale(0.3); }
+  100% { opacity: 0; transform: scale(1.4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .autoproto__cursor { display: none; }
+}
+.autoproto__label {
+  min-height: 1.5em;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--c-ink-soft);
 }

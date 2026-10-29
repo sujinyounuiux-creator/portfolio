@@ -2,9 +2,11 @@
 // Any value written as "[LIKE THIS]" renders as a highlighted placeholder,
 // so unfinished content is always easy to spot. Replace it with your own copy.
 
+import { glueAll } from './glue'
+
 export type SocialLink = { label: string; url: string }
 
-export const site = {
+export const site = glueAll({
   // From the "About me" frame in the Portfolio Figma file.
   name: 'Sujin Youn',
   firstName: 'Sujin',
@@ -46,7 +48,7 @@ export const site = {
 
   // Optional: path to a résumé PDF in /public (e.g. "/resume.pdf").
   resumeUrl: '[RESUME PDF]',
-}
+})
 
 export const isPlaceholder = (value: string | undefined | null) =>
   !value || /^\[.*\]$/.test(value.trim())

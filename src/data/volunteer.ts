@@ -3,11 +3,13 @@
 // The work is ongoing: add new designs to `photos` as they are made
 // (files in /public/images/rizsq/, full frame, not cropped).
 
-export const volunteer = {
+import { glueAll } from './glue'
+
+export const volunteer = glueAll({
   title: 'Rizsq: Social Media Design',
   label: 'Volunteer · in progress',
   summary:
-    'As a volunteer with Samawada, a charity, I design social media posts for Rizsq and work on the app’s UI/UX. The work is ongoing; these are the designs so far.',
+    'I volunteer with Samawada, a charity, where I help create social media posts for Rizsq and work on the app’s UI/UX design. The project is still ongoing, and these are some of the designs I’ve worked on so far.',
   facts: [
     { label: 'When', value: '2026.10 to present' },
     { label: 'Role', value: 'Social media design · UI/UX' },
@@ -27,4 +29,4 @@ export const volunteer = {
       height: 1350,
     },
   ],
-}
+})

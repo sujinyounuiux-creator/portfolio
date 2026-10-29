@@ -8,6 +8,8 @@
 //
 // Section blocks are rendered in order; omit a section to hide it.
 
+import { glueAll } from './glue'
+
 export type Figure = {
   src: string
   alt: string
@@ -62,6 +64,8 @@ export type Block =
   /** UI kit: real components as labelled tiles in a grid (wide tiles span the full row). */
   | { kind: 'kit'; items: { label: string; note: string; figure: Figure }[] }
   /** Embedded live Figma file, with an optional link to the interactive prototype. */
+  /** A prototype that plays itself in a phone: a cursor clicks a real control on each screen (tap: % of the screen) and the next screen slides in. */
+  | { kind: 'autoproto'; screens: { label: string; figure: Figure }[]; steps: { screen: number; tap: [number, number] }[] }
   | { kind: 'embed'; title: string; src: string; caption?: string; link?: { href: string; label: string }; variant?: 'phone' }
   /** Simple horizontal bar chart of percentages, with its source and what it means. */
   | { kind: 'bars'; title: string; eyebrow?: string; source: string; sourceUrl?: string; items: { label: string; value: number }[]; takeaway?: string }
@@ -172,7 +176,7 @@ const screen = (name: string, alt: string, caption: string, width: number, heigh
   height,
 })
 
-export const projects: Project[] = [
+export const projects: Project[] = glueAll<Project[]>([
   // ───────────────────────────────────────────── PROFITKEY
   {
     slug: 'profitkey',
@@ -454,11 +458,11 @@ export const projects: Project[] = [
             items: [
               {
                 title: 'What I learned',
-                body: 'Working with frontend and backend engineers taught me that not every design is easy to implement. Some ideas I thought were simple turned out to be technically challenging, so I had to adjust my designs based on their feedback. This experience helped me understand developers’ challenges and the importance of designing with technical feasibility in mind while balancing user needs and implementation constraints.',
+                body: 'Working with frontend and backend engineers taught me that **not every design is easy to implement**. Some ideas I thought were simple turned out to be technically challenging, so I had to **adjust my designs based on their feedback**. This experience helped me understand **developers’ challenges** and the importance of designing with **technical feasibility** in mind while **balancing user needs and implementation constraints**.',
               },
               {
                 title: 'What I want to learn next',
-                body: 'I want to further develop my design skills and strengthen my understanding of UX research, so I can make more informed design decisions based on user needs.',
+                body: 'I want to further develop my **design skills** and strengthen my understanding of **UX research**, so I can make **more informed design decisions** based on user needs.',
               },
             ],
           },
@@ -656,18 +660,29 @@ export const projects: Project[] = [
         ],
       },
       {
-        // the final screens already appear in Wireframes → hi fi, so this section is just the prototype
+        // the final screens already appear in Wireframes → hi fi; here they play as a prototype
         id: 'final',
         label: 'Prototype',
         title: 'Interactive prototype',
         blocks: [
           {
-            // Sujin's Figma prototype (node 632:2106), embedded with Figma's prototype embed URL
-            kind: 'embed',
-            title: 'LastCow interactive prototype (Figma)',
-            caption: 'Interactive prototype: click or tap inside the phone to move through the app.',
-            src: 'https://embed.figma.com/proto/W31BDdO58GhHsFuggHq4iK/LastCow---Design?node-id=632-2106&starting-point-node-id=632-2106&scaling=scale-down&content-scaling=fixed&embed-host=share',
-            variant: 'phone',
+            // the hi fi screens from Wireframes → hi fi, played as a flow: open an event from
+            // Home, go back, then visit the Saved and Calendar tabs and return Home (tap points
+            // are the real card, back arrow and tab bar icons on each screen)
+            kind: 'autoproto',
+            screens: [
+              { label: 'Home', figure: screen('lastcow-home-hifi', 'Home: event cards for Tame Impala and The Strokes with prices and 24 hour price changes.', 'Home', 600, 1304) },
+              { label: 'Event details', figure: screen('lastcow-event-hifi', 'Event details: concert photo, host with a Follow button, overview, location and a Get Tickets bar.', 'Event details', 600, 1304) },
+              { label: 'Saved events', figure: screen('lastcow-saved-hifi', 'Saved events: saved Tame Impala and birthday events with prices.', 'Saved events', 600, 1304) },
+              { label: 'Ticket calendar', figure: screen('lastcow-calendar-hifi', 'Ticket calendar: the month view with the selected date and its events.', 'Ticket calendar', 600, 1304) },
+            ],
+            steps: [
+              { screen: 0, tap: [50, 29] }, // Home: the Tame Impala card
+              { screen: 1, tap: [8, 7.7] }, // Event details: back arrow
+              { screen: 0, tap: [38, 94.5] }, // Home: Saved tab
+              { screen: 2, tap: [62, 94.5] }, // Saved: Calendar tab
+              { screen: 3, tap: [14, 94.5] }, // Calendar: Home tab
+            ],
           },
         ],
       },
@@ -1366,7 +1381,7 @@ export const projects: Project[] = [
       },
     ],
   },
-]
+])
 
 export const featuredProjects = projects.filter((p) => p.featured)
 

@@ -58,7 +58,7 @@ export function FeatureCard({ project, index }: { project: Project; index: numbe
       <div className="feature__body">
         <div className="feature__text">
           <p className="feature__date">
-            <span aria-hidden="true">●</span> <Editable value={timeline} />
+            <Editable value={timeline} />
           </p>
           <h3 className="feature__title">
             <Link to={`/work/${slug}`} className="feature__link">

@@ -1,10 +1,12 @@
 import type { Block, Figure, Section } from '../data/projects'
 import { Arrow } from './Arrow'
+import { AutoPrototype } from './AutoPrototype'
 import { CompareSlider } from './CompareSlider'
 import { DeviceFrame } from './DeviceFrame'
 import { DeviceTabs } from './DeviceTabs'
 import { PlaceholderBlock } from './Editable'
 import { ZoomImage } from './Lightbox'
+import { Rich } from './Rich'
 import { Walkthrough } from './Walkthrough'
 
 function FigureView({ figure, zoom = figure.zoom }: { figure: Figure; zoom?: boolean }) {
@@ -35,7 +37,9 @@ function BlockView({ block }: { block: Block }) {
       return (
         <div className="cs-prose">
           {block.body.map((p, i) => (
-            <p key={i}>{p}</p>
+            <p key={i}>
+              <Rich text={p} />
+            </p>
           ))}
         </div>
       )
@@ -69,7 +73,9 @@ function BlockView({ block }: { block: Block }) {
           {block.items.map((c) => (
             <li key={c.title} className="cs-card">
               <h4>{c.title}</h4>
-              <p>{c.body}</p>
+              <p>
+                <Rich text={c.body} />
+              </p>
             </li>
           ))}
         </ul>
@@ -299,6 +305,8 @@ function BlockView({ block }: { block: Block }) {
           ))}
         </div>
       )
+    case 'autoproto':
+      return <AutoPrototype screens={block.screens} steps={block.steps} />
     case 'walkthrough':
       return <Walkthrough steps={block.steps} />
     case 'embed':

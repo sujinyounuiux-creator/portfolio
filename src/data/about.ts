@@ -1,7 +1,9 @@
 // Content for the About page, taken from the "About me" frame in the
 // Portfolio Figma file (small typos fixed). Edit freely.
 
-export const about = {
+import { glueAll } from './glue'
+
+export const about = glueAll({
   greeting: 'Hi! I’m',
 
   intro: [
@@ -14,7 +16,7 @@ export const about = {
   experience: [
     { org: 'Cornerstone College', role: 'UX/UI student', place: 'Vancouver', when: '2026.5 to 2026.11' },
     // confirmed by Sujin: volunteers at Samawada doing social media design and UI/UX for the Rizsq app
-    { org: 'Samawada (charity)', role: 'Social media design & UI/UX for the Rizsq: Volunteer', when: '2026.10 to present' },
+    { org: 'Samawada charity (Volunteer)', role: 'Social media design & UI/UX for the Rizsq', place: 'Ottawa (remote)', when: '2026.10 to present' },
     { org: 'Network Engineering Experience', place: 'Japan', when: '2019.05 to 2026.03' },
   ] as { org: string; role?: string; place?: string; when: string }[],
 
@@ -62,4 +64,4 @@ export const about = {
     { name: 'Canva', icon: '/images/tools/canva.png' },
     { name: 'Illustrator', icon: '/images/tools/illustrator.png' },
   ],
-}
+})

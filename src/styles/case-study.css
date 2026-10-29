@@ -967,11 +967,10 @@
   color: var(--c-ink-soft);
 }
 
-/* end of a case study: compact previous / next cards, View all projects and the small
-   Contact card, all narrow enough to fit on one screen together */
+/* end of a case study: previous / next cards with each project's logo, View all
+   projects and the small Contact card, all as wide as the case study content above */
 .cs-more {
   display: grid;
-  justify-items: start;
   gap: var(--s-4);
   margin-top: var(--s-7);
   padding-bottom: var(--s-7);
@@ -979,7 +978,6 @@
 .cs-pager {
   display: grid;
   gap: var(--s-4);
-  width: min(100%, 760px);
 }
 @media (min-width: 1040px) {
   .cs-more {
@@ -987,32 +985,27 @@
     padding-left: calc(var(--gutter) + 190px + var(--s-8));
   }
 }
-/* phones: each card is a short row, a small image beside the text */
-@media (max-width: 639px) {
-  .cs-pager__card {
-    grid-template-columns: 38% 1fr;
-    align-items: center;
-  }
-  .cs-pager__media img {
-    height: 100%;
-    aspect-ratio: 4 / 3;
-  }
-  .cs-pager .cs-pager__card--next .cs-pager__text {
-    text-align: left;
-  }
-}
 @media (min-width: 640px) {
   .cs-pager {
     grid-template-columns: 1fr 1fr;
   }
 }
+/* each card: the project's logo on a soft tint of its colour, beside the text */
 .cs-pager__card {
   display: grid;
+  grid-template-columns: minmax(140px, 46%) 1fr;
+  align-items: stretch;
   overflow: hidden;
   border-radius: var(--r-lg);
   background: var(--c-surface);
   text-decoration: none;
   transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+}
+.cs-pager__card--next {
+  grid-template-columns: 1fr minmax(140px, 46%);
+}
+.cs-pager__card--next .cs-pager__media {
+  order: 2;
 }
 .cs-pager__card:hover,
 .cs-pager__card:focus-visible {
@@ -1020,23 +1013,28 @@
   box-shadow: 6px 7px 0 var(--c-ink);
 }
 .cs-pager__media {
-  display: block;
-  overflow: hidden;
-  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 104px;
+  padding: var(--s-3);
+  background: color-mix(in srgb, var(--pager-accent) 14%, #fff);
 }
 .cs-pager__media img {
-  width: 100%;
-  aspect-ratio: 2.2 / 1;
-  object-fit: cover;
-  transition: transform 600ms var(--ease);
+  width: auto;
+  max-width: 100%;
+  max-height: 44px;
+  object-fit: contain;
+  transition: transform 400ms var(--ease);
 }
 .cs-pager__card:hover .cs-pager__media img {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 .cs-pager__text {
   display: grid;
+  align-content: center;
   gap: 0.1rem;
-  padding: var(--s-2) var(--s-4) var(--s-3);
+  padding: var(--s-3) var(--s-4);
 }
 .cs-pager__card--next .cs-pager__text {
   text-align: right;
@@ -1068,10 +1066,7 @@
   color: var(--c-ink-soft);
 }
 .cs-pager__all {
-  grid-column: 1 / -1;
-  /* centred under the two cards (same width as them) */
-  width: min(100%, 760px);
-  justify-content: center;
+  justify-self: center;
   display: inline-flex;
   align-items: center;
   min-height: 44px;

@@ -28,9 +28,9 @@ function useActiveSection(ids: string[]) {
   return active
 }
 
-/** Previous / next project preview: the project's main image, direction and title; the whole card is the link. */
+/** Previous / next project preview: the project's logo, direction and title; the whole card is the link. */
 function PagerCard({ project, dir }: { project: Project; dir: 'prev' | 'next' }) {
-  const { slug, title, category, thumbnail, theme } = project
+  const { slug, title, category, theme } = project
   return (
     <Link
       to={`/work/${slug}`}
@@ -38,7 +38,8 @@ function PagerCard({ project, dir }: { project: Project; dir: 'prev' | 'next' })
       style={{ '--pager-accent': theme.accent } as React.CSSProperties}
     >
       <span className="cs-pager__media">
-        <img src={thumbnail.src} alt="" width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
+        {/* logos prepared by scripts/prepare-logos.mjs */}
+        <img src={`/images/logos/${slug}.png`} alt="" height={160} loading="lazy" decoding="async" />
       </span>
       <span className="cs-pager__text">
         <span className="cs-pager__dir">

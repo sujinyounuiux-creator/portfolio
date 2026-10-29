@@ -1260,8 +1260,17 @@
   filter: drop-shadow(0 18px 22px rgba(20, 24, 40, 0.22)) drop-shadow(0 4px 6px rgba(20, 24, 40, 0.12));
 }
 .device__photo-screen {
+  /* covers the device; the mask (set inline) keeps only the display's shape */
   position: absolute;
+  inset: 0;
   z-index: 0;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.device__photo-display {
+  position: absolute;
   overflow: hidden;
   background: #0c0c0d;
 }

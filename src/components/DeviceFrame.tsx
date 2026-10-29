@@ -78,10 +78,15 @@ function PhotoFrame({ kind, children }: { kind: 'iphone' | 'monitor'; children: 
     width: `${m.screen.width + bleed * 2}%`,
     height: `${m.screen.height + bleed * 2}%`,
   } as CSSProperties
+  // the screen layer covers the whole device and is clipped to the display's exact shape
+  // (rounded corners included) by a mask cut from the same render
+  const mask = `url(/images/mockups/${kind}-mask.png)`
   return (
     <div className={`device__photo ${kind === 'iphone' ? 'device__phone' : 'device__monitor'}`} style={{ aspectRatio: `${m.width} / ${m.height}` }}>
-      <div className="device__photo-screen" style={place}>
-        {children}
+      <div className="device__photo-screen" style={{ WebkitMaskImage: mask, maskImage: mask }}>
+        <div className="device__photo-display" style={place}>
+          {children}
+        </div>
       </div>
       <img className="device__photo-frame" src={`/images/mockups/${kind}.webp`} alt="" width={m.width} height={m.height} loading="lazy" decoding="async" />
     </div>

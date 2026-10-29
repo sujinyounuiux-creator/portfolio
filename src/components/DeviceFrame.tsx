@@ -17,9 +17,9 @@ type Props = {
  * CSS-only device mockup on a soft studio backdrop. The laptop is seen from the front,
  * a little from above: thin graphite bezel and camera, the keyboard deck in perspective
  * and a silver front edge resting on a soft contact shadow. The phone has a thin bezel,
- * titanium band, Dynamic Island and side buttons. The tablet is a current iPad (thin, even
- * bezels, no home button) and the monitor an iMac 24" (thin bezel, a coloured chin and a
- * slim stand).
+ * black titanium band, Dynamic Island and side buttons, casting a soft shadow. The tablet
+ * is a current iPad (thin, even bezels, no home button) and the monitor a studio display
+ * style screen: black glass bezel, a silver aluminium chin, an angled stand and foot.
  * The screen keeps the real screenshot's proportions. Screens marked `tall`
  * (full length pages) get a fixed viewport and scroll inside the device instead.
  */
@@ -65,6 +65,7 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
             <span className="device__chin" aria-hidden="true" />
           </div>
           <span className="device__stand" aria-hidden="true" />
+          <span className="device__foot" aria-hidden="true" />
         </div>
       ) : (
         <div className="device__phone">

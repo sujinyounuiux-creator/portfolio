@@ -1085,10 +1085,10 @@
 }
 
 /* ── Device mockups (CSS only; screens keep their real proportions) ──
-   Drawn after a current MacBook and iPhone, with no drop shadows (so captions stay clear):
-   brushed metal edges that catch the light, deep black glass with a glare streak, a camera
-   notch and an aluminium base on the laptop, and a titanium band, Dynamic Island and side
-   buttons on the phone. */
+   Product-shot style: each device sits on a soft studio backdrop tinted with the project
+   colour. The laptop is seen from the front, a little from above: a thin graphite bezel
+   with a camera, the keyboard deck in perspective and a silver front edge on a soft
+   contact shadow. The phone has a titanium band, Dynamic Island and side buttons. */
 .device {
   margin: 0;
 }
@@ -1098,32 +1098,50 @@
   color: var(--c-ink-soft);
   text-align: center;
 }
-.device--desktop {
-  padding-inline: 5%; /* room for the laptop base, which is wider than the lid */
+
+/* studio backdrop: behind a group of devices, or a laptop shown on its own */
+.devices,
+.device--desktop:not(.devices .device) {
+  --stage: color-mix(in srgb, var(--p-accent) 16%, #f6f4f8);
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2.75rem);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 60%),
+    var(--stage);
 }
+.devices .device--desktop {
+  padding-inline: 4%; /* room for the deck, which is wider than the lid */
+}
+.device--desktop:not(.devices .device) .device__laptop {
+  width: min(100%, 860px);
+  margin-inline: auto;
+  padding-inline: 4%;
+}
+
+/* laptop */
 .device__laptop {
   position: relative;
 }
 .device__lid {
   position: relative;
-  padding: 1.35% 1.35% 1.6%;
-  border: clamp(2px, 0.32vw, 4px) solid transparent;
-  border-radius: 20px 20px 10px 10px;
-  /* black glass inside a brushed aluminium edge, lit from above */
-  background:
-    linear-gradient(180deg, #19191c, #050506 7%, #050506) padding-box,
-    linear-gradient(180deg, #f6f7f9 0%, #c7c9ce 16%, #e7e8eb 48%, #b4b6bb 78%, #8c8e94 100%) border-box;
+  padding: 1.5% 1.5% 2.2%;
+  border-radius: clamp(10px, 1.6vw, 18px) clamp(10px, 1.6vw, 18px) 3px 3px;
+  /* graphite bezel with a lighter rim catching the light */
+  background: linear-gradient(180deg, #1d1d20, #0c0c0d 12%, #0c0c0d);
+  box-shadow:
+    inset 0 0 0 1.5px #3c3c41,
+    inset 0 0 0 3px #111113;
 }
-.device__notch {
-  /* camera notch at the top of the display, with the lens */
+.device__cam {
+  /* camera lens centred in the top bezel */
   position: absolute;
-  top: 1.3%;
+  top: 0.75%;
   left: 50%;
   z-index: 2;
-  width: 10.5%;
-  height: 3.1%;
-  border-radius: 0 0 9px 9px;
-  background: radial-gradient(circle at 50% 44%, #3a4a5c 0 1.5px, #141c25 2.5px, #050506 3.5px);
+  width: clamp(4px, 0.5vw, 6px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #4c5d72, #121a24 60%);
   transform: translateX(-50%);
 }
 .device__screen {
@@ -1133,9 +1151,7 @@
   background: #fff;
 }
 .device__laptop .device__screen {
-  border-radius: 8px 8px 2px 2px;
-  /* a fine black edge where the glass meets the bezel */
-  outline: 1px solid #000;
+  border-radius: 4px 4px 1px 1px;
 }
 /* glare on the glass: a soft diagonal streak, strongest at the top left */
 .device__screen::after {
@@ -1145,7 +1161,7 @@
   z-index: 1;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(112deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 32%, rgba(255, 255, 255, 0) 32.4%);
+  background: linear-gradient(112deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 30%, rgba(255, 255, 255, 0) 30.4%);
 }
 .device__screen img {
   display: block;
@@ -1165,27 +1181,70 @@
 .device__scroll::-webkit-scrollbar {
   display: none;
 }
-.device__base {
-  /* aluminium base: bright top edge, then the curved front lip falling into shade */
+/* keyboard deck seen from just above: wider at the front, light aluminium */
+.device__deck {
   position: relative;
-  height: clamp(11px, 1.5vw, 20px);
-  margin-inline: -6.5%;
-  border-radius: 2px 2px 26px 26px / 2px 2px 16px 16px;
-  background: linear-gradient(180deg, #fbfbfc 0%, #e6e8eb 20%, #d0d2d6 52%, #a7a9af 80%, #7e8086 100%);
+  height: clamp(12px, 3vw, 34px);
+  margin-inline: -5.5%;
+  clip-path: polygon(5% 0, 95% 0, 100% 100%, 0 100%);
+  /* a dark hinge line under the screen, then aluminium getting lighter towards the front */
+  background: linear-gradient(180deg, #2a2b2f 0 7%, #b9bcc2 7%, #dfe1e5 22%, #eceef1 62%, #f6f7f9 100%);
 }
-.device__base::after {
-  /* thumb scoop for opening the lid */
+.device__keys {
+  /* the keyboard: dark keys in rows, in the same perspective as the deck */
+  position: absolute;
+  top: 20%;
+  left: 14%;
+  right: 14%;
+  height: 52%;
+  clip-path: polygon(1.5% 0, 98.5% 0, 100% 100%, 0 100%);
+  /* many small keys separated by fine dark gaps, slightly lit from the front */
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(100% / 22 - 1px), #121214 calc(100% / 22 - 1px) calc(100% / 22)),
+    repeating-linear-gradient(180deg, transparent 0 calc(100% / 4 - 1px), #121214 calc(100% / 4 - 1px) calc(100% / 4)),
+    linear-gradient(180deg, #3a3b40, #2b2c30);
+  border-radius: 1px;
+  opacity: 0.92;
+}
+.device__lip {
+  /* silver front edge with the opening notch, curving away underneath */
+  position: relative;
+  height: clamp(4px, 0.75vw, 9px);
+  margin-inline: -5.5%;
+  border-radius: 0 0 40% 40% / 0 0 100% 100%;
+  background: linear-gradient(180deg, #fbfbfc 0%, #d5d7db 45%, #a3a6ac 100%);
+}
+.device__lip::before {
   content: '';
   position: absolute;
   top: 0;
   left: 50%;
-  width: 14%;
-  height: 44%;
-  border-radius: 0 0 14px 14px;
-  background: linear-gradient(#b3b5ba, #d6d8dc);
+  width: 12%;
+  height: 55%;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(#b5b8bd, #d9dbdf);
   transform: translateX(-50%);
 }
+/* soft contact shadow where the laptop meets the table */
+.device__laptop::after,
+.device__phone::after {
+  content: '';
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: -14px;
+  height: 18px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(36, 28, 56, 0.22), rgba(36, 28, 56, 0));
+  pointer-events: none;
+}
+.device__laptop,
+.device__phone {
+  isolation: isolate;
+}
 
+/* phone */
 .device--phone {
   width: min(300px, 100%);
 }
@@ -1196,10 +1255,15 @@
   border-radius: 54px;
   /* black glass in a polished titanium band with several highlights */
   background:
-    linear-gradient(#050506, #050506) padding-box,
-    linear-gradient(145deg, #f8f9fa 0%, #a1a4aa 15%, #eff1f3 33%, #878a90 57%, #dcdee1 79%, #989ba1 100%) border-box;
+    linear-gradient(#060607, #060607) padding-box,
+    linear-gradient(145deg, #f3f4f6 0%, #9da0a6 15%, #e9ebee 33%, #82858b 57%, #d6d8db 79%, #93969c 100%) border-box;
   /* a thin dark line where the band meets the glass */
-  box-shadow: inset 0 0 0 1.5px #202024;
+  box-shadow: inset 0 0 0 1.5px #1d1d21;
+}
+.device__phone::after {
+  left: 12%;
+  right: 12%;
+  bottom: -16px;
 }
 .device__phone .device__screen {
   border-radius: 45px;

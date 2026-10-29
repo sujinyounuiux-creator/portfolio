@@ -14,8 +14,10 @@ type Props = {
 }
 
 /**
- * CSS-only device mockup, drawn after a current MacBook (thin bezel, camera notch,
- * flat aluminium base) and iPhone (thin bezel, frame band, Dynamic Island, side buttons).
+ * CSS-only device mockup on a soft studio backdrop. The laptop is seen from the front,
+ * a little from above: thin graphite bezel and camera, the keyboard deck in perspective
+ * and a silver front edge resting on a soft contact shadow. The phone has a thin bezel,
+ * titanium band, Dynamic Island and side buttons.
  * The screen keeps the real screenshot's proportions. Screens marked `tall`
  * (full length pages) get a fixed viewport and scroll inside the device instead.
  */
@@ -41,10 +43,13 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
       {device === 'desktop' ? (
         <div className="device__laptop">
           <div className="device__lid">
-            <span className="device__notch" aria-hidden="true" />
+            <span className="device__cam" aria-hidden="true" />
             {screen}
           </div>
-          <div className="device__base" aria-hidden="true" />
+          <div className="device__deck" aria-hidden="true">
+            <span className="device__keys" />
+          </div>
+          <div className="device__lip" aria-hidden="true" />
         </div>
       ) : (
         <div className="device__phone">

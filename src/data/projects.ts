@@ -553,10 +553,11 @@ export const projects: Project[] = glueAll<Project[]>([
           },
           {
             // transcribed from the "Persona" slide (40:188) in the revised UX research slides;
-            // photo cropped from the same card (lastcow-persona-photo.webp)
+            // illustration of Steven made with Figma AI in the LastCow file (node 2141:729), drawn to
+            // match the crayon style of Sujin's own character on Home
             kind: 'persona',
             name: 'Steven Karney',
-            photo: img('lastcow-persona-photo', 'Steven Karney, smiling with his arms crossed.', undefined, 416, 644),
+            photo: img('lastcow-persona-illustration', 'Illustration of Steven Karney: a smiling man with short light brown hair in a black T-shirt, arms crossed, drawn in soft crayon.', undefined, 640, 800),
             about: [
               { label: 'Age', value: '32' },
               { label: 'Sex', value: 'Male' },

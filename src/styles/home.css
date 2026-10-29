@@ -19,7 +19,8 @@
   line-height: 1.05;
 }
 .section-lede {
-  max-width: 46ch;
+  /* wide enough that a one sentence intro stays on one line */
+  max-width: 72ch;
   color: var(--c-ink-soft);
 }
 
@@ -194,11 +195,16 @@ button.wiggle {
   letter-spacing: -0.01em;
 }
 .hero__subline {
-  max-width: 34ch;
   margin-top: var(--s-2);
   font-size: var(--fs-sm);
   line-height: 1.5;
   color: var(--c-ink-soft);
+}
+/* one line wherever it fits */
+@media (min-width: 600px) {
+  .hero__subline {
+    white-space: nowrap;
+  }
 }
 
 .hero__art {
@@ -542,6 +548,7 @@ button.wiggle {
    matching the site's low-contrast pastel surfaces (Home cards and Case Study folders) */
 .feature,
 .folder {
+  cursor: pointer; /* the whole card opens the case study */
   --f-bg: color-mix(in srgb, var(--f-accent) 22%, var(--c-surface));
   --f-fg: var(--c-ink);
 }
@@ -623,7 +630,6 @@ button.wiggle {
   font-weight: 600;
 }
 .feature__summary {
-  max-width: 46ch;
   opacity: 0.88;
 }
 .feature__tags {

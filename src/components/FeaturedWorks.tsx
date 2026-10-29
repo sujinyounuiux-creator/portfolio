@@ -1,17 +1,32 @@
-import { Link } from 'react-router-dom'
+import type { MouseEvent } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { disciplineLabel, featuredProjects, projects, type Project } from '../data/projects'
 import { Arrow } from './Arrow'
 import { Editable } from './Editable'
 import { Tape } from './HandDrawnDecoration'
+
+/**
+ * A click anywhere on a project card opens its case study (the title stays the real link
+ * for keyboards and screen readers). Clicks on another link, or ones that end a text
+ * selection, are left alone.
+ */
+function useCardClick(slug: string) {
+  const navigate = useNavigate()
+  return (e: MouseEvent<HTMLElement>) => {
+    if ((e.target as HTMLElement).closest('a, button') || window.getSelection()?.toString()) return
+    navigate(`/work/${slug}`)
+  }
+}
 
 /** Compact folder card for the Case Study page: coloured tab, small thumbnail, title. */
 export function ProjectFolder({ project, index }: { project: Project; index: number }) {
   const { slug, title, category, thumbnail, theme } = project
   // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
   const style = { '--f-accent': theme.accent } as React.CSSProperties
+  const onClick = useCardClick(slug)
 
   return (
-    <article className="folder" style={style}>
+    <article className="folder" style={style} onClick={onClick}>
       <p className="folder__tab">Project {String(index + 1).padStart(2, '0')}</p>
       <div className="folder__body">
         <div className="folder__thumb">
@@ -35,9 +50,10 @@ export function FeatureCard({ project, index }: { project: Project; index: numbe
   const { slug, title, tagline, summary, timeline, thumbnail, theme, disciplines, category } = project
   // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
   const style = { '--f-accent': theme.accent } as React.CSSProperties
+  const onClick = useCardClick(slug)
 
   return (
-    <article className="feature" style={style}>
+    <article className="feature" style={style} onClick={onClick}>
       <p className="feature__tab">Project {String(index + 1).padStart(2, '0')}</p>
       <div className="feature__body">
         <div className="feature__text">

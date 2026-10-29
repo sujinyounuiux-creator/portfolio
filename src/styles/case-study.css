@@ -42,7 +42,7 @@
 }
 .cs-hero__summary {
   margin-top: var(--s-4);
-  max-width: 56ch;
+  max-width: 70ch;
   font-size: var(--fs-lead);
   color: var(--c-ink-soft);
 }
@@ -1738,7 +1738,6 @@
 .persona__profile {
   display: grid;
   gap: var(--s-2);
-  max-width: 58ch;
   color: var(--c-ink-soft);
   line-height: 1.6;
 }

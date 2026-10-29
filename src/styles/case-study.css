@@ -1150,7 +1150,6 @@
   background: #fff;
 }
 .device__laptop .device__screen,
-.device__phone .device__screen,
 .device__tablet .device__screen {
   /* the glass behind the page is as dark as the bezel, so no light line can show at the
      edges when the page lands on a fraction of a pixel */
@@ -1250,68 +1249,60 @@
   isolation: isolate;
 }
 
-/* phone */
+/* phone and monitor: realistic device images (scripts/prepare-device-mockups.mjs) with a
+   see-through display; the real screen sits exactly behind that window */
 .device--phone {
   width: min(300px, 100%);
 }
-.device__phone {
-  /* current iPhone Pro, seen from the front: very thin black bezel in a black titanium
-     band with soft highlights, casting a gentle shadow like a product shot */
+.device__photo {
   position: relative;
-  padding: 5px;
-  border: 3px solid transparent;
-  border-radius: 50px;
-  background:
-    linear-gradient(#050506, #050506) padding-box,
-    linear-gradient(145deg, #55565c 0%, #1d1d20 16%, #47484d 38%, #161618 60%, #3b3c41 80%, #1c1c1f 100%) border-box;
-  box-shadow:
-    inset 0 0 0 1px #000,
-    0 24px 40px -20px rgba(20, 24, 40, 0.5),
-    0 8px 16px -8px rgba(20, 24, 40, 0.3);
+  /* a soft product-shot shadow under the whole device */
+  filter: drop-shadow(0 18px 22px rgba(20, 24, 40, 0.22)) drop-shadow(0 4px 6px rgba(20, 24, 40, 0.12));
+}
+.device__photo-screen {
+  position: absolute;
+  z-index: 0;
+  overflow: hidden;
+  background: #0c0c0d;
+}
+.device__photo-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.device__photo .device__screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  aspect-ratio: auto;
+}
+/* screens fill the display; long pages still scroll at their own height */
+.device__photo .device__screen > .zoom,
+.device__photo .device__screen > .zoom img {
+  width: 100%;
+  height: 100%;
+}
+.device__photo .device__screen > .zoom img {
+  object-fit: cover;
+  object-position: top;
+}
+.device__photo .compare,
+.device__photo .autoproto__screen {
+  height: 100%;
+  aspect-ratio: auto;
+}
+.device__photo .compare__img {
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 .device__phone::after {
   left: 12%;
   right: 12%;
   bottom: -16px;
-}
-.device__phone .device__screen {
-  border-radius: 43px;
-}
-/* side buttons: action and volume on the left, power on the right */
-.device__btn {
-  position: absolute;
-  width: 3px;
-  background: linear-gradient(90deg, #1c1c1f, #4b4c51 60%, #26272a);
-}
-.device__btn--action,
-.device__btn--vol-up,
-.device__btn--vol-down {
-  left: -8.5px;
-  border-radius: 2px 0 0 2px;
-}
-.device__btn--action { top: 17%; height: 4.5%; }
-.device__btn--vol-up { top: 25%; height: 8%; }
-.device__btn--vol-down { top: 35%; height: 8%; }
-.device__btn--power {
-  top: 27%;
-  right: -8.5px;
-  height: 12%;
-  border-radius: 0 2px 2px 0;
-}
-.device__phone .device__screen--scroll {
-  aspect-ratio: 402 / 874;
-}
-.device__island {
-  /* Dynamic Island with the front camera lens on its right */
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  z-index: 2;
-  width: 29%;
-  height: 22px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 80% 50%, #34465a 0 2px, #101820 3px, #000 4.5px);
-  transform: translateX(-50%);
 }
 
 .devices {
@@ -1489,6 +1480,15 @@
   top: 48px;
   padding: 0.2rem 0.55rem;
   font-size: 0.6875rem;
+}
+/* narrow phone screens: the drag hint wraps onto two short lines */
+.compare-set .compare__hint {
+  max-width: calc(100% - 72px);
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  white-space: normal;
 }
 .compare-set .compare__label--before {
   left: 10px;
@@ -1901,48 +1901,6 @@
   isolation: isolate;
 }
 
-/* monitor: black glass bezel, a silver aluminium chin, an angled silver stand and foot */
-.device__monitor {
-  position: relative;
-  display: grid;
-  justify-items: center;
-}
-.device__monitor-face {
-  width: 100%;
-  padding: 2.6% 2.6% 0;
-  border-radius: 12px;
-  background: #0c0c0d;
-  box-shadow:
-    inset 0 0 0 1.5px #2c2c30,
-    0 22px 40px -22px rgba(20, 24, 40, 0.45);
-  overflow: hidden;
-}
-.device__monitor .device__screen {
-  border-radius: 2px;
-}
-.device__chin {
-  /* silver aluminium chin, brighter at the top edge */
-  display: block;
-  height: clamp(28px, 6vw, 58px);
-  margin: 2.6% -2.7% 0;
-  background: linear-gradient(180deg, #fafbfc 0%, #e6e7ea 30%, #d4d6da 100%);
-}
-.device__stand {
-  /* the angled stand, lit from the left */
-  display: block;
-  width: 20%;
-  height: clamp(40px, 8vw, 70px);
-  margin-top: -1px;
-  background: linear-gradient(90deg, #b9bcc1, #eceef0 35%, #dcdee2 65%, #aeb1b7);
-  clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
-}
-.device__foot {
-  display: block;
-  width: 34%;
-  height: clamp(5px, 0.9vw, 9px);
-  border-radius: 3px 3px 6px 6px;
-  background: linear-gradient(180deg, #f4f5f7, #c3c6cb);
-}
 .device-tabs__list {
   display: flex;
   flex-wrap: wrap;

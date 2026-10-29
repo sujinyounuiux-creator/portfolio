@@ -1,5 +1,6 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import type { Figure } from '../data/projects'
+import mockups from '../data/mockups.json'
 import { ZoomImage } from './Lightbox'
 
 export type Device = 'desktop' | 'phone' | 'tablet' | 'monitor'
@@ -14,12 +15,11 @@ type Props = {
 }
 
 /**
- * CSS-only device mockup on a soft studio backdrop. The laptop is seen from the front,
- * a little from above: thin graphite bezel and camera, the keyboard deck in perspective
- * and a silver front edge resting on a soft contact shadow. The phone has a thin bezel,
- * black titanium band, Dynamic Island and side buttons, casting a soft shadow. The tablet
- * is a current iPad (thin, even bezels, no home button) and the monitor a studio display
- * style screen: black glass bezel, a silver aluminium chin, an angled stand and foot.
+ * Device mockup. The phone (an iPhone in black titanium) and the monitor (black glass
+ * bezel, silver chin and stand) are realistic images with a see-through display
+ * (scripts/prepare-device-mockups.mjs); the real screen sits exactly behind that window.
+ * The laptop and tablet are drawn in CSS: the laptop seen from the front, a little from
+ * above, with its keyboard deck in perspective, and a current iPad with thin even bezels.
  * The screen keeps the real screenshot's proportions. Screens marked `tall`
  * (full length pages) get a fixed viewport and scroll inside the device instead.
  */
@@ -58,27 +58,32 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
           <span className="device__cam device__cam--tablet" aria-hidden="true" />
           {screen}
         </div>
-      ) : device === 'monitor' ? (
-        <div className="device__monitor">
-          <div className="device__monitor-face">
-            {screen}
-            <span className="device__chin" aria-hidden="true" />
-          </div>
-          <span className="device__stand" aria-hidden="true" />
-          <span className="device__foot" aria-hidden="true" />
-        </div>
       ) : (
-        <div className="device__phone">
-          <span className="device__island" aria-hidden="true" />
-          <span className="device__btn device__btn--action" aria-hidden="true" />
-          <span className="device__btn device__btn--vol-up" aria-hidden="true" />
-          <span className="device__btn device__btn--vol-down" aria-hidden="true" />
-          <span className="device__btn device__btn--power" aria-hidden="true" />
-          {screen}
-        </div>
+        <PhotoFrame kind={device === 'monitor' ? 'monitor' : 'iphone'}>{screen}</PhotoFrame>
       )}
       {/* pass caption="" to hide the figure's own caption */}
       {(caption ?? figure?.caption) && <figcaption>{caption ?? figure?.caption}</figcaption>}
     </figure>
+  )
+}
+
+/** A realistic device image with its display cut out; the screen is placed behind it. */
+function PhotoFrame({ kind, children }: { kind: 'iphone' | 'monitor'; children: ReactNode }) {
+  const m = mockups[kind]
+  // a hair larger than the measured display, so no gap shows at its soft edge
+  const bleed = 0.4
+  const place = {
+    left: `${m.screen.left - bleed}%`,
+    top: `${m.screen.top - bleed}%`,
+    width: `${m.screen.width + bleed * 2}%`,
+    height: `${m.screen.height + bleed * 2}%`,
+  } as CSSProperties
+  return (
+    <div className={`device__photo ${kind === 'iphone' ? 'device__phone' : 'device__monitor'}`} style={{ aspectRatio: `${m.width} / ${m.height}` }}>
+      <div className="device__photo-screen" style={place}>
+        {children}
+      </div>
+      <img className="device__photo-frame" src={`/images/mockups/${kind}.webp`} alt="" width={m.width} height={m.height} loading="lazy" decoding="async" />
+    </div>
   )
 }

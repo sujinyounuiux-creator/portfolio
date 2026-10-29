@@ -1,0 +1,22 @@
+{
+  "iphone": {
+    "width": 734,
+    "height": 1512,
+    "screen": {
+      "left": 4.22,
+      "top": 1.72,
+      "width": 91.55,
+      "height": 96.56
+    }
+  },
+  "monitor": {
+    "width": 1209,
+    "height": 938,
+    "screen": {
+      "left": 3.31,
+      "top": 4.16,
+      "width": 93.3,
+      "height": 63.97
+    }
+  }
+}

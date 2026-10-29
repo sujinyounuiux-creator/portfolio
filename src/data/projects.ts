@@ -48,7 +48,7 @@ export type Block =
   /** A row of key numbers (only real figures from the project). */
   | { kind: 'stats'; items: { value: string; label: string }[] }
   /** One design decision: a real screen or crop beside the reasoning. */
-  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; figure: Figure }[] }
+  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[] }
   /** A persona as a structured card: photo, about details, profile, goals, frustrations and a quote. */
   | { kind: 'persona'; name: string; photo: Figure; about: { label: string; value: string }[]; profile: string[]; goals: string[]; frustrations: string[]; quote: string; caption?: string }
   /** Icon set from the project, grouped, with what each group is for. */
@@ -713,8 +713,8 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'cards',
             items: [
-              { title: 'What worked', body: 'Users found the app easy to learn and navigate, and most expected to find their ticket information on their profile.' },
-              { title: 'What to improve', body: 'Some found the flow between past and upcoming events in the calendar confusing, so those screens needed simplifying.' },
+              { title: 'What worked', body: 'Users found the app **easy to learn and navigate**, and most expected to find their **ticket information on their profile**.' },
+              { title: 'What to improve', body: 'Some found the flow between **past and upcoming events** in the calendar **confusing**, so those screens needed **simplifying**.' },
             ],
           },
         ],
@@ -727,15 +727,15 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'UX research helped us uncover real user needs and revealed problems we might not have noticed ourselves. Users had different expectations, so we compared their feedback to identify common patterns.',
+              '**UX research** helped us uncover **real user needs** and revealed **problems we might not have noticed** ourselves. Users had different expectations, so we compared their feedback to identify **common patterns**.',
             ],
           },
           {
             kind: 'list',
             intro: 'Next steps:',
             items: [
-              'Run another round of usability testing and refine the flows, starting with the calendar’s past and upcoming events.',
-              'Consolidate event discovery in one place, since users currently piece it together from Instagram, Eventbrite and word of mouth.',
+              'Run **another round of usability testing** and refine the flows, starting with the **calendar’s past and upcoming events**.',
+              '**Consolidate event discovery in one place**, since users currently piece it together from Instagram, Eventbrite and word of mouth.',
             ],
           },
         ],
@@ -970,12 +970,13 @@ export const projects: Project[] = glueAll<Project[]>([
               'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
             ],
             figures: [],
-            // one device at a time, cut from the "Overall UI" export (scripts/split-cookpad-devices.mjs)
+            // one device at a time: the screens from the "Overall UI" export, cut out of their old
+            // mockups (scripts/cut-cookpad-screens.mjs) and shown in current device frames
             tabs: [
-              { label: 'Phone', figure: cook('device-phone', 'The redesigned Cookpad search page on a phone.', undefined, 234, 475) },
-              { label: 'Tablet', figure: cook('device-tablet', 'The redesigned Cookpad search page on a tablet.', undefined, 431, 620) },
-              { label: 'Laptop', figure: cook('device-laptop', 'The redesigned Cookpad search page on a laptop.', undefined, 730, 426) },
-              { label: 'Desktop', figure: cook('device-desktop', 'The redesigned Cookpad search page on a desktop monitor.', undefined, 940, 787) },
+              { label: 'Phone', device: 'phone', figure: cook('screen-phone', 'The redesigned Cookpad search page on a phone.', undefined, 202, 439) },
+              { label: 'Tablet', device: 'tablet', figure: cook('screen-tablet', 'The redesigned Cookpad search page on a tablet.', undefined, 395, 526) },
+              { label: 'Laptop', device: 'desktop', figure: cook('screen-laptop', 'The redesigned Cookpad search page on a laptop.', undefined, 564, 352) },
+              { label: 'Desktop', device: 'monitor', figure: cook('screen-desktop', 'The redesigned Cookpad search page on a desktop monitor.', undefined, 889, 499) },
             ],
           },
           {
@@ -1028,7 +1029,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'This project taught me how valuable user research is in guiding design decisions. Moving forward, I want to strengthen my skills in user research, interactive prototyping, and developer handoff to translate user insights into practical, production ready designs.',
+              'This project taught me how valuable **user research** is in **guiding design decisions**. Moving forward, I want to strengthen my skills in **user research, interactive prototyping, and developer handoff** to translate user insights into **practical, production ready designs**.',
             ],
           },
         ],
@@ -1370,11 +1371,11 @@ export const projects: Project[] = glueAll<Project[]>([
             items: [
               {
                 title: 'Testing & Feedback',
-                body: 'Feedback highlighted inconsistencies in the use of imagery and visual styles across different pages of the website. This showed that even well designed individual sections can feel disconnected when they don’t follow a consistent visual direction.',
+                body: 'Feedback highlighted **inconsistencies in the use of imagery and visual styles** across different pages of the website. This showed that even well designed individual sections can **feel disconnected** when they don’t follow a **consistent visual direction**.',
               },
               {
                 title: 'What I Learned',
-                body: 'This project taught me the importance of researching usability issues before jumping into design. I learned to use heuristic evaluation to guide design decisions with evidence rather than visual preferences alone. I also gained a better understanding of how consistent imagery, typography, and UI components create a cohesive user experience.',
+                body: 'This project taught me the importance of **researching usability issues before jumping into design**. I learned to use **heuristic evaluation** to guide design decisions **with evidence** rather than visual preferences alone. I also gained a better understanding of how **consistent imagery, typography, and UI components** create a **cohesive user experience**.',
               },
             ],
           },

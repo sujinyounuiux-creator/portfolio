@@ -69,6 +69,13 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
         {labels[1]}
       </span>
 
+      {/* until someone uses it, a pill beside the handle says what dragging does */}
+      {!touched && (
+        <span className="compare__hint" aria-hidden="true">
+          Drag to see {labels[0].toLowerCase()}
+        </span>
+      )}
+
       <div className="compare__divider" aria-hidden="true" />
       <button
         type="button"

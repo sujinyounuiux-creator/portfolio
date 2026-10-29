@@ -49,7 +49,9 @@ function BlockView({ block }: { block: Block }) {
           {block.intro && <p>{block.intro}</p>}
           <ul className="cs-list">
             {block.items.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <Rich text={item} />
+              </li>
             ))}
           </ul>
         </div>

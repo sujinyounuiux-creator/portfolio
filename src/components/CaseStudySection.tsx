@@ -2,6 +2,7 @@ import type { Block, Figure, Section } from '../data/projects'
 import { Arrow } from './Arrow'
 import { CompareSlider } from './CompareSlider'
 import { DeviceFrame } from './DeviceFrame'
+import { DeviceTabs } from './DeviceTabs'
 import { PlaceholderBlock } from './Editable'
 import { ZoomImage } from './Lightbox'
 import { Walkthrough } from './Walkthrough'
@@ -141,13 +142,62 @@ function BlockView({ block }: { block: Block }) {
             ))}
           </div>
           <div className={`cs-feature__media ${pair ? 'cs-feature__media--pair' : ''} ${block.plain ? 'cs-feature__media--plain' : ''}`}>
-            {block.figures.map((f) => (
-              <FigureView key={f.src} figure={f} zoom />
-            ))}
+            {block.tabs ? (
+              <DeviceTabs items={block.tabs} />
+            ) : (
+              block.figures.map((f) => <FigureView key={f.src} figure={f} zoom />)
+            )}
           </div>
         </div>
       )
     }
+    case 'persona':
+      return (
+        <figure className="persona">
+          <div className="persona__card">
+            <img className="persona__photo" src={block.photo.src} alt={block.photo.alt} width={block.photo.width} height={block.photo.height} loading="lazy" decoding="async" />
+            <div className="persona__intro">
+              <p className="persona__kicker">Persona</p>
+              <h3 className="persona__name">{block.name}</h3>
+              <dl className="persona__about">
+                {block.about.map((a) => (
+                  <div key={a.label}>
+                    <dt>{a.label}</dt>
+                    <dd>{a.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="persona__profile">
+                {block.profile.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="persona__needs">
+            <section className="persona__box persona__box--goals" aria-label="Goals">
+              <h4>Goals</h4>
+              <ul>
+                {block.goals.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+            </section>
+            <section className="persona__box persona__box--pains" aria-label="Frustrations">
+              <h4>Frustrations</h4>
+              <ul>
+                {block.frustrations.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+          <blockquote className="persona__quote">
+            <p>“{block.quote}”</p>
+          </blockquote>
+          {block.caption && <figcaption>{block.caption}</figcaption>}
+        </figure>
+      )
     case 'icons':
       return (
         <div className="cs-icons">

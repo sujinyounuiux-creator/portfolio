@@ -22,6 +22,8 @@ export const site = {
 
   // Slogan under the "portfolio" heading on Home.
   slogan: 'I design with purpose, for people.',
+  // a quieter line under the slogan on Home
+  subline: '6 years in network engineering. Now designing better digital experiences.',
 
   // Design specialties, always in this order: UX/UI first (shown as the primary one).
   // Each links to matching work. Graphic Design points to the ASCLO gallery on Home.

@@ -1,6 +1,5 @@
 import { site } from '../data/site'
 import { StampableCharacter } from './StampableCharacter'
-import { Underline } from './HandDrawnDecoration'
 
 /**
  * Home hero. The illustrated character is the focal point. The role, a few
@@ -10,7 +9,6 @@ import { Underline } from './HandDrawnDecoration'
  * character with stamps.
  */
 export function HeroSection() {
-  const [lead, last] = splitSlogan(site.slogan)
 
   return (
     <section className="hero" aria-labelledby="hero-title">
@@ -23,13 +21,8 @@ export function HeroSection() {
             <span className="hero__name">{site.name}</span>
             <span className="hero__word">portfolio</span>
           </h1>
-          <p className="hero__slogan">
-            {lead}{' '}
-            <span className="marked">
-              {last}
-              <Underline className="marked__line" draw />
-            </span>
-          </p>
+          <p className="hero__slogan">{site.slogan}</p>
+          <p className="hero__subline">{site.subline}</p>
         </div>
 
         <div className="hero__art">
@@ -54,11 +47,4 @@ export function HeroSection() {
       </div>
     </section>
   )
-}
-
-/** Splits the slogan so its last phrase ("for people.") gets the crayon underline. */
-function splitSlogan(slogan: string): [string, string] {
-  const i = slogan.lastIndexOf(',')
-  if (i === -1) return ['', slogan]
-  return [slogan.slice(0, i + 1), slogan.slice(i + 1).trim()]
 }

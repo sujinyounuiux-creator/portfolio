@@ -461,7 +461,6 @@
   display: grid;
   gap: var(--s-4);
   width: min(100%, 760px);
-  justify-self: center;
   margin-top: var(--s-3);
   padding: clamp(1.1rem, 2.5vw, 1.6rem) clamp(1.1rem, 3vw, 2rem);
   border: var(--border);

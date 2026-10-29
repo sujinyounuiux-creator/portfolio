@@ -977,6 +977,7 @@
    Contact card, all narrow enough to fit on one screen together */
 .cs-more {
   display: grid;
+  justify-items: start;
   gap: var(--s-4);
   margin-top: var(--s-7);
   padding-bottom: var(--s-7);
@@ -985,7 +986,12 @@
   display: grid;
   gap: var(--s-4);
   width: min(100%, 760px);
-  justify-self: center;
+}
+@media (min-width: 1040px) {
+  .cs-more {
+    /* same left edge as the case study text, right of the On this page list */
+    padding-left: calc(var(--gutter) + 190px + var(--s-8));
+  }
 }
 /* phones: each card is a short row, a small image beside the text */
 @media (max-width: 639px) {
@@ -1069,7 +1075,9 @@
 }
 .cs-pager__all {
   grid-column: 1 / -1;
-  justify-self: center;
+  /* centred under the two cards (same width as them) */
+  width: min(100%, 760px);
+  justify-content: center;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -1101,7 +1109,8 @@
 
 /* studio backdrop: behind a group of devices, or a laptop shown on its own */
 .devices,
-.device--desktop:not(.devices .device) {
+.walk,
+.device--desktop:not(.devices .device, .walk .device) {
   --stage: color-mix(in srgb, var(--p-accent) 16%, #f6f4f8);
   padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2.75rem);
   border-radius: var(--r-lg);
@@ -1112,7 +1121,7 @@
 .devices .device--desktop {
   padding-inline: 4%; /* room for the deck, which is wider than the lid */
 }
-.device--desktop:not(.devices .device) .device__laptop {
+.device--desktop:not(.devices .device, .walk .device) .device__laptop {
   width: min(100%, 860px);
   margin-inline: auto;
   padding-inline: 4%;
@@ -1475,19 +1484,45 @@
 }
 
 /* ── Click-through prototype (walkthrough) ── */
+/* walkthrough: the screen list sits beside the laptop (above it, in one scrolling row, on
+   phones), so the tabs and the screen they show are on one screen together */
 .walk {
   display: grid;
   gap: var(--s-4);
   margin: 0;
+  padding-block: clamp(1.25rem, 3vw, 2rem);
 }
 .walk__steps {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: var(--s-2);
   margin: 0;
-  padding: 0;
+  padding: 0 0 var(--s-1);
   list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.walk__steps::-webkit-scrollbar {
+  display: none;
+}
+.walk__steps li {
+  flex: none;
+}
+.walk .device__laptop {
+  padding-inline: 4%;
+}
+@media (min-width: 900px) {
+  .walk {
+    grid-template-columns: 190px minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+  }
+  .walk__steps {
+    flex-direction: column;
+    overflow: visible;
+  }
+  .walk__step {
+    width: 100%;
+  }
 }
 .walk__step {
   display: inline-flex;
@@ -1629,4 +1664,209 @@
 .cs-kit__note {
   font-size: var(--fs-xs);
   color: var(--c-ink-soft);
+}
+
+/* ── Persona: three clearly separate groups ──
+   1. who he is (photo, name, about details, profile), 2. goals and frustrations as two
+   tinted boxes, 3. his quote. Space between groups is much larger than inside them. */
+.persona {
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  margin: 0;
+}
+.persona__card {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--r-lg);
+  background: var(--c-surface);
+}
+@media (min-width: 680px) {
+  .persona__card {
+    grid-template-columns: minmax(150px, 220px) 1fr;
+    align-items: center;
+  }
+}
+.persona__photo {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 15%;
+  border-radius: var(--r-md);
+}
+.persona__intro {
+  display: grid;
+  gap: var(--s-3);
+}
+.persona__kicker {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+}
+.persona__name {
+  margin-top: -0.35rem;
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+/* about details as small labelled chips */
+.persona__about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin: 0;
+}
+.persona__about div {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--p-accent) 12%, #fff);
+  font-size: var(--fs-sm);
+}
+.persona__about dt {
+  font-weight: 700;
+}
+.persona__about dt::after {
+  content: ':';
+}
+.persona__about dd {
+  margin: 0;
+}
+.persona__profile {
+  display: grid;
+  gap: var(--s-2);
+  max-width: 58ch;
+  color: var(--c-ink-soft);
+  line-height: 1.6;
+}
+.persona__needs {
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+@media (min-width: 680px) {
+  .persona__needs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.persona__box {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: var(--r-lg);
+}
+.persona__box--goals {
+  --tone: #2f8a5b;
+  background: #e8f4ec;
+}
+.persona__box--pains {
+  --tone: #c2513f;
+  background: #fbebe7;
+}
+.persona__box h4 {
+  margin-bottom: var(--s-3);
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tone);
+}
+.persona__box ul {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.persona__box li {
+  position: relative;
+  padding-left: 1.6rem;
+  line-height: 1.5;
+}
+/* a check for goals, a cross for frustrations */
+.persona__box li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 800;
+  color: var(--tone);
+}
+.persona__box--goals li::before {
+  content: '✓';
+}
+.persona__box--pains li::before {
+  content: '✕';
+}
+.persona__quote {
+  margin: 0;
+  padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.1rem, 3vw, 2rem);
+  border-left: 5px solid var(--p-accent);
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+  background: color-mix(in srgb, var(--p-accent) 9%, #fff);
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+.persona figcaption {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-soft);
+  text-align: center;
+}
+
+/* ── Device tabs: one device at a time, its name underneath ── */
+.device-tabs {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 60%),
+    color-mix(in srgb, var(--p-accent) 16%, #f6f4f8);
+}
+.device-tabs__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(240px, 36vw, 380px);
+}
+.device-tabs__stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* the export's white page background melts into the backdrop */
+  animation: device-in 380ms var(--ease);
+}
+@keyframes device-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .device-tabs__stage img { animation: none; }
+}
+.device-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-2);
+}
+.device-tabs__tab {
+  min-height: 40px;
+  padding: 0.35rem 1rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+.device-tabs__tab:hover {
+  border-color: var(--p-accent);
+}
+.device-tabs__tab[aria-selected='true'] {
+  border-color: var(--c-ink);
+  background: var(--c-ink);
+  color: #fff;
 }

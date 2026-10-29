@@ -46,7 +46,9 @@ export type Block =
   /** A row of key numbers (only real figures from the project). */
   | { kind: 'stats'; items: { value: string; label: string }[] }
   /** One design decision: a real screen or crop beside the reasoning. */
-  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean }
+  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; figure: Figure }[] }
+  /** A persona as a structured card: photo, about details, profile, goals, frustrations and a quote. */
+  | { kind: 'persona'; name: string; photo: Figure; about: { label: string; value: string }[]; profile: string[]; goals: string[]; frustrations: string[]; quote: string; caption?: string }
   /** Icon set from the project, grouped, with what each group is for. */
   | { kind: 'icons'; groups: { title: string; note: string; items: { src: string; label: string }[] }[] }
   /** Several draggable comparisons shown side by side inside phones (e.g. wireframe → hi fi). */
@@ -546,17 +548,25 @@ export const projects: Project[] = [
             ],
           },
           {
-            // "Persona" slide (40:188) in the revised UX research slides, cropped to the card (scripts/prepare-lastcow-kit.mjs)
-            kind: 'figure',
-            figure: {
-              ...img(
-                'lastcow-persona',
-                'Persona card for Steven Karney, 32, male, a graphic designer in Vancouver, BC. Profile: enjoys local music shows, live events and the outdoors, but often struggles to discover events early enough. Goals: discover interesting local events and live music, find events that match his interests, find affordable ways to attend. Frustrations: events are spread across many platforms, he often discovers them too late, and last minute tickets are hard to find. Quote: “I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.”',
-                'Persona: Steven Karney, built from the interview findings.',
-                1600,
-                644,
-              ),
-            },
+            // transcribed from the "Persona" slide (40:188) in the revised UX research slides;
+            // photo cropped from the same card (lastcow-persona-photo.webp)
+            kind: 'persona',
+            name: 'Steven Karney',
+            photo: img('lastcow-persona-photo', 'Steven Karney, smiling with his arms crossed.', undefined, 416, 644),
+            about: [
+              { label: 'Age', value: '32' },
+              { label: 'Sex', value: 'Male' },
+              { label: 'Location', value: 'Vancouver, BC' },
+              { label: 'Occupation', value: 'Graphic Designer' },
+            ],
+            profile: [
+              'Enjoys discovering local music shows, attending live events, and spending time outdoors.',
+              'He likes finding new experiences around Vancouver but often struggles to discover events early enough.',
+            ],
+            goals: ['Discover interesting local events and live music.', 'Find events that match his interests.', 'Find affordable opportunities to attend events.'],
+            frustrations: ['Events are spread across many different platforms.', 'He often discovers events too late.', 'Last-minute tickets can be difficult to find.'],
+            quote: 'I’m always looking for something interesting to do, but I don’t want to spend an hour searching through five different websites.',
+            caption: 'Persona built from the interview findings.',
           },
         ],
       },
@@ -936,7 +946,6 @@ export const projects: Project[] = [
             ],
           },
           {
-            // the devices image is the "Overall UI" frame (27:3888): phone, tablet, laptop and desktop layouts
             kind: 'feature',
             plain: true,
             tag: 'Secondary research: most visits come from mobile',
@@ -944,7 +953,14 @@ export const projects: Project[] = [
             body: [
               'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
             ],
-            figures: [cook('devices', 'The redesigned Cookpad search page on phone, tablet, laptop and desktop.', 'The search page on phone, tablet, laptop and desktop.', 1600, 439)],
+            figures: [],
+            // one device at a time, cut from the "Overall UI" export (scripts/split-cookpad-devices.mjs)
+            tabs: [
+              { label: 'Phone', figure: cook('device-phone', 'The redesigned Cookpad search page on a phone.', undefined, 234, 475) },
+              { label: 'Tablet', figure: cook('device-tablet', 'The redesigned Cookpad search page on a tablet.', undefined, 431, 620) },
+              { label: 'Laptop', figure: cook('device-laptop', 'The redesigned Cookpad search page on a laptop.', undefined, 730, 426) },
+              { label: 'Desktop', figure: cook('device-desktop', 'The redesigned Cookpad search page on a desktop monitor.', undefined, 940, 787) },
+            ],
           },
           {
             kind: 'feature',
@@ -981,9 +997,9 @@ export const projects: Project[] = [
             kind: 'devices',
             device: 'desktop',
             screens: [
+              img('cookpad-recipe', 'Recipe detail for butter pancakes with ingredients and steps.', 'Recipe detail'),
               img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
               img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
-              img('cookpad-recipe', 'Recipe detail for butter pancakes with ingredients and steps.', 'Recipe detail'),
             ],
           },
         ],

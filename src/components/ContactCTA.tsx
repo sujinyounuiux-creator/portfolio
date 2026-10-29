@@ -59,7 +59,7 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
     return (
       <section id="contact" className="contact-card" aria-labelledby="contact-title">
         <div className="contact-card__text">
-          <p className="hand contact__kicker">say hi!</p>
+          <p className="hand contact__kicker">Say hi!</p>
           <H id="contact-title" className="contact-card__title">
             Let’s make a{' '}
             <span className="marked">
@@ -78,7 +78,7 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
     <section id="contact" className="contact" aria-labelledby="contact-title">
       <div className="container contact__inner">
         <div className="contact__text">
-          <p className="hand contact__kicker">say hi!</p>
+          <p className="hand contact__kicker">Say hi!</p>
           <H id="contact-title" className="contact__title">
             <span className="contact__line">
               Let’s make a{' '}

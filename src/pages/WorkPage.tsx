@@ -27,7 +27,7 @@ export function WorkPage() {
       <div className="container">
         {/* same header as Featured Works on Home; projects as compact folder cards */}
         <header className="section-head-c">
-          <p className="hand section-kicker">explore my work!</p>
+          <p className="hand section-kicker">Explore my work!</p>
           <h1 id="work-page-title" className="section-title">
             Case Study
           </h1>

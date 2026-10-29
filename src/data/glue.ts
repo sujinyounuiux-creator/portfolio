@@ -1,11 +1,12 @@
 /**
- * Keeps a short article (a, an, the) on the same line as the word after it, so no line
- * ends with "the" or "a". It joins them with a non-breaking space. Applied to all the
- * site's text data (projects, site, about, volunteer).
+ * Keeps a short word (a, an, the, to, of, in, on, at, by, for, and, or, with, my, I) on the
+ * same line as the word after it, so no line ends with a dangling "a", "the" or "to". It
+ * joins them with a non-breaking space. Applied to all the site's text data (projects,
+ * site, about, volunteer, asclo).
  */
-const ARTICLE = /(^|[\s(“"‘'])(a|an|the)\s+(?=\S)/gi
+const SHORT = /(?<=^|[\s(“"‘'])(a|an|the|to|of|in|on|at|by|for|and|or|with|my|I)\s+(?=\S)/gi
 
-export const glue = (s: string) => s.replace(ARTICLE, '$1$2 ')
+export const glue = (s: string) => s.replace(SHORT, '$1 ')
 
 export function glueAll<T>(value: T): T {
   if (typeof value === 'string') return glue(value) as T

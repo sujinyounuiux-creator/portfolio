@@ -9,7 +9,7 @@ export function NotFoundPage() {
       <div className="container not-found__inner">
         <CharacterIllustration className="not-found__art" />
         <div>
-          <p className="hand not-found__note">hmm… nothing here</p>
+          <p className="hand not-found__note">Hmm… nothing here</p>
           <h1>Page not found</h1>
           <p>The page you’re looking for doesn’t exist or has moved.</p>
           <Link to="/" className="btn">

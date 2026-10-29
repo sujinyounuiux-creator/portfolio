@@ -16,7 +16,7 @@ export function HeroSection() {
         <div className="hero__copy">
           <h1 id="hero-title" className="hero__title">
             <span className="hero__hi hand">
-              hi, I’m
+              Hi, I’m
             </span>
             <span className="hero__name">{site.name}</span>
             <span className="hero__word">portfolio</span>

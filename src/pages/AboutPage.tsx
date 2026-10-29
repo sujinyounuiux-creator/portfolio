@@ -13,7 +13,7 @@ export function AboutPage() {
       <div className="container about__inner">
         {/* About */}
         <section className="about-block" aria-labelledby="about-title">
-          <p className="hand section-kicker about-kicker">nice to meet you!</p>
+          <p className="hand section-kicker about-kicker">Nice to meet you!</p>
           <h1 id="about-title" className="about-hello">
             <span className="about-hello__small">{about.greeting}</span>
             <span className="about-hello__name">

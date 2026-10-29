@@ -94,7 +94,7 @@ export function FeaturedWorks() {
     <section id="work" className="section featured" aria-labelledby="featured-title">
       <div className="container">
         <header className="section-head-c">
-          <p className="hand section-kicker">explore my work!</p>
+          <p className="hand section-kicker">Explore my work!</p>
           <h2 id="featured-title" className="section-title">
             Featured Works
           </h2>

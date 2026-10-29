@@ -15,7 +15,7 @@ export function AboutTeaser() {
     <section id="about-me" className="section about-home" aria-labelledby="about-home-title">
       <div className="container">
         <header className="section-head-c">
-          <p className="hand section-kicker">nice to meet you!</p>
+          <p className="hand section-kicker">Nice to meet you!</p>
           <h2 id="about-home-title" className="section-title">
             About Me
           </h2>

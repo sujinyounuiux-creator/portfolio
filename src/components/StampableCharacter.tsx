@@ -139,7 +139,7 @@ export function StampableCharacter({ label, children }: { label: string; childre
 
       <div className="stamp-bar" role="group" aria-label="Decorate the character">
         <p className="stamp-bar__hint hand" id="stamp-hint">
-          decorate me! pick a stamp, then tap anywhere
+          Decorate me! Pick a stamp, then tap anywhere
         </p>
         <div className="stamp-bar__row">
           {KINDS.map((k) => (

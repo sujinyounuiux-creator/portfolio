@@ -10,7 +10,8 @@ const PRESS = 260 // ms the click lasts
 const SHOW = 1700 // ms each screen rests before the cursor moves
 
 /**
- * A prototype that plays itself inside a phone: a mouse cursor glides to a real control
+ * A prototype that plays itself inside a phone: a touch cursor (a see-through circle with
+ * a white edge) glides to a real control
  * on the screen (an event card, the back arrow, a tab), clicks it, and the next screen
  * slides in, looping through the flow with no input needed. Tap points are percentages
  * of the screen. It only runs while it's on screen; with reduced motion it shows the
@@ -77,9 +78,6 @@ export function AutoPrototype({ screens, steps }: { screens: Screen[]; steps: St
           ))}
           <span className={`autoproto__cursor is-${phase}`} style={cursor} aria-hidden="true">
             <span className="autoproto__ring" />
-            <svg viewBox="0 0 24 24" width="26" height="26">
-              <path d="M5 3l14 8.2-6.1 1.3 3.6 6.6-2.6 1.4-3.6-6.6L5.6 18z" fill="#111" stroke="#fff" strokeWidth="1.6" strokeLinejoin="round" />
-            </svg>
           </span>
         </div>
       </DeviceFrame>

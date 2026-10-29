@@ -12,7 +12,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <p>
-          © {new Date().getFullYear()} {site.name} · <span className="hand">designed &amp; doodled in {site.location}</span>
+          © {new Date().getFullYear()} {site.name} · <span className="hand">Designed &amp; doodled in {site.location}</span>
         </p>
         <SocialLinks className="social-links--footer" />
         <button type="button" className="text-link link-button" onClick={toTop}>

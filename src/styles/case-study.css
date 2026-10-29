@@ -1803,14 +1803,10 @@
 
 /* ── Device tabs: one device at a time, its name underneath ── */
 .device-tabs {
+  /* no backdrop: the devices sit straight on the page, their screens white */
   display: grid;
   gap: var(--s-4);
   margin: 0;
-  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.75rem);
-  border-radius: var(--r-lg);
-  background:
-    radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 60%),
-    color-mix(in srgb, var(--p-accent) 16%, #f6f4f8);
 }
 .device-tabs__stage {
   display: flex;
@@ -1824,7 +1820,6 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  mix-blend-mode: multiply; /* the export's white page background melts into the backdrop */
   animation: device-in 380ms var(--ease);
 }
 @keyframes device-in {
@@ -1844,7 +1839,7 @@
   padding: 0.35rem 1rem;
   border: 1.5px solid transparent;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--c-surface);
   color: var(--c-ink);
   font-size: var(--fs-sm);
   font-weight: 700;
@@ -1866,7 +1861,8 @@
   gap: var(--s-3);
 }
 .autoproto .device--phone {
-  width: min(320px, 100%);
+  /* small enough that the heading, phone and label fit on one screen */
+  width: min(250px, 100%);
 }
 .autoproto__screen {
   position: relative;
@@ -1888,39 +1884,39 @@
   transform: none;
 }
 .autoproto__cursor {
-  /* resting: part way between the last click and the middle of the screen */
+  /* a touch cursor: a see-through circle with a white edge and a soft shadow, centred on
+     the point it taps; resting part way between the last tap and the middle */
   position: absolute;
   z-index: 3;
   left: calc(var(--x) * 0.65 + 17.5%);
   top: calc(var(--y) * 0.65 + 17.5%);
   width: 26px;
   height: 26px;
-  /* the arrow's tip is the click point */
-  margin: -3px 0 0 -5px;
+  margin: -13px 0 0 -13px;
+  border: 2.5px solid #fff;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
   pointer-events: none;
-  transition: left 900ms cubic-bezier(0.45, 0, 0.2, 1), top 900ms cubic-bezier(0.45, 0, 0.2, 1);
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+  transition: left 900ms cubic-bezier(0.45, 0, 0.2, 1), top 900ms cubic-bezier(0.45, 0, 0.2, 1), transform 140ms var(--ease), background 140ms var(--ease);
 }
 .autoproto__cursor.is-move,
 .autoproto__cursor.is-press {
   left: var(--x);
   top: var(--y);
 }
-.autoproto__cursor svg {
-  display: block;
-  transition: transform 140ms var(--ease);
-}
-.autoproto__cursor.is-press svg {
+.autoproto__cursor.is-press {
   transform: scale(0.82);
+  background: rgba(255, 255, 255, 0.45);
 }
-/* click ring around the tip */
+/* tap ripple around the circle */
 .autoproto__ring {
   position: absolute;
-  left: 5px;
-  top: 3px;
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
   border-radius: 50%;
   background: color-mix(in srgb, var(--p-accent) 35%, transparent);
   opacity: 0;

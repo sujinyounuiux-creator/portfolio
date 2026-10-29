@@ -3,7 +3,9 @@
 // Replace the files in /public/images/projects/ with higher resolution
 // originals any time; keep the names or update the paths below.
 
-export const asclo = {
+import { glueAll } from './glue'
+
+export const asclo = glueAll({
   title: 'ASCLO: Photo Editing',
   label: 'Side job',
   // what the work was, in one line (from Sujin)
@@ -23,4 +25,4 @@ export const asclo = {
   ],
   width: 428,
   height: 428,
-}
+})

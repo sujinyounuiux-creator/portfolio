@@ -207,7 +207,7 @@ export const projects: Project[] = glueAll<Project[]>([
         id: 'overview',
         label: 'Overview',
         title: 'The challenge',
-        note: 'beginners first',
+        note: 'Beginners first',
         blocks: [
           {
             kind: 'text',
@@ -504,7 +504,7 @@ export const projects: Project[] = glueAll<Project[]>([
         id: 'overview',
         label: 'Overview',
         title: 'The challenge',
-        note: 'the "too late" problem',
+        note: 'The "too late" problem',
         blocks: [
           {
             kind: 'text',
@@ -599,7 +599,7 @@ export const projects: Project[] = glueAll<Project[]>([
         id: 'wireframes',
         label: 'Wireframes → hi fi',
         title: 'From wireframes to hi fi screens',
-        note: 'drag to compare',
+        note: 'Drag to compare',
         blocks: [
           {
             kind: 'text',
@@ -834,7 +834,7 @@ export const projects: Project[] = glueAll<Project[]>([
         id: 'insights',
         label: 'Insights',
         title: 'Key insights',
-        note: 'search first!',
+        note: 'Search first!',
         blocks: [
           {
             kind: 'cards',
@@ -1270,7 +1270,7 @@ export const projects: Project[] = glueAll<Project[]>([
         id: 'design-system',
         label: 'Style guide',
         title: 'Style guide & components',
-        note: 'checked for AAA',
+        note: 'Checked for AAA',
         blocks: [
           {
             kind: 'text',
@@ -1321,7 +1321,7 @@ export const projects: Project[] = glueAll<Project[]>([
         id: 'before-after',
         label: 'Before & after',
         title: 'My pages: before & after',
-        note: 'drag to compare',
+        note: 'Drag to compare',
         blocks: [
           {
             kind: 'text',

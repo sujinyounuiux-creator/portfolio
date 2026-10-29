@@ -1149,6 +1149,13 @@
   border-radius: 3px;
   background: #fff;
 }
+.device__laptop .device__screen,
+.device__phone .device__screen,
+.device__tablet .device__screen {
+  /* the glass behind the page is as dark as the bezel, so no light line can show at the
+     edges when the page lands on a fraction of a pixel */
+  background: #0c0c0d;
+}
 .device__laptop .device__screen {
   border-radius: 4px 4px 1px 1px;
 }
@@ -1371,7 +1378,10 @@
   transform: translateX(-50%);
   pointer-events: none;
 }
-.compare:not(.is-touched) .compare__divider {
+.compare:not(.is-touched) .compare__divider,
+.compare.is-at-edge .compare__divider {
+  /* hidden before first use, and when pushed to either edge (it would read as a white
+     line along the screen edge) */
   opacity: 0;
 }
 /* frosted handle with two outward chevrons: the familiar "slide sideways" sign.

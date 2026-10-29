@@ -49,7 +49,7 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
   return (
     <div
       ref={box}
-      className={`compare ${touched ? 'is-touched' : ''}`}
+      className={`compare ${touched ? 'is-touched' : ''} ${pos < 1 || pos > 99 ? 'is-at-edge' : ''}`}
       style={{ '--pos': `${pos}%` } as CSSProperties}
       onPointerDown={onDown}
       onPointerMove={onMove}

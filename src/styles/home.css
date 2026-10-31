@@ -666,9 +666,9 @@ button.wiggle {
 }
 .feature__media img {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
+  /* the covers' own 16:9 shape, so no edge is cut off */
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
 }
 .feature__tape {
   top: -12px;
@@ -753,9 +753,9 @@ button.wiggle {
 }
 .folder__thumb img {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
+  /* the covers' own 16:9 shape, so no edge is cut off */
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
   transition: transform 600ms var(--ease);
 }
 .folder__text {

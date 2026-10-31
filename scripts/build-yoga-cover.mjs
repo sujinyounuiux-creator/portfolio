@@ -95,10 +95,10 @@ async function glassWindow(canvas, src, x, y, width, pageOpacity) {
     .toBuffer()
 }
 
-// the eyebrow in Cinzel, the Yoga style guide's heading font, rendered from Google Fonts to
+// the eyebrow in Nunito, the Yoga style guide's body font, rendered from Google Fonts to
 // design-exports/yoga-eyebrow-{dark,light}.png (2x, shown at half size)
 const eyebrow = await sharp(`design-exports/yoga-eyebrow-${DARK_MODE ? 'dark' : 'light'}.png`).metadata().then((m) => sharp(`design-exports/yoga-eyebrow-${DARK_MODE ? 'dark' : 'light'}.png`).resize({ width: Math.round(m.width / 2) }).png().toBuffer())
-let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 136 }, { input: eyebrow, left: 108, top: 240 }]).png().toBuffer()
+let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 136 }, { input: eyebrow, left: 108, top: 246 }]).png().toBuffer()
 // back to front: About, Pricing, then the Home page
 // a cascade: each page steps down and to the left of the one behind it, overlapping enough
 // to leave breathing room around them, with the top of each page still in view

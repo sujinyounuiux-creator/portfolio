@@ -1054,8 +1054,8 @@ export const projects: Project[] = glueAll<Project[]>([
     team: '3 designers',
     tools: ['Figma', 'html.to.design'],
     // cover: the dark version built by scripts/build-yoga-cover.mjs ('dark') from the redesigned pages
-    thumbnail: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Pricing and Home pages stacked as frosted glass windows, the Passes & Pricing page behind the Home page, over a violet wave.', undefined, 1600, 900),
-    hero: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Pricing and Home pages stacked as frosted glass windows, the Passes & Pricing page behind the Home page, over a violet wave.', undefined, 1600, 900),
+    thumbnail: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Pricing and Home pages cascading as frosted glass windows (Welcome to Open Door Yoga, Passes & Pricing, then the Home page in front), over a violet wave.', undefined, 1600, 900),
+    hero: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Pricing and Home pages cascading as frosted glass windows (Welcome to Open Door Yoga, Passes & Pricing, then the Home page in front), over a violet wave.', undefined, 1600, 900),
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },

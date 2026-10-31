@@ -100,9 +100,9 @@ let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo
 // back to front: About, Pricing, then the Home page
 // a cascade: each page steps down and to the left of the one behind it, overlapping enough
 // to leave breathing room around them, with the top of each page still in view
-canvas = await glassWindow(canvas, 'design-exports/yoga-about.png', 1120, 80, 420, 0.88)
-canvas = await glassWindow(canvas, 'design-exports/yoga-pricing.png', 975, 238, 460, 0.96)
-canvas = await glassWindow(canvas, 'design-exports/yoga-home.png', 830, 400, 500, 1)
+canvas = await glassWindow(canvas, 'design-exports/yoga-about.png', 1170, 80, 380, 0.88)
+canvas = await glassWindow(canvas, 'design-exports/yoga-pricing.png', 1030, 232, 420, 0.96)
+canvas = await glassWindow(canvas, 'design-exports/yoga-home.png', 890, 368, 460, 1)
 const name = DARK_MODE ? 'yoga-cover-dark' : 'yoga-cover'
 const out = await sharp(canvas).webp({ quality: 90 }).toFile(`public/images/projects/${name}.webp`)
 console.log(name, out.width, out.height)

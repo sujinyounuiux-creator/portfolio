@@ -108,9 +108,10 @@ async function glassWindow(canvas, src, x, y, width, pageOpacity) {
 
 let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 96 }]).png().toBuffer()
 // back to front: About, Pricing, then the Home page
-canvas = await glassWindow(canvas, 'design-exports/yoga-about.png', 1080, 80, 470, 0.72)
-canvas = await glassWindow(canvas, 'design-exports/yoga-pricing.png', 930, 165, 560, 0.86)
-canvas = await glassWindow(canvas, 'design-exports/yoga-home.png', 760, 290, 660, 1)
+// Pricing sits up and to the right of Home, so its "Passes & Pricing" hero stays in view
+canvas = await glassWindow(canvas, 'design-exports/yoga-about.png', 1170, 50, 390, 0.7)
+canvas = await glassWindow(canvas, 'design-exports/yoga-pricing.png', 1000, 110, 560, 0.95)
+canvas = await glassWindow(canvas, 'design-exports/yoga-home.png', 740, 360, 600, 1)
 const name = DARK_MODE ? 'yoga-cover-dark' : 'yoga-cover'
 const out = await sharp(canvas).webp({ quality: 90 }).toFile(`public/images/projects/${name}.webp`)
 console.log(name, out.width, out.height)

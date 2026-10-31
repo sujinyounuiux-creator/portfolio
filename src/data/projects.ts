@@ -1054,8 +1054,8 @@ export const projects: Project[] = glueAll<Project[]>([
     team: '3 designers',
     tools: ['Figma', 'html.to.design'],
     // cover: built by scripts/build-yoga-cover.mjs from the redesigned pages
-    thumbnail: img('yoga-cover', 'Open Door Yoga cover: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Home and Pricing pages stacked as browser windows, with the 12 Month Pass card in front, over a violet wave.', undefined, 1600, 900),
-    hero: img('yoga-cover', 'Open Door Yoga cover: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Home and Pricing pages stacked as browser windows, with the 12 Month Pass card in front, over a violet wave.', undefined, 1600, 900),
+    thumbnail: img('yoga-cover', 'Open Door Yoga cover: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Pricing and Home pages stacked as frosted glass windows, the Home page in front, over a violet wave.', undefined, 1600, 900),
+    hero: img('yoga-cover', 'Open Door Yoga cover: the title, "Redesigning the Open Door Yoga Website" and a View case study button beside the redesigned About, Pricing and Home pages stacked as frosted glass windows, the Home page in front, over a violet wave.', undefined, 1600, 900),
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },

@@ -72,9 +72,9 @@ async function logo(height) {
 const rounded = (w, h, r) => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${r}" fill="#fff"/></svg>`)
 
 // one frosted glass window over the canvas so far: the glass blurs and tints what's behind
-// it, holds three dots in its top bar, and the page sits inside at the given opacity
+// it, and the page sits inside at the given opacity
 async function glassWindow(canvas, src, x, y, width, pageOpacity) {
-  const pad = 12, bar = 30, r = 20
+  const pad = 12, bar = 12, r = 20 // an even glass frame all round, no window bar
   const meta = await sharp(src).metadata()
   const pageW = width - pad * 2
   const pageH = Math.round(pageW * 0.6)
@@ -85,7 +85,6 @@ async function glassWindow(canvas, src, x, y, width, pageOpacity) {
   const tint = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
     <rect width="${w}" height="${h}" rx="${r}" fill="${T.glass}" fill-opacity="${T.glassA}"/>
     <rect x="0.75" y="0.75" width="${w - 1.5}" height="${h - 1.5}" rx="${r}" fill="none" stroke="#ffffff" stroke-opacity="${T.edge}" stroke-width="1.5"/>
-    <circle cx="${pad + 10}" cy="${bar / 2 + 2}" r="5" fill="#ffffff" fill-opacity="0.8"/><circle cx="${pad + 26}" cy="${bar / 2 + 2}" r="5" fill="#ffffff" fill-opacity="0.8"/><circle cx="${pad + 42}" cy="${bar / 2 + 2}" r="5" fill="#ffffff" fill-opacity="0.8"/>
   </svg>`)
   const glass = await sharp(behind).composite([{ input: tint }, { input: rounded(w, h, r), blend: 'dest-in' }]).png().toBuffer()
   // the page, rounded, at its opacity

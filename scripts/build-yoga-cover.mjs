@@ -1,6 +1,7 @@
 // Open Door Yoga cover in an app landing page style, in the studio's own style guide colours
 // (Violet light #F0EDF1, Violet #6A4E77, Violet darker #251B2A, Green #B2C95D and its dark
-// #869746). Left: the case study's title and tagline. Right: three redesigned pages
+// #869746). Left: the studio's name and a short line about the new website, written like a
+// real product launch rather than a case study. Right: three redesigned pages
 // (About, Pricing and, in front, Home) as frosted glass windows stacked one behind the other:
 // each frame blurs and tints whatever is behind it, and the pages further back are partly
 // see-through. A violet wave runs along the bottom.
@@ -33,8 +34,8 @@ const chip = (x, y, label) => {
   return { svg: `<rect x="${x}" y="${y}" width="${w}" height="40" rx="20" ${fill} stroke="${T.chip}" stroke-opacity="0.35" stroke-width="1.5"/><text x="${x + w / 2}" y="${y + 26}" text-anchor="middle" font-family="${FONT}" font-size="17" font-weight="600" fill="${T.chip}">${label.replace(/&/g, '&amp;')}</text>`, w }
 }
 let cx = 110
-const chips = ['Heuristic review', 'Style guide', 'Pricing & About'].map((l) => {
-  const c = chip(cx, 610, l)
+const chips = ['Website Redesign', 'UX/UI Design', 'Design System'].map((l) => {
+  const c = chip(cx, 626, l)
   cx += c.w + 12
   return c.svg
 }).join('')
@@ -52,13 +53,14 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height=
   <ellipse cx="1180" cy="330" rx="330" ry="210" fill="${DARK_MODE ? VIOLET : '#C9B2D4'}" fill-opacity="${DARK_MODE ? 0.55 : 0.45}"/>
   <ellipse cx="1420" cy="560" rx="200" ry="150" fill="${GREEN}" fill-opacity="${DARK_MODE ? 0.25 : 0.3}"/>
 
-  <text x="110" y="222" font-family="${FONT}" font-size="16" font-weight="700" letter-spacing="3" fill="${T.eyebrow}">WEBSITE REDESIGN</text>
+  <text x="110" y="222" font-family="${FONT}" font-size="16" font-weight="700" letter-spacing="3" fill="${T.eyebrow}">EAST VANCOUVER YOGA STUDIO</text>
   <text x="106" y="306" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.title}">Open Door</text>
   <text x="106" y="390" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.accent}">Yoga</text>
-  <text x="110" y="452" font-family="${FONT}" font-size="27" font-weight="600" fill="${T.tagline}">Redesigning the Open Door Yoga Website</text>
-  <rect x="110" y="510" width="230" height="58" rx="29" fill="${T.button}"/>
-  <text x="140" y="546" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">View case study</text>
-  <path d="M302 539 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="110" y="450" font-family="${FONT}" font-size="25" font-weight="600" fill="${T.tagline}">A redesigned website where classes, passes</text>
+  <text x="110" y="484" font-family="${FONT}" font-size="25" font-weight="600" fill="${T.tagline}">and teacher training are easy to find.</text>
+  <rect x="110" y="528" width="288" height="58" rx="29" fill="${T.button}"/>
+  <text x="140" y="564" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">Explore the redesign</text>
+  <path d="M352 557 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
   ${chips}
 </svg>`
 

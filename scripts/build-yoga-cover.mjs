@@ -42,7 +42,6 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height=
   <ellipse cx="1180" cy="330" rx="330" ry="210" fill="${DARK_MODE ? VIOLET : '#C9B2D4'}" fill-opacity="${DARK_MODE ? 0.55 : 0.45}"/>
   <ellipse cx="1420" cy="560" rx="200" ry="150" fill="${GREEN}" fill-opacity="${DARK_MODE ? 0.25 : 0.3}"/>
 
-  <text x="110" y="262" font-family="${FONT}" font-size="16" font-weight="700" letter-spacing="3" fill="${T.eyebrow}">EAST VANCOUVER YOGA STUDIO</text>
   <text x="106" y="346" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.title}">Open Door</text>
   <text x="106" y="430" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.accent}">Yoga</text>
   <!-- regular text, with the key words in bold -->
@@ -96,7 +95,10 @@ async function glassWindow(canvas, src, x, y, width, pageOpacity) {
     .toBuffer()
 }
 
-let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 136 }]).png().toBuffer()
+// the eyebrow in Cinzel, the Yoga style guide's heading font, rendered from Google Fonts to
+// design-exports/yoga-eyebrow-{dark,light}.png (2x, shown at half size)
+const eyebrow = await sharp(`design-exports/yoga-eyebrow-${DARK_MODE ? 'dark' : 'light'}.png`).metadata().then((m) => sharp(`design-exports/yoga-eyebrow-${DARK_MODE ? 'dark' : 'light'}.png`).resize({ width: Math.round(m.width / 2) }).png().toBuffer())
+let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 136 }, { input: eyebrow, left: 108, top: 240 }]).png().toBuffer()
 // back to front: About, Pricing, then the Home page
 // a cascade: each page steps down and to the left of the one behind it, overlapping enough
 // to leave breathing room around them, with the top of each page still in view

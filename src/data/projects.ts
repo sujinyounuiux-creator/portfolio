@@ -192,8 +192,9 @@ export const projects: Project[] = glueAll<Project[]>([
     timeline: '2025.01 to 2025.03',
     team: '6 people: 5 front end/back end engineers and 1 designer',
     tools: ['Figma'],
-    thumbnail: img('profitkey-cover', 'PROFITKEY cover: the key shaped logo and "Finding the Key to Investment Success" beside the home page and the stock analysis page with its AI Comment.'),
-    hero: img('profitkey-cover', 'PROFITKEY cover: the key shaped logo and "Finding the Key to Investment Success" beside the home page and the stock analysis page with its AI Comment.'),
+    // cover: built by scripts/build-profitkey-cover.mjs from the home page design
+    thumbnail: img('profitkey-cover', 'PROFITKEY cover: the logo and "Finding the key to success" with a yellow AI Recommended Stocks button, beside the AI Recommended Stocks card for Apple (+20%, $28) with its price chart, key figures and AI Comment.'),
+    hero: img('profitkey-cover', 'PROFITKEY cover: the logo and "Finding the key to success" with a yellow AI Recommended Stocks button, beside the AI Recommended Stocks card for Apple (+20%, $28) with its price chart, key figures and AI Comment.'),
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },

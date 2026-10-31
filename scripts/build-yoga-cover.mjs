@@ -1,6 +1,6 @@
 // Open Door Yoga cover in an app landing page style, in the studio's own style guide colours
 // (Violet light #F0EDF1, Violet #6A4E77, Violet darker #251B2A, Green #B2C95D and its dark
-// #869746). Left: the case study's title, tagline and summary. Right: three redesigned pages
+// #869746). Left: the case study's title and tagline. Right: three redesigned pages
 // (About, Pricing and, in front, Home) as frosted glass windows stacked one behind the other:
 // each frame blurs and tints whatever is behind it, and the pages further back are partly
 // see-through. A violet wave runs along the bottom.
@@ -24,8 +24,8 @@ const SERIF = 'Georgia, serif'
 
 // colours for each version
 const T = DARK_MODE
-  ? { bg0: '#2b2031', bg1: '#140e17', wave0: '#4b3655', wave1: VIOLET, title: LIGHT, accent: '#C9B2D4', tagline: LIGHT, body: '#cfc4d4', eyebrow: GREEN, button: LIGHT, buttonText: DARK, chip: '#ffffff', chipFill: 0.06, glass: '#ffffff', glassA: 0.12, edge: 0.28 }
-  : { bg0: '#ffffff', bg1: LIGHT, wave0: VIOLET, wave1: DARK, title: DARK, accent: VIOLET, tagline: DARK, body: '#4a4050', eyebrow: GREEN_DARK, button: VIOLET, buttonText: '#ffffff', chip: VIOLET, chipFill: 1, glass: '#ffffff', glassA: 0.42, edge: 0.75 }
+  ? { bg0: '#2b2031', bg1: '#140e17', wave0: '#4b3655', wave1: VIOLET, title: LIGHT, accent: '#C9B2D4', tagline: LIGHT, eyebrow: GREEN, button: LIGHT, buttonText: DARK, chip: '#ffffff', chipFill: 0.06, glass: '#ffffff', glassA: 0.12, edge: 0.28 }
+  : { bg0: '#ffffff', bg1: LIGHT, wave0: VIOLET, wave1: DARK, title: DARK, accent: VIOLET, tagline: DARK, eyebrow: GREEN_DARK, button: VIOLET, buttonText: '#ffffff', chip: VIOLET, chipFill: 1, glass: '#ffffff', glassA: 0.42, edge: 0.75 }
 
 const chip = (x, y, label) => {
   const w = label.length * 10.6 + 36
@@ -34,7 +34,7 @@ const chip = (x, y, label) => {
 }
 let cx = 110
 const chips = ['Heuristic review', 'Style guide', 'Pricing & About'].map((l) => {
-  const c = chip(cx, 690, l)
+  const c = chip(cx, 610, l)
   cx += c.w + 12
   return c.svg
 }).join('')
@@ -56,11 +56,9 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height=
   <text x="106" y="306" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.title}">Open Door</text>
   <text x="106" y="390" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.accent}">Yoga</text>
   <text x="110" y="452" font-family="${FONT}" font-size="27" font-weight="600" fill="${T.tagline}">Redesigning the Open Door Yoga Website</text>
-  <text x="110" y="500" font-family="${FONT}" font-size="21" fill="${T.body}">A team redesign of the studio’s website:</text>
-  <text x="110" y="530" font-family="${FONT}" font-size="21" fill="${T.body}">class styles, teacher training and pass pricing.</text>
-  <rect x="110" y="580" width="230" height="58" rx="29" fill="${T.button}"/>
-  <text x="140" y="616" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">View case study</text>
-  <path d="M302 609 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="110" y="510" width="230" height="58" rx="29" fill="${T.button}"/>
+  <text x="140" y="546" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">View case study</text>
+  <path d="M302 539 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
   ${chips}
 </svg>`
 

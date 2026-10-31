@@ -8,6 +8,8 @@
 // (the cow icon on white, from Sujin), public/images/screens/
 // lastcow-*-hifi.webp, public/images/mockups/iphone(.webp|-mask.png) and src/data/mockups.json
 // Output: public/images/projects/lastcow-cover.webp (1600 x 900)
+// The cover uses a white top and a purple bottom; 'node scripts/build-lastcow-cover.mjs dark'
+// builds the earlier purple-top version as lastcow-cover-dark.webp instead.
 import { readFileSync } from 'node:fs'
 import sharp from 'sharp'
 
@@ -15,12 +17,13 @@ sharp.cache(false)
 const W = 1600
 const H = 900
 const PURPLE = '#3103b1'
-const BAND = 455 // height of the purple band
+const BAND = 455 // where the band ends
+const LIGHT = process.argv[2] !== 'dark' // white top, purple bottom (the default)
 const mock = JSON.parse(readFileSync('src/data/mockups.json', 'utf8')).iphone
 
 // the wordmark in white (the logo's right part, after the icon): each pixel's strength =
 // how far it is from the logo's lavender background
-async function whiteWordmark(height) {
+async function wordmark(height, colour = [255, 255, 255]) {
   const { data, info } = await sharp('design-exports/logos/lastcow.png').ensureAlpha().raw().toBuffer({ resolveWithObject: true })
   const bg = [data[0], data[1], data[2]]
   const ink = [0x31, 0x03, 0xb1]
@@ -28,17 +31,19 @@ async function whiteWordmark(height) {
   for (let i = 0; i < data.length; i += 4) {
     const d = Math.hypot(data[i] - bg[0], data[i + 1] - bg[1], data[i + 2] - bg[2])
     data[i + 3] = Math.round(Math.min(1, d / full) * 255)
-    data[i] = data[i + 1] = data[i + 2] = 255
+    data[i] = colour[0]
+    data[i + 1] = colour[1]
+    data[i + 2] = colour[2]
   }
   const word = await sharp(data, { raw: info }).extract({ left: 440, top: 0, width: info.width - 440, height: info.height }).png().toBuffer()
   return sharp(word).trim().resize({ height }).png().toBuffer()
 }
 
 // the cow icon in its own colours on a white rounded tile
-async function iconTile(size) {
+async function iconTile(size, edge = false) {
   const icon = await sharp('design-exports/logos/lastcow-icon.png').flatten({ background: '#ffffff' }).trim({ background: '#ffffff', threshold: 20 }).resize({ width: Math.round(size * 0.86), height: Math.round(size * 0.86), fit: 'inside' }).png().toBuffer()
   const m = await sharp(icon).metadata()
-  const tile = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}"><rect width="${size}" height="${size}" rx="${size * 0.24}" fill="#ffffff"/></svg>`)
+  const tile = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}"><rect x="1.5" y="1.5" width="${size - 3}" height="${size - 3}" rx="${size * 0.24}" fill="#ffffff"${edge ? ' stroke="#d9d0fa" stroke-width="3"' : ''}/></svg>`)
   return sharp(tile).composite([{ input: icon, left: Math.round((size - m.width) / 2), top: Math.round((size - m.height) / 2) }]).png().toBuffer()
 }
 
@@ -91,13 +96,13 @@ async function shadow(w, h, radius = w * 0.14) {
 }
 
 // a ticket outline like the one in the logo: notched sides and a dashed tear line
-const ticket = (x, y, w, h, rot) => `<g transform="rotate(${rot} ${x + w / 2} ${y + h / 2})" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="3">
+const ticket = (x, y, w, h, rot, colour = '#ffffff', opacity = 0.14) => `<g transform="rotate(${rot} ${x + w / 2} ${y + h / 2})" fill="none" stroke="${colour}" stroke-opacity="${opacity}" stroke-width="3">
   <path d="M${x + 18} ${y} H${x + w - 18} Q${x + w} ${y} ${x + w} ${y + 18} V${y + h / 2 - 22} A22 22 0 0 0 ${x + w} ${y + h / 2 + 22} V${y + h - 18} Q${x + w} ${y + h} ${x + w - 18} ${y + h} H${x + 18} Q${x} ${y + h} ${x} ${y + h - 18} V${y + h / 2 + 22} A22 22 0 0 0 ${x} ${y + h / 2 - 22} V${y + 18} Q${x} ${y} ${x + 18} ${y} Z"/>
   <path d="M${x + w * 0.28} ${y + 14} V${y + h - 14}" stroke-dasharray="10 10"/>
 </g>`
 
 // background: the purple band with a soft light sweep and faint tickets, light lavender below
-const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
+const darkBg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <defs>
     <linearGradient id="band" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#3d10c4"/><stop offset="1" stop-color="${PURPLE}"/>
@@ -111,11 +116,30 @@ const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" hei
   ${ticket(1290, 70, 230, 130, 10)}
   <text x="${W / 2}" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#ffffff">Last tickets. Best prices.</text>
   <text x="${W / 2}" y="264" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#ffffff" fill-opacity="0.78">Last minute deals on live events</text>
-</svg>`)
+</svg>`
+
+// the reverse: white top with the logo, tagline and faint purple tickets; purple below
+const lightBg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
+  <defs>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3d10c4"/><stop offset="1" stop-color="${PURPLE}"/>
+    </linearGradient>
+  </defs>
+  <rect width="${W}" height="${H}" fill="#ffffff"/>
+  <rect y="${BAND}" width="${W}" height="${H - BAND}" fill="url(#band)"/>
+  <path d="M0 ${BAND} H520 L300 ${H} H0 Z" fill="#ffffff" fill-opacity="0.05"/>
+  <path d="M1220 ${BAND} H1600 V${H} H1000 Z" fill="#ffffff" fill-opacity="0.04"/>
+  ${ticket(70, 120, 250, 140, -12, PURPLE, 0.1)}
+  ${ticket(1290, 70, 230, 130, 10, PURPLE, 0.1)}
+  <text x="${W / 2}" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="${PURPLE}">Last tickets. Best prices.</text>
+  <text x="${W / 2}" y="264" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#2a2340" fill-opacity="0.72">Last minute deals on live events</text>
+</svg>`
+const bg = Buffer.from(LIGHT ? lightBg : darkBg)
 
 const TILE = 112
-const tile = await iconTile(TILE)
-const word = await whiteWordmark(62)
+// on white the tile would vanish, so there it gets a soft purple edge
+const tile = await iconTile(TILE, LIGHT)
+const word = await wordmark(62, LIGHT ? [0x31, 0x03, 0xb1] : [255, 255, 255])
 const wordMeta = await sharp(word).metadata()
 const GAP = 26
 const logoW = TILE + GAP + wordMeta.width
@@ -149,5 +173,5 @@ for (const [c, x, y] of [
   layers.push({ input: c.buf, left: x, top: y })
 }
 const flat = await sharp(bg).composite(layers).png().toBuffer()
-const out = await sharp(flat).extract({ left: 0, top: 0, width: W, height: H }).webp({ quality: 90 }).toFile('public/images/projects/lastcow-cover.webp')
+const out = await sharp(flat).extract({ left: 0, top: 0, width: W, height: H }).webp({ quality: 90 }).toFile(`public/images/projects/lastcow-cover${LIGHT ? '' : '-dark'}.webp`)
 console.log('lastcow-cover', out.width, out.height)

@@ -20,8 +20,9 @@ type Props = {
  * (scripts/prepare-device-mockups.mjs); the real screen sits exactly behind that window.
  * The laptop and tablet are drawn in CSS: the laptop seen from the front, a little from
  * above, with its keyboard deck in perspective, and a current iPad with thin even bezels.
- * The screen keeps the real screenshot's proportions. Screens marked `tall`
- * (full length pages) get a fixed viewport and scroll inside the device instead.
+ * The screen keeps the real screenshot's proportions. Full length pages (`tall` figures)
+ * on a desktop are shown whole on a plain page card instead of being cut to a laptop
+ * screen, so nothing of the page is hidden; they open larger in the lightbox.
  */
 export function DeviceFrame({ device, figure, children, caption, className = '' }: Props) {
   const scroll = Boolean(figure?.tall)
@@ -39,6 +40,17 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
         ))}
     </div>
   )
+
+  if (device === 'desktop' && scroll && figure) {
+    return (
+      <figure className={`device device--page ${className}`}>
+        <div className="device__page">
+          <ZoomImage figure={figure} />
+        </div>
+        {(caption ?? figure.caption) && <figcaption>{caption ?? figure.caption}</figcaption>}
+      </figure>
+    )
+  }
 
   return (
     <figure className={`device device--${device} ${className}`}>

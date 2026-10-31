@@ -96,7 +96,7 @@ async function shadow(w, h, radius = w * 0.14) {
 }
 
 // a ticket outline like the one in the logo: notched sides and a dashed tear line
-const ticket = (x, y, w, h, rot, colour = '#ffffff', opacity = 0.14) => `<g transform="rotate(${rot} ${x + w / 2} ${y + h / 2})" fill="none" stroke="${colour}" stroke-opacity="${opacity}" stroke-width="3">
+const ticket = (x, y, w, h, rot, colour = '#ffffff', opacity = 0.14, width = 3) => `<g transform="rotate(${rot} ${x + w / 2} ${y + h / 2})" fill="none" stroke="${colour}" stroke-opacity="${opacity}" stroke-width="${width}">
   <path d="M${x + 18} ${y} H${x + w - 18} Q${x + w} ${y} ${x + w} ${y + 18} V${y + h / 2 - 22} A22 22 0 0 0 ${x + w} ${y + h / 2 + 22} V${y + h - 18} Q${x + w} ${y + h} ${x + w - 18} ${y + h} H${x + 18} Q${x} ${y + h} ${x} ${y + h - 18} V${y + h / 2 + 22} A22 22 0 0 0 ${x} ${y + h / 2 - 22} V${y + 18} Q${x} ${y} ${x + 18} ${y} Z"/>
   <path d="M${x + w * 0.28} ${y + 14} V${y + h - 14}" stroke-dasharray="10 10"/>
 </g>`
@@ -129,8 +129,8 @@ const lightBg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${
   <rect y="${BAND}" width="${W}" height="${H - BAND}" fill="url(#band)"/>
   <path d="M0 ${BAND} H520 L300 ${H} H0 Z" fill="#ffffff" fill-opacity="0.05"/>
   <path d="M1220 ${BAND} H1600 V${H} H1000 Z" fill="#ffffff" fill-opacity="0.04"/>
-  ${ticket(70, 120, 250, 140, -12, PURPLE, 0.1)}
-  ${ticket(1290, 70, 230, 130, 10, PURPLE, 0.1)}
+  ${ticket(70, 120, 250, 140, -12, PURPLE, 0.28, 3.5)}
+  ${ticket(1290, 70, 230, 130, 10, PURPLE, 0.28, 3.5)}
   <text x="${W / 2}" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="${PURPLE}">Last tickets. Best prices.</text>
   <text x="${W / 2}" y="264" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#2a2340" fill-opacity="0.72">Last minute deals on live events</text>
 </svg>`

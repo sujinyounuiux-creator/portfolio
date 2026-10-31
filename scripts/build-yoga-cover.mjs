@@ -28,17 +28,6 @@ const T = DARK_MODE
   ? { bg0: '#2b2031', bg1: '#140e17', wave0: '#4b3655', wave1: VIOLET, title: LIGHT, accent: '#C9B2D4', tagline: LIGHT, eyebrow: GREEN, button: LIGHT, buttonText: DARK, chip: '#ffffff', chipFill: 0.06, glass: '#ffffff', glassA: 0.12, edge: 0.28 }
   : { bg0: '#ffffff', bg1: LIGHT, wave0: VIOLET, wave1: DARK, title: DARK, accent: VIOLET, tagline: DARK, eyebrow: GREEN_DARK, button: VIOLET, buttonText: '#ffffff', chip: VIOLET, chipFill: 1, glass: '#ffffff', glassA: 0.42, edge: 0.75 }
 
-const chip = (x, y, label) => {
-  const w = label.length * 10.6 + 36
-  const fill = DARK_MODE ? `fill="#ffffff" fill-opacity="${T.chipFill}"` : 'fill="#ffffff"'
-  return { svg: `<rect x="${x}" y="${y}" width="${w}" height="40" rx="20" ${fill} stroke="${T.chip}" stroke-opacity="0.35" stroke-width="1.5"/><text x="${x + w / 2}" y="${y + 26}" text-anchor="middle" font-family="${FONT}" font-size="17" font-weight="600" fill="${T.chip}">${label.replace(/&/g, '&amp;')}</text>`, w }
-}
-let cx = 110
-const chips = ['Website Redesign', 'UX/UI Design', 'Design System'].map((l) => {
-  const c = chip(cx, 626, l)
-  cx += c.w + 12
-  return c.svg
-}).join('')
 
 const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <defs>
@@ -53,16 +42,15 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height=
   <ellipse cx="1180" cy="330" rx="330" ry="210" fill="${DARK_MODE ? VIOLET : '#C9B2D4'}" fill-opacity="${DARK_MODE ? 0.55 : 0.45}"/>
   <ellipse cx="1420" cy="560" rx="200" ry="150" fill="${GREEN}" fill-opacity="${DARK_MODE ? 0.25 : 0.3}"/>
 
-  <text x="110" y="222" font-family="${FONT}" font-size="16" font-weight="700" letter-spacing="3" fill="${T.eyebrow}">EAST VANCOUVER YOGA STUDIO</text>
-  <text x="106" y="306" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.title}">Open Door</text>
-  <text x="106" y="390" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.accent}">Yoga</text>
+  <text x="110" y="262" font-family="${FONT}" font-size="16" font-weight="700" letter-spacing="3" fill="${T.eyebrow}">EAST VANCOUVER YOGA STUDIO</text>
+  <text x="106" y="346" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.title}">Open Door</text>
+  <text x="106" y="430" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.accent}">Yoga</text>
   <!-- regular text, with the key words in bold -->
-  <text x="110" y="450" font-family="${FONT}" font-size="25" fill="${T.tagline}">A redesigned website where <tspan font-weight="700">classes</tspan>, <tspan font-weight="700">passes</tspan></text>
-  <text x="110" y="484" font-family="${FONT}" font-size="25" fill="${T.tagline}">and <tspan font-weight="700">teacher training</tspan> are <tspan font-weight="700">easy to find</tspan>.</text>
-  <rect x="110" y="528" width="288" height="58" rx="29" fill="${T.button}"/>
-  <text x="140" y="564" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">Explore the redesign</text>
-  <path d="M352 557 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-  ${chips}
+  <text x="110" y="490" font-family="${FONT}" font-size="25" fill="${T.tagline}">A redesigned website where <tspan font-weight="700">classes</tspan>, <tspan font-weight="700">passes</tspan></text>
+  <text x="110" y="524" font-family="${FONT}" font-size="25" fill="${T.tagline}">and <tspan font-weight="700">teacher training</tspan> are <tspan font-weight="700">easy to find</tspan>.</text>
+  <rect x="110" y="568" width="288" height="58" rx="29" fill="${T.button}"/>
+  <text x="140" y="604" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">Explore the redesign</text>
+  <path d="M352 597 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`
 
 // the logo: violet on the light cover, white on the dark one
@@ -108,13 +96,13 @@ async function glassWindow(canvas, src, x, y, width, pageOpacity) {
     .toBuffer()
 }
 
-let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 96 }]).png().toBuffer()
+let canvas = await sharp(Buffer.from(background)).composite([{ input: await logo(34), left: 110, top: 136 }]).png().toBuffer()
 // back to front: About, Pricing, then the Home page
-// a cascade: each page steps down and to the left of the one behind it, so the top of
-// every page (About's welcome, Pricing's "Passes & Pricing") stays in view
-canvas = await glassWindow(canvas, 'design-exports/yoga-about.png', 1090, 30, 480, 0.88)
-canvas = await glassWindow(canvas, 'design-exports/yoga-pricing.png', 930, 230, 520, 0.96)
-canvas = await glassWindow(canvas, 'design-exports/yoga-home.png', 760, 430, 560, 1)
+// a cascade: each page steps down and to the left of the one behind it, overlapping enough
+// to leave breathing room around them, with the top of each page still in view
+canvas = await glassWindow(canvas, 'design-exports/yoga-about.png', 1120, 80, 420, 0.88)
+canvas = await glassWindow(canvas, 'design-exports/yoga-pricing.png', 975, 238, 460, 0.96)
+canvas = await glassWindow(canvas, 'design-exports/yoga-home.png', 830, 400, 500, 1)
 const name = DARK_MODE ? 'yoga-cover-dark' : 'yoga-cover'
 const out = await sharp(canvas).webp({ quality: 90 }).toFile(`public/images/projects/${name}.webp`)
 console.log(name, out.width, out.height)

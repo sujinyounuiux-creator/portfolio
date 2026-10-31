@@ -124,3 +124,27 @@ await png('public/images/screens/lastcow-event-hifi.webp', 'lc-tickets-bar', { e
 
 console.log(readFileSync('src/data/mockups.json', 'utf8'))
 console.log('parts ready')
+
+// ── Open Door Yoga (dark cover) ──
+{
+  const VIOLET = '#6A4E77', GREEN = '#B2C95D'
+  writeFileSync(`${OUT}/yoga-background-dark.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2031"/><stop offset="1" stop-color="#140e17"/></linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4b3655"/><stop offset="1" stop-color="${VIOLET}"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 790 C300 760 520 820 820 760 C1120 700 1300 560 1600 520 V900 H0 Z" fill="url(#wave)"/>
+  <path d="M0 830 C340 800 600 860 900 800 C1180 744 1360 640 1600 610" fill="none" stroke="${GREEN}" stroke-opacity="0.55" stroke-width="3"/>
+  <ellipse cx="1180" cy="330" rx="330" ry="210" fill="${VIOLET}" fill-opacity="0.55"/>
+  <ellipse cx="1420" cy="560" rx="200" ry="150" fill="${GREEN}" fill-opacity="0.25"/>
+</svg>`)
+  for (const name of ['about', 'pricing', 'home']) {
+    const m = await sharp(`design-exports/yoga-${name}.png`).metadata()
+    await sharp(`design-exports/yoga-${name}.png`).extract({ left: 0, top: 0, width: m.width, height: Math.round(m.width * 0.6) }).png().toFile(`${OUT}/yoga-page-${name}.png`)
+  }
+  const { data, info } = await sharp('public/images/logos/open-door-yoga.png').ensureAlpha().raw().toBuffer({ resolveWithObject: true })
+  for (let i = 0; i < data.length; i += 4) data[i] = data[i + 1] = data[i + 2] = 245
+  await sharp(data, { raw: info }).png().toFile(`${OUT}/yoga-logo-white.png`)
+  console.log('yoga parts ready')
+}

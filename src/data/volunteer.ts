@@ -17,16 +17,22 @@ export const volunteer = glueAll({
   ],
   photos: [
     {
-      src: '/images/rizsq/rizsq-1.webp',
-      alt: 'Rizsq banner: a farmer gathering harvested rice in a field, with the Rizsq logo and the line “Every harvest deserves a fair price”.',
+      src: '/images/rizsq/rizsq-harvest.webp',
+      alt: 'Rizsq banner: a farmer carrying a bundle of rice across a field at sunset, with the Rizsq logo and the line “Every harvest deserves a fair price”.',
       width: 1600,
       height: 900,
     },
     {
-      src: '/images/rizsq/rizsq-2.webp',
-      alt: 'Rizsq post: a smiling farmer with a hoe in a green field, outlined in green, above the Rizsq logo.',
+      src: '/images/rizsq/rizsq-traditions.webp',
+      alt: 'Rizsq post on dark green: women washing in a canal beside a man checking his phone on a dirt road, with the line “Traditions must be side-by-side with technology, not against”.',
+      width: 1600,
+      height: 900,
+    },
+    {
+      src: '/images/rizsq/rizsq-farmer.webp',
+      alt: 'Rizsq post: a woman carrying her sleeping baby on her back while tending young plants in a field, under the Rizsq logo and a yellow wheat motif.',
       width: 1080,
-      height: 1350,
+      height: 1080,
     },
   ],
 })

@@ -329,7 +329,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Each stock page summarises growth, profitability, stability and financial soundness in plain sentences, next to the detailed figures.',
             ],
-            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel summarising growth, profitability, stability and financial soundness in four plain sentences.', 'AI Comment on the stock detail page.', 1220, 290)],
+            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel summarising growth, profitability, stability and financial soundness in four plain sentences.', 'AI Comment on the stock detail page.', 1284, 354)],
           },
           {
             kind: 'feature',
@@ -339,7 +339,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Terms such as PER, PBR, EPS and dividends carry a “?” mark. Hovering shows a short explanation, making unfamiliar terms easier for beginners.',
             ],
-            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Indicators with “?” glossary marks.', 600, 340)],
+            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Indicators with “?” glossary marks.', 664, 404)],
           },
           {
             kind: 'feature',
@@ -989,7 +989,7 @@ export const projects: Project[] = glueAll<Project[]>([
             ],
             figures: [
               { ...cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', 'Search bar with the filter button.', 1600, 143), frameless: true },
-              cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 532),
+              cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 606),
             ],
           },
           {
@@ -1001,7 +1001,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Replies sit under the comment they answer, so a question and its answers stay together. This makes discussions easier to follow and questions more likely to get an answer.',
             ],
-            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 672)],
+            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 730)],
           },
         ],
       },

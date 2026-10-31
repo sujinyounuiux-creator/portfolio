@@ -23,7 +23,7 @@ export const site = glueAll({
   socials: [{ label: 'LinkedIn', url: 'https://www.linkedin.com/in/sujin-youn-58401118b/' }] satisfies SocialLink[],
 
   // Slogan under the "portfolio" heading on Home.
-  slogan: 'I design with purpose, for people.',
+  slogan: 'I design the connection between people and technology.',
   // a quieter line under the slogan on Home
   subline: '6 years in network engineering. Now designing better digital experiences.',
 

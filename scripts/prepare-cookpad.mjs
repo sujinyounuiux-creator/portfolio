@@ -46,15 +46,21 @@ for (const [file, xs] of Object.entries(rows)) {
   }
 }
 
-const webp = (src, out, width) => sharp(`${SRC}/${src}`).resize({ width, withoutEnlargement: true }).webp({ quality: 88 }).toFile(`${OUT}/${out}.webp`)
-for (const [src, out, w] of [
+// pad: white margin (px) added around a tight crop, so the panel doesn't touch the image edge
+const webp = (src, out, width, pad = 0) =>
+  sharp(`${SRC}/${src}`)
+    .resize({ width: width - pad * 2, withoutEnlargement: true })
+    .extend({ top: pad, bottom: pad, left: pad, right: pad, background: '#ffffff' })
+    .webp({ quality: 88 })
+    .toFile(`${OUT}/${out}.webp`)
+for (const [src, out, w, pad] of [
   ['wireframes.png', 'wireframes', 1600],
-  ['filter-panel.png', 'filter-panel', 1600],
+  ['filter-panel.png', 'filter-panel', 1600, 56],
   ['search-bar.png', 'search-bar', 1600],
-  ['comments.png', 'comments', 1400],
+  ['comments.png', 'comments', 1400, 56],
   ['devices.png', 'devices', 1600],
 ]) {
-  const i = await webp(src, out, w)
+  const i = await webp(src, out, w, pad)
   console.log(out, i.width, i.height)
 }
 

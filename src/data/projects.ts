@@ -488,9 +488,9 @@ export const projects: Project[] = glueAll<Project[]>([
     timeline: '2026.07 to 2026.08',
     team: '2 designers',
     tools: ['Figma'],
-    // cover: Sujin's original cover design from Figma
-    thumbnail: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices." beside the app splash screen on an iPhone.'),
-    hero: img('lastcow-cover', 'LastCow cover: the cow and ticket logo and the tagline "Last tickets. Best prices." beside the app splash screen on an iPhone.'),
+    // cover: built by scripts/build-lastcow-cover.mjs from the real hi fi screens
+    thumbnail: img('lastcow-cover', 'LastCow cover: the logo and "Last tickets. Best prices." in white on a purple band, above three iPhones showing the Event details, Home and Ticket calendar screens.'),
+    hero: img('lastcow-cover', 'LastCow cover: the logo and "Last tickets. Best prices." in white on a purple band, above three iPhones showing the Event details, Home and Ticket calendar screens.'),
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },

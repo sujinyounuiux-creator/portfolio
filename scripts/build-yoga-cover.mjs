@@ -56,8 +56,9 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height=
   <text x="110" y="222" font-family="${FONT}" font-size="16" font-weight="700" letter-spacing="3" fill="${T.eyebrow}">EAST VANCOUVER YOGA STUDIO</text>
   <text x="106" y="306" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.title}">Open Door</text>
   <text x="106" y="390" font-family="${SERIF}" font-size="74" font-weight="700" fill="${T.accent}">Yoga</text>
-  <text x="110" y="450" font-family="${FONT}" font-size="25" font-weight="600" fill="${T.tagline}">A redesigned website where classes, passes</text>
-  <text x="110" y="484" font-family="${FONT}" font-size="25" font-weight="600" fill="${T.tagline}">and teacher training are easy to find.</text>
+  <!-- regular text, with the key words in bold -->
+  <text x="110" y="450" font-family="${FONT}" font-size="25" fill="${T.tagline}">A redesigned website where <tspan font-weight="700">classes</tspan>, <tspan font-weight="700">passes</tspan></text>
+  <text x="110" y="484" font-family="${FONT}" font-size="25" fill="${T.tagline}">and <tspan font-weight="700">teacher training</tspan> are <tspan font-weight="700">easy to find</tspan>.</text>
   <rect x="110" y="528" width="288" height="58" rx="29" fill="${T.button}"/>
   <text x="140" y="564" font-family="${FONT}" font-size="20" font-weight="700" fill="${T.buttonText}">Explore the redesign</text>
   <path d="M352 557 h16 m-7 -7 l7 7 -7 7" fill="none" stroke="${T.buttonText}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>

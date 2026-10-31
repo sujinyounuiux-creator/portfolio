@@ -1,6 +1,9 @@
 // LastCow cover, in the style of an app landing page: a plain brand purple band with the
 // cow logo in its own purple on a white tile, the name and tagline in white, and three real hi fi screens (Home, Event details, Ticket calendar)
-// in the iPhone frame, the middle one raised, overlapping the band's lower edge.
+// in the iPhone frame, the middle one raised, overlapping the band's lower edge. Two UI
+// cards cut from the same screens (an event with its 24 hour price change, and the Get
+// Tickets bar) float beside the phones, and faint ticket outlines like the logo's sit
+// in the band.
 // Sources: design-exports/logos/lastcow.png (Figma 1688:3397), design-exports/logos/lastcow-icon.png
 // (the cow icon on white, from Sujin), public/images/screens/
 // lastcow-*-hifi.webp, public/images/mockups/iphone(.webp|-mask.png) and src/data/mockups.json
@@ -70,14 +73,30 @@ async function phone(screen, height) {
   return { buf: await sharp(layer).composite([{ input: frame }]).png().toBuffer(), w, h: height }
 }
 
+// a real piece of a screen on a white floating card
+async function uiCard(screen, crop, width) {
+  const piece = await sharp(`public/images/screens/${screen}.webp`).extract(crop).resize({ width: width - 36 }).png().toBuffer()
+  const m = await sharp(piece).metadata()
+  const h = m.height + 36
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${h}"><rect width="${width}" height="${h}" rx="18" fill="#ffffff"/></svg>`
+  const card = await sharp(Buffer.from(svg)).composite([{ input: piece, left: 18, top: 18 }]).png().toBuffer()
+  return { buf: card, w: width, h }
+}
+
 // a soft shadow shaped like the phone, below and a little to the right
-async function shadow(w, h) {
+async function shadow(w, h, radius = w * 0.14) {
   const pad = 60
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w + pad * 2}" height="${h + pad * 2}"><rect x="${pad + 6}" y="${pad + 22}" width="${w - 12}" height="${h - 10}" rx="${w * 0.14}" fill="#1b1036" fill-opacity="0.32"/></svg>`
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w + pad * 2}" height="${h + pad * 2}"><rect x="${pad + 6}" y="${pad + 22}" width="${w - 12}" height="${h - 10}" rx="${radius}" fill="#1b1036" fill-opacity="0.32"/></svg>`
   return { buf: await sharp(Buffer.from(svg)).blur(26).png().toBuffer(), pad }
 }
 
-// background: a plain purple band, very light lavender below
+// a ticket outline like the one in the logo: notched sides and a dashed tear line
+const ticket = (x, y, w, h, rot) => `<g transform="rotate(${rot} ${x + w / 2} ${y + h / 2})" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="3">
+  <path d="M${x + 18} ${y} H${x + w - 18} Q${x + w} ${y} ${x + w} ${y + 18} V${y + h / 2 - 22} A22 22 0 0 0 ${x + w} ${y + h / 2 + 22} V${y + h - 18} Q${x + w} ${y + h} ${x + w - 18} ${y + h} H${x + 18} Q${x} ${y + h} ${x} ${y + h - 18} V${y + h / 2 + 22} A22 22 0 0 0 ${x} ${y + h / 2 - 22} V${y + 18} Q${x} ${y} ${x + 18} ${y} Z"/>
+  <path d="M${x + w * 0.28} ${y + 14} V${y + h - 14}" stroke-dasharray="10 10"/>
+</g>`
+
+// background: the purple band with a soft light sweep and faint tickets, light lavender below
 const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <defs>
     <linearGradient id="band" x1="0" y1="0" x2="1" y2="1">
@@ -86,6 +105,10 @@ const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" hei
   </defs>
   <rect width="${W}" height="${H}" fill="#f7f5fd"/>
   <rect width="${W}" height="${BAND}" fill="url(#band)"/>
+  <path d="M0 0 H620 L240 ${BAND} H0 Z" fill="#ffffff" fill-opacity="0.05"/>
+  <path d="M1180 0 H1600 V${BAND} H900 Z" fill="#ffffff" fill-opacity="0.04"/>
+  ${ticket(70, 120, 250, 140, -12)}
+  ${ticket(1290, 70, 230, 130, 10)}
   <text x="${W / 2}" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#ffffff">Last tickets. Best prices.</text>
   <text x="${W / 2}" y="264" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#ffffff" fill-opacity="0.78">Last minute deals on live events</text>
 </svg>`)
@@ -113,6 +136,17 @@ for (const [p, x, y] of [
   const sh = await shadow(p.w, p.h)
   layers.push({ input: sh.buf, left: Math.round(x - sh.pad), top: Math.round(y - sh.pad) })
   layers.push({ input: p.buf, left: Math.round(x), top: Math.round(y) })
+}
+// floating UI cards, cut from the real screens
+const priceCard = await uiCard('lastcow-home-hifi', { left: 40, top: 528, width: 520, height: 120 }, 330)
+const ticketsCard = await uiCard('lastcow-event-hifi', { left: 20, top: 1172, width: 560, height: 92 }, 330)
+for (const [c, x, y] of [
+  [priceCard, 150, 600],
+  [ticketsCard, 1120, 640],
+]) {
+  const sh = await shadow(c.w, c.h, 18)
+  layers.push({ input: sh.buf, left: Math.round(x - sh.pad), top: Math.round(y - sh.pad) })
+  layers.push({ input: c.buf, left: x, top: y })
 }
 const flat = await sharp(bg).composite(layers).png().toBuffer()
 const out = await sharp(flat).extract({ left: 0, top: 0, width: W, height: H }).webp({ quality: 90 }).toFile('public/images/projects/lastcow-cover.webp')

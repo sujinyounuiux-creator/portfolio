@@ -489,8 +489,8 @@ export const projects: Project[] = glueAll<Project[]>([
     team: '2 designers',
     tools: ['Figma'],
     // cover: built by scripts/build-lastcow-cover.mjs from the real hi fi screens
-    thumbnail: img('lastcow-cover', 'LastCow cover: the purple cow logo on a white tile, the LastCow name and "Last tickets. Best prices." in white on a purple band, above three iPhones showing the Event details, Home and Ticket calendar screens.'),
-    hero: img('lastcow-cover', 'LastCow cover: the purple cow logo on a white tile, the LastCow name and "Last tickets. Best prices." in white on a purple band, above three iPhones showing the Event details, Home and Ticket calendar screens.'),
+    thumbnail: img('lastcow-cover', 'LastCow cover: the purple cow logo on a white tile, the LastCow name and "Last tickets. Best prices." in white on a purple band, above three iPhones showing the Event details, Home and Ticket calendar screens, with floating cards for the Tame Impala price change and the Get Tickets bar.'),
+    hero: img('lastcow-cover', 'LastCow cover: the purple cow logo on a white tile, the LastCow name and "Last tickets. Best prices." in white on a purple band, above three iPhones showing the Event details, Home and Ticket calendar screens, with floating cards for the Tame Impala price change and the Get Tickets bar.'),
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },

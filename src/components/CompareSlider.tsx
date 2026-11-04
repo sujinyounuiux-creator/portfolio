@@ -3,28 +3,22 @@ import type { Figure } from '../data/projects'
 
 type Props = { before: Figure; after: Figure; label: string; labels?: [string, string] }
 
-const REST_AFTER = 1400 // ms resting on the after screen
-const GLIDE = 2400 // ms for each glide across
-const REST_BEFORE = 1000 // ms resting on the before screen
+const PEEK = 20 // how far the handle moves on its own, in % of the width
+const REST = 2200 // ms resting on the after screen between peeks
+const GLIDE = 800 // ms for the move out, and again for the move back
 
-/** Where the handle is at time t (ms) in the loop: after, glide to before, rest, glide back. */
+/** Where the handle is at time t (ms) in the loop: at rest, then a small peek out and back. */
 function autoPos(t: number) {
-  const loop = REST_AFTER + GLIDE + REST_BEFORE + GLIDE
-  let m = t % loop
-  const ease = (x: number) => (1 - Math.cos(Math.PI * x)) / 2
-  if (m < REST_AFTER) return 0
-  m -= REST_AFTER
-  if (m < GLIDE) return 100 * ease(m / GLIDE)
-  m -= GLIDE
-  if (m < REST_BEFORE) return 100
-  m -= REST_BEFORE
-  return 100 * (1 - ease(m / GLIDE))
+  const m = t % (REST + GLIDE * 2)
+  if (m < REST) return 0
+  // a smooth hill from 0 up to PEEK and down again
+  return (PEEK * (1 - Math.cos((2 * Math.PI * (m - REST)) / (GLIDE * 2)))) / 2
 }
 
 /**
- * Before/after comparison. It opens on the after (redesigned) screen alone, then while on
- * screen the handle glides across by itself, revealing the before (original or wireframe)
- * and going back, until someone drags it. Dragging reveals the before from the left.
+ * Before/after comparison. It opens on the after (redesigned) screen alone. While on screen
+ * the handle peeks a little way across and back, just enough to show it can move, until
+ * someone uses it. Dragging reveals the before (original or wireframe) from the left.
  * The divider is a quiet hairline and the handle a frosted circle with two outward
  * chevrons. Off for reduced motion.
  * Works with mouse, touch (horizontal drag; vertical page scroll still works)
@@ -36,7 +30,7 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
   const box = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
 
-  // the self-playing glide: runs only while on screen, and stops for good on first use
+  // the small peek: runs only while on screen, and stops for good on first use
   useEffect(() => {
     const el = box.current
     if (!el || touched || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -116,8 +110,8 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
         {labels[1]}
       </span>
 
-      {/* while it rests on the after screen, a pill beside the handle says it can be dragged */}
-      {!touched && pos < 2 && (
+      {/* until someone uses it, a pill beside the handle says it can be dragged */}
+      {!touched && (
         <span className="compare__hint" aria-hidden="true">
           Drag to see {labels[0].toLowerCase()}
         </span>

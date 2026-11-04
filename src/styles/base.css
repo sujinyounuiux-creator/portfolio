@@ -174,7 +174,7 @@ p.intro-hand {
 }
 .intro-art__img {
   justify-self: center;
-  width: clamp(120px, 34vw, 170px);
+  width: clamp(190px, 50vw, 300px);
   height: auto;
 }
 @media (min-width: 560px) {

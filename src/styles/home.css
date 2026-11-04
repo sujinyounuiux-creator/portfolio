@@ -437,7 +437,8 @@ button.wiggle {
   .hero__art {
     order: 0;
     width: 100%;
-    max-width: 500px;
+    /* small enough that the character and its stamp bar fit in the first view */
+    max-width: clamp(320px, 56vh, 420px);
     justify-self: center;
   }
 }

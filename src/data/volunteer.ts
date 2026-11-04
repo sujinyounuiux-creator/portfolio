@@ -13,7 +13,7 @@ export const volunteer = glueAll({
   facts: [
     { label: 'When', value: '2026.10 to present' },
     { label: 'Role', value: 'Social media design · UI/UX' },
-    { label: 'Tool', value: 'Canva' },
+    { label: 'Tools', value: 'Canva · Adobe Illustrator' },
   ],
   photos: [
     {

@@ -21,10 +21,13 @@ export function AboutPage() {
               <Underline className="about-hello__line" draw />
             </span>
           </h1>
-          <div className="about-intro intro-hand">
-            {about.intro.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+          <div className="intro-art">
+            <div className="about-intro intro-hand">
+              {about.intro.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <img className="intro-art__img" src="/images/character-smile.webp" alt="" width={900} height={817} loading="lazy" decoding="async" />
           </div>
         </section>
 

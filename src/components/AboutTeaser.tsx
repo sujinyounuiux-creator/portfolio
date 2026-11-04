@@ -23,7 +23,10 @@ export function AboutTeaser() {
 
         <div className="about-home__grid">
           <div className="about-home__col">
-            <p className="intro-hand">{about.intro[0]}</p>
+            <div className="intro-art">
+              <p className="intro-hand">{about.intro[0]}</p>
+              <img className="intro-art__img" src="/images/character-smile.webp" alt="" width={900} height={817} loading="lazy" decoding="async" />
+            </div>
 
             <ul className="about-home__specialties tag-row" aria-label="Design specialties">
               {site.specialties.map((s) => (

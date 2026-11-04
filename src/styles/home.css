@@ -253,11 +253,11 @@ button.wiggle {
 .stampable__hit::before {
   content: '';
   position: absolute;
-  inset: -12% -18%;
+  inset: -20% -30%;
 }
 @media (max-width: 479px) {
   .stampable__hit::before {
-    inset: -10% -12%;
+    inset: -14% -14%;
   }
 }
 .stampable__hit:focus-visible {
@@ -299,7 +299,7 @@ button.wiggle {
 }
 .stamp-bar__hint {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   line-height: 1.1;
   color: var(--c-ink-soft);
   transform: rotate(-2deg);
@@ -310,18 +310,18 @@ button.wiggle {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
-  padding: 0.3rem 0.45rem;
+  gap: 0.15rem;
+  padding: 0.2rem 0.35rem;
   border: var(--border);
-  border-radius: 26px;
+  border-radius: 22px;
   background: var(--c-surface);
   box-shadow: 3px 3px 0 var(--c-ink);
 }
 .stamp-bar__pick {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   padding: 0;
   border: 1.5px solid transparent;
   border-radius: 50%;
@@ -338,18 +338,18 @@ button.wiggle {
 }
 .stamp-bar__sep {
   width: 1.5px;
-  height: 24px;
-  margin-inline: 0.2rem;
+  height: 20px;
+  margin-inline: 0.15rem;
   background: var(--c-line);
 }
 .stamp-bar__action {
-  min-height: 44px;
-  padding: 0 0.75rem;
+  min-height: 36px;
+  padding: 0 0.6rem;
   border: 0;
   border-radius: 999px;
   background: none;
   font: inherit;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--c-ink);
   cursor: pointer;
@@ -362,11 +362,13 @@ button.wiggle {
   cursor: default;
 }
 @media (max-width: 479px) {
+  /* a little larger for fingers on phones */
   .stamp-bar__pick {
     width: 40px;
-    height: 44px;
+    height: 40px;
   }
   .stamp-bar__action {
+    min-height: 40px;
     padding-inline: 0.55rem;
   }
 }
@@ -390,6 +392,8 @@ button.wiggle {
   margin: 0;
   padding: 0;
   list-style: none;
+  /* plain labels: a tap on one lands on the stamp area underneath */
+  pointer-events: none;
 }
 .hero__label {
   position: absolute;

@@ -151,7 +151,7 @@ export function StampableCharacter({ label, children }: { label: string; childre
               aria-label={`${k.label} stamp`}
               onClick={() => setKind(k.kind)}
             >
-              <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" overflow="visible">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" overflow="visible">
                 <g filter="url(#stamp-crayon)">
                   <StampShape kind={k.kind} />
                 </g>

@@ -759,7 +759,7 @@ export const projects: Project[] = glueAll<Project[]>([
     timeline: '2024.11 to 2025.01',
     team: 'Personal project',
     tools: ['Figma'],
-    // cover: Sujin's new Cookpad cover design (design-exports/cookpad-cover-2026.png)
+    // cover: Sujin's new Cookpad cover design (design-exports/cookpad-cover-2026.webp)
     thumbnail: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
     hero: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
     theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },

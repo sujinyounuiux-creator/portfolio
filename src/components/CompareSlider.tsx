@@ -1,13 +1,32 @@
-import { useCallback, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react'
 import type { Figure } from '../data/projects'
 
 type Props = { before: Figure; after: Figure; label: string; labels?: [string, string] }
 
+const REST_AFTER = 1400 // ms resting on the after screen
+const GLIDE = 2400 // ms for each glide across
+const REST_BEFORE = 1000 // ms resting on the before screen
+
+/** Where the handle is at time t (ms) in the loop: after, glide to before, rest, glide back. */
+function autoPos(t: number) {
+  const loop = REST_AFTER + GLIDE + REST_BEFORE + GLIDE
+  let m = t % loop
+  const ease = (x: number) => (1 - Math.cos(Math.PI * x)) / 2
+  if (m < REST_AFTER) return 0
+  m -= REST_AFTER
+  if (m < GLIDE) return 100 * ease(m / GLIDE)
+  m -= GLIDE
+  if (m < REST_BEFORE) return 100
+  m -= REST_BEFORE
+  return 100 * (1 - ease(m / GLIDE))
+}
+
 /**
- * Before/after comparison. It opens on the after (redesigned) screen alone; dragging
- * the handle to the right reveals the before (original or wireframe) from the left.
+ * Before/after comparison. It opens on the after (redesigned) screen alone, then while on
+ * screen the handle glides across by itself, revealing the before (original or wireframe)
+ * and going back, until someone drags it. Dragging reveals the before from the left.
  * The divider is a quiet hairline and the handle a frosted circle with two outward
- * chevrons, which nudges sideways a few times until someone uses it.
+ * chevrons. Off for reduced motion.
  * Works with mouse, touch (horizontal drag; vertical page scroll still works)
  * and keyboard (arrow keys, Home/End on the handle).
  */
@@ -16,6 +35,34 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
   const [touched, setTouched] = useState(false)
   const box = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
+
+  // the self-playing glide: runs only while on screen, and stops for good on first use
+  useEffect(() => {
+    const el = box.current
+    if (!el || touched || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let frame = 0
+    let start = 0
+    let visible = false
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting
+    }, { threshold: 0.4 })
+    io.observe(el)
+    const tick = (now: number) => {
+      if (visible && !document.hidden) {
+        if (!start) start = now
+        setPos(autoPos(now - start))
+      } else {
+        // restart from the after screen next time it comes into view
+        start = 0
+      }
+      frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => {
+      cancelAnimationFrame(frame)
+      io.disconnect()
+    }
+  }, [touched])
 
   const moveTo = useCallback((clientX: number) => {
     const r = box.current?.getBoundingClientRect()
@@ -69,8 +116,8 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
         {labels[1]}
       </span>
 
-      {/* until someone uses it, a pill beside the handle says what dragging does */}
-      {!touched && (
+      {/* while it rests on the after screen, a pill beside the handle says it can be dragged */}
+      {!touched && pos < 2 && (
         <span className="compare__hint" aria-hidden="true">
           Drag to see {labels[0].toLowerCase()}
         </span>

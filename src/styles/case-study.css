@@ -1381,10 +1381,8 @@
   transform: translateX(-50%);
   pointer-events: none;
 }
-.compare:not(.is-touched) .compare__divider,
 .compare.is-at-edge .compare__divider {
-  /* hidden before first use, and when pushed to either edge (it would read as a white
-     line along the screen edge) */
+  /* hidden at either edge (it would read as a white line along the screen edge) */
   opacity: 0;
 }
 /* frosted handle with two outward chevrons: the familiar "slide sideways" sign.
@@ -1419,19 +1417,6 @@
     0 8px 22px -4px rgba(31, 36, 48, 0.42);
 }
 /* until it's used, the handle nudges right a few times to invite a swipe */
-.compare:not(.is-touched) .compare__handle {
-  animation: compare-nudge 2.2s var(--ease) 0.8s 3;
-}
-@keyframes compare-nudge {
-  0%, 60%, 100% { transform: translate(-50%, -50%); }
-  25% { transform: translate(-50%, -50%) translateX(12px); }
-  40% { transform: translate(-50%, -50%) translateX(2px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .compare:not(.is-touched) .compare__handle {
-    animation: none;
-  }
-}
 .compare__handle:focus-visible {
   outline: 3px solid var(--c-accent-ink);
   outline-offset: 3px;

@@ -442,7 +442,7 @@ button.wiggle {
     order: 0;
     width: 100%;
     /* small enough that the character and its stamp bar fit in the first view */
-    max-width: clamp(360px, 63vh, 470px);
+    max-width: clamp(280px, 61vh, 470px);
     justify-self: center;
   }
 }

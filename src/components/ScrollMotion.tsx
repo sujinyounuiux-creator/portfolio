@@ -27,7 +27,7 @@ const REVEAL: [string, 'title' | 'up' | 'media' | 'pop'][] = [
       '.cs-prose', '.cs-quotes li', '.type-specimen li', '.cs-outline__step',
       '.cs-bars', '.cs-icons__group', '.cs-feature__text', '.feature__text > :not(.feature__tags)',
       '.about-home__col > :not(.about-home__specialties):not(.collage)', '.about-block', '.experience > li', '.skills > li', '.tools > li', '.side-facts',
-      '.volunteer__grid > *', '.asclo__grid > *', '.contact__lede', '.contact__actions', '.stamp-bar',
+      '.volunteer__grid > *', '.asclo__grid > *', '.contact__lede', '.contact__actions',
     ].join(', '),
     'up',
   ],

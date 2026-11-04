@@ -4,6 +4,7 @@ import { AutoPrototype } from './AutoPrototype'
 import { CompareSlider } from './CompareSlider'
 import { DeviceFrame } from './DeviceFrame'
 import { DeviceTabs } from './DeviceTabs'
+import { FilterDemo } from './FilterDemo'
 import { PlaceholderBlock } from './Editable'
 import { ZoomImage } from './Lightbox'
 import { Rich } from './Rich'
@@ -152,6 +153,8 @@ function BlockView({ block }: { block: Block }) {
           <div className={`cs-feature__media ${pair ? 'cs-feature__media--pair' : ''} ${block.plain ? 'cs-feature__media--plain' : ''}`}>
             {block.tabs ? (
               <DeviceTabs items={block.tabs} />
+            ) : block.filterDemo ? (
+              <FilterDemo bar={block.filterDemo.bar} panel={block.filterDemo.panel} />
             ) : (
               block.figures.map((f) => <FigureView key={f.src} figure={f} zoom />)
             )}

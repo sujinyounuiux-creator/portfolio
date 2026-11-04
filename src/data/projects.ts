@@ -48,7 +48,7 @@ export type Block =
   /** A row of key numbers (only real figures from the project). */
   | { kind: 'stats'; items: { value: string; label: string }[] }
   /** One design decision: a real screen or crop beside the reasoning. */
-  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[] }
+  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[]; filterDemo?: { bar: Figure; panel: Figure } }
   /** A persona as a structured card: photo, about details, profile, goals, frustrations and a quote. */
   | { kind: 'persona'; name: string; photo: Figure; about: { label: string; value: string }[]; profile: string[]; goals: string[]; frustrations: string[]; quote: string; caption?: string }
   /** Icon set from the project, grouped, with what each group is for. */
@@ -988,10 +988,12 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
             ],
-            figures: [
-              { ...cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', 'Search bar with the filter button.', 1600, 143), frameless: true },
-              cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 606),
-            ],
+            figures: [],
+            // clicking the filter icon in the bar opens the panel (components/FilterDemo.tsx)
+            filterDemo: {
+              bar: cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', undefined, 1600, 143),
+              panel: cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 606),
+            },
           },
           {
             kind: 'feature',

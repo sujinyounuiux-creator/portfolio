@@ -399,16 +399,19 @@ button.wiggle {
   position: absolute;
   z-index: 3;
 }
-.hero__label--role { top: -10%; left: -6%; }
-.hero__label--role .specialty { font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); min-height: 50px; padding-inline: 1.4rem; }
+.hero__label--role { top: -7%; left: -8%; }
+.hero__label--role .specialty { font-size: 0.9375rem; min-height: 36px; padding-inline: 0.95rem; }
+/* small labels at the edges, leaving the character clear to decorate */
+.hero__label .specialty:not(.specialty--role) { min-height: 28px; padding: 0.15rem 0.6rem; font-size: 0.75rem; }
+.hero__label .sticker { padding: 0.2rem 0.6rem; font-size: 0.75rem; }
 /* hashtags: four down the right side, one on the left under the waving hand */
-.hero__label--tag1 { top: 4%; right: -4%; }
-.hero__label--tag2 { top: 28%; right: -14%; }
-.hero__label--tag3 { top: 52%; right: -10%; }
-.hero__label--tag4 { bottom: 16%; right: -16%; }
-.hero__label--tag5 { top: 60%; left: -14%; }
+.hero__label--tag1 { top: 4%; right: -6%; }
+.hero__label--tag2 { top: 26%; right: -16%; }
+.hero__label--tag3 { top: 48%; right: -14%; }
+.hero__label--tag4 { bottom: 10%; right: -22%; }
+.hero__label--tag5 { top: 66%; left: -16%; }
 
-.hero__label--place { bottom: 2%; left: -6%; }
+.hero__label--place { bottom: 0; left: -12%; }
 .hero__label--place .sticker { color: var(--c-ink); transform: rotate(-5deg); }
 
 @media (max-width: 479px) {
@@ -422,7 +425,9 @@ button.wiggle {
   .hero__figure + .stamp-bar { margin-top: 3.4rem; }
   .hero__label--tag5 { top: 58%; left: -4%; }
   .hero__label--place { left: -2%; }
-  .hero__label .specialty:not(.specialty--role) { min-height: 36px; padding: 0.3rem 0.75rem; font-size: var(--fs-xs); }
+  .hero__label--role .specialty { font-size: 0.875rem; min-height: 32px; }
+  .hero__label .specialty:not(.specialty--role) { min-height: 26px; padding: 0.1rem 0.5rem; font-size: 0.6875rem; }
+  .hero__label .sticker { font-size: 0.6875rem; }
 }
 @media (min-width: 768px) {
   .hero__art {

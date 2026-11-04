@@ -2027,3 +2027,93 @@
   height: auto;
   max-height: min(78vh, 720px);
 }
+
+/* ── Filter demo: the filter icon in the search bar opens the panel ── */
+.filter-demo {
+  display: grid;
+  margin: 0;
+}
+.filter-demo__bar {
+  position: relative;
+}
+.filter-demo__bar img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* an invisible button exactly over the icon drawn in the bar image */
+.filter-demo__icon {
+  position: absolute;
+  top: 50%;
+  left: 81.2%;
+  width: 9.6%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+.filter-demo__icon:hover {
+  background: rgba(255, 153, 52, 0.14);
+}
+.filter-demo__icon:focus-visible {
+  outline: 3px solid var(--p-accent);
+  outline-offset: 2px;
+}
+/* a ring that keeps growing and fading until the icon is first used */
+.filter-demo__icon.is-pulsing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 3px solid #ff9934;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: filter-pulse 1.8s ease-out infinite;
+}
+@keyframes filter-pulse {
+  0% { opacity: 0.9; transform: scale(0.9); }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+.filter-demo figcaption {
+  margin-top: var(--s-2);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-soft);
+  text-align: center;
+}
+/* the panel slides down from under the bar */
+.filter-demo__reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 480ms var(--ease), opacity 320ms var(--ease);
+}
+.filter-demo.is-open .filter-demo__reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.filter-demo__panel {
+  overflow: hidden;
+  min-height: 0;
+  transform: translateY(-14px);
+  transition: transform 480ms var(--ease);
+}
+.filter-demo.is-open .filter-demo__panel {
+  transform: none;
+}
+.filter-demo__panel .zoom {
+  margin-top: var(--s-4);
+  overflow: hidden;
+  border-radius: var(--r-md);
+}
+@media (prefers-reduced-motion: reduce) {
+  .filter-demo__icon.is-pulsing::after {
+    animation: none;
+    opacity: 0.9;
+  }
+  .filter-demo__reveal,
+  .filter-demo__panel {
+    transition: none;
+  }
+}

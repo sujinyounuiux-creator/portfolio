@@ -413,12 +413,12 @@ export const projects: Project[] = glueAll<Project[]>([
               {
                 title: 'Community',
                 note: 'Each stock has its own community, with threaded comments and replies.',
-                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 1400, 1770), tall: true },
+                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 1400, 1771), tall: true },
               },
               {
                 title: 'News',
                 note: 'Market headlines as cards, then a list of all news with pagination.',
-                figure: { ...screen('profitkey-en-news', 'PROFITKEY news page: market headline cards above a list of all news.', 'News', 1400, 1377), tall: true },
+                figure: { ...screen('profitkey-en-news', 'PROFITKEY news page: market headline cards above a list of all news.', 'News', 1400, 1378), tall: true },
               },
               {
                 title: 'Notices',
@@ -428,7 +428,7 @@ export const projects: Project[] = glueAll<Project[]>([
               {
                 title: 'FAQ',
                 note: 'Frequently asked questions in an accordion, with a Contact Us button.',
-                figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 1400, 1073), tall: true },
+                figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 1400, 1072), tall: true },
               },
               {
                 title: 'My watchlist',
@@ -442,8 +442,8 @@ export const projects: Project[] = glueAll<Project[]>([
               },
               {
                 title: 'Edit profile',
-                note: 'Members can change their nickname and email address, log out or delete their account.',
-                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: change nickname and email address, with log out and delete account buttons.', 'Edit profile', 1400, 756), tall: true },
+                note: 'Members can change their nickname and email address, or log out.',
+                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: change nickname and email address, with a log out button.', 'Edit profile', 1400, 756), tall: true },
               },
             ],
           },

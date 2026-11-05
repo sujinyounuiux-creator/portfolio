@@ -29,6 +29,9 @@ export function AboutPage() {
             </div>
             <img className="intro-art__img" src="/images/character-smile.webp" alt="" width={900} height={817} loading="lazy" decoding="async" />
           </div>
+          <a className="btn btn--ghost about-resume" href={site.resumeUrl} target="_blank" rel="noreferrer" aria-label="View my résumé, PDF (opens in a new tab)">
+            View my résumé
+          </a>
         </section>
 
         {/* Experience */}

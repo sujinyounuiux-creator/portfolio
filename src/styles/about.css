@@ -210,3 +210,7 @@
 .tools li:hover img {
   transform: translateY(-4px) rotate(-4deg);
 }
+
+.about-resume {
+  margin-top: 28px;
+}

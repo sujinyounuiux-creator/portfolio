@@ -47,7 +47,7 @@ export const site = glueAll({
   ] as { label: string; group: 'design' | 'language' | 'it' }[],
 
   // Optional: path to a résumé PDF in /public (e.g. "/resume.pdf").
-  resumeUrl: '[RESUME PDF]',
+  resumeUrl: '/Sujin-Youn-Resume.pdf',
 })
 
 export const isPlaceholder = (value: string | undefined | null) =>

@@ -73,6 +73,11 @@ export function SiteHeader() {
                   </li>
                 )
               })}
+              <li>
+                <a className="nav-link" href={site.resumeUrl} target="_blank" rel="noreferrer" aria-label="Résumé PDF (opens in a new tab)">
+                  Résumé
+                </a>
+              </li>
             </ul>
             <a className="navbar__social" href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
               <LinkedInIcon />

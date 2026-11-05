@@ -37,6 +37,9 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
         <button type="button" className="btn btn--ghost" onClick={copy}>
           Copy email
         </button>
+        <a className="btn btn--ghost" href={site.resumeUrl} target="_blank" rel="noreferrer" aria-label="Résumé PDF (opens in a new tab)">
+          Résumé
+        </a>
         {showProjectsLink && (
           <Link className="btn btn--ghost" to="/work">
             See projects

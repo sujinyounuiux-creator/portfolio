@@ -22,6 +22,8 @@ export type Figure = {
   frameless?: boolean
   /** Shown smaller than the column, for a tall screenshot beside a short text. */
   narrow?: boolean
+  /** A `tall` page that scrolls inside the laptop screen, not shown whole on a plain card. */
+  scrollInLaptop?: boolean
   /** Show a zoom button and open the image in the lightbox when clicked (mockups, small or detailed images). */
   zoom?: boolean
   /** Large showcase image: full content width, framed to match its own dark background. */
@@ -1024,7 +1026,14 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'devices',
             device: 'desktop',
             screens: [
-              img('cookpad-recipe', 'Recipe detail for butter pancakes with ingredients and steps.', 'Recipe detail'),
+              // two Figma frames joined into one page (scripts/build-cookpad-recipe-page.mjs)
+              { ...img('cookpad-recipe-full', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true },
+            ],
+          },
+          {
+            kind: 'devices',
+            device: 'desktop',
+            screens: [
               img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
               img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
             ],

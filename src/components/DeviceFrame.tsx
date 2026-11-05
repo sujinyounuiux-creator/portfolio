@@ -41,7 +41,7 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
     </div>
   )
 
-  if (device === 'desktop' && scroll && figure) {
+  if (device === 'desktop' && scroll && figure && !figure.scrollInLaptop) {
     return (
       <figure className={`device device--page ${className}`}>
         <div className="device__page">

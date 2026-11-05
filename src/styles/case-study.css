@@ -936,7 +936,7 @@
 .cs-figure--narrow {
   justify-self: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 320px;
 }
 .cs-figure--wide .cs-figure__frame {
   border: 0;

@@ -112,11 +112,11 @@ a.specialty:focus-visible {
   align-items: center;
   transform: rotate(var(--tilt));
   text-decoration: none;
-  cursor: default;
+  cursor: var(--cursor);
 }
 a.wiggle,
 button.wiggle {
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 .wiggle:hover,
 .wiggle:focus-visible {
@@ -247,7 +247,7 @@ button.wiggle {
   border: 0;
   border-radius: var(--r-lg);
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 /* the tappable area reaches past the illustration, so stamps can go around her too */
 .stampable__hit::before {
@@ -326,7 +326,7 @@ button.wiggle {
   border: 1.5px solid transparent;
   border-radius: 50%;
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-link);
   transition: transform var(--t-fast) var(--ease), background-color var(--t-fast);
 }
 .stamp-bar__pick:hover {
@@ -352,14 +352,14 @@ button.wiggle {
   font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--c-ink);
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 .stamp-bar__action:hover:not(:disabled) {
   background: var(--c-accent-wash);
 }
 .stamp-bar__action:disabled {
   opacity: 0.45;
-  cursor: default;
+  cursor: var(--cursor);
 }
 @media (max-width: 479px) {
   /* a little larger for fingers on phones */
@@ -558,7 +558,7 @@ button.wiggle {
    matching the site's low-contrast pastel surfaces (Home cards and Case Study folders) */
 .feature,
 .folder {
-  cursor: pointer; /* the whole card opens the case study */
+  cursor: var(--cursor-link); /* the whole card opens the case study */
   --f-bg: color-mix(in srgb, var(--f-accent) 22%, var(--c-surface));
   --f-fg: var(--c-ink);
 }
@@ -823,7 +823,7 @@ button.wiggle {
   color: var(--c-accent-ink);
   font-weight: 700;
   font-size: var(--fs-sm);
-  cursor: pointer;
+  cursor: var(--cursor-link);
   transition: background-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
 }
 .filter:hover {

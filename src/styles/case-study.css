@@ -1551,7 +1551,7 @@
   color: var(--c-ink);
   font-size: var(--fs-sm);
   font-weight: 700;
-  cursor: pointer;
+  cursor: var(--cursor-link);
   transition: border-color var(--t-fast), background-color var(--t-fast);
 }
 .walk__step:hover {
@@ -1913,7 +1913,7 @@
   color: var(--c-ink);
   font-size: var(--fs-sm);
   font-weight: 700;
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 .device-tabs__tab:hover {
   border-color: var(--p-accent);
@@ -2055,7 +2055,7 @@
   border: 0;
   border-radius: 50%;
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-link);
   transform: translate(-50%, -50%);
 }
 .filter-demo__icon:hover {

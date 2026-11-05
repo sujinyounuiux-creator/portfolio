@@ -215,7 +215,7 @@
   border: 1.5px solid var(--c-ink);
   border-radius: 999px;
   background: var(--c-surface);
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 .navbar__burger,
 .navbar__burger::before,
@@ -326,7 +326,7 @@
   border: 0;
   padding: 0;
   background: none;
-  cursor: pointer;
+  cursor: var(--cursor-link);
   min-height: 44px;
 }
 
@@ -611,7 +611,7 @@
   color: #f1f1f4;
   font-size: var(--fs-sm);
   text-align: center;
-  cursor: default;
+  cursor: var(--cursor);
 }
 .lightbox__tools {
   position: fixed;
@@ -647,7 +647,7 @@
   color: #fff;
   font-size: var(--fs-sm);
   font-weight: 700;
-  cursor: pointer;
+  cursor: var(--cursor-link);
 }
 .lightbox__btn--close {
   width: 44px;
@@ -672,7 +672,7 @@
   max-height: none;
   margin: 0 auto;
   border-radius: var(--r-sm) var(--r-sm) 0 0;
-  cursor: default;
+  cursor: var(--cursor);
   transition: none;
 }
 html:has(.lightbox[open]) {

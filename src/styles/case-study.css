@@ -346,6 +346,35 @@
   font-size: var(--fs-base);
   line-height: 1.55;
 }
+/* insight and result: the result sits in its own tinted block, lined up along each row */
+.cs-card--result {
+  display: flex;
+  flex-direction: column;
+}
+.cs-card .cs-card__label {
+  margin-bottom: 0.35rem;
+  color: var(--c-ink-soft);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.cs-card--result > p:not(.cs-card__label) {
+  margin-bottom: var(--s-4);
+}
+.cs-card__result {
+  margin-top: auto;
+  padding: var(--s-4);
+  border-radius: var(--r-sm);
+  background: var(--p-surface);
+}
+.cs-card .cs-card__result .cs-card__label {
+  color: var(--c-ink);
+}
+.cs-card .cs-card__result-text {
+  color: var(--c-ink);
+  font-weight: 700;
+}
 
 /* pages: website pages as small browser windows */
 .cs-pages {
@@ -903,6 +932,11 @@
    on a background that matches the board itself instead of a white frame */
 .cs-figure--wide {
   margin-top: var(--s-2);
+}
+.cs-figure--narrow {
+  justify-self: center;
+  width: 100%;
+  max-width: 400px;
 }
 .cs-figure--wide .cs-figure__frame {
   border: 0;

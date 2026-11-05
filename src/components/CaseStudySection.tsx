@@ -18,7 +18,7 @@ function FigureView({ figure, zoom = figure.zoom }: { figure: Figure; zoom?: boo
     <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" decoding="async" />
   )
   return (
-    <figure className={`cs-figure ${figure.tall ? 'cs-figure--tall' : ''} ${figure.wide ? 'cs-figure--wide' : ''} ${figure.frameless ? 'cs-figure--frameless' : ''}`}>
+    <figure className={`cs-figure ${figure.tall ? 'cs-figure--tall' : ''} ${figure.wide ? 'cs-figure--wide' : ''} ${figure.frameless ? 'cs-figure--frameless' : ''} ${figure.narrow ? 'cs-figure--narrow' : ''}`}>
       {figure.tall ? (
         // Long page captures scroll inside a frame instead of stretching the page.
         <div className="cs-figure__scroll" tabIndex={0} role="region" aria-label={`${figure.caption ?? 'Full page'} (scrollable)`}>
@@ -73,14 +73,27 @@ function BlockView({ block }: { block: Block }) {
     case 'cards':
       return (
         <ul className={`cs-cards cs-cards--${block.items.length}`}>
-          {block.items.map((c) => (
-            <li key={c.title} className="cs-card">
-              <h4>{c.title}</h4>
-              <p>
-                <Rich text={c.body} />
-              </p>
-            </li>
-          ))}
+          {block.items.map((c) => {
+            // "problem → result" is shown as an insight with its own highlighted result
+            const [insight, result] = c.body.split(/\s*→\s*/)
+            return (
+              <li key={c.title} className={`cs-card ${result ? 'cs-card--result' : ''}`}>
+                {result && <p className="cs-card__label">Insight</p>}
+                <h4>{c.title}</h4>
+                <p>
+                  <Rich text={insight} />
+                </p>
+                {result && (
+                  <div className="cs-card__result">
+                    <p className="cs-card__label">Result</p>
+                    <p className="cs-card__result-text">
+                      <Rich text={result} />
+                    </p>
+                  </div>
+                )}
+              </li>
+            )
+          })}
         </ul>
       )
     case 'figure':

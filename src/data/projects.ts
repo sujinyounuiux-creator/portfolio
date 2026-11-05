@@ -20,6 +20,8 @@ export type Figure = {
   tall?: boolean
   /** No white frame or border: for images with their own rounded card shape. */
   frameless?: boolean
+  /** Shown smaller than the column, for a tall screenshot beside a short text. */
+  narrow?: boolean
   /** Show a zoom button and open the image in the lightbox when clicked (mockups, small or detailed images). */
   zoom?: boolean
   /** Large showcase image: full content width, framed to match its own dark background. */
@@ -319,7 +321,7 @@ export const projects: Project[] = glueAll<Project[]>([
               'The home page opens with AI recommended stocks, chosen from data such as stability, growth rate, profitability and financial health.',
               'The key part is the AI Comment under each pick. Instead of leaving beginners with only a price and a percentage, it explains in a few plain sentences why the stock was recommended, so they understand the reason before they decide.',
             ],
-            figures: [screen('profitkey-ai-pick', 'AI Recommended Stocks card: Apple, +20%, a price chart and key figures, ending in a yellow AI Comment box that explains the pick in plain sentences.', 'The AI Comment under each recommended stock explains the pick.', 566, 622)],
+            figures: [{ ...screen('profitkey-ai-pick', 'AI Recommended Stocks card: Apple, +20%, a price chart and key figures, ending in a yellow AI Comment box that explains the pick in plain sentences.', 'The AI Comment under each recommended stock explains the pick.', 566, 622), narrow: true }],
           },
           {
             kind: 'feature',
@@ -431,11 +433,6 @@ export const projects: Project[] = glueAll<Project[]>([
                 figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 1400, 1072), tall: true },
               },
               {
-                title: 'Log in',
-                note: 'Members log in with a Google, Facebook or Apple account.',
-                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo above three buttons, Log in with Google, Log in with Facebook and Log in with Apple.', 'Log in', 1400, 935), tall: true },
-              },
-              {
                 title: 'My watchlist',
                 note: 'Saved stocks with their price charts.',
                 figure: { ...screen('profitkey-en-watchlist', 'PROFITKEY my page, watchlist tab: saved stocks shown as cards with price charts.', 'My watchlist', 1400, 941), tall: true },
@@ -449,6 +446,11 @@ export const projects: Project[] = glueAll<Project[]>([
                 title: 'Edit profile',
                 note: 'Members can change their nickname and email address, or log out.',
                 figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: change nickname and email address, with a log out button.', 'Edit profile', 1400, 756), tall: true },
+              },
+              {
+                title: 'Log in',
+                note: 'Members log in with a Google, Facebook or Apple account.',
+                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo above three buttons, Log in with Google, Log in with Facebook and Log in with Apple.', 'Log in', 1400, 935), tall: true },
               },
             ],
           },
@@ -997,7 +999,7 @@ export const projects: Project[] = glueAll<Project[]>([
             // clicking the filter icon in the bar opens the panel (components/FilterDemo.tsx)
             filterDemo: {
               bar: cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', undefined, 1600, 143),
-              panel: cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1600, 606),
+              panel: cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1488, 494),
             },
           },
           {

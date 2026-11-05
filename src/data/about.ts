@@ -37,6 +37,10 @@ export const about = glueAll({
       title: 'Visual Design',
       items: ['Typography', 'Color Theory', 'Visual Communication', 'UI Components', 'Branding', 'Visual Consistency'],
     },
+    {
+      title: 'AI-Assisted Development',
+      items: ['Vibe Coding with Claude, which I used to build this portfolio'],
+    },
   ],
 
   // Which photos appear in the smaller collage on Home (by file). The About page shows all.

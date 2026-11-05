@@ -293,6 +293,8 @@
   border-radius: var(--r-sm);
   background: var(--c-surface);
   font-weight: 600;
+  /* a short quote in a card: even lines, not one short line in the middle */
+  text-wrap: balance;
 }
 .cs-quotes figcaption {
   margin-top: var(--s-3);
@@ -640,9 +642,10 @@
   box-shadow: none;
   background: transparent;
 }
+/* no height cap: a cap shrinks a tall screenshot inside its full-width frame, leaving
+   empty bars on both sides */
 .cs-feature__media .cs-figure__frame img {
-  max-height: 460px;
-  object-fit: contain;
+  height: auto;
 }
 .cs-feature__media figcaption {
   font-size: var(--fs-xs);

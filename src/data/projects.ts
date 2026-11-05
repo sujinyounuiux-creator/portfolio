@@ -431,6 +431,11 @@ export const projects: Project[] = glueAll<Project[]>([
                 figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 1400, 1072), tall: true },
               },
               {
+                title: 'Log in',
+                note: 'Members log in with a Google, Facebook or Apple account.',
+                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo above three buttons, Log in with Google, Log in with Facebook and Log in with Apple.', 'Log in', 1400, 935), tall: true },
+              },
+              {
                 title: 'My watchlist',
                 note: 'Saved stocks with their price charts.',
                 figure: { ...screen('profitkey-en-watchlist', 'PROFITKEY my page, watchlist tab: saved stocks shown as cards with price charts.', 'My watchlist', 1400, 941), tall: true },

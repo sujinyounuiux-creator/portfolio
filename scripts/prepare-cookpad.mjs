@@ -74,6 +74,8 @@ for (const [src, out, w, pad] of [
   const stack = []
   for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x)
   for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1)
+  // also the white above and below the bar inside the highlight circle around the filter icon
+  stack.push(12 * w + 1299, 128 * w + 1299)
   while (stack.length) {
     const p = stack.pop()
     if (seen[p] || !light(p * 4)) continue

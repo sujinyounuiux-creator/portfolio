@@ -81,7 +81,7 @@ const png = (src, out, opts = {}) => {
 }
 await png('public/images/logos/profitkey.png', 'pk-logo')
 await png('public/images/screens/profitkey-web-home.webp', 'pk-home-page', { extract: { left: 0, top: 0, width: 1400, height: 875 } })
-await png('public/images/screens/profitkey-crop-glossary.webp', 'pk-glossary-row', { extract: { left: 44, top: 110, width: 262, height: 52 } })
+await png('public/images/screens/profitkey-crop-glossary.webp', 'pk-glossary-row', { extract: { left: 44, top: 110, width: 282, height: 52 } })
 await png('public/images/screens/profitkey-web-home.webp', 'pk-news-card', { extract: { left: 116, top: 1680, width: 282, height: 286 } })
 
 // ── LastCow ──

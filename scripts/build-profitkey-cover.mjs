@@ -136,7 +136,7 @@ async function floatCard(piece, pad) {
 }
 
 const home = await sharp('public/images/screens/profitkey-web-home.webp').extract({ left: 0, top: 0, width: 1400, height: 875 }).resize(screen.w, screen.h).png().toBuffer()
-const glossary = await sharp('public/images/screens/profitkey-crop-glossary.webp').extract({ left: 44, top: 110, width: 262, height: 52 }).resize({ width: 300 }).png().toBuffer()
+const glossary = await sharp('public/images/screens/profitkey-crop-glossary.webp').extract({ left: 44, top: 110, width: 282, height: 52 }).resize({ width: 300 }).png().toBuffer()
 const news = await sharp('public/images/screens/profitkey-web-home.webp').extract({ left: 116, top: 1680, width: 282, height: 286 }).resize({ width: 220 }).png().toBuffer()
 const logo = await sharp('public/images/logos/profitkey.png').resize({ height: 54 }).png().toBuffer()
 const cardImg = await sharp(Buffer.from(card)).png().toBuffer()

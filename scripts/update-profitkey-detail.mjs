@@ -29,6 +29,9 @@ const out = await sharp(before)
   .composite([
     { input: clear, left: 0, top: 100 },
     { input: await cut(270, 48), left: 0, top: 115 }, // the tabs: text at 120, line down to 158
+    // the Community label sat 4px lower than Stock Analysis: line them up
+    { input: await sharp({ create: { width: 200, height: 30, channels: 3, background: '#fff' } }).png().toBuffer(), left: 920, top: 118 },
+    { input: await sharp(before).extract({ left: 920, top: 275, width: 200, height: 28 }).png().toBuffer(), left: 920, top: 116 },
     { input: await cut(140, 108), left: 0, top: 195 }, // the KOSPI label and stock name
     { input: clearIcon, left: AVATAR.left - RING, top: AVATAR.top - RING },
     { input: photo, left: AVATAR.left, top: AVATAR.top },

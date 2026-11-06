@@ -419,7 +419,7 @@ export const projects: Project[] = glueAll<Project[]>([
               {
                 title: 'Community',
                 note: 'Each stock has its own community, with threaded comments and replies.',
-                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 1400, 1771), tall: true },
+                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 1400, 1625), tall: true },
               },
               {
                 title: 'News',

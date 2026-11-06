@@ -226,7 +226,12 @@ p.intro-hand {
     /* the character stays close to the text, however wide the page */
     grid-template-columns: minmax(0, 640px) auto;
     justify-content: start;
+    align-items: start;
     gap: var(--s-6);
+  }
+  /* raised beside the name, so it starts above the intro text */
+  .intro-art__figure {
+    margin-top: clamp(-6rem, -7vw, -3.5rem);
   }
 }
 

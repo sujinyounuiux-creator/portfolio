@@ -23,7 +23,7 @@
 .about-hello {
   display: grid;
   justify-items: start;
-  margin-bottom: var(--s-6);
+  margin-bottom: calc(var(--s-4) + 1.4rem);
   color: #333;
   font-weight: 700;
 }

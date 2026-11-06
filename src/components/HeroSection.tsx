@@ -1,12 +1,11 @@
 import { site } from '../data/site'
+import { Rich } from './Rich'
 import { StampableCharacter } from './StampableCharacter'
 
 /**
- * Home hero. The illustrated character is the focal point. The role, a few
- * hashtags (site.heroTags) and the location float around it as plain labels
- * (no links or hover motion);
- * name, "portfolio" and slogan sit beside it. Visitors can decorate the
- * character with stamps.
+ * Home hero. The headline says why to hire Sujin; the name and slogan sit with it. The
+ * illustrated character is beside it, with the role, a few hashtags (site.heroTags) and the
+ * location floating around it as plain labels. Visitors can decorate the character with stamps.
  */
 export function HeroSection() {
 
@@ -15,14 +14,18 @@ export function HeroSection() {
       <div className="container hero__stage">
         <div className="hero__copy">
           <h1 id="hero-title" className="hero__title">
-            <span className="hero__hi hand">
-              Hi, I’m
+            <span className="hero__intro">
+              <span className="hero__hi hand">Hi, I’m</span> <span className="hero__name">{site.name}</span>
             </span>
-            <span className="hero__name">{site.name}</span>
-            <span className="hero__word">portfolio</span>
+            <span className="hero__claim">
+              {site.headline.map((line) => (
+                <span key={line} className="hero__claim-line">
+                  <Rich text={line} />
+                </span>
+              ))}
+            </span>
           </h1>
           <p className="hero__slogan">{site.slogan}</p>
-          <p className="hero__subline">{site.subline}</p>
         </div>
 
         <div className="hero__art">

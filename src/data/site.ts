@@ -22,10 +22,28 @@ export const site = glueAll({
   // Entries left as "[PLACEHOLDER]" show as non-clickable "to do" chips.
   socials: [{ label: 'LinkedIn', url: 'https://www.linkedin.com/in/sujin-youn-58401118b/' }] satisfies SocialLink[],
 
-  // Slogan under the "portfolio" heading on Home.
+  // The main claim on Home: one line per sentence, **bold** is the accent colour.
+  headline: ['I spent 6 years making technology work.', 'Now I make it **make sense** to people.'],
+  // Under the headline on Home.
   slogan: 'I design the connection between people and technology.',
-  // a quieter line under the slogan on Home
-  subline: '6 years in network engineering. Now designing better digital experiences.',
+
+  // "Why work with me" on Home: each strength with its real proof (from the résumé).
+  strengths: [
+    {
+      proof: '6 years',
+      proofLabel: 'in network engineering',
+      title: 'I speak both engineering and design.',
+      body: 'Network operations and troubleshooting at **NTT Data** and **NetOne Systems** in Tokyo taught me to approach complex problems systematically. Now I turn that into products that feel simple.',
+      link: { label: 'My background', to: '/about' },
+    },
+    {
+      proof: '1 + 5',
+      proofLabel: 'one designer, five engineers',
+      title: 'I design through conversation.',
+      body: 'On PROFITKEY I was the **only designer** working with 5 engineers, and I **interviewed 10** investment beginners. As an engineer I explained technical solutions to clients. I work in **English, Korean and Japanese**.',
+      link: { label: 'See PROFITKEY', to: '/work/profitkey' },
+    },
+  ],
 
   // Design specialties, always in this order: UX/UI first (shown as the primary one).
   // Each links to matching work. Graphic Design points to the ASCLO gallery on Home.

@@ -164,8 +164,11 @@ button.wiggle {
   justify-items: inherit;
   letter-spacing: 0;
 }
+.hero__intro {
+  display: block;
+}
 .hero__hi {
-  position: relative;
+  display: inline-block;
   font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
   font-weight: 400;
   line-height: 1;
@@ -173,38 +176,38 @@ button.wiggle {
   transform: rotate(-3deg);
 }
 .hero__name {
-  margin-top: 0.2em;
-  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.3rem);
+  font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--c-ink);
 }
-.hero__word {
-  margin-top: -0.04em;
-  font-size: clamp(3.2rem, 1rem + 7vw, 6.5rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+/* the main claim: one sentence to a line where it fits, with one accent phrase */
+.hero__claim {
+  display: grid;
+  gap: 0.05em;
+  margin-top: clamp(0.8rem, 2vw, 1.2rem);
+  font-size: clamp(2rem, 1.1rem + 2.7vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--c-ink);
+  text-wrap: balance;
+}
+.hero__claim-line {
+  display: block;
+}
+.hero__claim strong {
+  font-weight: 800;
   color: var(--c-accent-strong);
+  white-space: nowrap;
 }
 .hero__slogan {
-  margin-top: clamp(0.6rem, 1.5vw, 1rem);
+  margin-top: clamp(0.9rem, 2vw, 1.4rem);
   font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.01em;
-}
-.hero__subline {
-  margin-top: var(--s-2);
-  font-size: var(--fs-sm);
-  line-height: 1.5;
   color: var(--c-ink-soft);
-}
-/* one line wherever it fits */
-@media (min-width: 600px) {
-  .hero__subline {
-    white-space: nowrap;
-  }
 }
 
 .hero__art {
@@ -986,3 +989,57 @@ button.wiggle {
   font-size: var(--fs-sm);
 }
 
+/* "Why work with me": two strengths, each led by its proof */
+.strengths__list {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 760px) {
+  .strengths__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.strength {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  background: var(--c-surface);
+}
+.strength__proof {
+  font-size: clamp(2.8rem, 1.8rem + 3vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--c-accent-strong);
+}
+.strength__label {
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-ink-soft);
+}
+.strength__title {
+  margin-top: var(--s-5);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.strength__body {
+  margin-top: var(--s-3);
+  margin-bottom: var(--s-5);
+  line-height: 1.6;
+  color: var(--c-ink-soft);
+}
+.strength__body strong {
+  color: var(--c-ink);
+}
+.strength__link {
+  margin-top: auto;
+}

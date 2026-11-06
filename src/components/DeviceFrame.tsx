@@ -1,3 +1,4 @@
+import { FixedAddButton } from './FixedAddButton'
 import type { CSSProperties, ReactNode } from 'react'
 import type { Figure } from '../data/projects'
 import mockups from '../data/mockups.json'
@@ -38,7 +39,7 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
         ) : (
           img
         ))}
-      {figure?.fixedOverlay && <img className="device__fixed" src={figure.fixedOverlay} alt="" width={210} height={225} />}
+      {figure?.addButton && <FixedAddButton />}
     </div>
   )
 

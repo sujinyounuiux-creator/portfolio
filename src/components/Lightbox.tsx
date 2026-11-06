@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import type { Figure } from '../data/projects'
+import { FixedAddButton } from './FixedAddButton'
 
 const LightboxContext = createContext<(figure: Figure) => void>(() => {})
 
@@ -118,7 +119,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
         {figure && (
           <figure className="lightbox__figure">
             <div ref={stage} className="lightbox__stage">
-              <div className={figure.fixedOverlay ? 'lightbox__page' : 'lightbox__plain'}>
+              <div className={figure.addButton ? 'lightbox__page' : 'lightbox__plain'}>
               <img
                 ref={img}
                 className={`lightbox__img ${dragging ? 'is-dragging' : ''}`}
@@ -141,9 +142,9 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
                     })}
               />
               {/* stays at the bottom of the view while the page scrolls under it */}
-              {figure.fixedOverlay && (
+              {figure.addButton && (
                 <div className="lightbox__sticky">
-                  <img className="lightbox__fixed" src={figure.fixedOverlay} alt="" width={210} height={225} />
+                  <FixedAddButton />
                 </div>
               )}
               </div>

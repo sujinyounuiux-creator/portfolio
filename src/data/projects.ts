@@ -24,8 +24,8 @@ export type Figure = {
   narrow?: boolean
   /** A `tall` page that scrolls inside the laptop screen, not shown whole on a plain card. */
   scrollInLaptop?: boolean
-  /** An image that stays still on the laptop screen while the page scrolls under it. */
-  fixedOverlay?: string
+  /** Cookpad's + button: stays still while the page scrolls under it, with a balloon on hover. */
+  addButton?: boolean
   /** Show a zoom button and open the image in the lightbox when clicked (mockups, small or detailed images). */
   zoom?: boolean
   /** Large showcase image: full content width, framed to match its own dark background. */
@@ -1030,7 +1030,7 @@ export const projects: Project[] = glueAll<Project[]>([
             device: 'desktop',
             screens: [
               // two Figma frames joined into one page (scripts/build-cookpad-recipe-page.mjs)
-              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. An Add Recipe button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, fixedOverlay: '/images/projects/cookpad-add-recipe.webp' },
+              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. A + button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, addButton: true },
             ],
           },
           {

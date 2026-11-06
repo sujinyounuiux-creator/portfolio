@@ -1222,15 +1222,50 @@
 .device__screen--scroll {
   aspect-ratio: 16 / 10;
 }
-/* stays still while the page scrolls under it. Sizes are the button's place in the 1920 wide
-   design, on a 1920 x 1200 screen. Clicks and the wheel go through to the page. */
-.device__screen .device__fixed {
+/* Cookpad's + button (components/FixedAddButton.tsx): stays still while the page scrolls under
+   it. Sizes are its place in the 1920 wide design, on a 1920 x 1200 screen. Only the + catches
+   the pointer, so the wheel and clicks go through to the page everywhere else. */
+.fixed-add {
   position: absolute;
   left: 86.46%;
   bottom: 4.2%;
   z-index: 2;
   width: 10.94%;
+  aspect-ratio: 210 / 225;
   pointer-events: none;
+}
+.lightbox__sticky .fixed-add {
+  bottom: 20px;
+}
+.fixed-add .fixed-add__plus {
+  position: absolute;
+  left: 20.95%;
+  bottom: 0;
+  width: 58.1%;
+  height: auto;
+  border-radius: 18%;
+  pointer-events: auto;
+  cursor: var(--cursor-link);
+}
+.fixed-add .fixed-add__balloon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(8%);
+  transition: opacity 160ms var(--ease), transform 160ms var(--ease);
+}
+.fixed-add__plus:hover + .fixed-add__balloon,
+.fixed-add__plus:focus + .fixed-add__balloon {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fixed-add .fixed-add__balloon {
+    transition: none;
+  }
 }
 .device__scroll {
   height: 100%;

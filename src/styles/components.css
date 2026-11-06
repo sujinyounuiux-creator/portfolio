@@ -691,14 +691,6 @@
   bottom: 0;
   height: 0;
 }
-.lightbox__fixed {
-  position: absolute;
-  left: 86.46%;
-  bottom: 20px;
-  width: 10.94%;
-  height: auto;
-  pointer-events: none;
-}
 html:has(.lightbox[open]) {
   overflow: hidden;
 }

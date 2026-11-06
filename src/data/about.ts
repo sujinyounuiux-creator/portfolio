@@ -64,8 +64,8 @@ export const about = glueAll({
 
   tools: [
     { name: 'Figma', icon: '/images/tools/figma.svg' },
-    { name: 'Photoshop', icon: '/images/tools/photoshop.png' },
+    { name: 'Adobe Photoshop', icon: '/images/tools/photoshop.png' },
     { name: 'Canva', icon: '/images/tools/canva.png' },
-    { name: 'Illustrator', icon: '/images/tools/illustrator.png' },
+    { name: 'Adobe Illustrator', icon: '/images/tools/illustrator.png' },
   ],
 })

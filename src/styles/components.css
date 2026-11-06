@@ -419,13 +419,9 @@
 .contact__email-btn:hover {
   box-shadow: 5px 5px 0 var(--c-ink);
 }
-.contact__email {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s-3);
-  margin-top: var(--s-4);
-  overflow-wrap: anywhere;
+.contact .contact__copy,
+.contact-card .contact__copy {
+  --btn-bg: #fff;
 }
 .contact__status {
   font-size: var(--fs-sm);
@@ -491,8 +487,7 @@
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
-.contact-card .contact__actions,
-.contact-card .contact__email {
+.contact-card .contact__actions {
   margin-top: 0;
 }
 .contact-card .contact__actions {
@@ -501,9 +496,6 @@
 .contact-card .btn {
   min-height: 44px;
   padding-inline: 1.05rem;
-  font-size: var(--fs-sm);
-}
-.contact-card .contact__email {
   font-size: var(--fs-sm);
 }
 

@@ -1,9 +1,9 @@
 import { CrayonFilter, StampShape, type Kind } from './StampableCharacter'
 
 /**
- * The smiling character on the About page, already decorated with the stamps from Home:
- * hand placed like a sticker sheet, popping on one after another when the page opens.
- * x and y are percentages of the illustration, s its width, r the tilt in degrees.
+ * The stamps from Home, hand placed around the character like a sticker sheet, popping on one
+ * after another. x and y are percentages of the illustration, s its width, r the tilt in degrees.
+ * Goes inside a positioned box the same size as the illustration.
  */
 const STAMPS: { kind: Kind; x: number; y: number; s: number; r: number }[] = [
   { kind: 'flower', x: 66, y: 10, s: 13, r: 12 }, // a flower in the hair
@@ -16,17 +16,16 @@ const STAMPS: { kind: Kind; x: number; y: number; s: number; r: number }[] = [
   { kind: 'heart', x: 50, y: 83, s: 8, r: 6 }, // a badge on the hoodie
 ]
 
-export function AboutCharacter() {
+export function PlacedStamps({ scale = 1 }: { scale?: number }) {
   return (
-    <div className="intro-art__figure">
+    <>
       <CrayonFilter />
-      <img src="/images/character-smile.webp" alt="" width={900} height={817} loading="lazy" decoding="async" />
       <div className="stampable__layer" aria-hidden="true">
         {STAMPS.map((st, i) => (
           <span
             key={i}
             className="stamp"
-            style={{ left: `${st.x}%`, top: `${st.y}%`, width: `${st.s}%`, ['--r' as string]: `${st.r}deg`, animationDelay: `${300 + i * 110}ms` }}
+            style={{ left: `${st.x}%`, top: `${st.y}%`, width: `${st.s * scale}%`, ['--r' as string]: `${st.r}deg`, animationDelay: `${300 + i * 110}ms` }}
           >
             <svg viewBox="0 0 24 24" overflow="visible">
               <g filter="url(#stamp-crayon)">
@@ -36,6 +35,16 @@ export function AboutCharacter() {
           </span>
         ))}
       </div>
+    </>
+  )
+}
+
+/** The smiling character on the About page, already decorated. */
+export function AboutCharacter() {
+  return (
+    <div className="intro-art__figure">
+      <img src="/images/character-smile.webp" alt="" width={900} height={817} loading="lazy" decoding="async" />
+      <PlacedStamps />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../data/site'
+import { PlacedStamps } from './AboutCharacter'
 import { Arrow } from './Arrow'
 import { CharacterIllustration } from './CharacterIllustration'
 import { Sparkle, Underline } from './HandDrawnDecoration'
@@ -34,27 +35,19 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
         <a className="btn contact__email-btn" href={`mailto:${site.email}`}>
           Email me <Arrow />
         </a>
-        <button type="button" className="btn btn--ghost" onClick={copy}>
+        <button type="button" className="btn btn--ghost contact__copy" onClick={copy}>
           Copy email
         </button>
-        <a className="btn btn--ghost" href={site.resumeUrl} target="_blank" rel="noreferrer" aria-label="Résumé PDF (opens in a new tab)">
-          Résumé
-        </a>
         {showProjectsLink && (
           <Link className="btn btn--ghost" to="/work">
             See projects
           </Link>
         )}
-      </div>
-      <p className="contact__email">
-        <a className="text-link" href={`mailto:${site.email}`}>
-          {site.email}
-        </a>
         <span className="contact__status" role="status" aria-live="polite">
           {copied === 'ok' && 'Copied!'}
-          {copied === 'fail' && 'Couldn’t copy. Please select the address instead.'}
+          {copied === 'fail' && 'Couldn’t copy. Please use the Email me button instead.'}
         </span>
-      </p>
+      </div>
     </>
   )
 
@@ -104,6 +97,7 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
         <div className="contact__art" aria-hidden="true">
           <Sparkle className="contact__sparkle" />
           <CharacterIllustration />
+          <PlacedStamps scale={0.8} />
         </div>
       </div>
     </section>

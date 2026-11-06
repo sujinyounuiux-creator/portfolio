@@ -184,6 +184,17 @@ button {
 p.intro-hand {
   max-width: 62ch;
 }
+/* the opening paragraph reads as a headline, in the same type as the name above it
+   ("Hi! I'm" size), on both Home and the About page */
+.about-intro.intro-hand p:first-child,
+.about-home__col > p.intro-hand {
+  font-family: var(--font-sans);
+  font-size-adjust: none;
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #333;
+}
 /* the handwritten intro with the smiling character beside it (below it on phones) */
 .intro-art {
   display: grid;

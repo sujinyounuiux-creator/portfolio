@@ -1,3 +1,4 @@
+import { AboutCharacter } from '../components/AboutCharacter'
 import { ContactCTA } from '../components/ContactCTA'
 import { Underline } from '../components/HandDrawnDecoration'
 import { PhotoCollage } from '../components/PhotoCollage'
@@ -27,7 +28,7 @@ export function AboutPage() {
                 <p key={i}>{p}</p>
               ))}
             </div>
-            <img className="intro-art__img" src="/images/character-smile.webp" alt="" width={900} height={817} loading="lazy" decoding="async" />
+            <AboutCharacter />
           </div>
           <a className="btn btn--ghost about-resume" href={site.resumeUrl} target="_blank" rel="noreferrer" aria-label="View my résumé, PDF (opens in a new tab)">
             View my résumé

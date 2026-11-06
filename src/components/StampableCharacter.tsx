@@ -14,7 +14,7 @@ import { CharacterIllustration } from './CharacterIllustration'
  * at a random spot.
  */
 
-type Kind = 'star' | 'heart' | 'diamond' | 'flower'
+export type Kind = 'star' | 'heart' | 'diamond' | 'flower'
 type Stamp = { id: number; kind: Kind; x: number; y: number; r: number; s: number }
 
 // colours taken from the illustration: cheek coral, mouth rose, the blue doodles, a warm yellow
@@ -33,7 +33,7 @@ try {
 }
 
 /** Crayon look shared by every stamp: a slight hand-drawn wobble plus paper grain. */
-function CrayonFilter() {
+export function CrayonFilter() {
   return (
     <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
       <filter id="stamp-crayon" x="-15%" y="-15%" width="130%" height="130%">
@@ -47,7 +47,7 @@ function CrayonFilter() {
   )
 }
 
-function StampShape({ kind }: { kind: Kind }) {
+export function StampShape({ kind }: { kind: Kind }) {
   const k = KINDS.find((x) => x.kind === kind)!
   const common = { fill: k.fill, stroke: k.line, strokeWidth: 1.3, strokeLinejoin: 'round' as const, strokeLinecap: 'round' as const }
   switch (kind) {

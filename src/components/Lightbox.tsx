@@ -164,7 +164,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
 /** A photo that opens in the lightbox when clicked. */
 export function ZoomImage({ figure, eager = false, className = '' }: { figure: Figure; eager?: boolean; className?: string }) {
   const open = useContext(LightboxContext)
-  const onClick = useCallback(() => open(figure), [open, figure])
+  const onClick = useCallback(() => open(figure.zoomSrc ? { ...figure, src: figure.zoomSrc } : figure), [open, figure])
   return (
     <button type="button" className={`zoom ${className}`} onClick={onClick} aria-label={`Enlarge image: ${figure.caption ?? figure.alt}`}>
       <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading={eager ? 'eager' : 'lazy'} decoding="async" />

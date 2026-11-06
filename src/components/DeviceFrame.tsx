@@ -38,6 +38,7 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
         ) : (
           img
         ))}
+      {figure?.fixedOverlay && <img className="device__fixed" src={figure.fixedOverlay} alt="" width={210} height={225} />}
     </div>
   )
 

@@ -936,7 +936,12 @@
 .cs-figure--narrow {
   justify-self: center;
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
+}
+/* white space around the screenshot; less above and below, where the image has its own */
+.cs-feature__media .cs-figure--narrow .cs-figure__frame {
+  padding: 12px 22px;
+  background: #fff;
 }
 .cs-figure--wide .cs-figure__frame {
   border: 0;
@@ -1212,6 +1217,16 @@
 }
 .device__screen--scroll {
   aspect-ratio: 16 / 10;
+}
+/* stays still while the page scrolls under it. Sizes are the button's place in the 1920 wide
+   design, on a 1920 x 1200 screen. Clicks and the wheel go through to the page. */
+.device__screen .device__fixed {
+  position: absolute;
+  left: 86.46%;
+  bottom: 4.2%;
+  z-index: 2;
+  width: 10.94%;
+  pointer-events: none;
 }
 .device__scroll {
   height: 100%;

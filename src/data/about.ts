@@ -7,7 +7,7 @@ export const about = glueAll({
   greeting: 'Hi! I’m',
 
   intro: [
-    'A UX/UI designer in Vancouver. I’m passionate about creating beautiful products that empower people, and I take care of every detail so they feel simple, warm and reliable to use.',
+    'A UX/UI designer in Vancouver. I’m passionate about **creating beautiful designs that empower people**.',
     'My background in network engineering taught me to think logically and approach complex problems systematically. As I explored UI/UX design, I discovered a new way to combine that technical mindset with creativity and empathy. I’m always curious about how people interact with digital products, and I enjoy finding inspiration in everyday details. I believe the best designs balance clarity and functionality with a little personality.',
   ],
 

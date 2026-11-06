@@ -3,6 +3,7 @@ import { about } from '../data/about'
 import { site } from '../data/site'
 import { Arrow } from './Arrow'
 import { PhotoCollage } from './PhotoCollage'
+import { Rich } from './Rich'
 
 /**
  * "About Me" on Home.
@@ -23,7 +24,7 @@ export function AboutTeaser() {
 
         <div className="about-home__grid">
           <div className="about-home__col">
-            <p className="intro-hand">{about.intro[0]}</p>
+            <p className="intro-hand"><Rich text={about.intro[0]} /></p>
 
             <ul className="about-home__specialties tag-row" aria-label="Design specialties">
               {site.specialties.map((s) => (

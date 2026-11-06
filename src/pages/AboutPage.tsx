@@ -2,6 +2,7 @@ import { AboutCharacter } from '../components/AboutCharacter'
 import { ContactCTA } from '../components/ContactCTA'
 import { Underline } from '../components/HandDrawnDecoration'
 import { PhotoCollage } from '../components/PhotoCollage'
+import { Rich } from '../components/Rich'
 import { about } from '../data/about'
 import { site } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -25,7 +26,7 @@ export function AboutPage() {
           <div className="intro-art">
             <div className="about-intro intro-hand">
               {about.intro.map((p, i) => (
-                <p key={i}>{p}</p>
+                <p key={i}><Rich text={p} /></p>
               ))}
             </div>
             <AboutCharacter />

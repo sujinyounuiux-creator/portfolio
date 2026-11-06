@@ -20,7 +20,7 @@ function useCardClick(slug: string) {
 
 /** Compact folder card for the Case Study page: coloured tab, small thumbnail, title. */
 export function ProjectFolder({ project, index }: { project: Project; index: number }) {
-  const { slug, title, category, thumbnail, theme } = project
+  const { slug, title, category, thumbnail, theme, proof } = project
   // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
   const style = { '--f-accent': theme.accent } as React.CSSProperties
   const onClick = useCardClick(slug)
@@ -39,6 +39,9 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
             </Link>
           </h2>
           <p className="folder__meta">{category}</p>
+          <p className="folder__proof">
+            <strong>{proof.value}</strong> {proof.label}
+          </p>
         </div>
       </div>
     </article>
@@ -47,7 +50,7 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
 
 /** Large folder-tab project card for Featured Works on Home. */
 export function FeatureCard({ project, index }: { project: Project; index: number }) {
-  const { slug, title, tagline, summary, timeline, thumbnail, theme, disciplines, category } = project
+  const { slug, title, tagline, summary, timeline, thumbnail, theme, disciplines, category, proof } = project
   // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
   const style = { '--f-accent': theme.accent } as React.CSSProperties
   const onClick = useCardClick(slug)
@@ -67,6 +70,10 @@ export function FeatureCard({ project, index }: { project: Project; index: numbe
           </h3>
           <p className="feature__tagline">{tagline}</p>
           <p className="feature__summary">{summary}</p>
+          <p className="feature__proof">
+            <strong>{proof.value}</strong>
+            <span>{proof.label}</span>
+          </p>
           <ul className="feature__tags" aria-label="Categories">
             <li>
               <span className="feature__tag">{category}</span>

@@ -112,6 +112,8 @@ export type Project = {
   tagline: string
   /** One or two sentences for the project card and page intro. */
   summary: string
+  /** One big real number on the project cards, with what it means. */
+  proof: { value: string; label: string }
   category: string
   platform: string
   role: string
@@ -190,6 +192,7 @@ export const projects: Project[] = glueAll<Project[]>([
     disciplines: ['ux-ui'],
     featured: true,
     tagline: 'Finding the key to investment success',
+    proof: { value: '1 + 5', label: 'one designer, five engineers' },
     summary:
       'A beginner friendly investment website with AI stock recommendations and plain language explanations of financial terms.',
     category: 'Website · Fintech',
@@ -492,6 +495,7 @@ export const projects: Project[] = glueAll<Project[]>([
     disciplines: ['ux-ui'],
     featured: true,
     tagline: 'Last tickets. Best prices.',
+    proof: { value: '92.5', label: 'average SUS score in usability tests' },
     summary:
       'A mobile app concept that helps people aged 18 to 40 find last minute and discounted tickets to live events before they sell out.',
     category: 'Mobile app · Event ticketing',
@@ -762,6 +766,7 @@ export const projects: Project[] = glueAll<Project[]>([
     disciplines: ['ux-ui'],
     featured: true,
     tagline: 'UI/UX improvement project',
+    proof: { value: '92%', label: 'of visits estimated from mobile, so I designed it responsive' },
     summary:
       'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
     category: 'Responsive web · Redesign',
@@ -1067,6 +1072,7 @@ export const projects: Project[] = glueAll<Project[]>([
     disciplines: ['ux-ui', 'visual'],
     featured: true,
     tagline: 'Redesigning the Open Door Yoga Website',
+    proof: { value: '10', label: 'Nielsen heuristics across 3 key tasks' },
     summary:
       'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing.',
     category: 'Website · Redesign',

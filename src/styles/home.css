@@ -645,6 +645,26 @@ button.wiggle {
 .feature__summary {
   opacity: 0.88;
 }
+/* the project's one big real number */
+.feature__proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.7rem;
+  margin-block: var(--s-2);
+}
+.feature__proof strong {
+  font-size: clamp(2.4rem, 1.7rem + 2.2vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.feature__proof span {
+  flex: 1 1 10rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.35;
+}
 .feature__tags {
   display: flex;
   flex-wrap: wrap;
@@ -1042,4 +1062,12 @@ button.wiggle {
 }
 .strength__link {
   margin-top: auto;
+}
+.folder__proof {
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+}
+.folder__proof strong {
+  font-weight: 800;
 }

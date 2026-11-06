@@ -351,29 +351,27 @@
   display: flex;
   flex-direction: column;
 }
-.cs-card .cs-card__label {
-  margin-bottom: 0.35rem;
-  color: var(--c-ink-soft);
-  font-size: var(--fs-xs);
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.cs-card--result > p:not(.cs-card__label) {
+.cs-card--result > p {
   margin-bottom: var(--s-4);
 }
 .cs-card__result {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
   margin-top: auto;
   padding: var(--s-4);
   border-radius: var(--r-sm);
   background: var(--p-surface);
 }
-.cs-card .cs-card__result .cs-card__label {
+.cs-card__arrow {
+  flex: none;
+  margin-top: 0.3em;
+  width: 1.1em;
+  height: 1.1em;
   color: var(--c-ink);
 }
 .cs-card .cs-card__result-text {
   color: var(--c-ink);
-  font-weight: 700;
 }
 
 /* pages: website pages as small browser windows */
@@ -1152,6 +1150,12 @@
 }
 .devices .device--desktop {
   padding-inline: 4%; /* room for the deck, which is wider than the lid */
+}
+/* plain: laptops sit straight on the page, no tinted backdrop */
+.devices.devices--plain:not(.compare-set) {
+  padding: 0;
+  border-radius: 0;
+  background: none;
 }
 .device--desktop:not(.devices .device, .walk .device, .device-tabs .device) .device__laptop {
   width: min(100%, 860px);

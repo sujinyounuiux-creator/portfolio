@@ -78,14 +78,13 @@ function BlockView({ block }: { block: Block }) {
             const [insight, result] = c.body.split(/\s*→\s*/)
             return (
               <li key={c.title} className={`cs-card ${result ? 'cs-card--result' : ''}`}>
-                {result && <p className="cs-card__label">Insight</p>}
                 <h4>{c.title}</h4>
                 <p>
                   <Rich text={insight} />
                 </p>
                 {result && (
                   <div className="cs-card__result">
-                    <p className="cs-card__label">Result</p>
+                    <Arrow className="cs-card__arrow" />
                     <p className="cs-card__result-text">
                       <Rich text={result} />
                     </p>
@@ -126,7 +125,7 @@ function BlockView({ block }: { block: Block }) {
       return <PlaceholderBlock label={block.label} hint={block.hint} />
     case 'devices':
       return (
-        <div className={`devices devices--${block.device} devices--${Math.min(block.screens.length, 4)}`}>
+        <div className={`devices devices--${block.device} devices--${Math.min(block.screens.length, 4)} ${block.plain ? 'devices--plain' : ''}`}>
           {block.screens.map((f) => (
             <DeviceFrame key={f.src} device={block.device} figure={f} />
           ))}

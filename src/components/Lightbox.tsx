@@ -118,6 +118,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
         {figure && (
           <figure className="lightbox__figure">
             <div ref={stage} className="lightbox__stage">
+              <div className={figure.fixedOverlay ? 'lightbox__page' : 'lightbox__plain'}>
               <img
                 ref={img}
                 className={`lightbox__img ${dragging ? 'is-dragging' : ''}`}
@@ -139,6 +140,13 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
                       },
                     })}
               />
+              {/* stays at the bottom of the view while the page scrolls under it */}
+              {figure.fixedOverlay && (
+                <div className="lightbox__sticky">
+                  <img className="lightbox__fixed" src={figure.fixedOverlay} alt="" width={210} height={225} />
+                </div>
+              )}
+              </div>
             </div>
             {figure.caption && <figcaption>{figure.caption}</figcaption>}
           </figure>
@@ -164,7 +172,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
 /** A photo that opens in the lightbox when clicked. */
 export function ZoomImage({ figure, eager = false, className = '' }: { figure: Figure; eager?: boolean; className?: string }) {
   const open = useContext(LightboxContext)
-  const onClick = useCallback(() => open(figure.zoomSrc ? { ...figure, src: figure.zoomSrc } : figure), [open, figure])
+  const onClick = useCallback(() => open(figure), [open, figure])
   return (
     <button type="button" className={`zoom ${className}`} onClick={onClick} aria-label={`Enlarge image: ${figure.caption ?? figure.alt}`}>
       <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading={eager ? 'eager' : 'lazy'} decoding="async" />

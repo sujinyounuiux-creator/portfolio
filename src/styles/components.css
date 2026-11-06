@@ -675,6 +675,30 @@
   cursor: var(--cursor);
   transition: none;
 }
+/* a page with a fixed part: the wrapper sits between the plain image and the scrolling stage */
+.lightbox__plain {
+  display: contents;
+}
+.lightbox__page {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+.lightbox.is-page .lightbox__page .lightbox__img {
+  width: 100%;
+}
+.lightbox__sticky {
+  position: sticky;
+  bottom: 0;
+  height: 0;
+}
+.lightbox__fixed {
+  position: absolute;
+  left: 86.46%;
+  bottom: 20px;
+  width: 10.94%;
+  height: auto;
+  pointer-events: none;
+}
 html:has(.lightbox[open]) {
   overflow: hidden;
 }

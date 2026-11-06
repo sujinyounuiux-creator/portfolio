@@ -26,8 +26,6 @@ export type Figure = {
   scrollInLaptop?: boolean
   /** An image that stays still on the laptop screen while the page scrolls under it. */
   fixedOverlay?: string
-  /** A different image for the zoomed view (e.g. the page with its fixed parts included). */
-  zoomSrc?: string
   /** Show a zoom button and open the image in the lightbox when clicked (mockups, small or detailed images). */
   zoom?: boolean
   /** Large showcase image: full content width, framed to match its own dark background. */
@@ -48,7 +46,7 @@ export type Block =
   | { kind: 'gallery'; figures: Figure[] }
   | { kind: 'swatches'; swatches: Swatch[]; note?: string }
   /** Real screens shown inside laptop or phone mockups. `tall` screens scroll inside the device. */
-  | { kind: 'devices'; device: 'desktop' | 'phone'; screens: Figure[] }
+  | { kind: 'devices'; device: 'desktop' | 'phone'; screens: Figure[]; plain?: boolean }
   /** Draggable before/after comparison of an original and a redesigned screen. */
   | { kind: 'compare'; label: string; before: Figure; after: Figure; caption?: string }
   /** Typography specimen rendered as live text. */
@@ -855,23 +853,23 @@ export const projects: Project[] = glueAll<Project[]>([
             items: [
               {
                 title: 'Search is hard to narrow down',
-                body: 'Users asked for stronger search filters. → Filters for cooking time, difficulty, dish type, ingredients and allergies.',
+                body: 'Users asked for stronger search filters. → **Filters** for cooking time, difficulty, dish type, ingredients and allergies.',
               },
               {
                 title: 'Search results are hard to read',
-                body: 'Search results weren’t clear to read. → Clearer results, so people can easily see what their search found.',
+                body: 'Search results weren’t clear to read. → **Clearer results**, so people can easily see what their search found.',
               },
               {
                 title: 'The interface feels complex',
-                body: 'Reviews called the UI complex, and testing showed navigation friction. → A simpler UI with a clear icon set.',
+                body: 'Reviews called the UI complex, and testing showed navigation friction. → A **simpler UI** with a clear icon set.',
               },
               {
                 title: 'Free members feel restricted',
-                body: 'Free members felt limited. → Enhanced free membership features became one of the planned solutions.',
+                body: 'Free members felt limited. → **Enhanced free membership features** became one of the planned solutions.',
               },
               {
                 title: 'Little sense of community',
-                body: 'Users missed community features. → Threaded comments so questions get answered and conversations stay easy to follow.',
+                body: 'Users missed community features. → **Threaded comments** so questions get answered and conversations stay easy to follow.',
               },
             ],
           },
@@ -1028,14 +1026,16 @@ export const projects: Project[] = glueAll<Project[]>([
         blocks: [
           {
             kind: 'devices',
+            plain: true,
             device: 'desktop',
             screens: [
               // two Figma frames joined into one page (scripts/build-cookpad-recipe-page.mjs)
-              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. An Add Recipe button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, fixedOverlay: '/images/projects/cookpad-add-recipe.webp', zoomSrc: '/images/projects/cookpad-recipe-full.webp' },
+              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. An Add Recipe button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, fixedOverlay: '/images/projects/cookpad-add-recipe.webp' },
             ],
           },
           {
             kind: 'devices',
+            plain: true,
             device: 'desktop',
             screens: [
               img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),

@@ -4,8 +4,7 @@
 // it stays still on the screen while the page scrolls under it (DeviceFrame's fixed overlay).
 // Source: design-exports/cookpad-recipe/page[12].png
 // Output, in public/images/projects:
-//   cookpad-recipe-full.webp        the page with the button, for the zoomed view
-//   cookpad-recipe-scroll.webp      the page without it, for the laptop screen
+//   cookpad-recipe-scroll.webp      the page without the button
 //   cookpad-add-recipe.webp         the button, with a transparent background
 import sharp from 'sharp'
 
@@ -27,24 +26,24 @@ const page1 = await sharp(`${dir}/page1.png`)
   .png()
   .toBuffer()
 
-const page2 = async (keepButton) => {
-  const patches = [await patch(210, 700, 0, 40)] // the sidebar and its soft shadow
-  if (!keepButton) patches.push(await patch(BUTTON.width, BUTTON.height, BUTTON.left, BUTTON.top))
+const page2 = async () => {
+  const patches = [
+    await patch(210, 700, 0, 40), // the sidebar and its soft shadow
+    await patch(BUTTON.width, BUTTON.height, BUTTON.left, BUTTON.top),
+  ]
   const flat = await sharp(`${dir}/page2.png`).removeAlpha().composite(patches).png().toBuffer()
   return sharp(flat).extract({ left: SHIFT, top: 0, width: WIDTH - SHIFT, height: 1080 }).png().toBuffer()
 }
 
-for (const [name, keepButton] of [['cookpad-recipe-full', true], ['cookpad-recipe-scroll', false]]) {
-  const joined = await sharp(white(WIDTH, SEAM + 1080))
-    .composite([
-      { input: page1, left: 0, top: 0 },
-      { input: await page2(keepButton), left: 0, top: SEAM },
-    ])
-    .png()
-    .toBuffer()
-  const o = await sharp(joined).resize({ width: 1600 }).webp({ quality: 90 }).toFile(`${out}/${name}.webp`)
-  console.log(name, o.width, o.height)
-}
+const joined = await sharp(white(WIDTH, SEAM + 1080))
+  .composite([
+    { input: page1, left: 0, top: 0 },
+    { input: await page2(), left: 0, top: SEAM },
+  ])
+  .png()
+  .toBuffer()
+const page = await sharp(joined).resize({ width: 1600 }).webp({ quality: 90 }).toFile(`${out}/cookpad-recipe-scroll.webp`)
+console.log('page', page.width, page.height)
 
 // the button alone: flood in from the crop's edges, so the white inside the + stays white
 const { data, info } = await sharp(`${dir}/page2.png`).removeAlpha().extract(BUTTON).raw().toBuffer({ resolveWithObject: true })

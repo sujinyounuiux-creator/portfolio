@@ -60,7 +60,6 @@ export const site = glueAll({
     { label: 'English', group: 'language' },
     { label: 'Graphic Design', group: 'design' },
     { label: 'Korean', group: 'language' },
-    { label: '6 YEARS IN NETWORK ENGINEERING', group: 'it' },
     { label: 'Japanese', group: 'language' },
   ] as { label: string; group: 'design' | 'language' | 'it' }[],
 

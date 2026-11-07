@@ -9,14 +9,14 @@ const INK = '#1F2430'
 const crayon = (wax, dark) => {
   // drawn pointing up with the tip at (0, 0), then turned so the tip is top left
   const shape = `
-    <path d="M-2 0 H2 L7.5 13 V60 Q0 63 -7.5 60 V13 Z"/>`
+    <path d="M-2.5 0 H2.5 L10.5 13 V56 Q0 60 -10.5 56 V13 Z"/>`
   return `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <g transform="translate(6 6) rotate(-45)" stroke-linejoin="round" stroke-linecap="round">
     <g fill="#fff" stroke="#fff" stroke-width="8">${shape}</g>
     <g fill="${wax}" stroke="${INK}" stroke-width="3.4">${shape}</g>
-    <path d="M-5.8 21 Q0 24 5.8 21 V52 Q0 55 -5.8 52 Z" fill="${dark}"/>
-    <path d="M-5.8 21 Q0 24 5.8 21 M-5.8 52 Q0 55 5.8 52" fill="none" stroke="${INK}" stroke-width="2.2"/>
-    <path d="M-2.4 31 V43" fill="none" stroke="#fff" stroke-opacity="0.6" stroke-width="2.6"/>
+    <path d="M-8.8 21 Q0 25 8.8 21 V48 Q0 52 -8.8 48 Z" fill="${dark}"/>
+    <path d="M-8.8 21 Q0 25 8.8 21 M-8.8 48 Q0 52 8.8 48" fill="none" stroke="${INK}" stroke-width="2.2"/>
+    <path d="M-4 30 V41" fill="none" stroke="#fff" stroke-opacity="0.6" stroke-width="2.6"/>
   </g>
 </svg>`
 }

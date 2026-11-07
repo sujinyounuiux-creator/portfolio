@@ -2275,8 +2275,19 @@
   width: 1.05em;
   height: 1.05em;
   margin: 0;
-  accent-color: #ff9933;
+  appearance: none;
+  border: 1px solid #555;
+  border-radius: 50%;
+  background: #fff;
   cursor: var(--cursor-link);
+}
+/* selected: a small dot in the same colour as the text */
+.filter-panel__option input:checked {
+  background: radial-gradient(circle closest-side, #555 0 calc(100% - 0.5px), transparent 100%) center / 58% 58% no-repeat #fff;
+}
+.filter-panel__option input:focus-visible {
+  outline: 2px solid #ff9933;
+  outline-offset: 2px;
 }
 .filter-panel__input {
   width: 100%;

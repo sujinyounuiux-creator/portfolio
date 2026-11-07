@@ -47,7 +47,6 @@ export function ContactCTA({ headingLevel: H = 'h2', card = false }: Props) {
     return (
       <section id="contact" className="contact-card" aria-labelledby="contact-title">
         <div className="contact-card__text">
-          <p className="hand contact__kicker">Say hi!</p>
           <H id="contact-title" className="contact-card__title">
             Let’s make a{' '}
             <span className="marked">

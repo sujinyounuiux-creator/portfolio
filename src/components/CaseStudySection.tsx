@@ -7,6 +7,7 @@ import { DeviceTabs } from './DeviceTabs'
 import { FilterDemo } from './FilterDemo'
 import { PlaceholderBlock } from './Editable'
 import { ZoomImage } from './Lightbox'
+import { GlossaryDemo } from './GlossaryDemo'
 import { Rich } from './Rich'
 import { Walkthrough } from './Walkthrough'
 
@@ -167,6 +168,8 @@ function BlockView({ block }: { block: Block }) {
               <DeviceTabs items={block.tabs} />
             ) : block.filterDemo ? (
               <FilterDemo bar={block.filterDemo.bar} />
+            ) : block.glossary ? (
+              <GlossaryDemo figure={block.figures[0]} terms={block.glossary} />
             ) : (
               block.figures.map((f) => <FigureView key={f.src} figure={f} zoom />)
             )}

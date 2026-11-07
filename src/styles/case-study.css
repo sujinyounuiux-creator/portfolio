@@ -2318,3 +2318,102 @@
     transition: none;
   }
 }
+
+/* ── Glossary demo: the "?" marks in the PROFITKEY table open a balloon ── */
+.glossary {
+  margin: 0;
+}
+.glossary__stage {
+  position: relative;
+  border-radius: var(--r-md);
+  background: #fff;
+}
+.glossary__stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+}
+.glossary figcaption {
+  margin-top: var(--s-3);
+  font-size: var(--fs-xs);
+  text-align: center;
+  color: var(--c-ink-soft);
+}
+/* a generous target around the small "?" */
+.glossary__mark {
+  position: absolute;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  transform: translate(-50%, -50%);
+}
+.glossary__mark::after {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 160ms var(--ease);
+}
+.glossary__mark:hover::after,
+.glossary__mark:focus-visible::after {
+  box-shadow: 0 0 0 1.5px #8f8f8f;
+}
+.glossary__mark:focus-visible {
+  outline: none;
+}
+/* the row lifts off the page */
+.glossary__row {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  transition: opacity 160ms var(--ease);
+}
+.glossary__arrow,
+.glossary__tip {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms var(--ease), transform 160ms var(--ease);
+}
+.glossary__arrow {
+  width: 0;
+  height: 0;
+  margin-left: -9px;
+  margin-top: -3px;
+  border-inline: 9px solid transparent;
+  border-bottom: 13px solid #d9d9d9;
+  transform: translateY(5px);
+}
+.glossary__tip {
+  width: min(330px, 86%);
+  margin-top: 9px;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  background: #d9d9d9;
+  color: #333;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  transform: translateY(5px);
+}
+.glossary__term.is-open .glossary__row,
+.glossary__term.is-open .glossary__arrow,
+.glossary__term.is-open .glossary__tip {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glossary__row,
+  .glossary__arrow,
+  .glossary__tip {
+    transition: none;
+  }
+}

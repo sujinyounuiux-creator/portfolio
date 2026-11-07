@@ -8,6 +8,7 @@
 //
 // Section blocks are rendered in order; omit a section to hide it.
 
+import type { GlossaryTerm } from '../components/GlossaryDemo'
 import { glueAll } from './glue'
 
 export type Figure = {
@@ -32,6 +33,8 @@ export type Figure = {
   wide?: boolean
 }
 
+export type { GlossaryTerm }
+
 export type Swatch = { name: string; hex: string; usage?: string }
 
 /** Heuristics marked on the annotated screens (colours match scripts/build-yoga-annotations.mjs). */
@@ -54,7 +57,7 @@ export type Block =
   /** A row of key numbers (only real figures from the project). */
   | { kind: 'stats'; items: { value: string; label: string }[] }
   /** One design decision: a real screen or crop beside the reasoning. */
-  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[]; filterDemo?: { bar: Figure } }
+  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[]; filterDemo?: { bar: Figure }; glossary?: GlossaryTerm[] }
   /** A persona as a structured card: photo, about details, profile, goals, frustrations and a quote. */
   | { kind: 'persona'; name: string; photo: Figure; about: { label: string; value: string }[]; profile: string[]; goals: string[]; frustrations: string[]; quote: string; caption?: string }
   /** Icon set from the project, grouped, with what each group is for. */
@@ -349,7 +352,15 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Terms such as PER, PBR, EPS and dividends carry a “?” mark. Hovering shows a short explanation, making unfamiliar terms easier for beginners.',
             ],
-            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Indicators with “?” glossary marks.', 664, 404)],
+            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Hover over or tap a “?” mark to see its explanation.', 664, 404)],
+            // the tooltip wording for PER is from the Figma file; the others follow its style
+            glossary: [
+              { term: 'PER', x: 15.4, y: 33.7, row: [6.8, 27.7, 42.9, 11.7], text: 'It is an indicator to determine whether the stock price is high or low compared to the company’s profits.' },
+              { term: 'PBR', x: 60.5, y: 33.7, row: [51.2, 27.7, 42, 11.7], text: 'It is an indicator to determine whether the stock price is high or low compared to the company’s net assets.' },
+              { term: 'EPS', x: 16, y: 48.8, row: [6.8, 42.8, 42.9, 11.7], text: 'It shows how much profit the company earned for each share.' },
+              { term: 'BPS', x: 60.5, y: 48.8, row: [51.2, 42.8, 42, 11.7], text: 'It shows how much of the company’s net assets each share is worth.' },
+              { term: 'Dividends', x: 20.9, y: 82.4, row: [6.8, 76.5, 42.9, 11.7], text: 'It is the part of the company’s profits paid to shareholders for each share.' },
+            ],
           },
           {
             kind: 'feature',

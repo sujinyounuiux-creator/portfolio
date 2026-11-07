@@ -1112,7 +1112,7 @@
   align-items: center;
   min-height: 44px;
   font-weight: 700;
-  color: var(--c-accent-ink);
+  color: var(--c-ink);
 }
 
 /* zoomable images: tall captures scroll inside their frame, so put the hint at the top */
@@ -1773,6 +1773,8 @@
   font-weight: 700;
 }
 .cs-kit__note {
+  /* the atomic type on its own line, then the description */
+  white-space: pre-line;
   font-size: var(--fs-xs);
   color: var(--c-ink-soft);
 }

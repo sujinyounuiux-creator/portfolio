@@ -1395,7 +1395,7 @@ export const projects: Project[] = glueAll<Project[]>([
               { ...img('yoga-home', 'Final home page: hero, class style cards, about us and the teacher team.', 'Home', 1075, 2400), tall: true },
               { ...img('yoga-pricing', 'Final pricing page with first time student offer, pass cards and gift section.', 'Pricing', 1114, 2400), tall: true },
               { ...img('yoga-training', 'Teacher training page with program details, video and a curriculum timeline.', 'Teacher training', 766, 2400), tall: true },
-              { ...img('yoga-about', 'About page with program promotion, vision and free month program.', 'About', 1046, 2400), tall: true },
+              { ...img('yoga-about', 'About page with program promotion, vision and free month program.', 'About', 1400, 3222), tall: true },
             ],
           },
         ],

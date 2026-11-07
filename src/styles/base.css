@@ -14,6 +14,10 @@
   /* magnifying glasses for zoomable images: the click lands in the middle of the lens */
   --cursor-zoom-in: -webkit-image-set(url('/cursors/magnifier-in.png') 1x, url('/cursors/magnifier-in@2x.png') 2x) 13 13, zoom-in;
   --cursor-zoom-out: -webkit-image-set(url('/cursors/magnifier-out.png') 1x, url('/cursors/magnifier-out@2x.png') 2x) 13 13, zoom-out;
+  /* crayon arrows for dragging: the before/after sliders, and moving a zoomed photo */
+  --cursor-drag-x: -webkit-image-set(url('/cursors/drag-x.png') 1x, url('/cursors/drag-x@2x.png') 2x) 16 16, ew-resize;
+  --cursor-drag-move: -webkit-image-set(url('/cursors/drag-move.png') 1x, url('/cursors/drag-move@2x.png') 2x) 16 16, grab;
+  --cursor-drag-held: -webkit-image-set(url('/cursors/drag-move-held.png') 1x, url('/cursors/drag-move-held@2x.png') 2x) 16 16, grabbing;
 }
 html {
   cursor: var(--cursor);

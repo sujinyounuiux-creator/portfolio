@@ -57,4 +57,26 @@ for (const [name, mark] of [
   await sharp(big).toFile(`${out}/${name}@2x.png`)
   await sharp(big).resize(32, 32).png().toFile(`${out}/${name}.png`)
 }
+
+// Drag cursors in the same crayon look. The hotspot is the middle, at (16, 16) in CSS pixels.
+// drag-x: the before/after sliders. drag-move: moving a zoomed photo, blue while it is held.
+const dragX = 'M6 32 L20 18 V26 H44 V18 L58 32 L44 46 V38 H20 V46 Z'
+const dragMove =
+  'M32 5 L43 16 H36.5 V27.5 H48 V21 L59 32 L48 43 V36.5 H36.5 V48 H43 L32 59 L21 48 H27.5 V36.5 H16 V43 L5 32 L16 21 V27.5 H27.5 V16 H21 Z'
+const drag = (shape, wax) => `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="${shape}" fill="#fff" stroke="#fff" stroke-width="9"/>
+    <path d="${shape}" fill="${wax}" stroke="${INK}" stroke-width="3.6"/>
+  </g>
+</svg>`
+
+for (const [name, shape, wax] of [
+  ['drag-x', dragX, '#FFD04D'],
+  ['drag-move', dragMove, '#FFD04D'],
+  ['drag-move-held', dragMove, '#6F9BD8'],
+]) {
+  const big = await sharp(Buffer.from(drag(shape, wax))).png().toBuffer()
+  await sharp(big).toFile(`${out}/${name}@2x.png`)
+  await sharp(big).resize(32, 32).png().toFile(`${out}/${name}.png`)
+}
 console.log('done')

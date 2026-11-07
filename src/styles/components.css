@@ -590,12 +590,12 @@
   will-change: transform;
 }
 .lightbox.is-zoomed .lightbox__img {
-  cursor: grab;
+  cursor: var(--cursor-drag-move);
   touch-action: none;
   border-radius: 0;
 }
 .lightbox__img.is-dragging {
-  cursor: grabbing;
+  cursor: var(--cursor-drag-held);
   transition: none;
 }
 .lightbox figcaption {

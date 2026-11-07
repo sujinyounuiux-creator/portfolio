@@ -1441,7 +1441,7 @@
 .compare {
   position: relative;
   overflow: hidden;
-  cursor: ew-resize;
+  cursor: var(--cursor-drag-x);
   touch-action: pan-y; /* vertical swipes still scroll the page */
   user-select: none;
   -webkit-user-select: none;
@@ -1499,7 +1499,7 @@
     0 0 0 1px rgba(31, 36, 48, 0.06),
     0 6px 18px -4px rgba(31, 36, 48, 0.35);
   transform: translate(-50%, -50%);
-  cursor: ew-resize;
+  cursor: var(--cursor-drag-x);
   transition: background-color var(--t-fast), box-shadow var(--t-fast);
 }
 .compare__handle:hover {

@@ -166,7 +166,7 @@ function BlockView({ block }: { block: Block }) {
             {block.tabs ? (
               <DeviceTabs items={block.tabs} />
             ) : block.filterDemo ? (
-              <FilterDemo bar={block.filterDemo.bar} panel={block.filterDemo.panel} />
+              <FilterDemo bar={block.filterDemo.bar} />
             ) : (
               block.figures.map((f) => <FigureView key={f.src} figure={f} zoom />)
             )}

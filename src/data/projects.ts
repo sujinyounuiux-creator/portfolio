@@ -54,7 +54,7 @@ export type Block =
   /** A row of key numbers (only real figures from the project). */
   | { kind: 'stats'; items: { value: string; label: string }[] }
   /** One design decision: a real screen or crop beside the reasoning. */
-  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[]; filterDemo?: { bar: Figure; panel: Figure } }
+  | { kind: 'feature'; title: string; tag?: string; body: string[]; figures: Figure[]; reverse?: boolean; plain?: boolean; tabs?: { label: string; device: 'phone' | 'tablet' | 'desktop' | 'monitor'; figure: Figure }[]; filterDemo?: { bar: Figure } }
   /** A persona as a structured card: photo, about details, profile, goals, frustrations and a quote. */
   | { kind: 'persona'; name: string; photo: Figure; about: { label: string; value: string }[]; profile: string[]; goals: string[]; frustrations: string[]; quote: string; caption?: string }
   /** Icon set from the project, grouped, with what each group is for. */
@@ -305,7 +305,7 @@ export const projects: Project[] = glueAll<Project[]>([
               wire('stock-analysis', 'Stock analysis wireframe: item name and price, Stock analysis / Community tabs, indicator rows beside a price chart, an AI comment box and financial indicators.', 'Stock analysis', 800),
               wire('community', 'Stock community wireframe: comment box with a Post button and a list of comments with avatars and reactions.', 'Stock community', 840),
               wire('notice-faq', 'Notice / FAQ wireframe: Notice and FAQ tabs above a list of posts with pagination.', 'Notice / FAQ', 800),
-              wire('my-page', 'My page wireframe: tabs for my interests, comments I wrote and edit member info; avatar and nickname beside four watchlist charts.', 'My page: my interests', 720),
+              wire('my-page', 'My page wireframe: tabs for my interests, comments I wrote and edit member info. Avatar and nickname beside four watchlist charts.', 'My page: my interests', 720),
               wire('my-comments', 'My page wireframe, comments tab: a dated list of comments the member wrote, with pagination.', 'My page: comments I wrote', 760),
               wire('edit-profile', 'My page wireframe, edit member info tab: change nickname with a check button, email address, save changes, log out and delete account.', 'My page: edit member info', 680),
               wire('news', 'News wireframe: a row of latest news cards with title and source, then an all news list with pagination.', 'News', 840),
@@ -619,7 +619,7 @@ export const projects: Project[] = glueAll<Project[]>([
         blocks: [
           {
             kind: 'text',
-            body: ['Each pair is the same screen from the LastCow design file. Each opens on the final design; drag the handle to the right (or use the arrow keys) to reveal the wireframe.'],
+            body: ['Each pair is the same screen from the LastCow design file. Each opens on the final design. Drag the handle to the right (or use the arrow keys) to reveal the wireframe.'],
           },
           {
             // pairs exported from the "Wireframe" and "Phone Final UI" sections of the LastCow design file
@@ -780,7 +780,7 @@ export const projects: Project[] = glueAll<Project[]>([
     hero: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
     theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
     tldr: [
-      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling; users found search hard to narrow down and the UI complex.' },
+      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling. Users found search hard to narrow down and the UI complex.' },
       { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
       { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
       { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
@@ -1008,7 +1008,6 @@ export const projects: Project[] = glueAll<Project[]>([
             // clicking the filter icon in the bar opens the panel (components/FilterDemo.tsx)
             filterDemo: {
               bar: cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', undefined, 1600, 143),
-              panel: cook('filter-panel', 'Filter panel: ingredients, cooking time from within 10 minutes to over an hour, difficulty, type of dish and an allergy field.', 'Filter panel.', 1488, 494),
             },
           },
           {
@@ -1087,7 +1086,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },
-      { label: 'My role', text: 'One of three designers on a class brief; I mainly designed the About and Pricing pages.' },
+      { label: 'My role', text: 'One of three designers on a class brief. I mainly designed the About and Pricing pages.' },
       { label: 'Solution', text: 'Clearer page structures, a style guide and component library, and redesigned Home, Pricing, Teacher Training and About pages.' },
       { label: 'Feedback', text: 'Testing showed that imagery and visual style need to stay consistent across every page.' },
     ],
@@ -1256,7 +1255,7 @@ export const projects: Project[] = glueAll<Project[]>([
                 title: 'Meet the faculty',
                 points: [
                   'Keep three photo cards + name, role, and one sentence about expertise',
-                  'Detailed bio leads to a drawer/individual profile; don’t cram the entire resume onto this page',
+                  'Detailed bio leads to a drawer/individual profile. Don’t cram the entire resume onto this page',
                 ],
               },
               {
@@ -1269,7 +1268,7 @@ export const projects: Project[] = glueAll<Project[]>([
               {
                 title: 'FAQ',
                 points: [
-                  'Keep it at the bottom; the accordion is reasonable',
+                  'Keep it at the bottom. The accordion is reasonable',
                   'Most frequently asked questions: qualifications, attendance, make up classes, payment, certificates, cancellation rules',
                 ],
               },
@@ -1355,7 +1354,7 @@ export const projects: Project[] = glueAll<Project[]>([
         blocks: [
           {
             kind: 'text',
-            body: ['The original site (before) and our redesign (after) for the two pages I mainly designed, About and Pricing. Each opens on the redesign; drag the handle to the right, or use the arrow keys, to reveal the original.'],
+            body: ['The original site (before) and our redesign (after) for the two pages I mainly designed, About and Pricing. Each opens on the redesign. Drag the handle to the right, or use the arrow keys, to reveal the original.'],
           },
           {
             kind: 'compare',

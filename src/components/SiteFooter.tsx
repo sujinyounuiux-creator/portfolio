@@ -1,5 +1,4 @@
 import { site } from '../data/site'
-import { Arrow } from './Arrow'
 import { SocialLinks } from './SocialLinks'
 
 export function SiteFooter() {
@@ -15,8 +14,11 @@ export function SiteFooter() {
           © {new Date().getFullYear()} {site.name} · <span className="hand">Designed &amp; doodled in {site.location}</span>
         </p>
         <SocialLinks className="social-links--footer" />
-        <button type="button" className="text-link link-button" onClick={toTop}>
-          Back to top <Arrow dir="up" />
+        <button type="button" className="to-top" onClick={toTop} aria-label="Back to top">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="21.5" />
+            <path d="M24 34V14.5M14.5 24l9.5-9.5 9.5 9.5" />
+          </svg>
         </button>
       </div>
     </footer>

@@ -442,6 +442,8 @@ button.wiggle {
   .hero__copy {
     justify-items: start;
     text-align: left;
+    /* level with the character, not with the character plus its stamp bar */
+    margin-bottom: 7.5rem;
   }
   .hero__art {
     order: 0;

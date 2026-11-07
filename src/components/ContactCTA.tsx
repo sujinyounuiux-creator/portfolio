@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { PlacedStamps } from './AboutCharacter'
 import { Arrow } from './Arrow'
@@ -8,14 +7,12 @@ import { Sparkle, Underline } from './HandDrawnDecoration'
 import { SocialLinks } from './SocialLinks'
 
 type Props = {
-  /** Show a link back to the projects (used outside the homepage). */
-  showProjectsLink?: boolean
   headingLevel?: 'h2' | 'h3'
   /** A small card (end of case studies): heading and email actions only, no illustration. */
   card?: boolean
 }
 
-export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', card = false }: Props) {
+export function ContactCTA({ headingLevel: H = 'h2', card = false }: Props) {
   const [copied, setCopied] = useState<'idle' | 'ok' | 'fail'>('idle')
 
   const copy = async () => {
@@ -38,11 +35,6 @@ export function ContactCTA({ showProjectsLink = false, headingLevel: H = 'h2', c
         <button type="button" className="btn btn--ghost contact__copy" onClick={copy}>
           Copy email
         </button>
-        {showProjectsLink && (
-          <Link className="btn btn--ghost" to="/work">
-            See projects
-          </Link>
-        )}
         <span className="contact__status" role="status" aria-live="polite">
           {copied === 'ok' && 'Copied!'}
           {copied === 'fail' && 'Couldn’t copy. Please use the Email me button instead.'}

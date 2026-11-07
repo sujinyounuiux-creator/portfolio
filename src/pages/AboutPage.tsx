@@ -92,7 +92,7 @@ export function AboutPage() {
         </section>
       </div>
 
-      <ContactCTA showProjectsLink />
+      <ContactCTA />
     </div>
   )
 }

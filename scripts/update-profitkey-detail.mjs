@@ -58,3 +58,18 @@ const homeOut = await sharp(`${dir}/web-home.png`)
   .webp({ quality: 90 })
   .toFile(`${screens}/profitkey-web-home.webp`)
 console.log('home', homeOut.width, homeOut.height, { left, top, right, bottom }, info.width, info.height)
+
+// ---- error pages: exist only as images, so they take the standard header from the Home screen
+const errorHeader = await sharp(`${screens}/profitkey-web-home.webp`).flatten({ background: '#fff' }).extract({ left: 0, top: 0, width: WIDTH, height: HEADER }).resize({ width: 944 }).png().toBuffer()
+const errorHeaderHeight = (await sharp(errorHeader).metadata()).height
+for (const name of ['404', '500']) {
+  const page = await sharp(`${dir}/error-${name}-before.webp`)
+    .flatten({ background: '#fff' })
+    .composite([
+      { input: await white(944, errorHeaderHeight + 3), left: 0, top: 0 },
+      { input: errorHeader, left: 0, top: 0 },
+    ])
+    .png()
+    .toBuffer()
+  writeFileSync(`${screens}/profitkey-${name}.webp`, await sharp(page).webp({ quality: 90 }).toBuffer())
+}

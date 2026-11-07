@@ -12,7 +12,7 @@ export const asclo = glueAll({
   summary:
     'I edited product photos for ASCLO, a Korean online shopping mall, for its listings on BUYMA, a Japanese shopping site. I also translated the Korean product descriptions into Japanese and checked them.',
   facts: [
-    { label: 'When', value: '2024.06 to 2024.11' },
+    { label: 'When', value: '2022' },
     { label: 'What I did', value: 'Photo editing · Korean to Japanese translation' },
     { label: 'Tool', value: 'Adobe Photoshop' },
     { label: 'Where it ran', value: 'BUYMA (Japan)' },

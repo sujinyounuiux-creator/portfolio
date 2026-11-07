@@ -287,7 +287,7 @@ export const projects: Project[] = glueAll<Project[]>([
           },
           {
             kind: 'figure',
-            figure: { src: '/images/screens/profitkey-sitemap.svg', alt: 'PROFITKEY sitemap: Home links to Stock Analysis (stock details, AI commentary, community), News (latest and all news, opening external articles), Notices / FAQ (with notice details) and Log in (social login), which leads to My Account (watchlist, my comments, edit profile).', caption: 'Sitemap: every page and who can reach it.', width: 1200, height: 640, zoom: true },
+            figure: { src: '/images/screens/profitkey-sitemap.svg', alt: 'PROFITKEY sitemap: Home links to Stock Analysis (stock details, AI commentary, community), News (latest and all news, opening external articles), Notices / FAQ (with notice details) and Login (login and social login), which leads to My Account (watchlist, my comments, edit profile).', caption: 'Sitemap: every page and who can reach it.', width: 1200, height: 652, zoom: true },
           },
         ],
       },
@@ -305,7 +305,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'gallery',
             figures: [
               wire('main', 'Main page wireframe: title and sub text, AI recommended stocks with a chart, soaring, domestic/overseas and market trend stock lists, and a news row.', 'Main', 1120),
-              wire('stock-analysis', 'Stock analysis wireframe: item name and price, Stock analysis / Community tabs, indicator rows beside a price chart, an AI comment box and financial indicators.', 'Stock analysis', 800),
+              wire('stock-analysis', 'Stock analysis wireframe: Stock analysis / Community tabs, item name and price, indicator rows beside a price chart, an AI comment box and financial indicators.', 'Stock analysis', 800),
               wire('community', 'Stock community wireframe: comment box with a Post button and a list of comments with avatars and reactions.', 'Stock community', 840),
               wire('notice-faq', 'Notice / FAQ wireframe: Notice and FAQ tabs above a list of posts with pagination.', 'Notice / FAQ', 800),
               wire('my-page', 'My page wireframe: tabs for my interests, comments I wrote and edit member info. Avatar and nickname beside four watchlist charts.', 'My page: my interests', 720),

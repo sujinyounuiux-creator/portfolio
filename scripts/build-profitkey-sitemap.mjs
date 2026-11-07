@@ -4,7 +4,6 @@
 import { writeFileSync } from 'node:fs'
 
 const W = 1200
-const H = 640
 const C = { yellow: '#FFB400', yellowSoft: '#FFF3D1', ink: '#333333', grey: '#EDEDED', greyLine: '#C9C9C9', dark: '#333333', line: '#BDBDBD', soft: '#6E6E6E' }
 const FONT = 'Inter, Arial, Helvetica, sans-serif'
 
@@ -32,7 +31,7 @@ const link = (x1, y1, x2, y2, dashed = false) => {
   return `<path d="M${x1} ${y1} V${my} H${x2} V${y2}" fill="none" stroke="${C.line}" stroke-width="1.5" ${dashed ? 'stroke-dasharray="5 4"' : ''}/>`
 }
 
-const home = card(420, 40, 360, 'Home', ['AI Stock Picks', 'Market Trends (Top Gainers etc.)', 'Stock Analysis', 'News', 'Notices / FAQ', 'Log in'])
+const home = card(420, 40, 360, 'Home', ['AI Stock Picks', 'Market Trends (Top Gainers etc.)', 'Stock Analysis', 'News', 'Notices / FAQ'])
 const colY = home.y + home.h + 70
 const colW = 250
 const gap = (W - 80 - colW * 4) / 3
@@ -41,12 +40,13 @@ const cx = (i) => 40 + i * (colW + gap)
 const stock = card(cx(0), colY, colW, 'Stock Analysis', ['Stock Details', 'AI Commentary', 'Community'])
 const news = card(cx(1), colY, colW, 'News', ['Latest News', 'All News'])
 const notices = card(cx(2), colY, colW, 'Notices / FAQ', ['Notices', 'FAQ'])
-const login = card(cx(3), colY, colW, 'Log in', ['Social Login'], 'auth')
+const login = card(cx(3), colY, colW, 'Login', ['Login', 'Social Login'], 'auth')
 const external = card(cx(1), news.y + news.h + 40, colW, 'News article', ['External News Article'], 'external')
 const noticeDetail = card(cx(2), notices.y + notices.h + 40, colW, 'Notice', ['Notice Details'])
 const account = card(cx(3), login.y + login.h + 40, colW, 'My Account', ['Watchlist', 'My Comments', 'Edit Profile'], 'auth')
 
 const hb = home.y + home.h
+const H = Math.max(external.y + external.h, account.y + account.h, noticeDetail.y + noticeDetail.h) + 40
 let lines = ''
 for (const c of [stock, news, notices, login]) lines += link(home.cx, hb, c.cx, c.y)
 lines += link(news.cx, news.y + news.h, external.cx, external.y, true)
@@ -54,12 +54,19 @@ lines += link(notices.cx, notices.y + notices.h, noticeDetail.cx, noticeDetail.y
 lines += link(login.cx, login.y + login.h, account.cx, account.y)
 
 // legend
+// each item takes the room its label needs, with the same gap between items
+const LEGEND_GAP = 26
+let legendX = 40
 const legend = [
-  [C.yellow, 'Public'],
-  [C.grey, 'Logged in'],
-  [C.dark, 'External link'],
+  [C.yellow, 'Public', 38],
+  [C.grey, 'Login', 33],
+  [C.dark, 'External link', 75],
 ]
-  .map(([fill, label], i) => `<rect x="${40 + i * 130}" y="40" width="14" height="14" rx="3" fill="${fill}" stroke="#BDBDBD"/>` + text(60 + i * 130, 52, label, 12, 500, C.soft))
+  .map(([fill, label, labelWidth]) => {
+    const item = `<rect x="${legendX}" y="40" width="14" height="14" rx="3" fill="${fill}" stroke="#BDBDBD"/>` + text(legendX + 20, 51.5, label, 12, 500, C.soft)
+    legendX += 20 + labelWidth + LEGEND_GAP
+    return item
+  })
   .join('')
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="PROFITKEY sitemap">

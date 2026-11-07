@@ -31,4 +31,30 @@ for (const [name, wax, dark] of [
   await sharp(big).toFile(`${out}/${name}@2x.png`)
   await sharp(big).resize(32, 32).png().toFile(`${out}/${name}.png`)
 }
+
+// Magnifying glass cursors for zoomable images, in the same crayon look: a yellow rim and a blue
+// wax handle with a + or - inside. The hotspot is the middle of the lens, at (13, 13) in CSS pixels.
+const magnifier = (mark) => `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <g fill="none" stroke="#fff">
+      <circle cx="26" cy="26" r="20" fill="#fff" stroke-width="9"/>
+      <path d="M41.5 41.5 L56 56" stroke-width="16"/>
+    </g>
+    <path d="M41.5 41.5 L56 56" fill="none" stroke="${INK}" stroke-width="12.5"/>
+    <path d="M41.5 41.5 L56 56" fill="none" stroke="#6F9BD8" stroke-width="6.5"/>
+    <circle cx="26" cy="26" r="20" fill="#FFFDF6" stroke="${INK}" stroke-width="9"/>
+    <circle cx="26" cy="26" r="20" fill="none" stroke="#FFD04D" stroke-width="4"/>
+    <path d="${mark}" fill="none" stroke="${INK}" stroke-width="4.5"/>
+    <path d="M14.5 23 Q16 16.5 22 14.5" fill="none" stroke="#6F9BD8" stroke-opacity="0.55" stroke-width="2.6"/>
+  </g>
+</svg>`
+
+for (const [name, mark] of [
+  ['magnifier-in', 'M17.5 26 H34.5 M26 17.5 V34.5'],
+  ['magnifier-out', 'M17.5 26 H34.5'],
+]) {
+  const big = await sharp(Buffer.from(magnifier(mark))).png().toBuffer()
+  await sharp(big).toFile(`${out}/${name}@2x.png`)
+  await sharp(big).resize(32, 32).png().toFile(`${out}/${name}.png`)
+}
 console.log('done')

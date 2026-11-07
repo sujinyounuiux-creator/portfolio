@@ -11,6 +11,9 @@
 :root {
   --cursor: -webkit-image-set(url('/cursors/crayon.png') 1x, url('/cursors/crayon@2x.png') 2x) 3 3, auto;
   --cursor-link: -webkit-image-set(url('/cursors/crayon-link.png') 1x, url('/cursors/crayon-link@2x.png') 2x) 3 3, pointer;
+  /* magnifying glasses for zoomable images: the click lands in the middle of the lens */
+  --cursor-zoom-in: -webkit-image-set(url('/cursors/magnifier-in.png') 1x, url('/cursors/magnifier-in@2x.png') 2x) 13 13, zoom-in;
+  --cursor-zoom-out: -webkit-image-set(url('/cursors/magnifier-out.png') 1x, url('/cursors/magnifier-out@2x.png') 2x) 13 13, zoom-out;
 }
 html {
   cursor: var(--cursor);

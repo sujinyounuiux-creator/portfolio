@@ -507,7 +507,7 @@
   padding: 0;
   border: 0;
   background: none;
-  cursor: zoom-in;
+  cursor: var(--cursor-zoom-in);
 }
 .zoom img {
   display: block;
@@ -549,7 +549,7 @@
   background: transparent;
   overflow: hidden;
   overscroll-behavior: contain;
-  cursor: zoom-out;
+  cursor: var(--cursor-zoom-out);
 }
 .lightbox::backdrop {
   background: rgba(17, 20, 28, 0.85);
@@ -582,7 +582,7 @@
   border-radius: var(--r-sm);
   background: #fff;
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
-  cursor: zoom-in;
+  cursor: var(--cursor-zoom-in);
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;

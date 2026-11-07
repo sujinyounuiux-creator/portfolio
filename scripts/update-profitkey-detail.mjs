@@ -3,8 +3,8 @@
 // - the header is the standard one, taken from the Community screen, with the member's photo
 // - the Stock Analysis / Community tabs sit above the stock name, placed as on the Community page
 // The rest of the page stays put, so the crops taken from it (crop-profitkey-features) line up.
-// Also puts the unified header on the Home screen (exported from Figma, 165:3569).
-// Sources: design-exports/profitkey-figma/web-detail-before.webp, web-home-before.webp, home-header.png
+// Also prepares the Home screen.
+// Sources: design-exports/profitkey-figma/web-detail-before.webp, web-home.png
 import { writeFileSync } from 'node:fs'
 import sharp from 'sharp'
 
@@ -35,16 +35,26 @@ const detail = await sharp(before)
 writeFileSync(`${dir}/web-detail-after.png`, detail)
 writeFileSync(`${screens}/profitkey-web-detail.webp`, await sharp(detail).webp({ quality: 90 }).toBuffer())
 
-// ---- home
-const homeBefore = await sharp(`${dir}/web-home-before.webp`).flatten({ background: '#fff' }).png().toBuffer()
-const band = await sharp(`${dir}/home-header.png`).flatten({ background: '#fff' }).resize({ width: WIDTH }).png().toBuffer()
-const bandHeight = (await sharp(band).metadata()).height
-const home = await sharp(homeBefore)
-  .composite([
-    { input: await white(WIDTH, bandHeight + 2), left: 0, top: 0 },
-    { input: band, left: 0, top: 0 },
-  ])
-  .png()
-  .toBuffer()
-writeFileSync(`${screens}/profitkey-web-home.webp`, await sharp(home).webp({ quality: 90 }).toBuffer())
-console.log('done, home header', bandHeight)
+// ---- home: exported whole from Figma (165:3148), cropped in from its drop shadow to the white page
+const { data, info } = await sharp(`${dir}/web-home.png`).flatten({ background: '#808080' }).raw().toBuffer({ resolveWithObject: true })
+const isWhite = (x, y) => {
+  const i = (y * info.width + x) * info.channels
+  return data[i] >= 254 && data[i + 1] >= 254 && data[i + 2] >= 254
+}
+const midY = 20 // beside the header, where the page is white
+const midX = Math.round(info.width * 0.1)
+let left = 0
+while (!isWhite(left, midY)) left++
+let right = info.width - 1
+while (!isWhite(right, midY)) right--
+let top = 0
+while (!isWhite(midX, top)) top++
+let bottom = info.height - 1
+while (!isWhite(midX, bottom)) bottom--
+const homeOut = await sharp(`${dir}/web-home.png`)
+  .flatten({ background: '#fff' })
+  .extract({ left, top, width: right - left + 1, height: bottom - top + 1 })
+  .resize({ width: WIDTH })
+  .webp({ quality: 90 })
+  .toFile(`${screens}/profitkey-web-home.webp`)
+console.log('home', homeOut.width, homeOut.height, { left, top, right, bottom }, info.width, info.height)

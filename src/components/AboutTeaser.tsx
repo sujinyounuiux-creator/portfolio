@@ -36,7 +36,7 @@ export function AboutTeaser() {
               ))}
             </ul>
 
-            <h3 className="about-home__h3">My background</h3>
+            <h3 className="about-home__h3">Experiences</h3>
             <ol className="about-home__timeline">
               {about.experience.map((e) => (
                 <li key={e.org}>

@@ -466,9 +466,9 @@ export const projects: Project[] = glueAll<Project[]>([
                 figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: change nickname and email address, with a log out button.', 'Edit profile', 1400, 756), tall: true },
               },
               {
-                title: 'Log in',
+                title: 'LOGIN',
                 note: 'Members log in with an email address and password, or with a Google, Facebook or Apple account.',
-                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo, email address and password fields, Remember Me, Forgot password, a yellow Login button, then Log in with Google, Facebook and Apple.', 'Log in', 1400, 935), tall: true },
+                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo, email address and password fields, Remember Me, Forgot password, a yellow Login button, then Log in with Google, Facebook and Apple.', 'LOGIN', 1400, 935), tall: true },
               },
             ],
           },

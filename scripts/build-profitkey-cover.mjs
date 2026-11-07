@@ -70,7 +70,7 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height=
   <text x="110" y="246" font-family="${FONT}" font-size="17" font-weight="700" letter-spacing="3" fill="#B98000">AI STOCK RECOMMENDATIONS FOR BEGINNERS</text>
   <text x="104" y="342" font-family="${FONT}" font-size="76" font-weight="700" fill="${INK}">Finding the key</text>
   <text x="104" y="438" font-family="${FONT}" font-size="76" font-weight="700" fill="${INK}">to <tspan fill="${YELLOW}">success</tspan></text>
-  <path d="M196 460 C270 451 350 449 446 455" fill="none" stroke="${YELLOW}" stroke-width="7" stroke-linecap="round"/>
+  <path d="M207.5 456 H454.5" fill="none" stroke="${YELLOW}" stroke-width="7" stroke-linecap="round"/>
   <text x="110" y="518" font-family="${FONT}" font-size="25" fill="#5b5b5b">Easily view domestic and international stock</text>
   <text x="110" y="552" font-family="${FONT}" font-size="25" fill="#5b5b5b">and financial news at a glance!</text>
   <rect x="110" y="600" width="340" height="62" rx="31" fill="${YELLOW}"/>

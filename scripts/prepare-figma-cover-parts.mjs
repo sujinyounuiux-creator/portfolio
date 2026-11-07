@@ -71,7 +71,7 @@ writeFileSync(`${OUT}/pk-graph.svg`, `<svg xmlns="http://www.w3.org/2000/svg" wi
   <circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="5.5" fill="#ffffff" stroke="${RED}" stroke-width="3"/>
 </svg>`)
 
-writeFileSync(`${OUT}/pk-underline.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width="260" height="22" viewBox="0 0 260 22"><path d="M4 15 C78 6 158 4 254 10" fill="none" stroke="${YELLOW}" stroke-width="7" stroke-linecap="round"/></svg>`)
+writeFileSync(`${OUT}/pk-underline.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width="260" height="22" viewBox="0 0 260 22"><path d="M4 11 H256" fill="none" stroke="${YELLOW}" stroke-width="7" stroke-linecap="round"/></svg>`)
 
 const png = (src, out, opts = {}) => {
   let s = sharp(src)

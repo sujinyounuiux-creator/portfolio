@@ -40,8 +40,11 @@ export function Underline({ className = '', color, draw, style }: DoodleProps) {
   return (
     <svg className={`doodle doodle-underline ${draw ? 'draw' : ''} ${className}`} viewBox="0 0 200 22" preserveAspectRatio="none" aria-hidden="true" focusable="false" style={style}>
       <g filter="url(#crayon)">
-        <path d="M3 13 C 42 6, 84 16, 122 9 S 180 7, 197 11" {...stroke(color, 6)} />
-        <path d="M1.5 16 C 60 12, 120 18, 198.5 14" {...stroke(color, 3)} opacity="0.55" />
+        {/* the empty rect gives the filter a box: a perfectly flat line alone has no height,
+            and the filter would then draw nothing */}
+        <rect width="200" height="22" fill="none" />
+        {/* straight, first letter to last: the round ends sit inside the width */}
+        <path d="M3 12 H 197" {...stroke(color, 6)} />
       </g>
     </svg>
   )

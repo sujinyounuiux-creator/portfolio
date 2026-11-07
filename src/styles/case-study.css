@@ -618,7 +618,8 @@
 .cs-feature {
   display: grid;
   gap: clamp(1.25rem, 3vw, 2.5rem);
-  align-items: center;
+  /* text and image start on the same line */
+  align-items: start;
   padding-block: var(--s-4);
 }
 .cs-feature + .cs-feature {
@@ -628,7 +629,7 @@
 .cs-feature__text {
   display: grid;
   gap: var(--s-3);
-  align-content: center;
+  align-content: start;
 }
 /* the user need this decision answers, as a small pull quote */
 .cs-feature__tag {

@@ -94,3 +94,23 @@ for (const name of ['404', '500']) {
     .toBuffer()
   writeFileSync(file, fixed)
 }
+
+// ---- stock detail: the Fiscal Year End row now follows the months above it (Dec year end):
+// 2024.12 under the 2024 months and 2025.12 under the 2025 months. Glyphs come from the row itself.
+{
+  const file = `${screens}/profitkey-web-detail.webp`
+  const page = await sharp(file).removeAlpha().png().toBuffer()
+  const TOP = 1164
+  const H = 30
+  const five = await sharp(page).extract({ left: 409, top: TOP, width: 11, height: H }).png().toBuffer() // the "5" of 2025.01
+  const cell2024 = await sharp(page).extract({ left: 494, top: TOP, width: 72, height: H }).png().toBuffer() // "2024.12"
+  const white = (w) => sharp({ create: { width: w, height: H, channels: 3, background: '#fff' } }).png().toBuffer()
+  const layers = [
+    { input: await white(76), left: 374, top: TOP },
+    { input: cell2024, left: 376, top: TOP },
+  ]
+  for (const [left, up] of [[885, 0], [1003, 0], [1119, 0], [1230, 6]]) {
+    layers.push({ input: await white(11), left, top: TOP - up }, { input: five, left, top: TOP - up }) // the last column sits 6px higher
+  }
+  writeFileSync(file, await sharp(page).composite(layers).webp({ quality: 90 }).toBuffer())
+}

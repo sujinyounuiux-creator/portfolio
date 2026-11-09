@@ -114,3 +114,25 @@ for (const name of ['404', '500']) {
   }
   writeFileSync(file, await sharp(page).composite(layers).webp({ quality: 90 }).toBuffer())
 }
+
+// ---- stock detail: the last column of the quarterly table now matches the others: a grey header
+// like its neighbours, and its values moved 6px down onto the same lines.
+{
+  const file = `${screens}/profitkey-web-detail.webp`
+  const page = await sharp(file).removeAlpha().png().toBuffer()
+  const X = 1173
+  const WIDTH_COL = 126
+  const header = await sharp(page).extract({ left: X, top: 1088, width: WIDTH_COL, height: 60 }).png().toBuffer()
+  const values = await sharp(page).extract({ left: X, top: 1150, width: WIDTH_COL, height: 546 }).png().toBuffer()
+  const fill = (h, v) => sharp({ create: { width: WIDTH_COL, height: h, channels: 3, background: { r: v, g: v, b: v } } }).png().toBuffer()
+  const fixed = await sharp(page)
+    .composite([
+      { input: await fill(60, 243), left: X, top: 1088 },
+      { input: header, left: X, top: 1088, blend: 'multiply' },
+      { input: await fill(552, 255), left: X, top: 1150 },
+      { input: values, left: X, top: 1156 },
+    ])
+    .webp({ quality: 90 })
+    .toBuffer()
+  writeFileSync(file, fixed)
+}

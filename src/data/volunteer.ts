@@ -34,5 +34,11 @@ export const volunteer = glueAll({
       width: 1080,
       height: 1080,
     },
+    {
+      src: '/images/rizsq/rizsq-growing.webp',
+      alt: 'Rizsq post on dark green: the Rizsq logo above a photo of farmers planting rice seedlings in a flooded field, with the lines “Growing Together, Feeding the Future.” and “Empowering farmers and building stronger, more resilient food systems.”',
+      width: 1080,
+      height: 1350,
+    },
   ],
 })

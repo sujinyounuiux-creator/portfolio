@@ -153,3 +153,20 @@ for (const name of ['404', '500']) {
     .toBuffer()
   writeFileSync(file, fixed)
 }
+
+// ---- stock detail: the first sales growth value read "110.11%%". Drop the extra % and centre
+// "110.11%" under its month, as the other values are.
+{
+  const file = `${screens}/profitkey-web-detail.webp`
+  const page = await sharp(file).removeAlpha().png().toBuffer()
+  const value = await sharp(page).extract({ left: 360, top: 1243, width: 73, height: 20 }).png().toBuffer()
+  const clear = await sharp({ create: { width: 96, height: 20, channels: 3, background: '#fff' } }).png().toBuffer()
+  const fixed = await sharp(page)
+    .composite([
+      { input: clear, left: 355, top: 1243 },
+      { input: value, left: 374, top: 1243 },
+    ])
+    .webp({ quality: 90 })
+    .toBuffer()
+  writeFileSync(file, fixed)
+}

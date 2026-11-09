@@ -405,7 +405,7 @@ export const projects: Project[] = glueAll<Project[]>([
             items: [
               { title: 'Navigation', body: 'Header with search, tab bars for Stock Analysis / Community, Notices / FAQ and My Account, and pagination.' },
               { title: 'Content', body: 'Stock cards with price change, news cards, comment threads with replies, FAQ accordions and notice rows.' },
-              { title: 'Account', body: 'Social sign in buttons (Google, Kakao, Naver), profile card, edit and delete actions and confirmation dialogs.' },
+              { title: 'Account', body: 'Social sign in buttons (Google, Facebook, Apple), profile card, edit and delete actions and confirmation dialogs.' },
             ],
           },
         ],

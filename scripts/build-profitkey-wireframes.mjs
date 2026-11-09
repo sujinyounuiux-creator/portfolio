@@ -64,7 +64,7 @@ const screens = {
     400,
     'Stock analysis page wireframe',
     tabs(62, ['Stock analysis', 'Community'], 0) +
-      circle(46, 90, 4) + text(56, 94, 'Item name', 11, 700, 'start', C.ink) + text(124, 94, '(123312)', 8) + text(172, 94, '10,000 won', 11, 700, 'start', C.ink) + text(236, 94, '+5.62%', 8) +
+      circle(46, 90, 4) + text(56, 94, 'Item name', 11, 700, 'start', C.ink) + text(124, 94, '(123312)', 8) + text(172, 94, '$10,000', 11, 700, 'start', C.ink) + text(236, 94, '+5.62%', 8) +
       [0, 1, 2, 3, 4].map((i) => rect(40, 112 + i * 20, 90, 12) + rect(140, 112 + i * 20, 70, 12, '#efefef')).join('') +
       chart(236, 108, 204, 96) +
       text(40, 236, 'AI comments', 10, 700, 'start', C.ink) + rect(40, 246, 400, 70) + text(240, 286, 'AI comment', 10, 700, 'middle', '#555') +

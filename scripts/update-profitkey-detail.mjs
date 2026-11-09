@@ -136,3 +136,20 @@ for (const name of ['404', '500']) {
     .toBuffer()
   writeFileSync(file, fixed)
 }
+
+// ---- stock detail: Apple is listed on NASDAQ, not KOSPI. The label is exported from the
+// Stock Detail frame in Figma (505:3099) at the screen's scale and placed over the old one.
+{
+  const file = `${screens}/profitkey-web-detail.webp`
+  const page = await sharp(file).removeAlpha().png().toBuffer()
+  const label = await sharp(`${dir}/label-nasdaq.png`).png().toBuffer()
+  const clear = await sharp({ create: { width: 130, height: 36, channels: 3, background: '#fff' } }).png().toBuffer()
+  const fixed = await sharp(page)
+    .composite([
+      { input: clear, left: 100, top: 203 },
+      { input: label, left: 104, top: 207 },
+    ])
+    .webp({ quality: 90 })
+    .toBuffer()
+  writeFileSync(file, fixed)
+}

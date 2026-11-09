@@ -73,3 +73,24 @@ for (const name of ['404', '500']) {
     .toBuffer()
   writeFileSync(`${screens}/profitkey-${name}.webp`, await sharp(page).webp({ quality: 90 }).toBuffer())
 }
+
+// ---- stock detail: the quarterly table's headers had 2025.02 twice. Make the last two read
+// 2025.03 and 2025.04 by swapping their final digit, using glyphs from the table itself.
+{
+  const file = `${screens}/profitkey-web-detail.webp`
+  const page = await sharp(file).removeAlpha().png().toBuffer()
+  const glyph = (left) => sharp(page).extract({ left, top: 1100, width: 11, height: 28 }).png().toBuffer()
+  const three = await glyph(1256) // the "3" of 2025.03, on white
+  const four = await sharp(await glyph(409)).linear(255 / 243, 0).png().toBuffer() // the "4" of 2024.09, grey lifted to white
+  const fill = (rgb) => sharp({ create: { width: 11, height: 28, channels: 3, background: rgb } }).png().toBuffer()
+  const fixed = await sharp(page)
+    .composite([
+      { input: await fill({ r: 243, g: 243, b: 243 }), left: 1146, top: 1100 },
+      { input: three, left: 1146, top: 1100, blend: 'multiply' },
+      { input: await fill({ r: 255, g: 255, b: 255 }), left: 1256, top: 1100 },
+      { input: four, left: 1256, top: 1100 },
+    ])
+    .webp({ quality: 90 })
+    .toBuffer()
+  writeFileSync(file, fixed)
+}

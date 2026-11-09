@@ -781,7 +781,7 @@ export const projects: Project[] = glueAll<Project[]>([
     summary:
       'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
     category: 'Responsive web · Redesign',
-    platform: 'Responsive web (desktop & mobile)',
+    platform: 'Responsive web',
     role: 'UI/UX Design',
     timeline: '2024.11 to 2025.01',
     team: 'Personal project',
@@ -1061,13 +1061,15 @@ export const projects: Project[] = glueAll<Project[]>([
       },
       {
         id: 'reflection',
-        label: 'Reflection',
-        title: 'What I learned & next steps',
+        label: 'Learning outcomes',
+        title: 'Learning outcomes',
         blocks: [
           {
             kind: 'text',
             body: [
-              'This project taught me how valuable **user research** is in **guiding design decisions**. Moving forward, I want to strengthen my skills in **user research, interactive prototyping, and developer handoff** to translate user insights into **practical, production ready designs**.',
+              'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well.',
+              'In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other.',
+              'Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
             ],
           },
         ],

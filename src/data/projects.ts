@@ -777,7 +777,7 @@ export const projects: Project[] = glueAll<Project[]>([
     disciplines: ['ux-ui'],
     featured: true,
     tagline: 'UI/UX improvement project',
-    proof: { value: '92%', label: 'of visits estimated from mobile, so I designed it responsive' },
+    proof: { value: '5', label: 'testers searched faster and more easily with the new filters' },
     summary:
       'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
     category: 'Responsive web · Redesign',

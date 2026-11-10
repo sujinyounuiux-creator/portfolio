@@ -1,4 +1,5 @@
 import { FixedAddButton, FixedSidebar } from './FixedAddButton'
+import { RecipeFilter } from './RecipeFilter'
 import type { CSSProperties, ReactNode } from 'react'
 import type { Figure } from '../data/projects'
 import mockups from '../data/mockups.json'
@@ -34,7 +35,15 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
       {children ??
         (scroll ? (
           <div className="device__scroll" tabIndex={0} role="region" aria-label={`${figure?.caption ?? 'Screen'} (scrollable)`}>
-            {img}
+            {figure?.addButton ? (
+              // the recipe page, with its search bar's filter icon working
+              <div className="recipe-page">
+                {img}
+                <RecipeFilter />
+              </div>
+            ) : (
+              img
+            )}
           </div>
         ) : (
           img

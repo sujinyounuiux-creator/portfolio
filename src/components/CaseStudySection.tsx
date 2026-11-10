@@ -37,7 +37,7 @@ function BlockView({ block }: { block: Block }) {
   switch (block.kind) {
     case 'text':
       return (
-        <div className="cs-prose">
+        <div className={`cs-prose ${block.boxed ? 'cs-prose--boxed' : ''}`}>
           {block.body.map((p, i) => (
             <p key={i}>
               <Rich text={p} />

@@ -41,7 +41,8 @@ export type Swatch = { name: string; hex: string; usage?: string }
 export type Heuristic = 'visibility' | 'recognition' | 'consistency'
 
 export type Block =
-  | { kind: 'text'; body: string[] }
+  /** boxed: shown inside one white card, like the review cards */
+  | { kind: 'text'; body: string[]; boxed?: boolean }
   | { kind: 'list'; intro?: string; items: string[] }
   | { kind: 'quotes'; source: string; items: string[] }
   | { kind: 'cards'; items: { title: string; body: string }[] }
@@ -753,20 +754,10 @@ export const projects: Project[] = glueAll<Project[]>([
         title: 'Learning outcomes',
         blocks: [
           {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Where it started',
-                body: 'LastCow started with one question: how can people make the most of **last-minute tickets**, while the companies selling them still **turn unsold seats into revenue**?',
-              },
-              {
-                title: 'From research to testing',
-                body: 'Going from **user interviews** to **wireframes**, a **prototype** and **usability testing** showed me how each step builds on the last. The interviews kept us focused on **real needs**, and testing confirmed the flows worked, with an **average SUS score of 92.5**.',
-              },
-              {
-                title: 'Designing for both sides',
-                body: 'Most of all, I learned to **design for both sides**: a fast, simple way for users to grab a good deal, and a way for organizers to fill their events.',
-              },
+            kind: 'text',
+            boxed: true,
+            body: [
+              'LastCow started with one question: how can people make the most of **last-minute tickets**, while the companies selling them still **turn unsold seats into revenue**? Going from **user interviews** to **wireframes**, a **prototype** and **usability testing** showed me how each step builds on the last. The interviews kept us focused on **real needs**, and testing confirmed the flows worked, with an **average SUS score of 92.5**. Most of all, I learned to **design for both sides**: a fast, simple way for users to grab a good deal, and a way for organizers to fill their events.',
             ],
           },
         ],
@@ -1069,20 +1060,10 @@ export const projects: Project[] = glueAll<Project[]>([
         title: 'Learning outcomes',
         blocks: [
           {
-            kind: 'cards',
-            items: [
-              {
-                title: 'What research showed',
-                body: 'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well.',
-              },
-              {
-                title: 'What testing showed',
-                body: 'In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other.',
-              },
-              {
-                title: 'What testers said',
-                body: 'Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
-              },
+            kind: 'text',
+            boxed: true,
+            body: [
+              'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well. In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other. Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
             ],
           },
         ],

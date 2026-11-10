@@ -683,6 +683,11 @@
   bottom: 0;
   height: 0;
 }
+.lightbox__sticky--top {
+  top: 0;
+  bottom: auto;
+  z-index: 2;
+}
 html:has(.lightbox[open]) {
   overflow: hidden;
 }

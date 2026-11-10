@@ -11,3 +11,8 @@ export function FixedAddButton() {
     </div>
   )
 }
+
+/** The Cookpad side menu, which stays still at the top left while the recipe page scrolls. */
+export function FixedSidebar() {
+  return <img className="fixed-side" src="/images/projects/cookpad-sidebar.webp" alt="" width={175} height={658} />
+}

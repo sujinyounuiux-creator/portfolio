@@ -1,4 +1,4 @@
-import { FixedAddButton } from './FixedAddButton'
+import { FixedAddButton, FixedSidebar } from './FixedAddButton'
 import type { CSSProperties, ReactNode } from 'react'
 import type { Figure } from '../data/projects'
 import mockups from '../data/mockups.json'
@@ -39,6 +39,7 @@ export function DeviceFrame({ device, figure, children, caption, className = '' 
         ) : (
           img
         ))}
+      {figure?.addButton && <FixedSidebar />}
       {figure?.addButton && <FixedAddButton />}
     </div>
   )

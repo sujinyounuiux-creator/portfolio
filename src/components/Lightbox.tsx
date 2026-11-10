@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import type { Figure } from '../data/projects'
-import { FixedAddButton } from './FixedAddButton'
+import { FixedAddButton, FixedSidebar } from './FixedAddButton'
 
 const LightboxContext = createContext<(figure: Figure) => void>(() => {})
 
@@ -120,6 +120,11 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
           <figure className="lightbox__figure">
             <div ref={stage} className="lightbox__stage">
               <div className={figure.addButton ? 'lightbox__page' : 'lightbox__plain'}>
+              {figure.addButton && (
+                <div className="lightbox__sticky lightbox__sticky--top">
+                  <FixedSidebar />
+                </div>
+              )}
               <img
                 ref={img}
                 className={`lightbox__img ${dragging ? 'is-dragging' : ''}`}

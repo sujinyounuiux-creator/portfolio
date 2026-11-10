@@ -8,6 +8,7 @@
 //   cookpad-recipe-scroll.webp      the page without the button
 //   cookpad-add-plus.webp           the + button, with a transparent background
 //   cookpad-add-balloon.webp        the Add Recipe balloon, with a transparent background
+//   cookpad-sidebar.webp            the side menu, which also stays still while the page scrolls
 import sharp from 'sharp'
 
 sharp.cache(false)
@@ -18,6 +19,7 @@ const SEAM = 1038 // page 1's step 2 ends above this; page 2's step 3 centre lan
 const SHIFT = 4 // page 2's content sits 4px right of page 1's, so its steps are moved back to line up
 const BUTTON = { left: 1660, top: 805, width: 210, height: 225 } // both parts, in page 2 before the shift
 const BALLOON = { left: 1660, top: 805, width: 210, height: 100 }
+const SIDEBAR = { left: 20, top: 64, width: 175, height: 658 } // in page 1, with its soft shadow
 const PLUS = { left: 1704, top: 910, width: 122, height: 120 }
 
 const white = (width, height) => ({ create: { width, height, channels: 3, background: '#fff' } })
@@ -25,7 +27,10 @@ const patch = async (w, h, left, top) => ({ input: await sharp(white(w, h)).png(
 
 const page1 = await sharp(`${dir}/page1.png`)
   .removeAlpha()
-  .composite([await patch(160, 140, 1690, 895)]) // page 1's + button
+  .composite([
+    await patch(160, 140, 1690, 895), // page 1's + button
+    await patch(SIDEBAR.width, SIDEBAR.height, SIDEBAR.left, SIDEBAR.top), // the side menu, drawn on top instead
+  ])
   .extract({ left: 0, top: 0, width: WIDTH, height: SEAM })
   .png()
   .toBuffer()
@@ -50,8 +55,8 @@ const page = await sharp(joined).resize({ width: 1600 }).webp({ quality: 90 }).t
 console.log('page', page.width, page.height)
 
 // a part alone: flood in from the crop's edges, so the white inside the + stays white
-async function cutOut(region, file) {
-  const { data, info } = await sharp(`${dir}/page2.png`).removeAlpha().extract(region).raw().toBuffer({ resolveWithObject: true })
+async function cutOut(region, file, page = 'page2') {
+  const { data, info } = await sharp(`${dir}/${page}.png`).removeAlpha().extract(region).raw().toBuffer({ resolveWithObject: true })
   const { width: w, height: h } = info
   const lightest = (x, y) => {
     const i = (y * w + x) * 3
@@ -105,3 +110,4 @@ async function cutOut(region, file) {
 
 await cutOut(PLUS, 'cookpad-add-plus')
 await cutOut(BALLOON, 'cookpad-add-balloon')
+await cutOut(SIDEBAR, 'cookpad-sidebar', 'page1')

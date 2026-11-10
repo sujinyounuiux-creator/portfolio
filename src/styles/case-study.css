@@ -1235,6 +1235,22 @@
   aspect-ratio: 210 / 225;
   pointer-events: none;
 }
+/* the side menu: its place in the 1920 x 1200 design screen */
+.device__screen .fixed-side,
+.lightbox__sticky .fixed-side {
+  position: absolute;
+  left: 1.042%;
+  top: 5.333%;
+  z-index: 2;
+  width: 9.115%;
+  height: auto;
+  pointer-events: none;
+}
+/* in the zoomed view the page has no fixed height, so the offset is a share of its width */
+.lightbox__sticky .fixed-side {
+  top: 0;
+  margin-top: 3.333%;
+}
 .lightbox__sticky .fixed-add {
   bottom: 20px;
 }

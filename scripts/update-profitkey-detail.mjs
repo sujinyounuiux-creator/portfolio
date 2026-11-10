@@ -170,3 +170,12 @@ for (const name of ['404', '500']) {
     .toBuffer()
   writeFileSync(file, fixed)
 }
+
+// ---- stock detail: the AI Comment in plainer words (Growth, Profit, Debt, Paying bills). The box
+// is set in Figma at the screen's size and placed exactly over the old one.
+{
+  const file = `${screens}/profitkey-web-detail.webp`
+  const page = await sharp(file).removeAlpha().png().toBuffer()
+  const box = await sharp(`${dir}/ai-comment-box.png`).flatten({ background: '#fff' }).png().toBuffer()
+  writeFileSync(file, await sharp(page).composite([{ input: box, left: 104, top: 769 }]).webp({ quality: 90 }).toBuffer())
+}

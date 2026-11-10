@@ -202,7 +202,7 @@ export const projects: Project[] = glueAll<Project[]>([
     platform: 'Desktop web',
     role: 'UX/UI design (sole designer), planning with the team',
     timeline: '2025.01 to 2025.03',
-    team: '6 people: 5 front end/back end engineers and 1 designer',
+    team: '6 people: 5 front/back end engineers and 1 designer',
     tools: ['Figma'],
     // cover: built by scripts/build-profitkey-cover.mjs from the home page design
     thumbnail: img('profitkey-cover', 'PROFITKEY cover: the logo and "Finding the key to success" with a yellow AI Recommended Stocks button, beside the home page on a laptop, a floating AI Recommended Stocks card for Apple (+20%, $28) with its price chart and key figures, a PER glossary row and a PROFITKEY News card.'),
@@ -342,7 +342,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Each stock page summarises growth, profitability, stability and financial soundness in plain sentences, next to the detailed figures.',
             ],
-            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel summarising growth, profitability, stability and financial soundness in four plain sentences.', 'AI Comment on the stock detail page.', 1284, 354)],
+            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel explaining growth, profit, debt and paying bills in plain words.', 'AI Comment on the stock detail page.', 1284, 354)],
           },
           {
             kind: 'feature',
@@ -493,7 +493,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               {
-                title: 'Designing for trust',
+                title: 'Learning Outcomes',
                 body: 'In user interviews, beginners told me it is **hard to start investing** right away, so I designed every screen from that view to make stocks **easier to approach**, and I grew a lot as a designer through it. In **usability testing with 12 users over 3 days**, people said the **AI comments made stocks easier to understand**, but some also **doubted whether they could trust the AI**. PROFITKEY’s picks and comments come from combined market data, so the next challenge is to **help users trust the AI’s recommendations**.',
               },
             ],

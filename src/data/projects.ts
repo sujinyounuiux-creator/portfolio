@@ -340,7 +340,7 @@ export const projects: Project[] = glueAll<Project[]>([
             title: 'An AI comment on every stock',
             reverse: true,
             body: [
-              'Each stock page summarises growth, profitability, stability and financial soundness in plain sentences, next to the detailed figures.',
+              'Each stock page sums up growth, profit, debt and paying bills in plain words, next to the detailed figures.',
             ],
             figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel explaining growth, profit, debt and paying bills in plain words.', 'AI Comment on the stock detail page.', 1284, 354)],
           },

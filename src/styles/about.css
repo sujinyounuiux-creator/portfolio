@@ -216,13 +216,53 @@
   margin-top: 28px;
 }
 
-/* "How I built this site" */
-.about-built {
-  max-width: 72ch;
-  font-size: var(--fs-lead);
-  line-height: 1.7;
-  color: var(--c-ink-soft);
-}
-.about-built strong {
+/* "How I built this site": a lead line, then four short cards */
+.about-built__lead {
+  max-width: 48ch;
+  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.45;
   color: var(--c-ink);
+}
+.about-built {
+  display: grid;
+  gap: var(--s-4);
+  margin: var(--s-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .about-built {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1000px) {
+  .about-built {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.about-built__item {
+  padding: var(--s-5);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+.about-built__num {
+  display: block;
+  margin-bottom: var(--s-3);
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--c-accent-ink);
+}
+.about-built__item h3 {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.about-built__item p {
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--c-ink-soft);
 }

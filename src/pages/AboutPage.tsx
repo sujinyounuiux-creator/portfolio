@@ -96,9 +96,18 @@ export function AboutPage() {
           <h2 id="built-title" className="section-title about-heading">
             How I built this site
           </h2>
-          <p className="about-built">
-            <Rich text={about.builtNote} />
-          </p>
+          <p className="about-built__lead">{about.builtLead}</p>
+          <ol className="about-built">
+            {about.builtPoints.map((p, i) => (
+              <li key={p.title} className="about-built__item">
+                <span className="about-built__num" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </li>
+            ))}
+          </ol>
         </section>
       </div>
 

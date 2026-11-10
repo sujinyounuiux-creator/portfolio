@@ -753,11 +753,20 @@ export const projects: Project[] = glueAll<Project[]>([
         title: 'Learning outcomes',
         blocks: [
           {
-            kind: 'text',
-            body: [
-              'LastCow started with one question: how can people make the most of **last-minute tickets**, while the companies selling them still **turn unsold seats into revenue**?',
-              'Going from that challenge through **user interviews**, a persona, design challenges, **wireframes**, a high fidelity design, an **interactive prototype** and **usability testing** showed me how each step builds on the one before. The interviews kept us focused on **real needs** rather than our own assumptions, and testing confirmed the flows worked, with an **average SUS score of 92.5**.',
-              'Most of all, I learned to **design for both sides**: a fast, simple way for users to grab a good deal, and a way for organizers to fill their events.',
+            kind: 'cards',
+            items: [
+              {
+                title: 'Where it started',
+                body: 'LastCow started with one question: how can people make the most of **last-minute tickets**, while the companies selling them still **turn unsold seats into revenue**?',
+              },
+              {
+                title: 'From research to testing',
+                body: 'Going from **user interviews** to **wireframes**, a **prototype** and **usability testing** showed me how each step builds on the last. The interviews kept us focused on **real needs**, and testing confirmed the flows worked, with an **average SUS score of 92.5**.',
+              },
+              {
+                title: 'Designing for both sides',
+                body: 'Most of all, I learned to **design for both sides**: a fast, simple way for users to grab a good deal, and a way for organizers to fill their events.',
+              },
             ],
           },
         ],
@@ -1060,11 +1069,20 @@ export const projects: Project[] = glueAll<Project[]>([
         title: 'Learning outcomes',
         blocks: [
           {
-            kind: 'text',
-            body: [
-              'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well.',
-              'In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other.',
-              'Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
+            kind: 'cards',
+            items: [
+              {
+                title: 'What research showed',
+                body: 'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well.',
+              },
+              {
+                title: 'What testing showed',
+                body: 'In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other.',
+              },
+              {
+                title: 'What testers said',
+                body: 'Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
+              },
             ],
           },
         ],

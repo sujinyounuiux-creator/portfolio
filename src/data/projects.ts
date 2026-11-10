@@ -480,6 +480,16 @@ export const projects: Project[] = glueAll<Project[]>([
         title: 'Project review',
         blocks: [
           {
+            // Sujin's own account of working as the only designer with the engineers
+            kind: 'cards',
+            items: [
+              {
+                title: 'How I worked with engineers',
+                body: 'As the **only designer** on a team of engineers, I had **no one to talk design through with**, which I really missed. When design came up, the engineers often preferred the version that was **easier to build**, so we **disagreed** at times. They had good reasons, so I **respected the team’s view** while still finding room to **care for the design**. It showed me how hard it is to **build a website together through discussion**, and I learned a lot from it. I also enjoyed balancing a **clean, attractive UI** with the UX question of **what would help investment beginners** find their way into stocks.',
+              },
+            ],
+          },
+          {
             kind: 'cards',
             items: [
               {

@@ -65,10 +65,10 @@ export const about = glueAll({
   // "How I built this site", from Sujin's own words: one lead line, then four short points
   builtLead: 'I built this portfolio with Claude as an AI-assisted development tool, but the creative and design decisions were mine.',
   builtPoints: [
-    { title: 'I stayed the designer', body: 'Rather than simply accepting AI-generated results, I evaluated every suggestion, solved problems and made decisions based on my own vision.' },
-    { title: 'I kept iterating', body: 'I experimented with different layouts and interactions, refining the experience again and again.' },
-    { title: 'I asked for feedback', body: 'Professional designers and instructors challenged my thinking, and their perspectives helped me improve the work.' },
-    { title: 'I learned by building', body: 'I pushed myself to learn new tools and technologies, and turned my ideas into a fully working website.' },
+    { title: 'I stayed the designer', body: 'I didn’t just take what the AI gave me. I checked every suggestion and made the final call myself.' },
+    { title: 'I kept iterating', body: 'I tried different layouts and interactions and kept refining them until they felt right.' },
+    { title: 'I asked for feedback', body: 'I showed my work to designers and instructors. Their honest feedback pushed me to make it better.' },
+    { title: 'I learned by building', body: 'I learned new tools as I went and turned my ideas into a real working website.' },
   ],
 
   tools: [

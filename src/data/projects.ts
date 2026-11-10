@@ -493,12 +493,8 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               {
-                title: 'What I learned',
-                body: 'Working with frontend and backend engineers taught me that **not every design is easy to implement**. Some ideas I thought were simple turned out to be technically challenging, so I had to **adjust my designs based on their feedback**. This experience helped me understand **developers’ challenges** and the importance of designing with **technical feasibility** in mind while **balancing user needs and implementation constraints**.',
-              },
-              {
-                title: 'What I want to learn next',
-                body: 'I want to further develop my **design skills** and strengthen my understanding of **UX research**, so I can make **more informed design decisions** based on user needs.',
+                title: 'Designing for trust',
+                body: 'In user interviews, beginners told me it is **hard to start investing** right away, so I designed every screen from that view to make stocks **easier to approach**, and I grew a lot as a designer through it. In **usability testing with 12 users over 3 days**, people said the **AI comments made stocks easier to understand**, but some also **doubted whether they could trust the AI**. PROFITKEY’s picks and comments come from combined market data, so the next challenge is to **help users trust the AI’s recommendations**.',
               },
             ],
           },

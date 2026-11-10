@@ -3,7 +3,7 @@
 // Source: design-exports/profitkey-english/*.png → public/images/screens/profitkey-en-*.webp
 import sharp from 'sharp'
 
-for (const name of ['notice', 'faq', 'news', 'community', 'my-comments', 'watchlist', 'edit-profile', 'login']) {
+for (const name of ['notice-list', 'notice', 'faq', 'news', 'community', 'my-comments', 'watchlist', 'edit-profile', 'login']) {
   const src = `design-exports/profitkey-english/${name}.png`
   const { data, info } = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true })
   const white = (x, y) => {

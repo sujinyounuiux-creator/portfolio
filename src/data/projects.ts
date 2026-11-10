@@ -443,8 +443,13 @@ export const projects: Project[] = glueAll<Project[]>([
               },
               {
                 title: 'Notices',
-                note: 'Service notices from the support team, such as scheduled maintenance.',
-                figure: { ...screen('profitkey-en-notice', 'PROFITKEY notices page: an important notice about scheduled maintenance, with date and author.', 'Notices', 1400, 780), tall: true },
+                note: 'A list of service notices from the support team, with the newest and most important first.',
+                figure: { ...screen('profitkey-en-notice-list', 'PROFITKEY notices list: six notices with author and date, an important maintenance notice first, beside the FAQ tab.', 'Notices', 1400, 734), tall: true },
+              },
+              {
+                title: 'Notice detail',
+                note: 'Opening a notice shows the full message, such as scheduled maintenance.',
+                figure: { ...screen('profitkey-en-notice', 'PROFITKEY notice detail: an important notice about scheduled maintenance, with date and author.', 'Notice detail', 1400, 780), tall: true },
               },
               {
                 title: 'FAQ',

@@ -215,3 +215,14 @@
   --btn-bg: #fff;
   margin-top: 28px;
 }
+
+/* "How I built this site" */
+.about-built {
+  max-width: 72ch;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--c-ink-soft);
+}
+.about-built strong {
+  color: var(--c-ink);
+}

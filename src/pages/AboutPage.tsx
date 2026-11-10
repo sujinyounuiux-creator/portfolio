@@ -90,6 +90,16 @@ export function AboutPage() {
             ))}
           </ul>
         </section>
+
+        {/* How I built this site */}
+        <section className="about-block" aria-labelledby="built-title">
+          <h2 id="built-title" className="section-title about-heading">
+            How I built this site
+          </h2>
+          <p className="about-built">
+            <Rich text={about.builtNote} />
+          </p>
+        </section>
       </div>
 
       <ContactCTA />

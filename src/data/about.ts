@@ -62,6 +62,10 @@ export const about = glueAll({
     { src: '/images/about/photo-9.webp', width: 900, height: 675, caption: 'KDD workshop', alt: 'A projected workshop slide titled “Core Values” listing six values, from continuous self development to aiming for a positive change.' },
   ],
 
+  // "How I built this site", in Sujin's own words
+  builtNote:
+    'I built this portfolio using **Claude as an AI-assisted development tool**, but I took **ownership of the entire creative and design process**. Rather than simply accepting AI-generated results, I **independently evaluated suggestions**, solved problems, and made design decisions based on my own vision. I experimented with different layouts and interactions, **continuously refining the experience through iteration**. I also **actively sought feedback** from professional designers and instructors, using their perspectives to challenge my thinking and improve my work. Throughout the process, I pushed myself to **learn new tools and technologies**, taking the initiative to turn my ideas into a **fully functioning website**.',
+
   tools: [
     { name: 'Figma', icon: '/images/tools/figma.svg' },
     { name: 'Adobe Photoshop', icon: '/images/tools/photoshop.png' },

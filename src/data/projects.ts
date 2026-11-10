@@ -749,21 +749,15 @@ export const projects: Project[] = glueAll<Project[]>([
       },
       {
         id: 'reflection',
-        label: 'Reflection',
-        title: 'Reflection & next steps',
+        label: 'Learning outcomes',
+        title: 'Learning outcomes',
         blocks: [
           {
             kind: 'text',
             body: [
-              '**UX research** helped us uncover **real user needs** and revealed **problems we might not have noticed** ourselves. Users had different expectations, so we compared their feedback to identify **common patterns**.',
-            ],
-          },
-          {
-            kind: 'list',
-            intro: 'Next steps:',
-            items: [
-              'Run **another round of usability testing** and refine the flows, starting with the **calendar’s past and upcoming events**.',
-              '**Consolidate event discovery in one place**, since users currently piece it together from Instagram, Eventbrite and word of mouth.',
+              'LastCow started with one question: how can people make the most of **last-minute tickets**, while the companies selling them still **turn unsold seats into revenue**?',
+              'Going from that challenge through **user interviews**, a persona, design challenges, **wireframes**, a high fidelity design, an **interactive prototype** and **usability testing** showed me how each step builds on the one before. The interviews kept us focused on **real needs** rather than our own assumptions, and testing confirmed the flows worked, with an **average SUS score of 92.5**.',
+              'Most of all, I learned to **design for both sides**: a fast, simple way for users to grab a good deal, and a way for organizers to fill their events.',
             ],
           },
         ],

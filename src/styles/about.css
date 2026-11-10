@@ -218,7 +218,8 @@
 
 /* "How I built this site": a lead line, then four short cards */
 .about-built__lead {
-  max-width: 48ch;
+  max-width: 60ch;
+  text-wrap: balance;
   font-size: clamp(1.2rem, 1rem + 0.7vw, 1.5rem);
   font-weight: 600;
   line-height: 1.45;

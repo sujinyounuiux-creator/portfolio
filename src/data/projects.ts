@@ -463,7 +463,7 @@ export const projects: Project[] = glueAll<Project[]>([
               {
                 title: 'Edit profile',
                 note: 'Members can change their nickname and email address, or log out.',
-                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: change nickname and email address, with a log out button.', 'Edit profile', 1400, 756), tall: true },
+                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: nickname and email address fields, each with a yellow Save button, and a log out button.', 'Edit profile', 1400, 756), tall: true },
               },
               {
                 title: 'LOGIN',
@@ -487,11 +487,6 @@ export const projects: Project[] = glueAll<Project[]>([
                 title: 'How I worked with engineers',
                 body: 'As the **only designer** on a team of engineers, I had **no one to talk design through with**, which I really missed. When design came up, the engineers often preferred the version that was **easier to build**, so we **disagreed** at times. They had good reasons, so I **respected the team’s view** while still finding room to **care for the design**. It showed me how hard it is to **build a website together through discussion**, and I learned a lot from it. I also enjoyed balancing a **clean, attractive UI** with the UX question of **what would help investment beginners** find their way into stocks.',
               },
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
               {
                 title: 'Learning Outcomes',
                 body: 'In user interviews, beginners told me it is **hard to start investing** right away, so I designed every screen from that view to make stocks **easier to approach**, and I grew a lot as a designer through it. In **usability testing with 12 users over 3 days**, people said the **AI comments made stocks easier to understand**, but some also **doubted whether they could trust the AI**. PROFITKEY’s picks and comments come from combined market data, so the next challenge is to **help users trust the AI’s recommendations**.',

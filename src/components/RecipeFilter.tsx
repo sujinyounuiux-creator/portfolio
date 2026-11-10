@@ -3,8 +3,8 @@ import { FilterPanel } from './FilterDemo'
 
 // Places on the Cookpad recipe page image (1600 x 1765), as percentages of it.
 const ICON = { x: 71.875, y: 4.59 } // the filter icon at the end of the search bar
-const PANEL = { left: 12.94, top: 6.75, width: 70.25 } // under the search bar, as wide as bar + Search
-const BASE = 1124 // the panel is laid out at this width (the bar's width at 1600 px), then scaled
+const PANEL = { left: 12.94, top: 6.75 } // under the search field, not the Search button
+const BASE = 985 // the panel is laid out at the search field's width (at 1600 px), then scaled
 
 /**
  * The filter icon in the Cookpad recipe page's search bar, working: clicking it opens the real

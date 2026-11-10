@@ -2211,6 +2211,8 @@
 }
 .filter-demo__panel {
   overflow: hidden;
+  /* only as wide as the search field, not the Search button beside it */
+  width: 88%;
   min-height: 0;
   transform: translateY(-14px);
   transition: transform 480ms var(--ease);
@@ -2439,6 +2441,26 @@
   .glossary__arrow,
   .glossary__tip {
     transition: none;
+  }
+}
+
+/* the panel is as wide as the search field: keep each option and the hint on one line */
+@media (min-width: 900px) {
+  .filter-demo__panel .filter-panel {
+    grid-template-columns: 1.15fr 1.15fr 1fr 0.95fr 1.25fr;
+    column-gap: var(--s-3);
+    padding-inline: var(--s-4);
+    font-size: 0.875rem;
+  }
+  .filter-demo__panel .filter-panel__title {
+    font-size: 1rem;
+  }
+  .filter-demo__panel .filter-panel__option {
+    white-space: nowrap;
+  }
+  .filter-demo__panel .filter-panel__input {
+    padding-inline: 0.4rem;
+    font-size: 0.75rem;
   }
 }
 

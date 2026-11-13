@@ -717,6 +717,3 @@ html:has(.lightbox[open]) {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.to-top circle {
-  fill: #fff;
-}

@@ -484,20 +484,20 @@ export const projects: Project[] = glueAll<Project[]>([
             plain: true,
             device: 'desktop',
             screens: [
-              { ...img('bca-web-home', 'Home page: a dark green hero with "Brazilian roots, at home in BC", a BCA News sign up and the next event, then One place for Brazilians in BC, upcoming events, Brazilian businesses, guides and news, 30 years of BCA, get involved, sponsors and the footer.', 'Home: scroll to see the whole page', 1200, 7653), tall: true, scrollInLaptop: true },
+              { ...img('bca-web-home', 'Home page: a dark green hero with "Brazilian roots, at home in BC", a BCA News sign up and the next event, then One place for Brazilians in BC, upcoming events, Brazilian businesses, guides and news, 30 years of BCA, get involved, sponsors and the footer.', 'Home: scroll to see the whole page', 2400, 15305), tall: true, scrollInLaptop: true },
             ],
           },
           {
             kind: 'pages',
             caption: 'The other desktop pages. Click a page to see all of it.',
             items: [
-              { label: 'Events', figure: { ...img('bca-web-events', 'Events page: "Find your next community moment", a community event calendar with a map and filters, upcoming events, more events and the BCA News band.', undefined, 1200, 3641), tall: true } },
-              { label: 'Event detail', figure: { ...img('bca-web-event-detail', 'Event detail for the Brazilian Holiday Market: a photo, what to expect, the schedule, good to know details and a free registration form with a map.', undefined, 1200, 3364), tall: true } },
-              { label: 'Businesses', figure: { ...img('bca-web-businesses', 'Business directory: "Brazilian businesses in BC" with search, category, location and language filters, featured business cards and pagination.', undefined, 1200, 3772), tall: true } },
-              { label: 'List your business', figure: { ...img('bca-web-list-business', 'List your business page: two ways to appear in the directory, free or as a member, and a form for business details, contact and a logo.', undefined, 1200, 3638), tall: true } },
-              { label: 'Get involved', figure: { ...img('bca-web-get-involved', 'Get involved page: three ways to help (volunteer, membership and donate), where volunteers help, and meeting people at an event.', undefined, 1200, 3178), tall: true } },
-              { label: 'Guides & news', figure: { ...img('bca-web-guides', 'Guides and news page: "Stories and updates from our community" with topic filters, a featured guide to your first months in BC, and article cards.', undefined, 1200, 2857), tall: true } },
-              { label: 'About', figure: { ...img('bca-web-about', 'About page: "Connecting the Brazilian community in BC", the story since 1996, the mission, the ways BCA connects people and how to be part of the community.', undefined, 1200, 3910), tall: true } },
+              { label: 'Events', figure: { ...img('bca-web-events', 'Events page: "Find your next community moment", a community event calendar with a map and filters, upcoming events, more events and the BCA News band.', undefined, 2400, 7287), tall: true } },
+              { label: 'Event detail', figure: { ...img('bca-web-event-detail', 'Event detail for the Brazilian Holiday Market: a photo, what to expect, the schedule, good to know details and a free registration form with a map.', undefined, 2400, 6728), tall: true } },
+              { label: 'Businesses', figure: { ...img('bca-web-businesses', 'Business directory: "Brazilian businesses in BC" with search, category, location and language filters, featured business cards and pagination.', undefined, 2400, 7548), tall: true } },
+              { label: 'List your business', figure: { ...img('bca-web-list-business', 'List your business page: two ways to appear in the directory, free or as a member, and a form for business details, contact and a logo.', undefined, 2400, 7282), tall: true } },
+              { label: 'Get involved', figure: { ...img('bca-web-get-involved', 'Get involved page: three ways to help (volunteer, membership and donate), where volunteers help, and meeting people at an event.', undefined, 2400, 6355), tall: true } },
+              { label: 'Guides & news', figure: { ...img('bca-web-guides', 'Guides and news page: "Stories and updates from our community" with topic filters, a featured guide to your first months in BC, and article cards.', undefined, 2400, 5713), tall: true } },
+              { label: 'About', figure: { ...img('bca-web-about', 'About page: "Connecting the Brazilian community in BC", the story since 1996, the mission, the ways BCA connects people and how to be part of the community.', undefined, 2400, 7822), tall: true } },
             ],
           },
           {

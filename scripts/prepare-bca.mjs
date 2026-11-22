@@ -24,10 +24,7 @@ const save = async (input, name, opts = {}) => {
   console.log(name, out.width, out.height)
 }
 
-// desktop pages, all at 1200 wide
-for (const f of ['home', 'events', 'event-detail', 'businesses', 'list-business', 'get-involved', 'guides', 'about']) {
-  await save(`${D}web-${f}.png`, `web-${f}`, { pipe: (s) => s.resize({ width: 1200 }) })
-}
+// the desktop pages are built sharp, at 2x, by scripts/stitch-bca-pages.mjs
 
 // phone screens cut out of the iPhone frames
 for (const f of ['home', 'events', 'event-detail', 'business', 'business-detail', 'menu', 'events-month', 'list-business', 'involved', 'guides', 'pt-home', 'pt-events', 'pt-involved']) {

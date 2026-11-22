@@ -44,7 +44,7 @@ export const about = glueAll({
   ],
 
   // Which photos appear in the smaller collage on Home (by file). The About page shows all.
-  homePhotos: ['/images/about/photo-2.webp', '/images/about/photo-7.webp', '/images/about/photo-10.webp', '/images/about/photo-4.webp'],
+  homePhotos: ['/images/about/photo-2.webp', '/images/about/photo-9.webp', '/images/about/photo-6.webp', '/images/about/photo-4.webp'],
 
   // Your own photos for the Polaroid collage (About Me on Home + About page).
   // Files live in /public/images/about/ (full frames, not cropped).

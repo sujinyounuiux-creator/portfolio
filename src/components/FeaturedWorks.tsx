@@ -20,7 +20,7 @@ function useCardClick(slug: string) {
 
 /** Compact folder card for the Case Study page: coloured tab, small thumbnail, title. */
 export function ProjectFolder({ project, index }: { project: Project; index: number }) {
-  const { slug, title, category, thumbnail, theme, proof } = project
+  const { slug, title, category, thumbnail, theme, proof, disciplines } = project
   // the folder colour is a soft tint of the project colour (see .feature / .folder in home.css)
   const style = { '--f-accent': theme.accent } as React.CSSProperties
   const onClick = useCardClick(slug)
@@ -39,6 +39,13 @@ export function ProjectFolder({ project, index }: { project: Project; index: num
             </Link>
           </h2>
           <p className="folder__meta">{category}</p>
+          <ul className="feature__tags folder__tags" aria-label="Design fields">
+            {disciplines.map((d) => (
+              <li key={d}>
+                <span className="feature__tag">#{disciplineLabel(d)}</span>
+              </li>
+            ))}
+          </ul>
           <p className="folder__proof">
             <strong>{proof.value}</strong> {proof.label}
           </p>

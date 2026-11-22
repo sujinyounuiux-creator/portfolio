@@ -1104,3 +1104,25 @@ button.wiggle {
 .folder__proof strong {
   font-weight: 800;
 }
+
+/* design field tags on the Case Study page folders and on each case study */
+.folder__tags {
+  margin-top: 0;
+}
+.folder__tags .feature__tag {
+  min-height: 26px;
+  padding: 0.15rem 0.55rem;
+}
+.cs-hero__tags {
+  margin-top: var(--s-4);
+}
+a.feature__tag {
+  text-decoration: none;
+  transition: background-color var(--t-fast), color var(--t-fast);
+}
+a.feature__tag:hover,
+a.feature__tag:focus-visible {
+  background: var(--c-accent-ink);
+  border-color: var(--c-accent-ink);
+  color: #fff;
+}

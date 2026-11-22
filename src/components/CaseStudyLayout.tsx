@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Project } from '../data/projects'
-import { getNeighbours } from '../data/projects'
+import { disciplineHref, disciplineLabel, getNeighbours } from '../data/projects'
 import { Arrow } from './Arrow'
 import { CaseStudySection } from './CaseStudySection'
 import { ContactCTA } from './ContactCTA'
@@ -103,6 +103,16 @@ export function CaseStudyLayout({ project }: { project: Project }) {
                 </span>
               </p>
               <p className="cs-hero__summary">{project.summary}</p>
+              {/* the design fields this project covers, each linking to the filtered project list */}
+              <ul className="feature__tags cs-hero__tags" aria-label="Design fields">
+                {project.disciplines.map((d) => (
+                  <li key={d}>
+                    <Link to={disciplineHref(d)} className="feature__tag">
+                      #{disciplineLabel(d)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <dl className="cs-facts">

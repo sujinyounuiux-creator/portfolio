@@ -1614,6 +1614,16 @@
 .compare-set .compare__label--after {
   right: 10px;
 }
+/* three comparisons: one row of three phones on wide screens */
+.compare-set--3 {
+  width: 100%;
+  max-width: 940px;
+}
+@media (min-width: 760px) {
+  .compare-set--3 .device--phone {
+    width: min(280px, calc(33.333% - 1.25rem));
+  }
+}
 .compare-set .device figcaption {
   text-align: center;
   font-weight: 700;

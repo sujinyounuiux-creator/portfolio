@@ -325,7 +325,7 @@ function BlockView({ block }: { block: Block }) {
       )
     case 'compareSet':
       return (
-        <div className="devices devices--phone compare-set">
+        <div className={`devices devices--phone compare-set compare-set--${block.items.length}`}>
           {block.items.map((it) => (
             <DeviceFrame key={it.label} device="phone" caption={it.label} className="device--compare">
               <CompareSlider label={it.label} labels={block.labels} before={it.before} after={it.after} />

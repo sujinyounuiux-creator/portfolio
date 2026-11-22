@@ -569,6 +569,32 @@ export const projects: Project[] = glueAll<Project[]>([
               img('bca-m-guides', 'Mobile guides and news: "Stories and updates from our community" with topic filters and article search.', 'Guides & news', 780, 1690),
             ],
           },
+          {
+            kind: 'text',
+            body: ['**In English and Portuguese.** Every screen also has a Portuguese version, reached from the **EN / PT switch**. Drag the handle on each phone to compare the two.'],
+          },
+          {
+            // Portuguese iPhone frames: Figma 1392:19429 (Home), 1392:20955 (Events), 1392:25447 (Get involved)
+            kind: 'compareSet',
+            labels: ['English', 'Português'],
+            items: [
+              {
+                label: 'Home',
+                before: img('bca-m-home', 'Mobile home in English: "Brazilian roots, at home in BC" with Get BCA News.', undefined, 780, 1690),
+                after: img('bca-m-pt-home', 'Mobile home in Portuguese: "Raízes brasileiras, em casa na BC" with Receba o BCA News.', undefined, 780, 1690),
+              },
+              {
+                label: 'Events',
+                before: img('bca-m-events', 'Mobile events in English: "Find your next community moment" with Browse the calendar.', undefined, 780, 1690),
+                after: img('bca-m-pt-events', 'Mobile events in Portuguese: "Encontre seu próximo momento em comunidade" with Ver a agenda.', undefined, 780, 1690),
+              },
+              {
+                label: 'Get involved',
+                before: img('bca-m-involved', 'Mobile get involved in English: "Be part of the BCA community" with Find your way to help.', undefined, 780, 1690),
+                after: img('bca-m-pt-involved', 'Mobile get involved in Portuguese: "Faça parte da comunidade BCA" with Descubra como ajudar.', undefined, 780, 1690),
+              },
+            ],
+          },
         ],
       },
       {

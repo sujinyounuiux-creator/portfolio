@@ -24,6 +24,9 @@ function autoPos(t: number) {
  * Works with mouse, touch (horizontal drag; vertical page scroll still works)
  * and keyboard (arrow keys, Home/End on the handle).
  */
+// labels read in a sentence ("Drag to see wireframe"), except language names, which stay capitalised
+const lower = (s: string) => (/^(English|Português|Portuguese|Korean)$/.test(s) ? s : s.toLowerCase())
+
 export function CompareSlider({ before, after, label, labels = ['Before', 'After'] }: Props) {
   const [pos, setPos] = useState(0)
   const [touched, setTouched] = useState(false)
@@ -113,7 +116,7 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
       {/* until someone uses it, a pill beside the handle says it can be dragged */}
       {!touched && (
         <span className="compare__hint" aria-hidden="true">
-          Drag to see {labels[0].toLowerCase()}
+          Drag to see {lower(labels[0])}
         </span>
       )}
 
@@ -122,11 +125,11 @@ export function CompareSlider({ before, after, label, labels = ['Before', 'After
         type="button"
         className="compare__handle"
         role="slider"
-        aria-label={`${label}: drag to compare ${labels[1].toLowerCase()} with ${labels[0].toLowerCase()}`}
+        aria-label={`${label}: drag to compare ${lower(labels[1])} with ${lower(labels[0])}`}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(pos)}
-        aria-valuetext={`${Math.round(pos)}% ${labels[0].toLowerCase()} shown`}
+        aria-valuetext={`${Math.round(pos)}% ${lower(labels[0])} shown`}
         onKeyDown={onKey}
       >
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">

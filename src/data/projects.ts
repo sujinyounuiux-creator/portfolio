@@ -189,6 +189,297 @@ const screen = (name: string, alt: string, caption: string, width: number, heigh
 })
 
 export const projects: Project[] = glueAll<Project[]>([
+  // ───────────────────────────────────────────── BCA
+  // Sources: the BCA-redesign Figma file (Final UI, Prototype & UX Evaluation, Wireframes,
+  // Moodboard & Visual Direction, iPhone mockups), the Final_BCA FigJam research board and the
+  // team's Notion page. Images: scripts/prepare-bca.mjs and scripts/build-bca-cover.mjs.
+  // Teammates are not named.
+  {
+    slug: 'bca',
+    title: 'BCA Website Redesign',
+    disciplines: ['ux-ui'],
+    featured: true,
+    tagline: 'Brazilian roots, at home in BC',
+    proof: { value: '4 of 4', label: 'testers gave subscribing to BCA News the easiest rating' },
+    summary:
+      'A redesign of the website for the Brazilian Community Association of BC, a non-profit, so Brazilians in BC can find events, local businesses and ways to get involved, in English or Portuguese.',
+    category: 'Responsive web · Non-profit redesign',
+    platform: 'Responsive web (desktop, tablet and mobile)',
+    role: 'UI/UX Design · Mobile prototype lead',
+    timeline: '2026.10 to 2026.11',
+    team: 'Team of 4 designers',
+    tools: ['Figma', 'FigJam', 'UXtweak', 'Whimsical', 'Notion'],
+    thumbnail: img('bca-cover', 'BCA Website Redesign cover: the BCA logo, the headline "Brazilian roots, at home in BC" and chips for Events calendar, Business directory and EN / PT, beside the new desktop home page and the Events page on a phone.'),
+    hero: img('bca-cover', 'BCA Website Redesign cover: the BCA logo, the headline "Brazilian roots, at home in BC" and chips for Events calendar, Business directory and EN / PT, beside the new desktop home page and the Events page on a phone.'),
+    theme: { accent: '#00664E', ink: '#004131', surface: '#F4F8F1' },
+    tldr: [
+      { label: 'Problem', text: 'People could not tell what BCA offers, where to start, or how to find events, businesses and resources on the current site.' },
+      { label: 'My role', text: 'UI/UX designer in a team of 4: research, user flows, visual design and the mobile prototype, which I led.' },
+      { label: 'Solution', text: 'A clear, bilingual site built around four goals: accessibility, community engagement, business visibility and an English / Portuguese experience.' },
+      { label: 'Result', text: 'Desktop, tablet and mobile designs, an interactive prototype, a design system and a CMS handoff, tested with users on UXtweak.' },
+    ],
+    sections: [
+      {
+        id: 'overview',
+        label: 'Overview',
+        title: 'The challenge',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'The **Brazilian Community Association of BC (BCA)** is a volunteer led non-profit that has helped Brazilians in British Columbia feel connected for 30 years. Its website is where newcomers, long-term residents and local Brazilian business owners should find events, guides and ways to take part, but the current site made that hard.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Problem', body: 'The site did not explain **what BCA does**, had **no clear next step** and was hard to navigate, so services, events and businesses were easy to miss.' },
+              { title: 'Goal', body: 'Four goals from the client: **accessibility**, **community engagement**, **business visibility** and a **bilingual** English and Portuguese experience.' },
+              { title: 'My role', body: 'I worked on **both the UX and the UI**: research and flows with the team, the visual design, and I led the **mobile prototype**.' },
+            ],
+          },
+          {
+            kind: 'list',
+            intro: 'Who the site is for:',
+            items: ['Brazilian residents and newcomers in BC', 'Local Brazilian business owners', 'Community members and event participants'],
+          },
+        ],
+      },
+      {
+        id: 'research',
+        label: 'Research',
+        title: 'Auditing the current site',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'We started with an audit of the live site, page by page, on our FigJam board. The issues grouped into three themes: **discoverability**, **clarity** and **navigation**.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Discoverability', body: 'Services were hard to find, and the newsletter sign up sent people to the **WordPress Reader with no way back** to BCA.' },
+              { title: 'Clarity', body: 'The hero had **no value proposition and no call to action**, and "Read More" and "Blog" led to confusingly similar places.' },
+              { title: 'Navigation', body: 'The nav **did not stay on screen**, the About Us button **did not work**, there was **no language switcher** and the buttons were inconsistent.' },
+            ],
+          },
+          {
+            kind: 'text',
+            body: [
+              'We also audited the colours and type in use. The site used three typefaces, its three button styles each had a different corner radius, and the menu mixed English and Portuguese. BCA confirmed the current colours carried **no particular meaning** and could change, while **the logo would stay**.',
+              'Asking **"why" five times** led us to the root cause: the president builds and runs the whole site alone on a paid template, so over time the content had become **scattered**. A redesign had to be easy for a small volunteer team to keep up to date.',
+            ],
+          },
+          {
+            kind: 'figure',
+            figure: { ...img('bca-competitive', 'Competitive analysis table comparing Brazcan Chamber, Latincouver, ICA Vancouver and Brazoka on 10 UX features, such as a clear value proposition, newsletter sign up, bilingual experience and events discovery, with a BCA design opportunity for each.', 'Competitive analysis: four community organisations across 10 UX features, and the opportunity each one showed for BCA.', 1600, 984), zoom: true },
+          },
+          {
+            kind: 'figure',
+            figure: { ...img('bca-persona', 'Proto-persona "Community Seeker" in British Columbia, with a scenario, needs, goals, key tasks and research to validate, followed by an As is / To be table: "I don’t really understand what BCA does" becomes communicating BCA’s purpose clearly on the homepage.', 'Proto-persona built from team assumptions, to be validated through research.', 1400, 1862), zoom: true },
+          },
+        ],
+      },
+      {
+        id: 'define',
+        label: 'Define',
+        title: 'How might we…',
+        blocks: [
+          {
+            kind: 'text',
+            body: ['From the audit and the persona, we narrowed our How Might We questions down to the top four. These shaped the whole site:'],
+          },
+          {
+            kind: 'list',
+            items: [
+              'How might we help people **understand what BCA offers** and quickly discover resources, businesses and events?',
+              'How might we make it easy to **participate in and support** the community?',
+              'How might we make the **newsletter more valuable** and easier to subscribe to?',
+              'How might we make **business partnership** with BCA clear and appealing?',
+            ],
+          },
+          {
+            kind: 'text',
+            body: [
+              'We agreed on seven success criteria to check every design against: **easy navigation**, **event discoverability**, **clear communication**, a **bilingual** experience, **mobile** friendly pages, **accessibility** and a better **newsletter**.',
+            ],
+          },
+          {
+            kind: 'figure',
+            figure: { ...img('bca-sitemap', 'Sitemap: the homepage leads to About, Events, Businesses, Guides & News and Get Involved, each with its own pages and success states, plus global elements like the header with the EN / PT toggle, the footer and the BCA News sign up.', 'Sitemap: five sections under the homepage, with success states for every form and shared elements like the EN / PT toggle.', 2000, 464), zoom: true },
+          },
+        ],
+      },
+      {
+        id: 'wireframes',
+        label: 'Wireframes',
+        title: 'Wireframes',
+        blocks: [
+          {
+            kind: 'pages',
+            caption: 'Low fi wireframes for the main flows: find out what BCA is, find an event, find a business and get involved. Click a page to see it larger.',
+            items: [
+              { label: 'Home', figure: { ...img('bca-wf-home', 'Home page wireframe: a hero with Subscribe and Explore Events buttons, four shortcuts (Events, Businesses, Volunteer, Donate), About BCA, community highlights, ways to get involved, the business partners programme and a newsletter sign up.', undefined, 864, 2237), tall: true } },
+              { label: 'Events', figure: { ...img('bca-wf-events', 'Events wireframe: a community event calendar with filters, a map view with an event pop up and a list of events, upcoming event cards, and a "Have an event to share?" banner.', undefined, 864, 2099), tall: true } },
+              { label: 'Business directory', figure: { ...img('bca-wf-business', 'Business directory wireframe: category and location filters, a search bar with sorting, business cards with free or paid listings, pagination and a List Your Business banner.', undefined, 864, 1325), tall: true } },
+              { label: 'Get involved', figure: { ...img('bca-wf-involved', 'Get involved wireframe: volunteer interest areas, community membership benefits, a donate section, community events and community stories.', undefined, 864, 2075), tall: true } },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'visual-design',
+        label: 'Visual design',
+        title: 'Visual direction',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Since the logo stayed, we built the palette from it: **deep greens** for trust and calm, with a bright **lime** and a sunny **yellow** for actions and highlights. The type pairs **Bricolage Grotesque**, a friendly, characterful heading face, with **Inter** for clear, readable body text, and the icons come from **Lucide**.',
+            ],
+          },
+          {
+            kind: 'swatches',
+            swatches: [
+              { name: 'Deep Green', hex: '#004131', usage: 'Hero, header and footer' },
+              { name: 'Primary Green', hex: '#00664E', usage: 'Links and secondary buttons' },
+              { name: 'Lime', hex: '#C5FF4B', usage: 'Main calls to action' },
+              { name: 'Yellow', hex: '#FFD23F', usage: 'Highlights and tags' },
+              { name: 'Page', hex: '#F4F8F1', usage: 'Page background' },
+              { name: 'Ink', hex: '#0F1C16', usage: 'Body text' },
+            ],
+          },
+          {
+            kind: 'type',
+            styles: [
+              { name: 'H1', font: 'Bricolage Grotesque', weight: 700, size: 56, sample: 'Brazilian roots, at home in BC' },
+              { name: 'H2', font: 'Bricolage Grotesque', weight: 700, size: 48, sample: 'Upcoming events' },
+              { name: 'H3', font: 'Bricolage Grotesque', weight: 700, size: 32, sample: 'Three ways to help' },
+              { name: 'H4', font: 'Bricolage Grotesque', weight: 700, size: 24, sample: 'Brazilian Holiday Market' },
+              { name: 'Body', font: 'Inter', weight: 400, size: 18, sample: 'Discover events, culture and connections across BC.' },
+              { name: 'Small', font: 'Inter', weight: 400, size: 14, sample: 'Sat, 11 AM to 6 PM · Latin Plaza Hub' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'final-design',
+        label: 'Final design',
+        title: 'Final design',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'The new home page says **who BCA is for** in one line, puts **the next event** and the **BCA News** sign up right in the hero, and leads to the four things people come for: events, businesses, guides and ways to get involved. Every page has an **EN / PT switch** in the header.',
+            ],
+          },
+          {
+            kind: 'devices',
+            plain: true,
+            device: 'desktop',
+            screens: [
+              { ...img('bca-web-home', 'Home page: a dark green hero with "Brazilian roots, at home in BC", a BCA News sign up and the next event, then One place for Brazilians in BC, upcoming events, Brazilian businesses, guides and news, 30 years of BCA, get involved, sponsors and the footer.', 'Home: scroll to see the whole page', 1200, 7653), tall: true, scrollInLaptop: true },
+            ],
+          },
+          {
+            kind: 'pages',
+            caption: 'The other desktop pages. Click a page to see all of it.',
+            items: [
+              { label: 'Events', figure: { ...img('bca-web-events', 'Events page: "Find your next community moment", a community event calendar with a map and filters, upcoming events, more events and the BCA News band.', undefined, 1200, 3641), tall: true } },
+              { label: 'Event detail', figure: { ...img('bca-web-event-detail', 'Event detail for the Brazilian Holiday Market: a photo, what to expect, the schedule, good to know details and a free registration form with a map.', undefined, 1200, 3364), tall: true } },
+              { label: 'Businesses', figure: { ...img('bca-web-businesses', 'Business directory: "Brazilian businesses in BC" with search, category, location and language filters, featured business cards and pagination.', undefined, 1200, 3772), tall: true } },
+              { label: 'List your business', figure: { ...img('bca-web-list-business', 'List your business page: two ways to appear in the directory, free or as a member, and a form for business details, contact and a logo.', undefined, 1200, 3638), tall: true } },
+              { label: 'Get involved', figure: { ...img('bca-web-get-involved', 'Get involved page: three ways to help (volunteer, membership and donate), where volunteers help, and meeting people at an event.', undefined, 1200, 3178), tall: true } },
+              { label: 'Guides & news', figure: { ...img('bca-web-guides', 'Guides and news page: "Stories and updates from our community" with topic filters, a featured guide to your first months in BC, and article cards.', undefined, 1200, 2857), tall: true } },
+              { label: 'About', figure: { ...img('bca-web-about', 'About page: "Connecting the Brazilian community in BC", the story since 1996, the mission, the ways BCA connects people and how to be part of the community.', undefined, 1200, 3910), tall: true } },
+            ],
+          },
+          {
+            kind: 'text',
+            body: [
+              'I led the **mobile prototype**. On a phone the same flows had to stay just as easy: a **full screen menu** with the language switch and the BCA News button at the bottom, **search, filters and sorting** at the top of the directory, and the next event shown as a simple card with a map link.',
+            ],
+          },
+          {
+            kind: 'devices',
+            device: 'phone',
+            screens: [
+              img('bca-m-home', 'Mobile home: "Brazilian roots, at home in BC" with the email field and Get BCA News button.', 'Home', 780, 1690),
+              img('bca-m-events', 'Mobile events: "Find your next community moment" with a Browse the calendar button and the next event card.', 'Events', 780, 1690),
+              img('bca-m-business', 'Mobile business directory: "Brazilian businesses in BC" with a search bar, filters and sorting.', 'Businesses', 780, 1690),
+              img('bca-m-menu', 'Mobile menu: About, Events, Businesses, Guides & news, Get involved and Contact, with an EN / PT switch and a Get BCA News button.', 'Menu', 780, 1690),
+            ],
+          },
+        ],
+      },
+      {
+        id: 'testing',
+        label: 'Testing',
+        title: 'Usability testing',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks: find an event, subscribe to BCA News, sign up to volunteer and list a business.',
+            ],
+          },
+          {
+            kind: 'stats',
+            items: [
+              { value: '15', label: 'sessions launched' },
+              { value: '6', label: 'sessions completed' },
+              { value: '13:00', label: 'median session time' },
+              { value: '4 of 4', label: 'rated Subscribe the easiest' },
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Worked well', body: 'Testers found the site **simple and easy to follow**, and responded well to the **design and colour palette**. Finding an event and subscribing were rated easiest.' },
+              { title: 'Improve next', body: 'Make the **menu and sorting** easier to find, **lighten the information** on a first visit, and make the intro animation **shorter or skippable**. Volunteering and listing a business got more mixed ratings.' },
+            ],
+          },
+          {
+            kind: 'text',
+            boxed: true,
+            body: [
+              '**A limitation:** UXtweak reported 0% task success because the correct answer criteria were not set up, so it is not a failure rate. With small, uneven samples, we treat these findings as **directional**, not statistically significant.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'handoff',
+        label: 'Handoff',
+        title: 'Deliverables & next steps',
+        blocks: [
+          {
+            kind: 'cards',
+            items: [
+              { title: 'What we delivered', body: 'The **desktop design**, an **interactive prototype**, **tablet and mobile** screens, **Portuguese and English** mockups, a **design system** and a **CMS handoff** guide.' },
+              { title: 'What we recommended', body: 'Build it in **WordPress** with a CMS the team can update, keep the **business directory** maintained, post **events and blog updates** regularly and **integrate the newsletter**.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'reflection',
+        label: 'Learning outcomes',
+        title: 'Learning outcomes',
+        blocks: [
+          {
+            kind: 'text',
+            boxed: true,
+            body: [
+              'Working with a **real non-profit client** taught me to design for the people who will **run the site**, not only the people who visit it. Because one volunteer manages everything, every decision had to be **simple to maintain**. Working on **both the UX research and the UI** in a team of four showed me how an audit and a few clear goals keep a team aligned, and leading the **mobile prototype** taught me to rethink each flow for a small screen instead of shrinking the desktop. Testing also reminded me to **set up the test carefully**, so the results can be trusted.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
   // ───────────────────────────────────────────── PROFITKEY
   {
     slug: 'profitkey',

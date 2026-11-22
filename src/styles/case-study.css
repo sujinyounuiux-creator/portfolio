@@ -1054,7 +1054,8 @@
   align-items: stretch;
   overflow: hidden;
   border-radius: var(--r-lg);
-  background: var(--c-surface);
+  /* the site beige, not white */
+  background: var(--c-bg-deep);
   text-decoration: none;
   transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
 }
@@ -1075,7 +1076,7 @@
   justify-content: center;
   min-height: 104px;
   padding: var(--s-3);
-  background: color-mix(in srgb, var(--pager-accent) 14%, #fff);
+  background: color-mix(in srgb, var(--pager-accent) 14%, var(--c-bg-deep));
 }
 .cs-pager__media img {
   width: auto;

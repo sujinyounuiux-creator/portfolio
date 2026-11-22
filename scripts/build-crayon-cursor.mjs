@@ -4,8 +4,8 @@
 //   crayon         main blue crayon, everywhere          hotspot: the tip, at (4, 4) in CSS pixels
 //   crayon-link    deep blue crayon, on anything clickable
 //   crayon-press   deep blue crayon with a short stroke at the tip, while a link or button is pressed
-//   magnifier-in / magnifier-out   zoomable images        hotspot: lens centre (17, 17)
-//   drag-x / drag-move / drag-move-held   sliders, moving a zoomed photo   hotspot: centre (22, 22)
+//   magnifier-in / magnifier-out   zoomable images, 36 px   hotspot: lens centre (14, 14)
+//   drag-x / drag-move / drag-move-held   sliders, moving a zoomed photo, 36 px   hotspot: centre (18, 18)
 // Note: browsers fall back to the plain system cursor when a cursor this size would hang over
 // the window edge; the fallbacks are set in src/styles/base.css.
 import { mkdirSync } from 'node:fs'
@@ -21,10 +21,12 @@ const MAIN = { body: '#789BC4', tip: '#9DB7D6', band: '#5F86B8' } // --c-accent
 const DEEP = { body: '#3D628F', tip: '#6F93BD', band: '#2E4D73' } // --c-accent-ink
 const PAPER = '#FFFDF9' // --c-surface
 
-const save = async (name, svg) => {
+// size: the cursor's size in CSS px. The crayon is 44; the magnifier and arrows are drawn larger
+// inside the same canvas, so they are saved at 36 to look the same size as the crayon.
+const save = async (name, svg, size = 44) => {
   const big = await sharp(Buffer.from(svg)).png().toBuffer()
-  await sharp(big).toFile(`${out}/${name}@2x.png`)
-  await sharp(big).resize(S / 2, S / 2).png().toFile(`${out}/${name}.png`)
+  await sharp(big).resize(size * 2, size * 2).png().toFile(`${out}/${name}@2x.png`)
+  await sharp(big).resize(size, size).png().toFile(`${out}/${name}.png`)
 }
 const svg = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">
   <g stroke-linejoin="round" stroke-linecap="round">${inner}</g>
@@ -70,8 +72,8 @@ const magnifier = (mark) =>
   <path d="M21 30 Q23 22 30 20.5" fill="none" stroke="${MAIN.tip}" stroke-width="3"/>
   <path d="${mark}" fill="none" stroke="${INK}" stroke-width="5"/>`)
 
-await save('magnifier-in', magnifier('M25 34 H43 M34 25 V43'))
-await save('magnifier-out', magnifier('M25 34 H43'))
+await save('magnifier-in', magnifier('M25 34 H43 M34 25 V43'), 36)
+await save('magnifier-out', magnifier('M25 34 H43'), 36)
 
 // Drag arrows: flat main blue (deep blue while a photo is held), with the ink outline.
 // The centre is at (44, 44) of the 88 px image (22, 22 in CSS px).
@@ -83,7 +85,7 @@ const drag = (shape, c) =>
   <path d="${shape}" fill="#fff" stroke="#fff" stroke-width="10"/>
   <path d="${shape}" fill="${c.body}" stroke="${INK}" stroke-width="3.6"/>`)
 
-await save('drag-x', drag(dragX, MAIN))
-await save('drag-move', drag(dragMove, MAIN))
-await save('drag-move-held', drag(dragMove, DEEP))
+await save('drag-x', drag(dragX, MAIN), 36)
+await save('drag-move', drag(dragMove, MAIN), 36)
+await save('drag-move-held', drag(dragMove, DEEP), 36)
 console.log('done')

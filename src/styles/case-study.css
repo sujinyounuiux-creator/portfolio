@@ -2827,13 +2827,14 @@
 .smap__tree .smap__tree {
   margin-left: 0.7rem;
   padding-left: 0.9rem;
-  border-left: 2px solid #c9d3cc;
 }
 .smap__tree li {
   position: relative;
   margin-top: 0.5rem;
 }
 /* the little branch from the line to each child */
+/* connectors: each child draws its own piece of the line, so the line stops at the last child
+   instead of running on below it */
 .smap__tree .smap__tree > li::before {
   content: '';
   position: absolute;
@@ -2841,6 +2842,19 @@
   top: 1.05rem;
   width: 0.75rem;
   border-top: 2px solid #c9d3cc;
+}
+.smap__tree .smap__tree > li::after {
+  content: '';
+  position: absolute;
+  left: -0.9rem;
+  top: -0.5rem;
+  bottom: 0;
+  border-left: 2px solid #c9d3cc;
+}
+/* the last child: the line only comes down as far as its branch */
+.smap__tree .smap__tree > li:last-child::after {
+  bottom: auto;
+  height: calc(0.5rem + 1.05rem + 2px);
 }
 .smap__node {
   display: inline-flex;

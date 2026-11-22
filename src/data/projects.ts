@@ -220,7 +220,7 @@ export const projects: Project[] = glueAll<Project[]>([
     role: 'UI/UX Design · Mobile prototype lead',
     timeline: '2026.10 to 2026.11',
     team: 'Team of 4 designers',
-    tools: ['Figma', 'FigJam', 'UXtweak', 'Whimsical', 'Notion'],
+    tools: ['Figma', 'FigJam', 'UXtweak', 'Whimsical', 'Notion', 'Claude (vibe coding)'],
     thumbnail: img('bca-cover', 'BCA Website Redesign cover: the BCA logo, the headline "Brazilian roots, at home in BC" and chips for Events calendar, Business directory and EN / PT, beside the new desktop home page and the Events page on a phone.'),
     hero: img('bca-cover', 'BCA Website Redesign cover: the BCA logo, the headline "Brazilian roots, at home in BC" and chips for Events calendar, Business directory and EN / PT, beside the new desktop home page and the Events page on a phone.'),
     theme: { accent: '#00664E', ink: '#004131', surface: '#F4F8F1' },
@@ -664,6 +664,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'Because one volunteer runs everything, we didn’t stop at screens. We also built a **working version of the site** with a simple **admin**, so BCA can add and edit **events and businesses**, save drafts and publish them without touching code.',
+              'We built a lot of this with **vibe coding**: describing what we wanted to **Claude**, then checking and refining what it made against our Figma designs. It let a team of designers turn the design into a **working site**, and into our interactive final presentation, within the project.',
               'BCA already runs **WordPress**, so our plan rebuilds the redesign **inside the same install**: a theme made from our design system, events and businesses as their own content types, forms that go to a review step, and an English and Portuguese setup. Nothing new for the team to learn.',
             ],
           },
@@ -692,7 +693,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             boxed: true,
             body: [
-              'Working with a **real non-profit client** taught me to design for the people who will **run the site**, not only the people who visit it. Because one volunteer manages everything, every decision had to be **simple to maintain**. Working on **both the UX research and the UI** in a team of four showed me how an audit and a few clear goals keep a team aligned, and leading the **mobile prototype** taught me to rethink each flow for a small screen instead of shrinking the desktop. Testing also reminded me to **set up the test carefully**, so the results can be trusted.',
+              'Working with a **real non-profit client** taught me to design for the people who will **run the site**, not only the people who visit it. Because one volunteer manages everything, every decision had to be **simple to maintain**. Using **vibe coding** showed me how quickly a design can become something the client can actually try. Working on **both the UX research and the UI** in a team of four showed me how an audit and a few clear goals keep a team aligned, and leading the **mobile prototype** taught me to rethink each flow for a small screen instead of shrinking the desktop. Testing also reminded me to **set up the test carefully**, so the results can be trusted.',
             ],
           },
         ],

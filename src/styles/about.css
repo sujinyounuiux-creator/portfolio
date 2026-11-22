@@ -212,7 +212,7 @@
 }
 
 .about-resume {
-  --btn-bg: #fff;
+  --btn-bg: var(--c-bg); /* the site beige, not white */
   margin-top: 28px;
 }
 

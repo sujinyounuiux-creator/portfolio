@@ -425,7 +425,7 @@
 }
 .contact .contact__copy,
 .contact-card .contact__copy {
-  --btn-bg: #fff;
+  --btn-bg: var(--c-bg); /* the site beige, not white */
 }
 .contact__status {
   font-size: var(--fs-sm);

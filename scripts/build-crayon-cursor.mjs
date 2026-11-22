@@ -1,5 +1,6 @@
 // Draws the site's cursors in the portfolio's own simple style: flat shapes in the portfolio blues
-// with the same dark ink outline as the doodles, and a white halo so they show on any background.
+// with the same dark ink outline as the doodles, and a beige halo (the site background) so they
+// show on any background.
 // Output (public/cursors/): 44 px images (*.png) and 88 px ones for sharp screens (*@2x.png).
 //   crayon         main blue crayon, everywhere          hotspot: the tip, at (4, 4) in CSS pixels
 //   crayon-link    deep blue crayon with a click burst at the tip, on anything clickable (hotspot 14, 14)
@@ -20,6 +21,8 @@ const INK = '#1F2430' // --c-ink
 const MAIN = { body: '#789BC4', tip: '#9DB7D6', band: '#5F86B8' } // --c-accent
 const DEEP = { body: '#3D628F', tip: '#6F93BD', band: '#2E4D73' } // --c-accent-ink
 const PAPER = '#FFFDF9' // --c-surface
+// the outline that keeps each cursor visible on any background: the site's own beige (--c-bg)
+const HALO = '#FFF8F1'
 
 // size: the cursor's size in CSS px. The crayon is 44; the magnifier and arrows are drawn larger
 // inside the same canvas, so they are saved at 36 to look the same size as the crayon.
@@ -50,14 +53,14 @@ const burst = (long) => {
     [-0.72, -0.72], // up and left
   ].map(([dx, dy]) => `M${TIP + dx * a} ${TIP + dy * a} L${(TIP + dx * b).toFixed(1)} ${(TIP + dy * b).toFixed(1)}`)
   const d = lines.join(' ')
-  return `<path d="${d}" fill="none" stroke="#fff" stroke-width="${long ? 9 : 8}"/>
+  return `<path d="${d}" fill="none" stroke="${HALO}" stroke-width="${long ? 9 : 8}"/>
   <path d="${d}" fill="none" stroke="${INK}" stroke-width="${long ? 4.4 : 3.8}"/>`
 }
 const crayon = (c, mode = 'plain') =>
   svg(`
   ${mode === 'plain' ? '' : burst(mode === 'press')}
   <g transform="translate(${mode === 'plain' ? 9 : TIP} ${mode === 'plain' ? 9 : TIP}) rotate(-45) scale(${mode === 'plain' ? 1.2 : 1.05})">
-    <path d="${outline}" fill="#fff" stroke="#fff" stroke-width="6.5"/>
+    <path d="${outline}" fill="${HALO}" stroke="${HALO}" stroke-width="6.5"/>
     <path d="${outline}" fill="${c.body}"/>
     <path d="M-3.4 2.2 Q0 -1.2 3.4 2.2 L${W} 17 H-${W} Z" fill="${c.tip}"/>
     <rect x="-${W}" y="27" width="${2 * W}" height="15" fill="${c.band}"/>
@@ -74,10 +77,10 @@ await save('crayon-press', crayon(DEEP, 'press'))
 // The lens centre is at (34, 34) of the 88 px image (17, 17 in CSS px).
 const magnifier = (mark) =>
   svg(`
-  <path d="M52 52 L74 74" stroke="#fff" stroke-width="19"/>
+  <path d="M52 52 L74 74" stroke="${HALO}" stroke-width="19"/>
   <path d="M52 52 L74 74" stroke="${INK}" stroke-width="14"/>
   <path d="M52 52 L74 74" stroke="${DEEP.body}" stroke-width="8.8"/>
-  <circle cx="34" cy="34" r="22" fill="#fff" stroke="#fff" stroke-width="15"/>
+  <circle cx="34" cy="34" r="22" fill="${HALO}" stroke="${HALO}" stroke-width="15"/>
   <circle cx="34" cy="34" r="22" fill="${PAPER}" stroke="${INK}" stroke-width="10"/>
   <circle cx="34" cy="34" r="22" fill="none" stroke="${MAIN.body}" stroke-width="5"/>
   <path d="M21 30 Q23 22 30 20.5" fill="none" stroke="${MAIN.tip}" stroke-width="3"/>
@@ -93,7 +96,7 @@ const dragMove =
   'M44 9 L57 22 H49.5 V38.5 H66 V31 L79 44 L66 57 V49.5 H49.5 V66 H57 L44 79 L31 66 H38.5 V49.5 H22 V57 L9 44 L22 31 V38.5 H38.5 V22 H31 Z'
 const drag = (shape, c) =>
   svg(`
-  <path d="${shape}" fill="#fff" stroke="#fff" stroke-width="10"/>
+  <path d="${shape}" fill="${HALO}" stroke="${HALO}" stroke-width="10"/>
   <path d="${shape}" fill="${c.body}" stroke="${INK}" stroke-width="3.6"/>`)
 
 await save('drag-x', drag(dragX, MAIN), 36)

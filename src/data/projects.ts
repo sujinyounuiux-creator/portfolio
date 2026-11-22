@@ -424,7 +424,6 @@ export const projects: Project[] = glueAll<Project[]>([
         blocks: [
           {
             kind: 'pages',
-            caption: 'Low fi wireframes for the main flows: find out what BCA is, find an event, find a business and get involved. Click a page to see it larger.',
             items: [
               { label: 'Home', figure: { ...img('bca-wf-home', 'Home page wireframe: a hero with Subscribe and Explore Events buttons, four shortcuts (Events, Businesses, Volunteer, Donate), About BCA, community highlights, ways to get involved, the business partners programme and a newsletter sign up.', undefined, 864, 2237), tall: true } },
               { label: 'Events', figure: { ...img('bca-wf-events', 'Events wireframe: a community event calendar with filters, a map view with an event pop up and a list of events, upcoming event cards, and a "Have an event to share?" banner.', undefined, 864, 2099), tall: true } },

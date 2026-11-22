@@ -8,6 +8,7 @@ import { FilterDemo } from './FilterDemo'
 import { PlaceholderBlock } from './Editable'
 import { ZoomImage } from './Lightbox'
 import { GlossaryDemo } from './GlossaryDemo'
+import { RatingMatrix, TaskEase } from './RatingCharts'
 import { Rich } from './Rich'
 import { Walkthrough } from './Walkthrough'
 
@@ -122,6 +123,10 @@ function BlockView({ block }: { block: Block }) {
           {block.note && <p className="cs-note">{block.note}</p>}
         </div>
       )
+    case 'matrix':
+      return <RatingMatrix columns={block.columns} rows={block.rows} noteLabel={block.noteLabel} takeaways={block.takeaways} caption={block.caption} />
+    case 'taskEase':
+      return <TaskEase title={block.title} tasks={block.tasks} legend={block.legend} caption={block.caption} />
     case 'placeholder':
       return <PlaceholderBlock label={block.label} hint={block.hint} />
     case 'devices':

@@ -39,7 +39,6 @@ for (const f of ['home', 'events', 'business', 'involved']) {
 }
 
 await save(`${D}persona.png`, 'persona', { pipe: (s) => s.resize({ width: 1400 }) })
-await save(`${D}competitive.png`, 'competitive', { pipe: (s) => s.trim({ background: '#ffffff', threshold: 10 }).resize({ width: 1600 }) })
 // the sitemap sits in a lot of empty canvas: trim it to the diagram
 await save(`${D}sitemap.png`, 'sitemap', { pipe: (s) => s.extract({ left: 90, top: 180, width: 3020, height: 700 }).resize({ width: 2000 }) })
 

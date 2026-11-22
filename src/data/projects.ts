@@ -9,6 +9,7 @@
 // Section blocks are rendered in order; omit a section to hide it.
 
 import type { GlossaryTerm } from '../components/GlossaryDemo'
+import type { Rating } from '../components/RatingCharts'
 import { glueAll } from './glue'
 
 export type Figure = {
@@ -81,6 +82,10 @@ export type Block =
   | { kind: 'bars'; title: string; eyebrow?: string; source: string; sourceUrl?: string; items: { label: string; value: number }[]; takeaway?: string }
   /** Numbered page structure (e.g. recommended section order), rendered as live text. */
   | { kind: 'outline'; caption?: string; steps: { title: string; note?: string; points: string[] }[] }
+  /** Competitive analysis as a dot matrix: a dot per competitor for each feature, and the opportunity it showed. */
+  | { kind: 'matrix'; columns: string[]; noteLabel: string; rows: { label: string; ratings: Rating[]; note: string; highlight?: boolean }[]; takeaways?: { value: string; label: string }[]; caption?: string }
+  /** Task ease ratings as stacked bars, one per task. */
+  | { kind: 'taskEase'; title: string; tasks: { label: string; n: number; parts: { value: number; key: string }[] }[]; legend: { key: string; label: string }[]; caption?: string }
   | { kind: 'placeholder'; label: string; hint?: string }
 
 export type Section = {
@@ -272,8 +277,28 @@ export const projects: Project[] = glueAll<Project[]>([
             ],
           },
           {
-            kind: 'figure',
-            figure: { ...img('bca-competitive', 'Competitive analysis table comparing Brazcan Chamber, Latincouver, ICA Vancouver and Brazoka on 10 UX features, such as a clear value proposition, newsletter sign up, bilingual experience and events discovery, with a BCA design opportunity for each.', 'Competitive analysis: four community organisations across 10 UX features, and the opportunity each one showed for BCA.', 1600, 984), zoom: true },
+            // from the competitive analysis table (Figma 1374:912) and the final presentation
+            kind: 'matrix',
+            columns: ['Brazcan Chamber', 'Latincouver', 'ICA Vancouver', 'Brazoka'],
+            noteLabel: 'BCA design opportunity',
+            rows: [
+              { label: 'Clear value proposition', ratings: ['yes', 'yes', 'yes', 'yes'], note: 'Explain BCA’s mission and services clearly' },
+              { label: 'Main navigation', ratings: ['no', 'yes', 'yes', 'no'], note: 'Put About, Events, Businesses and Get involved first' },
+              { label: 'Newsletter signup', ratings: ['no', 'yes', 'yes', 'no'], note: 'Make signing up easy to find and complete' },
+              { label: 'Bilingual experience', ratings: ['yes', 'yes', 'no', 'part'], note: 'Offer a clear English / Portuguese switch' },
+              { label: 'Events discovery', ratings: ['yes', 'yes', 'no', 'yes'], note: 'Show event details and next steps clearly' },
+              { label: 'Discover partners', ratings: ['yes', 'yes', 'part', 'yes'], note: 'Help users find businesses by category' },
+              { label: 'Mobile usability', ratings: ['yes', 'yes', 'yes', 'yes'], note: 'Improve mobile navigation and forms' },
+              { label: 'Visual design', ratings: ['no', 'no', 'no', 'no'], note: 'Improve contrast, readability and keyboard access', highlight: true },
+              { label: 'Membership', ratings: ['yes', 'yes', 'no', 'yes'], note: 'Make it easy to join and manage a membership' },
+              { label: 'Volunteer', ratings: ['part', 'yes', 'yes', 'yes'], note: 'Make volunteer roles easier to find and apply for' },
+            ],
+            takeaways: [
+              { value: '0 of 4', label: 'sites met our **visual design** bar: contrast, readability and keyboard access.' },
+              { value: '2 of 4', label: 'had **no newsletter signup** and no clear main navigation.' },
+              { value: '10 of 10', label: 'is our aim: one **accessible, bilingual** site that volunteers can keep up.' },
+            ],
+            caption: 'Competitive analysis: four community and business sites, rated on the ten things BCA’s visitors come to do. Hover a site to compare it.',
           },
           {
             kind: 'figure',
@@ -421,7 +446,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks: find an event, subscribe to BCA News, sign up to volunteer and list a business.',
+              '**The core tasks felt easy; clarity still needs refinement.** We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks: find an event, subscribe to BCA News, sign up to volunteer and list a business.',
             ],
           },
           {
@@ -430,14 +455,32 @@ export const projects: Project[] = glueAll<Project[]>([
               { value: '15', label: 'sessions launched' },
               { value: '6', label: 'sessions completed' },
               { value: '13:00', label: 'median session time' },
-              { value: '4 of 4', label: 'rated Subscribe the easiest' },
+              { value: '9', label: 'sessions abandoned' },
             ],
+          },
+          {
+            kind: 'taskEase',
+            title: 'Task ease ratings, 1 = easiest',
+            tasks: [
+              { label: 'Find an event', n: 4, parts: [{ value: 75, key: 'r1' }, { value: 25, key: 'nr' }] },
+              { label: 'Subscribe', n: 4, parts: [{ value: 100, key: 'r1' }] },
+              { label: 'Volunteer', n: 6, parts: [{ value: 50, key: 'r1' }, { value: 33.3, key: 'r2' }, { value: 16.7, key: 'r5' }] },
+              { label: 'List a business', n: 6, parts: [{ value: 33.3, key: 'r1' }, { value: 33.3, key: 'r2' }, { value: 33.3, key: 'r3' }] },
+            ],
+            legend: [
+              { key: 'r1', label: 'Rated 1' },
+              { key: 'r2', label: 'Rated 2' },
+              { key: 'r3', label: 'Rated 3' },
+              { key: 'r5', label: 'Rated 5' },
+              { key: 'nr', label: 'Not reported' },
+            ],
+            caption: '6 of 15 launched sessions were completed (40%). Task level response counts vary.',
           },
           {
             kind: 'cards',
             items: [
               { title: 'Worked well', body: 'Testers found the site **simple and easy to follow**, and responded well to the **design and colour palette**. Finding an event and subscribing were rated easiest.' },
-              { title: 'Improve next', body: 'Make the **menu and sorting** easier to find, **lighten the information** on a first visit, and make the intro animation **shorter or skippable**. Volunteering and listing a business got more mixed ratings.' },
+              { title: 'Improve next', body: 'Make the **menu and sorting** easier to find, **lighten the information** on a first visit, make the intro animation **shorter or skippable**, and make the **events map clearer**. Volunteering and listing a business got more mixed ratings.' },
             ],
           },
           {

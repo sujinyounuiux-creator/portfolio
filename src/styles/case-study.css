@@ -470,7 +470,7 @@
   margin-top: var(--s-4);
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
-  text-align: center;
+  text-align: left;
 }
 /* full: every page shown whole, side by side (e.g. wireframes); click to see one larger */
 .cs-pages--full .cs-pages__list {
@@ -686,7 +686,7 @@
 }
 .cs-feature__media figcaption {
   font-size: var(--fs-xs);
-  text-align: center;
+  text-align: left;
 }
 @media (min-width: 700px) {
   .cs-feature__media--pair {
@@ -958,7 +958,7 @@
 }
 .cs-figure--wide figcaption {
   margin-top: var(--s-3);
-  text-align: center;
+  text-align: left;
 }
 .cs-gallery {
   display: grid;
@@ -1733,10 +1733,10 @@
   background: var(--p-surface);
 }
 .cs-embed figcaption {
-  justify-self: center;
+  justify-self: start;
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
-  text-align: center;
+  text-align: left;
 }
 /* the live site link: centred, on the page's own beige, deep blue on hover */
 .cs-embed__link {
@@ -1968,7 +1968,7 @@
 .persona figcaption {
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
-  text-align: center;
+  text-align: left;
 }
 
 /* ── Device tabs: one device at a time, its name underneath ── */
@@ -2220,7 +2220,7 @@
   margin-top: var(--s-2);
   font-size: var(--fs-xs);
   color: var(--c-ink-soft);
-  text-align: center;
+  text-align: left;
 }
 /* the panel slides down from under the bar */
 .filter-demo__reveal {
@@ -2387,7 +2387,7 @@
 .glossary figcaption {
   margin-top: var(--s-3);
   font-size: var(--fs-xs);
-  text-align: center;
+  text-align: left;
   color: var(--c-ink-soft);
 }
 /* a generous target around the small "?" */
@@ -2675,7 +2675,7 @@
   margin-top: var(--s-4);
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
-  text-align: center;
+  text-align: left;
 }
 
 /* taskEase: task ease ratings as stacked bars (BCA) */
@@ -2965,5 +2965,5 @@
   margin-top: var(--s-3);
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
-  text-align: center;
+  text-align: left;
 }

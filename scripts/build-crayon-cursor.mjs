@@ -2,8 +2,8 @@
 // with the same dark ink outline as the doodles, and a white halo so they show on any background.
 // Output (public/cursors/): 44 px images (*.png) and 88 px ones for sharp screens (*@2x.png).
 //   crayon         main blue crayon, everywhere          hotspot: the tip, at (4, 4) in CSS pixels
-//   crayon-link    deep blue crayon, on anything clickable
-//   crayon-press   deep blue crayon with a short stroke at the tip, while a link or button is pressed
+//   crayon-link    deep blue crayon with a click burst at the tip, on anything clickable (hotspot 14, 14)
+//   crayon-press   the same with a bigger burst, while a link or button is pressed
 //   magnifier-in / magnifier-out   zoomable images, 36 px   hotspot: lens centre (14, 14)
 //   drag-x / drag-move / drag-move-held   sliders, moving a zoomed photo, 36 px   hotspot: centre (18, 18)
 // Note: browsers fall back to the plain system cursor when a cursor this size would hang over
@@ -37,15 +37,26 @@ const svg = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" width="${S}" hei
 const W = 12 // half width
 const L = 54 // length
 const outline = `M-3.4 2.2 Q0 -1.2 3.4 2.2 L${W} 17 V${L - 5} Q${W} ${L} ${W - 5} ${L} H-${W - 5} Q-${W} ${L} -${W} ${L - 5} V17 Z`
-const crayon = (c, press = false) =>
+// On anything clickable the crayon gets a "click" burst: three bold ink lines fanning out above
+// and to the left of its tip, where nothing covers them, so links are easy to tell apart. The
+// crayon moves down a little to make room: its tip is at (28, 28), so the hotspot is (14, 14).
+// Pressed, the lines grow longer.
+const TIP = 28
+const burst = (long) => {
+  const [a, b] = long ? [5, 22] : [7, 18] // where each line starts and ends, away from the tip
+  const lines = [
+    [0, -1], // up
+    [-1, 0], // left
+    [-0.72, -0.72], // up and left
+  ].map(([dx, dy]) => `M${TIP + dx * a} ${TIP + dy * a} L${(TIP + dx * b).toFixed(1)} ${(TIP + dy * b).toFixed(1)}`)
+  const d = lines.join(' ')
+  return `<path d="${d}" fill="none" stroke="#fff" stroke-width="${long ? 9 : 8}"/>
+  <path d="${d}" fill="none" stroke="${INK}" stroke-width="${long ? 4.4 : 3.8}"/>`
+}
+const crayon = (c, mode = 'plain') =>
   svg(`
-  ${
-    press
-      ? `<path d="M3 24 Q9 18 15 24" fill="none" stroke="#fff" stroke-width="8"/>
-  <path d="M3 24 Q9 18 15 24" fill="none" stroke="${c.body}" stroke-width="3.6"/>`
-      : ''
-  }
-  <g transform="translate(9 9) rotate(-45) scale(1.2)">
+  ${mode === 'plain' ? '' : burst(mode === 'press')}
+  <g transform="translate(${mode === 'plain' ? 9 : TIP} ${mode === 'plain' ? 9 : TIP}) rotate(-45) scale(${mode === 'plain' ? 1.2 : 1.05})">
     <path d="${outline}" fill="#fff" stroke="#fff" stroke-width="6.5"/>
     <path d="${outline}" fill="${c.body}"/>
     <path d="M-3.4 2.2 Q0 -1.2 3.4 2.2 L${W} 17 H-${W} Z" fill="${c.tip}"/>
@@ -56,8 +67,8 @@ const crayon = (c, press = false) =>
   </g>`)
 
 await save('crayon', crayon(MAIN))
-await save('crayon-link', crayon(DEEP))
-await save('crayon-press', crayon(DEEP, true))
+await save('crayon-link', crayon(DEEP, 'link'))
+await save('crayon-press', crayon(DEEP, 'press'))
 
 // Magnifying glass: a paper lens with a main blue rim, and a deep blue handle.
 // The lens centre is at (34, 34) of the 88 px image (17, 17 in CSS px).

@@ -547,6 +547,40 @@ button.wiggle {
   justify-self: start;
   margin-top: var(--s-3);
 }
+/* balance on wide screens: the text column runs the full height of the photos. The intro sits
+   at the top, Experiences starts after a clear gap and a light divider, and More about me
+   lines up with See more photos at the bottom. */
+@media (min-width: 960px) {
+  .about-home__col:not(.about-home__col--photos) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+  .about-home__col:not(.about-home__col--photos) > .about-home__h3 {
+    margin-top: var(--s-5);
+    padding-top: var(--s-6);
+    border-top: 1.5px dashed var(--c-line);
+  }
+  .about-home__col:not(.about-home__col--photos) > .about-home__timeline {
+    gap: var(--s-6);
+  }
+  .about-home__col:not(.about-home__col--photos) > .about-home__more {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+  .about-home__col--photos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+  .about-home__col--photos > .about-home__all-photos {
+    align-self: flex-start;
+    margin-top: auto;
+    min-height: 48px; /* same height as the button beside it, so both sit on one line */
+    display: inline-flex;
+    align-items: center;
+  }
+}
 
 /* ── Featured works: stacked folder-tab cards in each project's colour ── */
 .featured__list {

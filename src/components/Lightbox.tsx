@@ -134,7 +134,9 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
                 height={figure.height}
                 draggable={false}
                 {...(page
-                  ? {}
+                  ? figure.pageWidth
+                    ? { style: { width: `min(100%, ${figure.pageWidth}px)` } }
+                    : {}
                   : {
                       style: { transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})` },
                       onPointerDown: onDown,
@@ -178,7 +180,11 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
 /** A photo that opens in the lightbox when clicked. */
 export function ZoomImage({ figure, eager = false, className = '' }: { figure: Figure; eager?: boolean; className?: string }) {
   const open = useContext(LightboxContext)
-  const onClick = useCallback(() => open(figure), [open, figure])
+  // a screen with a full length version opens that page, scrollable, at its own width
+  const onClick = useCallback(
+    () => open(figure.full ? { ...figure.full, tall: true, caption: figure.full.caption ?? figure.caption } : figure),
+    [open, figure],
+  )
   return (
     <button type="button" className={`zoom ${className}`} onClick={onClick} aria-label={`Enlarge image: ${figure.caption ?? figure.alt}`}>
       <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading={eager ? 'eager' : 'lazy'} decoding="async" />

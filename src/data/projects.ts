@@ -33,6 +33,10 @@ export type Figure = {
   zoom?: boolean
   /** Large showcase image: full content width, framed to match its own dark background. */
   wide?: boolean
+  /** A full length version that opens, scrollable, when the image is clicked (e.g. a phone screen's whole page). */
+  full?: Figure
+  /** Width the full length page opens at in the zoom view, in CSS px (phones are narrower than pages). */
+  pageWidth?: number
 }
 
 export type { GlossaryTerm }
@@ -554,19 +558,19 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'gallery',
             row: true,
             figures: [
-              { ...img('bca-ipad-home', 'iPad home: "Brazilian roots, at home in BC" with the BCA News sign up, the next event and the 30 years and 128+ businesses badges.', 'Home', 1100, 1525), frameless: true },
-              { ...img('bca-ipad-events-month', 'iPad events: "Find your next community moment" with the next event, then the community event calendar in month view with filters.', 'Events, month view', 1100, 1525), frameless: true },
-              { ...img('bca-ipad-business', 'iPad business directory: "Brazilian businesses in BC" with a search bar and category and location filters.', 'Business directory', 1100, 1525), frameless: true },
+              { ...img('bca-ipad-home', 'iPad home: "Brazilian roots, at home in BC" with the BCA News sign up, the next event and the 30 years and 128+ businesses badges.', 'Home', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-home', 'Full iPad page: Home, from the top to the footer.', 'Home on iPad: the whole page', 1100, 14913), pageWidth: 760 } },
+              { ...img('bca-ipad-events-month', 'iPad events: "Find your next community moment" with the next event, then the community event calendar in month view with filters.', 'Events, month view', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-events-month', 'Full iPad page: Events, month view, from the top to the footer.', 'Events, month view on iPad: the whole page', 1100, 6026), pageWidth: 760 } },
+              { ...img('bca-ipad-business', 'iPad business directory: "Brazilian businesses in BC" with a search bar and category and location filters.', 'Business directory', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-business', 'Full iPad page: Business directory, from the top to the footer.', 'Business directory on iPad: the whole page', 1100, 6290), pageWidth: 760 } },
             ],
           },
           {
             kind: 'devices',
             device: 'phone',
             screens: [
-              img('bca-m-events-month', 'Mobile events: "Find your next community moment" with Browse the calendar and the next event, the Brazilian Holiday Market.', 'Events', 780, 1690),
-              img('bca-m-list-business', 'Mobile list your business: "List your business with BCA", free listings or membership, and two ways to appear in the directory.', 'List your business', 780, 1690),
-              img('bca-m-involved', 'Mobile get involved: "Be part of the BCA community" with Find your way to help and three ways to help.', 'Get involved', 780, 1690),
-              img('bca-m-guides', 'Mobile guides and news: "Stories and updates from our community" with topic filters and article search.', 'Guides & news', 780, 1690),
+              { ...img('bca-m-events-month', 'Mobile events: "Find your next community moment" with Browse the calendar and the next event, the Brazilian Holiday Market.', 'Events', 780, 1690), full: { ...img('bca-full-m-events-month', 'Full mobile page: Events, from the top to the footer.', 'Events on mobile: the whole page', 585, 7558), pageWidth: 420 } },
+              { ...img('bca-m-list-business', 'Mobile list your business: "List your business with BCA", free listings or membership, and two ways to appear in the directory.', 'List your business', 780, 1690), full: { ...img('bca-full-m-list-business', 'Full mobile page: List your business, from the top to the footer.', 'List your business on mobile: the whole page', 585, 8600), pageWidth: 420 } },
+              { ...img('bca-m-involved', 'Mobile get involved: "Be part of the BCA community" with Find your way to help and three ways to help.', 'Get involved', 780, 1690), full: { ...img('bca-full-m-involved', 'Full mobile page: Get involved, from the top to the footer.', 'Get involved on mobile: the whole page', 585, 6578), pageWidth: 420 } },
+              { ...img('bca-m-guides', 'Mobile guides and news: "Stories and updates from our community" with topic filters and article search.', 'Guides & news', 780, 1690), full: { ...img('bca-full-m-guides', 'Full mobile page: Guides & news, from the top to the footer.', 'Guides & news on mobile: the whole page', 585, 5446), pageWidth: 420 } },
             ],
           },
           {

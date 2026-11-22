@@ -267,3 +267,8 @@
   line-height: 1.55;
   color: var(--c-ink-soft);
 }
+
+/* Home: the top row (beach and drums) sits level, with no up or down offset between the two */
+.collage--home .collage__item:nth-child(-n + 2) {
+  --nudge: 0px !important;
+}

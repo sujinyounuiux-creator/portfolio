@@ -30,9 +30,11 @@ for (const f of ['home', 'events', 'event-detail', 'businesses', 'list-business'
 }
 
 // phone screens cut out of the iPhone frames
-for (const f of ['home', 'events', 'event-detail', 'business', 'business-detail', 'menu']) {
+for (const f of ['home', 'events', 'event-detail', 'business', 'business-detail', 'menu', 'events-month', 'list-business', 'involved', 'guides']) {
   await save(`${D}m-${f}.png`, `m-${f}`, { pipe: (s) => s.extract({ left: 40, top: 34, width: 780, height: 1690 }) })
 }
+
+// the iPads (white canvas cut away) are made by scripts/cut-bca-ipads.mjs
 
 // the wireframes are built sharp, at 2x, by scripts/stitch-bca-wireframes.mjs
 

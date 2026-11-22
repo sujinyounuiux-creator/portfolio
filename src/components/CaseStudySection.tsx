@@ -102,7 +102,7 @@ function BlockView({ block }: { block: Block }) {
       return <FigureView figure={block.figure} />
     case 'gallery':
       return (
-        <div className={`cs-gallery cs-gallery--${Math.min(block.figures.length, 4)}`}>
+        <div className={`cs-gallery cs-gallery--${Math.min(block.figures.length, 4)} ${block.row ? 'cs-gallery--row' : ''}`}>
           {block.figures.map((f) => (
             <FigureView key={f.src} figure={f} zoom />
           ))}

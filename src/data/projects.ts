@@ -49,7 +49,7 @@ export type Block =
   | { kind: 'quotes'; source: string; items: string[] }
   | { kind: 'cards'; items: { title: string; body: string }[] }
   | { kind: 'figure'; figure: Figure }
-  | { kind: 'gallery'; figures: Figure[] }
+  | { kind: 'gallery'; figures: Figure[]; /** all figures side by side in one row (e.g. three tablets) */ row?: boolean }
   | { kind: 'swatches'; swatches: Swatch[]; note?: string }
   /** Real screens shown inside laptop or phone mockups. `tall` screens scroll inside the device. */
   | { kind: 'devices'; device: 'desktop' | 'phone'; screens: Figure[]; plain?: boolean }
@@ -543,6 +543,30 @@ export const projects: Project[] = glueAll<Project[]>([
               { screen: 1, tap: [50, 32.1] }, // Menu: Businesses
               { screen: 2, tap: [50, 95.5] }, // Directory: the featured business
               { screen: 3, tap: [9.3, 9.7] }, // Business detail: the BCA logo, back home
+            ],
+          },
+          {
+            kind: 'text',
+            body: ['**On tablet and mobile.** Every page was designed for **desktop (1440)**, **tablet (834)** and **mobile (390)**, in English and Portuguese. On a smaller screen the same pages reflow into fewer columns, so nothing is lost.'],
+          },
+          {
+            // the team's own iPad frames (Figma 1392:11105, 1392:13857, 1392:14940), white canvas cut away
+            kind: 'gallery',
+            row: true,
+            figures: [
+              { ...img('bca-ipad-home', 'iPad home: "Brazilian roots, at home in BC" with the BCA News sign up, the next event and the 30 years and 128+ businesses badges.', 'Home', 1100, 1525), frameless: true },
+              { ...img('bca-ipad-events-month', 'iPad events: "Find your next community moment" with the next event, then the community event calendar in month view with filters.', 'Events, month view', 1100, 1525), frameless: true },
+              { ...img('bca-ipad-business', 'iPad business directory: "Brazilian businesses in BC" with a search bar and category and location filters.', 'Business directory', 1100, 1525), frameless: true },
+            ],
+          },
+          {
+            kind: 'devices',
+            device: 'phone',
+            screens: [
+              img('bca-m-events-month', 'Mobile events: "Find your next community moment" with Browse the calendar and the next event, the Brazilian Holiday Market.', 'Events', 780, 1690),
+              img('bca-m-list-business', 'Mobile list your business: "List your business with BCA", free listings or membership, and two ways to appear in the directory.', 'List your business', 780, 1690),
+              img('bca-m-involved', 'Mobile get involved: "Be part of the BCA community" with Find your way to help and three ways to help.', 'Get involved', 780, 1690),
+              img('bca-m-guides', 'Mobile guides and news: "Stories and updates from our community" with topic filters and article search.', 'Guides & news', 780, 1690),
             ],
           },
         ],

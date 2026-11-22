@@ -975,6 +975,13 @@
   .cs-gallery--3 > :first-child {
     grid-column: 1 / -1;
   }
+  /* row: every figure side by side, the same size */
+  .cs-gallery--row {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+  .cs-gallery--row > :first-child {
+    grid-column: auto;
+  }
 }
 
 /* project palette */

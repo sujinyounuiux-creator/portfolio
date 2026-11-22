@@ -1716,8 +1716,15 @@
   background: var(--p-surface);
 }
 .cs-embed figcaption {
+  justify-self: center;
   font-size: var(--fs-sm);
   color: var(--c-ink-soft);
+  text-align: center;
+}
+/* the live site link: centred, on the page's own beige, deep blue on hover */
+.cs-embed__link {
+  justify-self: center;
+  --btn-bg: var(--c-bg-deep);
 }
 
 /* ── Typography specimen (live text in the project's fonts) ── */

@@ -345,7 +345,7 @@ function BlockView({ block }: { block: Block }) {
           </div>
           {block.caption && <figcaption>{block.caption}</figcaption>}
           {block.link && (
-            <a className="btn btn--accent cs-embed__link" href={block.link.href} target="_blank" rel="noreferrer">
+            <a className="btn btn--ghost cs-embed__link" href={block.link.href} target="_blank" rel="noreferrer">
               {block.link.label} <Arrow dir="up-right" />
               <span className="visually-hidden"> (opens in a new tab)</span>
             </a>

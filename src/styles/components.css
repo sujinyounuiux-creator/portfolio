@@ -416,7 +416,11 @@
   font-size: var(--fs-base);
   box-shadow: 3px 3px 0 var(--c-ink);
 }
-.contact__email-btn:hover {
+/* hover: the opposite, cream with dark text */
+.contact__email-btn:hover,
+.contact__email-btn:focus-visible {
+  --btn-hover-bg: var(--c-bg);
+  --btn-hover-fg: var(--c-ink);
   box-shadow: 5px 5px 0 var(--c-ink);
 }
 .contact .contact__copy,

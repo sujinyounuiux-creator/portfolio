@@ -282,9 +282,13 @@ p.intro-hand {
 }
 
 /* ── Buttons ─────────────────────────────── */
+/* every button flips to the opposite colour on hover, so it is clear what you are on:
+   light buttons turn deep blue with white text, dark ones turn cream with dark text */
 .btn {
   --btn-bg: var(--c-ink);
   --btn-fg: var(--c-bg);
+  --btn-hover-bg: var(--c-bg);
+  --btn-hover-fg: var(--c-ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -302,11 +306,15 @@ p.intro-hand {
   transition:
     transform var(--t-fast) var(--ease),
     box-shadow var(--t-fast) var(--ease),
-    background-color var(--t-fast);
+    background-color var(--t-fast),
+    color var(--t-fast);
 }
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow-hard);
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-fg);
 }
 .btn:active {
   transform: translate(0, 0);
@@ -315,10 +323,14 @@ p.intro-hand {
 .btn--ghost {
   --btn-bg: transparent;
   --btn-fg: var(--c-ink);
+  --btn-hover-bg: var(--c-accent-ink);
+  --btn-hover-fg: #fff;
 }
 .btn--accent {
   --btn-bg: var(--c-accent);
   --btn-fg: var(--c-ink);
+  --btn-hover-bg: var(--c-accent-ink);
+  --btn-hover-fg: #fff;
 }
 .btn[aria-disabled='true'],
 .btn:disabled {

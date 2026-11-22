@@ -425,10 +425,10 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'pages',
             items: [
-              { label: 'Home', figure: { ...img('bca-wf-home', 'Home page wireframe: a hero with Subscribe and Explore Events buttons, four shortcuts (Events, Businesses, Volunteer, Donate), About BCA, community highlights, ways to get involved, the business partners programme and a newsletter sign up.', undefined, 864, 2237), tall: true } },
-              { label: 'Events', figure: { ...img('bca-wf-events', 'Events wireframe: a community event calendar with filters, a map view with an event pop up and a list of events, upcoming event cards, and a "Have an event to share?" banner.', undefined, 864, 2099), tall: true } },
-              { label: 'Business directory', figure: { ...img('bca-wf-business', 'Business directory wireframe: category and location filters, a search bar with sorting, business cards with free or paid listings, pagination and a List Your Business banner.', undefined, 864, 1325), tall: true } },
-              { label: 'Get involved', figure: { ...img('bca-wf-involved', 'Get involved wireframe: volunteer interest areas, community membership benefits, a donate section, community events and community stories.', undefined, 864, 2075), tall: true } },
+              { label: 'Home', figure: { ...img('bca-wf-home', 'Home page wireframe: a hero with Subscribe and Explore Events buttons, four shortcuts (Events, Businesses, Volunteer, Donate), About BCA, community highlights, ways to get involved, the business partners programme and a newsletter sign up.', undefined, 2160, 5592), tall: true } },
+              { label: 'Events', figure: { ...img('bca-wf-events', 'Events wireframe: a community event calendar with filters, a map view with an event pop up and a list of events, upcoming event cards, and a "Have an event to share?" banner.', undefined, 2160, 5246), tall: true } },
+              { label: 'Business directory', figure: { ...img('bca-wf-business', 'Business directory wireframe: category and location filters, a search bar with sorting, business cards with free or paid listings, pagination and a List Your Business banner.', undefined, 2160, 3312), tall: true } },
+              { label: 'Get involved', figure: { ...img('bca-wf-involved', 'Get involved wireframe: volunteer interest areas, community membership benefits, a donate section, community events and community stories.', undefined, 2160, 5187), tall: true } },
             ],
           },
         ],

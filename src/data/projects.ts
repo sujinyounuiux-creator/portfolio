@@ -503,17 +503,46 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'I led the **mobile prototype**. On a phone the same flows had to stay just as easy: a **full screen menu** with the language switch and the BCA News button at the bottom, **search, filters and sorting** at the top of the directory, and the next event shown as a simple card with a map link.',
+              'I led the **mobile prototype**. On a phone the same flows had to stay just as easy: a **full screen menu** with the language switch and the BCA News button at the bottom, **search, filters and sorting** at the top of the directory, and the next event shown as a simple card with a map link. The two phones below play my prototype on their own, tapping the same links I wired in Figma.',
             ],
           },
           {
-            kind: 'devices',
-            device: 'phone',
+            kind: 'text',
+            body: ['**Flow 1: find and join an event.** From the home page to the events calendar, then into the next event.'],
+          },
+          {
+            // tap points are the prototype links in the iPhone frames (Figma 1392:2664, 1392:4190,
+            // 1392:6019), as % of the 390 x 846 screen
+            kind: 'autoproto',
             screens: [
-              img('bca-m-home', 'Mobile home: "Brazilian roots, at home in BC" with the email field and Get BCA News button.', 'Home', 780, 1690),
-              img('bca-m-events', 'Mobile events: "Find your next community moment" with a Browse the calendar button and the next event card.', 'Events', 780, 1690),
-              img('bca-m-business', 'Mobile business directory: "Brazilian businesses in BC" with a search bar, filters and sorting.', 'Businesses', 780, 1690),
-              img('bca-m-menu', 'Mobile menu: About, Events, Businesses, Guides & news, Get involved and Contact, with an EN / PT switch and a Get BCA News button.', 'Menu', 780, 1690),
+              { label: 'Home', figure: img('bca-m-home', 'Mobile home: "Brazilian roots, at home in BC" with the email field, a Get BCA News button and See upcoming events.', 'Home', 780, 1690) },
+              { label: 'Events', figure: img('bca-m-events', 'Mobile events: "Find your next community moment" with a Browse the calendar button and the next event, the Brazilian Holiday Market.', 'Events', 780, 1690) },
+              { label: 'Event detail', figure: img('bca-m-event-detail', 'Mobile event detail: the Brazilian Holiday Market, with a short description and a photo of the market.', 'Event detail', 780, 1690) },
+            ],
+            steps: [
+              { screen: 0, tap: [50, 83.6] }, // Home: See upcoming events
+              { screen: 1, tap: [41, 79.1] }, // Events: the Brazilian Holiday Market
+              { screen: 2, tap: [9.3, 9.7] }, // Event detail: the BCA logo, back home
+            ],
+          },
+          {
+            kind: 'text',
+            body: ['**Flow 2: find a local business.** Through the full screen menu to the business directory, then into a business.'],
+          },
+          {
+            // prototype links in Figma 1392:2664, 1392:11082, 1392:6540 and 1392:7220
+            kind: 'autoproto',
+            screens: [
+              { label: 'Home', figure: img('bca-m-home', 'Mobile home: "Brazilian roots, at home in BC" with the menu button at the top right.', 'Home', 780, 1690) },
+              { label: 'Menu', figure: img('bca-m-menu', 'Mobile menu: About, Events, Businesses, Guides & news, Get involved and Contact, with an EN / PT switch and a Get BCA News button.', 'Menu', 780, 1690) },
+              { label: 'Business directory', figure: img('bca-m-business', 'Mobile business directory: "Brazilian businesses in BC" with a search bar, filters, sorting and a featured business.', 'Business directory', 780, 1690) },
+              { label: 'Business detail', figure: img('bca-m-business-detail', 'Mobile business detail: Casa da Mesa Brazilian Kitchen, with Visit website, phone, email and Get directions.', 'Business detail', 780, 1690) },
+            ],
+            steps: [
+              { screen: 0, tap: [91.8, 9.7] }, // Home: menu
+              { screen: 1, tap: [50, 32.1] }, // Menu: Businesses
+              { screen: 2, tap: [50, 95.5] }, // Directory: the featured business
+              { screen: 3, tap: [9.3, 9.7] }, // Business detail: the BCA logo, back home
             ],
           },
         ],

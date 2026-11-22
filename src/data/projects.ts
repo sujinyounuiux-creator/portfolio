@@ -209,7 +209,7 @@ export const projects: Project[] = glueAll<Project[]>([
   {
     slug: 'bca',
     title: 'BCA Website Redesign',
-    disciplines: ['ux-ui'],
+    disciplines: ['ux-ui', 'visual'],
     featured: true,
     tagline: 'Brazilian roots, at home in BC',
     proof: { value: '4 of 4', label: 'testers gave subscribing to BCA News the easiest rating' },
@@ -1286,7 +1286,7 @@ export const projects: Project[] = glueAll<Project[]>([
   {
     slug: 'cookpad',
     title: 'Cookpad',
-    disciplines: ['ux-ui'],
+    disciplines: ['ux-ui', 'visual'],
     featured: true,
     tagline: 'UI/UX improvement project',
     proof: { value: '5', label: 'testers searched faster and more easily with the new filters' },

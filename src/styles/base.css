@@ -295,7 +295,9 @@ p.intro-hand {
   gap: var(--s-2);
   min-height: 48px;
   padding: 0.75rem 1.35rem;
-  border: var(--border);
+  /* a whole 2px outline, so the pill draws evenly on every side even at a fractional position
+     or with Windows display scaling (a 1.5px line made it look slightly tilted) */
+  border: 2px solid var(--c-ink);
   border-radius: 999px;
   background: var(--btn-bg);
   color: var(--btn-fg);

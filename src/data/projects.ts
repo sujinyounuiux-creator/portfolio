@@ -10,6 +10,7 @@
 
 import type { GlossaryTerm } from '../components/GlossaryDemo'
 import type { Rating } from '../components/RatingCharts'
+import type { SitemapNode } from '../components/Sitemap'
 import { glueAll } from './glue'
 
 export type Figure = {
@@ -86,6 +87,8 @@ export type Block =
   | { kind: 'matrix'; columns: string[]; noteLabel: string; rows: { label: string; ratings: Rating[]; note: string; highlight?: boolean }[]; takeaways?: { value: string; label: string }[]; caption?: string }
   /** Task ease ratings as stacked bars, one per task. */
   | { kind: 'taskEase'; title: string; tasks: { label: string; n: number; parts: { value: number; key: string }[] }[]; legend: { key: string; label: string }[]; caption?: string }
+  /** A sitemap drawn as readable HTML: the home page, a column per section and the shared elements. */
+  | { kind: 'sitemap'; root: string; sections: { title: string; items: SitemapNode[] }[]; shared?: { title: string; items: SitemapNode[] }; caption?: string }
   | { kind: 'placeholder'; label: string; hint?: string }
 
 export type Section = {
@@ -208,7 +211,7 @@ export const projects: Project[] = glueAll<Project[]>([
     proof: { value: '4 of 4', label: 'testers gave subscribing to BCA News the easiest rating' },
     summary:
       'A redesign of the website for the Brazilian Community Association of BC, a non-profit, so Brazilians in BC can find events, local businesses and ways to get involved, in English or Portuguese.',
-    category: 'Responsive web · Non-profit redesign',
+    category: 'Responsive web · Real client redesign',
     platform: 'Responsive web (desktop, tablet and mobile)',
     role: 'UI/UX Design · Mobile prototype lead',
     timeline: '2026.10 to 2026.11',
@@ -221,7 +224,7 @@ export const projects: Project[] = glueAll<Project[]>([
       { label: 'Problem', text: 'People could not tell what BCA offers, where to start, or how to find events, businesses and resources on the current site.' },
       { label: 'My role', text: 'UI/UX designer in a team of 4: research, user flows, visual design and the mobile prototype, which I led.' },
       { label: 'Solution', text: 'A clear, bilingual site built around four goals: accessibility, community engagement, business visibility and an English / Portuguese experience.' },
-      { label: 'Result', text: 'Desktop, tablet and mobile designs, an interactive prototype, a design system and a CMS handoff, tested with users on UXtweak.' },
+      { label: 'Result', text: 'Desktop, tablet and mobile designs, a tested prototype, a design system and a working site BCA can run. The client liked the design.' },
     ],
     sections: [
       {
@@ -233,6 +236,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'The **Brazilian Community Association of BC (BCA)** is a volunteer led non-profit that has helped Brazilians in British Columbia feel connected for 30 years. Its website is where newcomers, long-term residents and local Brazilian business owners should find events, guides and ways to take part, but the current site made that hard.',
+              'This was a **real client project**: Cornerstone College, where I studied, partnered with BCA, and we worked with the association’s own operator. Whether the redesign will go live is still open, but **the client told us they liked the design**.',
             ],
           },
           {
@@ -331,8 +335,85 @@ export const projects: Project[] = glueAll<Project[]>([
             ],
           },
           {
-            kind: 'figure',
-            figure: { ...img('bca-sitemap', 'Sitemap: the homepage leads to About, Events, Businesses, Guides & News and Get Involved, each with its own pages and success states, plus global elements like the header with the EN / PT toggle, the footer and the BCA News sign up.', 'Sitemap: five sections under the homepage, with success states for every form and shared elements like the EN / PT toggle.', 2000, 464), zoom: true },
+            // from the sitemap in the BCA Figma file (1168:70752), redrawn as text so it can be read
+            kind: 'sitemap',
+            root: 'Homepage',
+            sections: [
+              {
+                title: 'About',
+                items: [{ label: 'About', children: [{ label: 'About BCA' }, { label: 'Contact', note: 'Also linked from the footer' }] }],
+              },
+              {
+                title: 'Events',
+                items: [
+                  {
+                    label: 'Events calendar',
+                    note: 'One page',
+                    children: [
+                      { label: 'Map, list and month views', note: 'A view switcher, not separate pages', type: 'view' },
+                      { label: 'Event detail', children: [{ label: 'You’re registered', type: 'success' }] },
+                    ],
+                  },
+                ],
+              },
+              {
+                title: 'Businesses',
+                items: [
+                  {
+                    label: 'Business directory',
+                    children: [
+                      { label: 'Search and filters', note: 'Category, location, language, sort', type: 'view' },
+                      { label: 'Business detail' },
+                    ],
+                  },
+                  {
+                    label: 'List your business',
+                    note: 'Free listing or business member',
+                    children: [
+                      { label: 'Listing received', type: 'success' },
+                      {
+                        label: 'Become a member',
+                        note: 'Membership checkout',
+                        children: [
+                          { label: 'Welcome, member', type: 'success' },
+                          { label: 'Payment failed', note: 'Retry', type: 'error' },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                title: 'Guides & news',
+                items: [{ label: 'Guides & news', note: 'Blog listing', children: [{ label: 'Article detail' }] }],
+              },
+              {
+                title: 'Get involved',
+                items: [
+                  {
+                    label: 'Get involved',
+                    note: 'Landing page',
+                    children: [
+                      { label: 'Volunteer registration', children: [{ label: 'Application received', type: 'success' }] },
+                      { label: 'Business partners program' },
+                      { label: 'Donate', children: [{ label: 'Thank you', type: 'success' }] },
+                    ],
+                  },
+                ],
+              },
+            ],
+            shared: {
+              title: 'On every page',
+              items: [
+                { label: 'Header', note: 'Logo, main navigation, EN / PT switch' },
+                { label: 'Footer', note: 'About BCA, community, get involved, follow us' },
+                { label: 'BCA News sign up', note: 'Band and side tab' },
+                { label: 'Check your inbox → Welcome', note: 'Newsletter double opt in', type: 'success' },
+                { label: 'Privacy, accessibility, terms', note: 'Footer pages' },
+                { label: 'Back to top button' },
+              ],
+            },
+            caption: 'Sitemap: five sections under the homepage, with a success state for every form and the shared elements on every page.',
           },
         ],
       },
@@ -494,14 +575,28 @@ export const projects: Project[] = glueAll<Project[]>([
       },
       {
         id: 'handoff',
-        label: 'Handoff',
-        title: 'Deliverables & next steps',
+        label: 'Live site',
+        title: 'A site BCA can run',
         blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Because one volunteer runs everything, we didn’t stop at screens. We also built a **working version of the site** with a simple **admin**, so BCA can add and edit **events and businesses**, save drafts and publish them without touching code.',
+              'BCA already runs **WordPress**, so our plan rebuilds the redesign **inside the same install**: a theme made from our design system, events and businesses as their own content types, forms that go to a review step, and an English and Portuguese setup. Nothing new for the team to learn.',
+            ],
+          },
+          {
+            kind: 'embed',
+            title: 'BCA admin: the events list, with published events and a draft',
+            src: 'https://shimmering-cascaron-d892ee.netlify.app/admin',
+            caption: 'Try the admin: open an event, edit it or add a new one. It’s a prototype, so changes are only saved in your browser.',
+            link: { href: 'https://shimmering-cascaron-d892ee.netlify.app/', label: 'Open the live site' },
+          },
           {
             kind: 'cards',
             items: [
               { title: 'What we delivered', body: 'The **desktop design**, an **interactive prototype**, **tablet and mobile** screens, **Portuguese and English** mockups, a **design system** and a **CMS handoff** guide.' },
-              { title: 'What we recommended', body: 'Build it in **WordPress** with a CMS the team can update, keep the **business directory** maintained, post **events and blog updates** regularly and **integrate the newsletter**.' },
+              { title: 'What we recommended', body: 'Rebuild it in BCA’s **WordPress** on a staging copy first, keep the **business directory** maintained, post **events and blog updates** regularly and **integrate the newsletter**.' },
             ],
           },
         ],

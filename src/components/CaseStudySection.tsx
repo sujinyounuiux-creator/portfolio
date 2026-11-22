@@ -10,6 +10,7 @@ import { ZoomImage } from './Lightbox'
 import { GlossaryDemo } from './GlossaryDemo'
 import { RatingMatrix, TaskEase } from './RatingCharts'
 import { Rich } from './Rich'
+import { Sitemap } from './Sitemap'
 import { Walkthrough } from './Walkthrough'
 
 function FigureView({ figure, zoom = figure.zoom }: { figure: Figure; zoom?: boolean }) {
@@ -127,6 +128,8 @@ function BlockView({ block }: { block: Block }) {
       return <RatingMatrix columns={block.columns} rows={block.rows} noteLabel={block.noteLabel} takeaways={block.takeaways} caption={block.caption} />
     case 'taskEase':
       return <TaskEase title={block.title} tasks={block.tasks} legend={block.legend} caption={block.caption} />
+    case 'sitemap':
+      return <Sitemap root={block.root} sections={block.sections} shared={block.shared} caption={block.caption} />
     case 'placeholder':
       return <PlaceholderBlock label={block.label} hint={block.hint} />
     case 'devices':

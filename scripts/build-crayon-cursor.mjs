@@ -1,10 +1,10 @@
-// Draws the site's crayon cursors, in a realistic crayon look: a worn wax tip, a paper wrapper
-// with printed stripes, round shading and a little wax grain, with a dark outline and a white
-// halo so they show on any background.
+// Draws the site's crayon cursors: short, chubby crayons in the portfolio blues, with a round wax
+// tip, a paper wrapper with zigzags and a heart label, round shading and a little wax grain, a dark
+// outline and a white halo so they show on any background.
 // Output (public/cursors/): 44 px images (*.png) and 88 px ones for sharp screens (*@2x.png).
-//   crayon         blue, everywhere            hotspot: the tip, at (4, 4) in CSS pixels
-//   crayon-link    yellow, on anything clickable
-//   crayon-press   yellow with a little scribble at the tip, while a link or button is pressed
+//   crayon         main blue, everywhere            hotspot: the tip, at (4, 4) in CSS pixels
+//   crayon-link    deep blue, on anything clickable
+//   crayon-press   deep blue with a little scribble at the tip, while a link or button is pressed
 //   magnifier-in / magnifier-out   zoomable images        hotspot: lens centre (17, 17)
 //   drag-x / drag-move / drag-move-held   sliders, moving a zoomed photo   hotspot: centre (22, 22)
 // Note: browsers fall back to the plain system cursor when a cursor this size would hang over
@@ -17,8 +17,9 @@ const S = 88 // drawing size = the @2x image
 const out = 'public/cursors'
 mkdirSync(out, { recursive: true })
 
-const BLUE = { wax: '#6F9BD8', dark: '#3F68A8', light: '#A9C6EE' }
-const YELLOW = { wax: '#FFD04D', dark: '#E39B12', light: '#FFE89A' }
+// the portfolio's own blues (src/styles/tokens.css: --c-accent #789bc4, --c-accent-ink #3d628f)
+const BLUE = { wax: '#8DADD3', dark: '#6F93BD', light: '#DCE7F4', deep: '#5F86B8' }
+const DEEP = { wax: '#4F76A6', dark: '#33557F', light: '#9DB9DD', deep: '#24405F' }
 
 // shared filters: wax grain inside a shape, and a slightly rough, waxy edge
 const defs = (c, id) => `
@@ -46,32 +47,32 @@ const defs = (c, id) => `
     </linearGradient>
   </defs>`
 
-// one crayon pointing up, the tip at (0, 0), 92 long and 20 wide
-const W = 10 // half width
-const outline = `M-2.6 1.2 Q0 -0.8 2.6 1.2 L${W} 22 V91 Q0 93.5 -${W} 91 V22 Z`
+// one short, chubby crayon pointing up, the tip at (0, 0): 64 long and 30 wide
+const W = 15 // half width
+const outline = `M-4 3 Q0 -1.5 4 3 L${W} 19 V57 Q${W} 64 8 64 H-8 Q-${W} 64 -${W} 57 V19 Z`
+const wrapper = `M-${W} 24 H${W} V57 Q${W} 64 8 64 H-8 Q-${W} 64 -${W} 57 Z`
+const tip = `M-4 3 Q0 -1.5 4 3 L${W} 19 V24 H-${W} V19 Z`
+const zigzag = (y) => `M-${W} ${y} l5 -3 l5 3 l5 -3 l5 3 l5 -3 l5 3`
 const crayonBody = (c, id) => `
     <g filter="url(#rough${id})">
-      <path d="${outline}" fill="#fff" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
-      <path d="${outline}" fill="${INK}" stroke="${INK}" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="${outline}" fill="#fff" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+      <path d="${outline}" fill="${INK}" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
     </g>
-    <!-- wax tip and the bare wax collar, with round shading and grain -->
-    <path d="M-2.6 1.2 Q0 -0.8 2.6 1.2 L${W} 22 V28 H-${W} V22 Z" fill="url(#round${id})"/>
-    <path d="M-2.6 1.2 Q0 -0.8 2.6 1.2 L${W} 22 V28 H-${W} V22 Z" fill="#000" filter="url(#grain${id})" opacity="0.35"/>
-    <!-- worn, rubbed flat facet on the tip -->
-    <path d="M-1.6 2 Q0.6 1 2.2 2.4 L5.2 11 Q1 13 -1.4 9 Z" fill="#fff" opacity="0.28"/>
-    <!-- paper wrapper -->
-    <path d="M-${W} 28 H${W} V91 Q0 93.5 -${W} 91 Z" fill="url(#paper${id})"/>
-    <path d="M-${W} 28 H${W} V91 Q0 93.5 -${W} 91 Z" fill="#000" filter="url(#grain${id})" opacity="0.18"/>
-    <!-- printed zigzag stripes near both ends, and a dark label band with two thin lines -->
-    <path d="M-${W} 33 l3.33 -2.6 l3.33 2.6 l3.33 -2.6 l3.33 2.6 l3.33 -2.6 l3.33 2.6" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>
-    <path d="M-${W} 86 l3.33 -2.6 l3.33 2.6 l3.33 -2.6 l3.33 2.6 l3.33 -2.6 l3.33 2.6" fill="none" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>
-    <rect x="-${W}" y="44" width="${2 * W}" height="26" fill="${INK}" opacity="0.82"/>
-    <path d="M-${W} 47.5 H${W} M-${W} 66.5 H${W}" stroke="${c.light}" stroke-width="1.1" opacity="0.9"/>
-    <path d="M-4.5 53 H3 M-4.5 57.5 H1 M-4.5 62 H4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
-    <!-- seam lines where the wrapper starts and ends -->
-    <path d="M-${W} 28 H${W}" stroke="${INK}" stroke-width="1.6"/>
-    <!-- soft highlight running down the barrel -->
-    <path d="M-4.4 30 V42 M-4.4 72 V88" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity="0.45"/>`
+    <!-- round wax tip and the bare wax collar, with round shading and grain -->
+    <path d="${tip}" fill="url(#round${id})"/>
+    <path d="${tip}" fill="#000" filter="url(#grain${id})" opacity="0.18"/>
+    <path d="M-2.6 3.4 Q0 1.6 2.6 3.4 L5.6 10.5 Q0.5 12.5 -3.2 9 Z" fill="#fff" opacity="0.4"/>
+    <!-- paper wrapper with rounded bottom corners -->
+    <path d="${wrapper}" fill="url(#paper${id})"/>
+    <path d="${wrapper}" fill="#000" filter="url(#grain${id})" opacity="0.1"/>
+    <!-- printed zigzags and a deep blue label band with a little heart -->
+    <path d="${zigzag(29)} ${zigzag(59.5)}" fill="none" stroke="${c.deep}" stroke-width="1.8" stroke-linejoin="round"/>
+    <rect x="-${W}" y="34" width="${2 * W}" height="17" fill="${c.deep}"/>
+    <path d="M-${W} 36.6 H${W} M-${W} 48.4 H${W}" stroke="${c.light}" stroke-width="1.1" opacity="0.9"/>
+    <path d="M0 46.2 L-3.6 42.6 Q-5.4 40.4 -3.4 39.2 Q-1.4 38.2 0 40.2 Q1.4 38.2 3.4 39.2 Q5.4 40.4 3.6 42.6 Z" fill="#fff" opacity="0.92"/>
+    <path d="M-${W} 24 H${W}" stroke="${INK}" stroke-width="1.6"/>
+    <!-- soft highlight on the barrel -->
+    <path d="M-8 27.5 V31 M-8 53 V57" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>`
 
 // the tip sits at (8, 8) of the 88 px image (4, 4 in CSS px), pointing to the top left
 const crayon = (c, id, scribble = false) => `<svg xmlns="http://www.w3.org/2000/svg" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">${defs(c, id)}
@@ -81,7 +82,7 @@ const crayon = (c, id, scribble = false) => `<svg xmlns="http://www.w3.org/2000/
   <path d="M2 22 q6 -5 6 1 q0 6 6 1 q5 -4 5 2" fill="none" stroke="${c.dark}" stroke-width="3.6" stroke-linecap="round" filter="url(#rough${id})"/>`
       : ''
   }
-  <g transform="translate(8 8) rotate(-45)">${crayonBody(c, id)}
+  <g transform="translate(9 9) rotate(-45) scale(1.18)">${crayonBody(c, id)}
   </g>
 </svg>`
 
@@ -92,15 +93,15 @@ const save = async (name, svg) => {
 }
 
 await save('crayon', crayon(BLUE, 'b'))
-await save('crayon-link', crayon(YELLOW, 'y'))
-await save('crayon-press', crayon(YELLOW, 'p', true))
+await save('crayon-link', crayon(DEEP, 'y'))
+await save('crayon-press', crayon(DEEP, 'p', true))
 
-// Magnifying glass: a yellow wax rim and a short crayon (blue wrapper) as the handle.
+// Magnifying glass: a blue wax rim and the end of a deep blue crayon as the handle.
 // The lens centre is at (34, 34) of the 88 px image (17, 17 in CSS px).
-const magnifier = (mark) => `<svg xmlns="http://www.w3.org/2000/svg" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">${defs(BLUE, 'h')}${defs(YELLOW, 'r')}
+const magnifier = (mark) => `<svg xmlns="http://www.w3.org/2000/svg" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">${defs(DEEP, 'h')}${defs(BLUE, 'r')}
   <!-- handle: the paper end of a blue crayon, running from the rim to the bottom right -->
-  <clipPath id="cut"><rect x="-20" y="45" width="40" height="60"/></clipPath>
-  <g transform="translate(34 34) rotate(-45) translate(0 -20)" clip-path="url(#cut)">${crayonBody(BLUE, 'h')}</g>
+  <clipPath id="cut"><rect x="-30" y="33" width="60" height="40"/></clipPath>
+  <g transform="translate(34 34) rotate(-45) scale(0.75) translate(0 0)" clip-path="url(#cut)">${crayonBody(DEEP, 'h')}</g>
   <g filter="url(#roughr)">
     <circle cx="34" cy="34" r="24" fill="#fff" stroke="#fff" stroke-width="12"/>
     <circle cx="34" cy="34" r="24" fill="#FFFDF6" stroke="${INK}" stroke-width="11"/>
@@ -114,7 +115,7 @@ const magnifier = (mark) => `<svg xmlns="http://www.w3.org/2000/svg" width="${S}
 await save('magnifier-in', magnifier('M23.5 34 H44.5 M34 23.5 V44.5'))
 await save('magnifier-out', magnifier('M23.5 34 H44.5'))
 
-// Drag arrows in yellow wax (blue while held), with shading and grain. Centre (44, 44) = (22, 22) CSS px.
+// Drag arrows in blue wax (deep blue while held), with shading and grain. Centre (44, 44) = (22, 22) CSS px.
 const dragX = 'M8 44 L26 26 V36 H62 V26 L80 44 L62 62 V52 H26 V62 Z'
 const dragMove =
   'M44 7 L58 21 H49.5 V38.5 H67 V30 L81 44 L67 58 V49.5 H49.5 V67 H58 L44 81 L30 67 H38.5 V49.5 H21 V58 L7 44 L21 30 V38.5 H38.5 V21 H30 Z'
@@ -126,7 +127,7 @@ const drag = (shape, c, id) => `<svg xmlns="http://www.w3.org/2000/svg" width="$
   <path d="${shape}" fill="#000" filter="url(#grain${id})" opacity="0.3"/>
 </svg>`
 
-await save('drag-x', drag(dragX, YELLOW, 'x'))
-await save('drag-move', drag(dragMove, YELLOW, 'm'))
-await save('drag-move-held', drag(dragMove, BLUE, 'g'))
+await save('drag-x', drag(dragX, BLUE, 'x'))
+await save('drag-move', drag(dragMove, BLUE, 'm'))
+await save('drag-move-held', drag(dragMove, DEEP, 'g'))
 console.log('done')

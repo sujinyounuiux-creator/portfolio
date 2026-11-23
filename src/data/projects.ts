@@ -480,6 +480,20 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
+              '**Before and after.** Drag the handle to compare the first screen of BCA’s current home page with the redesign.',
+            ],
+          },
+          {
+            // current site: bca-bc.ca captured 2026-11-23; redesign: Figma 839:210 (scripts/prepare-bca-before-after.mjs)
+            kind: 'compare',
+            label: 'BCA home page',
+            caption: 'Home page: the current BCA site (left) and our redesign (right).',
+            before: img('bca-before-home', 'The current BCA home page: a dark stadium photo with the title "BCA: Uniting the Brazilian Community in British Columbia for Over 29 Years", a Subscribe bar and Donate button on top, a menu with only About and Notícias, and no clear next step.', 'Home, before', 2400, 1500),
+            after: img('bca-after-home', 'The redesigned home page: "Brazilian roots, at home in BC" with an email field and Get BCA News, See upcoming events, the next event card, the 30 years and 128+ businesses badges, and a full menu with an EN / PT switch.', 'Home, after', 2400, 1500),
+          },
+          {
+            kind: 'text',
+            body: [
               'The new home page says **who BCA is for** in one line, puts **the next event** and the **BCA News** sign up right in the hero, and leads to the four things people come for: events, businesses, guides and ways to get involved. Every page has an **EN / PT switch** in the header.',
             ],
           },

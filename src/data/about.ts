@@ -14,10 +14,14 @@ export const about = glueAll({
   // Names: Rizsq is an app; Samawada is a charity organization.
   // role and place are optional; previous non design work is summarised as one entry
   experience: [
-    { org: 'Cornerstone College', role: 'UX/UI Design Diploma', place: 'Vancouver', when: '2026.5 to 2026.11' },
     // confirmed by Sujin: volunteers at Samawada doing social media design and UI/UX for the Rizsq app
     { org: 'Samawada charity (Volunteer)', role: 'Social media design & UI/UX for the Rizsq', place: 'Ottawa (remote)', when: '2026.10 to present' },
     { org: 'Network Engineering Experience', place: 'Japan', when: '2019.05 to 2026.03' },
+  ] as { org: string; role?: string; place?: string; when: string }[],
+
+  // schools and courses, shown under Education (same shape as experience)
+  education: [
+    { org: 'Cornerstone College', role: 'UX/UI Design Diploma', place: 'Vancouver', when: '2026.5 to 2026.11' },
   ] as { org: string; role?: string; place?: string; when: string }[],
 
   skills: [

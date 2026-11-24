@@ -53,6 +53,23 @@ export function AboutPage() {
           </ol>
         </section>
 
+        {/* Education */}
+        <section className="about-block" aria-labelledby="education-title">
+          <h2 id="education-title" className="section-title about-heading">
+            Education
+          </h2>
+          <ol className="experience">
+            {about.education.map((e) => (
+              <li key={e.org}>
+                <h3>{e.org}</h3>
+                {e.role && <p>{e.role}</p>}
+                {e.place && <p>{e.place}</p>}
+                <p className="experience__when">{e.when}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         {/* Skills */}
         <section className="about-block" aria-labelledby="skills-title">
           <h2 id="skills-title" className="section-title about-heading">

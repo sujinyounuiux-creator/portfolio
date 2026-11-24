@@ -1126,3 +1126,15 @@ a.feature__tag:focus-visible {
   border-color: var(--c-accent-ink);
   color: #fff;
 }
+
+/* Education sits right under Experiences: a heading without the dashed divider */
+@media (min-width: 960px) {
+  .about-home__col:not(.about-home__col--photos) > .about-home__h3--sub {
+    margin-top: var(--s-3);
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+.about-home__h3--sub {
+  margin-top: var(--s-4);
+}

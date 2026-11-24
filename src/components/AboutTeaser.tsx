@@ -47,6 +47,17 @@ export function AboutTeaser() {
               ))}
             </ol>
 
+            <h3 className="about-home__h3 about-home__h3--sub">Education</h3>
+            <ol className="about-home__timeline">
+              {about.education.map((e) => (
+                <li key={e.org}>
+                  <span className="about-home__when">{e.when}</span>
+                  <strong>{e.role ?? e.org}</strong>
+                  {(e.role || e.place) && <span>{[e.role && e.org, e.place].filter(Boolean).join(', ')}</span>}
+                </li>
+              ))}
+            </ol>
+
             <Link to="/about" className="btn btn--ghost about-home__more">
               More about me <Arrow />
             </Link>

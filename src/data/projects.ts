@@ -226,7 +226,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#00664E', ink: '#004131', surface: '#F4F8F1' },
     tldr: [
       { label: 'Problem', text: 'People could not tell what BCA offers, where to start, or how to find events, businesses and resources on the current site.' },
-      { label: 'My role', text: 'UI/UX designer in a team of 4: research, user flows, visual design and the mobile prototype, which I led.' },
+      { label: 'My role', text: 'UI/UX designer in a team of 4. I led the mobile prototype, designed the iPad screens, refined the working website with vibe coding and built the final presentation.' },
       { label: 'Solution', text: 'A clear, bilingual site built around four goals: accessibility, community engagement, business visibility and an English / Portuguese experience.' },
       { label: 'Result', text: 'Desktop, tablet and mobile designs, a tested prototype, a design system and a working site BCA can run. The client liked the design.' },
     ],
@@ -248,7 +248,7 @@ export const projects: Project[] = glueAll<Project[]>([
             items: [
               { title: 'Problem', body: 'The site did not explain **what BCA does**, had **no clear next step** and was hard to navigate, so services, events and businesses were easy to miss.' },
               { title: 'Goal', body: 'Four goals from the client: **accessibility**, **community engagement**, **business visibility** and a **bilingual** English and Portuguese experience.' },
-              { title: 'My role', body: 'I worked on **both the UX and the UI**: research and flows with the team, the visual design, and I led the **mobile prototype**.' },
+              { title: 'My part', body: 'I led the **mobile prototype** and designed the **iPad screens**. I also refined the **working website with vibe coding** and built our **final presentation**. Research, flows and visual design we did as a team.' },
             ],
           },
           {
@@ -1054,7 +1054,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
-      { label: 'My role', text: 'I ran the user interviews, and designed and prototyped the app together with one teammate.' },
+      { label: 'My role', text: 'One of two designers. I ran the user interviews, designed screens and built the UI kit.' },
       { label: 'Solution', text: 'A ticket discovery app with last minute and discounted tickets, related event suggestions and an in app calendar.' },
       { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants.' },
     ],
@@ -1077,7 +1077,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               { title: 'Team', body: 'Two designers working together in Figma, on research, wireframes, UI design and prototyping.' },
-              { title: 'My focus', body: 'I conducted the user interviews.' },
+              { title: 'My part', body: 'I ran the **user interviews**, designed **screens** of the app and built the **UI kit**.' },
               { title: 'My teammate’s focus', body: 'My teammate conducted the usability testing.' },
             ],
           },
@@ -1624,7 +1624,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },
-      { label: 'My role', text: 'One of three designers on a class brief. I mainly designed the About and Pricing pages.' },
+      { label: 'My role', text: 'One of three designers on a class brief. I worked on the heuristic audit and designed the About and Pricing pages.' },
       { label: 'Solution', text: 'Clearer page structures, a style guide and component library, and redesigned Home, Pricing, Teacher Training and About pages.' },
       { label: 'Feedback', text: 'Testing showed that imagery and visual style need to stay consistent across every page.' },
     ],
@@ -1644,7 +1644,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               { title: 'Team', body: 'Three designers. We worked on every stage together, from the heuristic evaluation to the style guide, components and final pages.' },
-              { title: 'My focus', body: 'I mainly designed the About and Pricing pages.' },
+              { title: 'My part', body: 'I worked on the **heuristic audit**, and designed the **About** and **Pricing** pages, from wireframe to final design.' },
               { title: 'Target user', body: 'First time yoga students in Vancouver looking for an in studio class.' },
             ],
           },

@@ -22,7 +22,7 @@ export const about = glueAll({
   // schools and courses, shown under Education (same shape as experience)
   education: [
     { org: 'Cornerstone College', role: 'UX/UI Design Diploma', place: 'Vancouver', when: '2026.5 to 2026.11' },
-    { org: 'Yeungjin University', role: 'Computer Engineering, Associate degree', place: 'Daegu, Korea', when: '2015.03 to 2019.02' },
+    { org: 'Yeungjin University', role: 'Computer Engineering, Associate degree', place: 'Daegu, Korea', when: '2016.03 to 2019.02' },
   ] as { org: string; role?: string; place?: string; when: string }[],
 
   skills: [

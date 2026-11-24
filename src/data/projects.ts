@@ -707,7 +707,9 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             boxed: true,
             body: [
-              'Working with a **real non-profit client** taught me to design for the people who will **run the site**, not only the people who visit it. Because one volunteer manages everything, every decision had to be **simple to maintain**. Using **vibe coding** showed me how quickly a design can become something the client can actually try. Working on **both the UX research and the UI** in a team of four showed me how an audit and a few clear goals keep a team aligned, and leading the **mobile prototype** taught me to rethink each flow for a small screen instead of shrinking the desktop. Testing also reminded me to **set up the test carefully**, so the results can be trusted.',
+              'This project taught me how to **redesign** an existing website, especially on the **visual design** side. I also learned much more about **UX research**: **usability testing**, the **heuristic audit**, **competitor analysis** and **personas**.',
+              'It was my **first client project**. We met the client’s manager **four times**, and their feedback helped us shape the website around what the client really needed. The client wanted to focus on **membership and news**, so we made it easy to **sign up for the newsletter** while visiting the site.',
+              'I worked on the **competitor analysis**, the **persona** and the **audit**, and we discussed our **goals** together as a team. I also worked on the **mobile** and **iPad** designs, the **working website with vibe coding** and the **final presentation**.',
             ],
           },
         ],

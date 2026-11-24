@@ -1054,7 +1054,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
-      { label: 'My role', text: 'One of two designers. I ran the user interviews, designed screens and built the UI kit.' },
+      { label: 'My role', text: 'One of two designers. I ran the user interviews, designed the Event details and Ticket calendar screens and built the UI kit.' },
       { label: 'Solution', text: 'A ticket discovery app with last minute and discounted tickets, related event suggestions and an in app calendar.' },
       { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants.' },
     ],
@@ -1077,7 +1077,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               { title: 'Team', body: 'Two designers working together in Figma, on research, wireframes, UI design and prototyping.' },
-              { title: 'My part', body: 'I ran the **user interviews**, designed **screens** of the app and built the **UI kit**.' },
+              { title: 'My part', body: 'I ran the **user interviews**, designed the **Event details** and **Ticket calendar** screens and built the **UI kit**.' },
               { title: 'My teammate’s focus', body: 'My teammate conducted the usability testing.' },
             ],
           },

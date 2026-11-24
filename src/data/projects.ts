@@ -1071,6 +1071,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Adults aged 18 to 40 often miss live events because they discover them too late: tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
               'LastCow is a ticket discovery app that surfaces last minute and discounted tickets and matches events to personal taste.',
+              '**Why “LastCow”?** “Last” is the last ticket you can still get. The cow is a friendly, familiar animal that people warm to, and a **hard worker**. We wanted the app to feel the same: approachable, and working hard to find you a ticket before it is gone.',
             ],
           },
           {

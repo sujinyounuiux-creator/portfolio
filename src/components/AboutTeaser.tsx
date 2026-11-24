@@ -49,7 +49,7 @@ export function AboutTeaser() {
 
             <h3 className="about-home__h3 about-home__h3--sub">Education</h3>
             <ol className="about-home__timeline">
-              {about.education.map((e) => (
+              {about.education.filter((e) => !e.aboutOnly).map((e) => (
                 <li key={e.org}>
                   <span className="about-home__when">{e.when}</span>
                   <strong>{e.role ?? e.org}</strong>

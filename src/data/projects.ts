@@ -1338,320 +1338,6 @@ export const projects: Project[] = glueAll<Project[]>([
     ],
   },
 
-  // ───────────────────────────────────────────── Cookpad
-  {
-    slug: 'cookpad',
-    title: 'Cookpad',
-    disciplines: ['ux-ui', 'visual'],
-    // a first, early project: kept on the Case Study page, not on Home
-    featured: false,
-    tagline: 'UI/UX improvement project',
-    proof: { value: '5', label: 'testers searched faster and more easily with the new filters' },
-    summary:
-      'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
-    category: 'Responsive web · Redesign',
-    platform: 'Responsive web',
-    role: 'UI/UX Design',
-    timeline: '2024.11 to 2025.01',
-    team: 'Personal project',
-    tools: ['Figma'],
-    // cover: Sujin's new Cookpad cover design (design-exports/cookpad-cover-2026.webp)
-    thumbnail: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
-    hero: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
-    theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
-    tldr: [
-      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling. Users found search hard to narrow down and the UI complex.' },
-      { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
-      { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
-      { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
-    ],
-    sections: [
-      {
-        // Sources: the Cookpad frames in the Portfolio Figma file ("Overview", "Research", "Goal",
-        // "wireframe", "Design", "UI", "Filter", "Comment", "Main", "List", "Recipe").
-        id: 'overview',
-        label: 'Overview',
-        title: 'The challenge',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Cookpad is a recipe sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'Problem', body: 'Low ratings and reviews, a decrease in users, strong competitors and usability issues raised in feedback.' },
-              { title: 'Goal', body: 'A simpler, better experience that keeps existing users, wins new ones and makes the community more active.' },
-              { title: 'My role', body: 'A personal project: research, UX strategy, wireframes, visual design and usability testing.' },
-            ],
-          },
-        ],
-      },
-      {
-        // The competitor chart in the Research frame has no units or source, so its numbers are left out.
-        id: 'research',
-        label: 'Research',
-        title: 'Research findings',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'I reviewed what users said in public ratings and reviews and compared Cookpad with competing recipe services (kurashiru and Delish Kitchen). Secondary research on website traffic then showed how people reach the site.',
-            ],
-          },
-          {
-            kind: 'quotes',
-            source: 'What users said: recurring opinions I gathered from public ratings and reviews',
-            items: [
-              'Please strengthen the search filter feature',
-              'Complex and difficult to use UI',
-              'Too many restrictions for free members',
-              'Lack of community related features',
-            ],
-          },
-          {
-            // secondary research: estimated website traffic (not my own user research)
-            kind: 'bars',
-            eyebrow: 'Secondary research',
-            title: 'Website traffic by device',
-            source: 'Estimated website traffic to cookpad.com. Source: Exploding Topics,',
-            sourceUrl: 'https://analytics.explodingtopics.com/website/cookpad.com',
-            items: [
-              { label: 'Mobile web', value: 92.34 },
-              { label: 'Desktop web', value: 7.66 },
-            ],
-            takeaway:
-              'Website traffic estimates show that mobile devices account for the majority of visits to Cookpad.com. This highlighted the importance of designing a responsive experience that works well across different screen sizes.',
-          },
-        ],
-      },
-      {
-        id: 'insights',
-        label: 'Insights',
-        title: 'Key insights',
-        note: 'Search first!',
-        blocks: [
-          {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Search is hard to narrow down',
-                body: 'Users asked for stronger search filters. → **Filters** for cooking time, difficulty, dish type, ingredients and allergies.',
-              },
-              {
-                title: 'Search results are hard to read',
-                body: 'Search results weren’t clear to read. → **Clearer results**, so people can easily see what their search found.',
-              },
-              {
-                title: 'The interface feels complex',
-                body: 'Reviews called the UI complex and hard to navigate. → A **simpler UI** with a clear icon set.',
-              },
-              {
-                title: 'Free members feel restricted',
-                body: 'Free members felt limited. → **Enhanced free membership features** became one of the planned solutions.',
-              },
-              {
-                title: 'Little sense of community',
-                body: 'Users missed community features. → **Threaded comments** so questions get answered and conversations stay easy to follow.',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'wireframes',
-        label: 'Wireframes',
-        title: 'Wireframes',
-        blocks: [
-          {
-            kind: 'text',
-            body: ['I planned the layout around the user flow: from the main page’s search, to the search results, to a recipe. A login modal opens over any page.'],
-          },
-          {
-            // redrawn from the original wireframe frame by scripts/build-cookpad-wireframes.mjs
-            kind: 'gallery',
-            figures: [
-              cwire('main', 'Main page wireframe: logo and ingredient search, a category grid and popular recipes.', '1. Main page', 1240),
-              cwire('search', 'Search page wireframe: search bar with a filter button, sort options and a list of recipe results.', '2. Search results', 1120),
-              cwire('recipe', 'Recipe page wireframe: food photo beside the title and ingredients, numbered steps, point, comments and more recipes.', '3. Recipe page', 1360),
-              cwire('login', 'Login modal wireframe: email and password fields, a log in button and a sign up link.', 'Login modal', 720),
-            ],
-          },
-        ],
-      },
-      {
-        id: 'visual-language',
-        label: 'Visual language',
-        title: 'Colour, type & icons',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'The palette builds on Cookpad’s brand image of friendliness, homely warmth and naturalness. The background is uniformly white, orange and dark red highlight the key areas, and text is dark grey for better readability.',
-            ],
-          },
-          {
-            kind: 'swatches',
-            swatches: [
-              { name: 'Main', hex: '#FF9934', usage: 'Key actions and highlights' },
-              { name: 'Sub', hex: '#FFD9B4', usage: 'Soft highlight areas' },
-              { name: 'Dark red', hex: '#370000', usage: 'Headings and emphasis' },
-              { name: 'Text', hex: '#646464', usage: 'Body text' },
-              { name: 'Black', hex: '#000000', usage: 'Strong text' },
-              { name: 'Base', hex: '#FFFFFF', usage: 'Background' },
-            ],
-          },
-          {
-            // sizes and weights taken from the real Recipe, List and Main frames
-            kind: 'type',
-            note: 'One typeface, Noto Sans KR, in three weights. Sizes and weights are taken from the real recipe and list pages.',
-            styles: [
-              { name: 'Recipe title', font: 'Noto Sans KR', weight: 700, size: 40, sample: 'Butter Pancake' },
-              { name: 'Section heading', font: 'Noto Sans KR', weight: 700, size: 32, sample: 'Ingredients' },
-              { name: 'Author', font: 'Noto Sans KR', weight: 500, size: 32, sample: 'ChefMario' },
-              { name: 'Card title', font: 'Noto Sans KR', weight: 700, size: 24, sample: 'Hearty Spaghetti Bolognese' },
-              { name: 'Body', font: 'Noto Sans KR', weight: 400, size: 24, sample: 'Flour 180g · Sugar 60 g · Milk 250 ml' },
-              { name: 'Meta', font: 'Noto Sans KR', weight: 400, size: 16, sample: 'Newest First · 25 minutes · ChefAnna89' },
-            ],
-          },
-          {
-            // icons cut from the "Icon" rows of the Design frame (scripts/prepare-cookpad.mjs)
-            kind: 'icons',
-            groups: [
-              {
-                title: 'Recipe actions',
-                note: 'In Cookpad orange: the things people do with a recipe.',
-                items: [
-                  { src: '/images/cookpad/icon-1.png', label: 'Save' },
-                  { src: '/images/cookpad/icon-4.png', label: 'Saved' },
-                  { src: '/images/cookpad/icon-2.png', label: 'Add' },
-                  { src: '/images/cookpad/icon-3.png', label: 'Filter' },
-                  { src: '/images/cookpad/icon-5.png', label: 'Premium badge' },
-                ],
-              },
-              {
-                title: 'Navigation & tools',
-                note: 'The same rounded outline style in neutral grey: menus and page tools.',
-                items: [
-                  { src: '/images/cookpad/icon-7.png', label: 'Menu' },
-                  { src: '/images/cookpad/icon-9.png', label: 'Search' },
-                  { src: '/images/cookpad/icon-10.png', label: 'Time' },
-                  { src: '/images/cookpad/icon-11.png', label: 'Notifications' },
-                  { src: '/images/cookpad/icon-12.png', label: 'Share' },
-                  { src: '/images/cookpad/icon-8.png', label: 'Print' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'decisions',
-        label: 'Key decisions',
-        title: 'Key design decisions',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Reviews pointed to navigation friction in Cookpad’s features, so I simplified the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
-            ],
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Secondary research: most visits come from mobile',
-            title: 'A responsive experience across devices',
-            body: [
-              'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
-            ],
-            figures: [],
-            // one device at a time: the screens from the "Overall UI" export, cut out of their old
-            // mockups (scripts/cut-cookpad-screens.mjs) and shown in current device frames
-            tabs: [
-              { label: 'Phone', device: 'phone', figure: cook('screen-phone', 'The redesigned Cookpad search page on a phone.', undefined, 202, 439) },
-              { label: 'Tablet', device: 'tablet', figure: cook('screen-tablet', 'The redesigned Cookpad search page on a tablet.', undefined, 395, 526) },
-              { label: 'Laptop', device: 'desktop', figure: cook('screen-laptop', 'The redesigned Cookpad search page on a laptop.', undefined, 564, 352) },
-              { label: 'Desktop', device: 'monitor', figure: cook('screen-desktop', 'The redesigned Cookpad search page on a desktop monitor.', undefined, 889, 499) },
-            ],
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Insight: search is hard to narrow down',
-            title: 'Search filters that match how people cook',
-            body: [
-              'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
-            ],
-            figures: [],
-            // clicking the filter icon in the bar opens the panel (components/FilterDemo.tsx)
-            filterDemo: {
-              bar: cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', undefined, 1600, 143),
-            },
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Insight: little sense of community',
-            title: 'Threaded comments',
-            reverse: true,
-            body: [
-              'Replies sit under the comment they answer, so a question and its answers stay together. This makes discussions easier to follow and questions more likely to get an answer.',
-            ],
-            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 730)],
-          },
-        ],
-      },
-      {
-        id: 'final',
-        label: 'Final design',
-        title: 'Final interface',
-        blocks: [
-          {
-            kind: 'devices',
-            plain: true,
-            device: 'desktop',
-            screens: [
-              // two Figma frames joined into one page (scripts/build-cookpad-recipe-page.mjs)
-              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. A + button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, addButton: true },
-            ],
-          },
-          {
-            kind: 'devices',
-            plain: true,
-            device: 'desktop',
-            screens: [
-              img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
-              img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
-            ],
-          },
-        ],
-      },
-      {
-        id: 'reflection',
-        label: 'Learning outcomes',
-        title: 'Learning outcomes',
-        blocks: [
-          {
-            kind: 'text',
-            boxed: true,
-            body: [
-              'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well. In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other. Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'What testers said', body: 'The site looked **simple** and was **much easier to navigate**. But it felt **similar to the original Cookpad**, and with **only a few pages** there was **not much content** to explore.' },
-              { title: 'Next iteration', body: 'Give the redesign a **more distinct look** of its own, and design **more pages** so people can see the full experience.' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
   // ───────────────────────────────────────────── Open Door Yoga
   {
     slug: 'open-door-yoga',
@@ -1993,6 +1679,320 @@ export const projects: Project[] = glueAll<Project[]>([
                 title: 'What I Learned',
                 body: 'This project taught me the importance of **researching usability issues before jumping into design**. I learned to use **heuristic evaluation** to guide design decisions **with evidence** rather than visual preferences alone. I also gained a better understanding of how **consistent imagery, typography, and UI components** create a **cohesive user experience**.',
               },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // ───────────────────────────────────────────── Cookpad
+  {
+    slug: 'cookpad',
+    title: 'Cookpad',
+    disciplines: ['ux-ui', 'visual'],
+    // a first, early project: kept on the Case Study page, not on Home
+    featured: false,
+    tagline: 'UI/UX improvement project',
+    proof: { value: '5', label: 'testers searched faster and more easily with the new filters' },
+    summary:
+      'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
+    category: 'Responsive web · Redesign',
+    platform: 'Responsive web',
+    role: 'UI/UX Design',
+    timeline: '2024.11 to 2025.01',
+    team: 'Personal project',
+    tools: ['Figma'],
+    // cover: Sujin's new Cookpad cover design (design-exports/cookpad-cover-2026.webp)
+    thumbnail: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
+    hero: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
+    theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
+    tldr: [
+      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling. Users found search hard to narrow down and the UI complex.' },
+      { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
+      { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
+      { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
+    ],
+    sections: [
+      {
+        // Sources: the Cookpad frames in the Portfolio Figma file ("Overview", "Research", "Goal",
+        // "wireframe", "Design", "UI", "Filter", "Comment", "Main", "List", "Recipe").
+        id: 'overview',
+        label: 'Overview',
+        title: 'The challenge',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Cookpad is a recipe sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Problem', body: 'Low ratings and reviews, a decrease in users, strong competitors and usability issues raised in feedback.' },
+              { title: 'Goal', body: 'A simpler, better experience that keeps existing users, wins new ones and makes the community more active.' },
+              { title: 'My role', body: 'A personal project: research, UX strategy, wireframes, visual design and usability testing.' },
+            ],
+          },
+        ],
+      },
+      {
+        // The competitor chart in the Research frame has no units or source, so its numbers are left out.
+        id: 'research',
+        label: 'Research',
+        title: 'Research findings',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'I reviewed what users said in public ratings and reviews and compared Cookpad with competing recipe services (kurashiru and Delish Kitchen). Secondary research on website traffic then showed how people reach the site.',
+            ],
+          },
+          {
+            kind: 'quotes',
+            source: 'What users said: recurring opinions I gathered from public ratings and reviews',
+            items: [
+              'Please strengthen the search filter feature',
+              'Complex and difficult to use UI',
+              'Too many restrictions for free members',
+              'Lack of community related features',
+            ],
+          },
+          {
+            // secondary research: estimated website traffic (not my own user research)
+            kind: 'bars',
+            eyebrow: 'Secondary research',
+            title: 'Website traffic by device',
+            source: 'Estimated website traffic to cookpad.com. Source: Exploding Topics,',
+            sourceUrl: 'https://analytics.explodingtopics.com/website/cookpad.com',
+            items: [
+              { label: 'Mobile web', value: 92.34 },
+              { label: 'Desktop web', value: 7.66 },
+            ],
+            takeaway:
+              'Website traffic estimates show that mobile devices account for the majority of visits to Cookpad.com. This highlighted the importance of designing a responsive experience that works well across different screen sizes.',
+          },
+        ],
+      },
+      {
+        id: 'insights',
+        label: 'Insights',
+        title: 'Key insights',
+        note: 'Search first!',
+        blocks: [
+          {
+            kind: 'cards',
+            items: [
+              {
+                title: 'Search is hard to narrow down',
+                body: 'Users asked for stronger search filters. → **Filters** for cooking time, difficulty, dish type, ingredients and allergies.',
+              },
+              {
+                title: 'Search results are hard to read',
+                body: 'Search results weren’t clear to read. → **Clearer results**, so people can easily see what their search found.',
+              },
+              {
+                title: 'The interface feels complex',
+                body: 'Reviews called the UI complex and hard to navigate. → A **simpler UI** with a clear icon set.',
+              },
+              {
+                title: 'Free members feel restricted',
+                body: 'Free members felt limited. → **Enhanced free membership features** became one of the planned solutions.',
+              },
+              {
+                title: 'Little sense of community',
+                body: 'Users missed community features. → **Threaded comments** so questions get answered and conversations stay easy to follow.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'wireframes',
+        label: 'Wireframes',
+        title: 'Wireframes',
+        blocks: [
+          {
+            kind: 'text',
+            body: ['I planned the layout around the user flow: from the main page’s search, to the search results, to a recipe. A login modal opens over any page.'],
+          },
+          {
+            // redrawn from the original wireframe frame by scripts/build-cookpad-wireframes.mjs
+            kind: 'gallery',
+            figures: [
+              cwire('main', 'Main page wireframe: logo and ingredient search, a category grid and popular recipes.', '1. Main page', 1240),
+              cwire('search', 'Search page wireframe: search bar with a filter button, sort options and a list of recipe results.', '2. Search results', 1120),
+              cwire('recipe', 'Recipe page wireframe: food photo beside the title and ingredients, numbered steps, point, comments and more recipes.', '3. Recipe page', 1360),
+              cwire('login', 'Login modal wireframe: email and password fields, a log in button and a sign up link.', 'Login modal', 720),
+            ],
+          },
+        ],
+      },
+      {
+        id: 'visual-language',
+        label: 'Visual language',
+        title: 'Colour, type & icons',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'The palette builds on Cookpad’s brand image of friendliness, homely warmth and naturalness. The background is uniformly white, orange and dark red highlight the key areas, and text is dark grey for better readability.',
+            ],
+          },
+          {
+            kind: 'swatches',
+            swatches: [
+              { name: 'Main', hex: '#FF9934', usage: 'Key actions and highlights' },
+              { name: 'Sub', hex: '#FFD9B4', usage: 'Soft highlight areas' },
+              { name: 'Dark red', hex: '#370000', usage: 'Headings and emphasis' },
+              { name: 'Text', hex: '#646464', usage: 'Body text' },
+              { name: 'Black', hex: '#000000', usage: 'Strong text' },
+              { name: 'Base', hex: '#FFFFFF', usage: 'Background' },
+            ],
+          },
+          {
+            // sizes and weights taken from the real Recipe, List and Main frames
+            kind: 'type',
+            note: 'One typeface, Noto Sans KR, in three weights. Sizes and weights are taken from the real recipe and list pages.',
+            styles: [
+              { name: 'Recipe title', font: 'Noto Sans KR', weight: 700, size: 40, sample: 'Butter Pancake' },
+              { name: 'Section heading', font: 'Noto Sans KR', weight: 700, size: 32, sample: 'Ingredients' },
+              { name: 'Author', font: 'Noto Sans KR', weight: 500, size: 32, sample: 'ChefMario' },
+              { name: 'Card title', font: 'Noto Sans KR', weight: 700, size: 24, sample: 'Hearty Spaghetti Bolognese' },
+              { name: 'Body', font: 'Noto Sans KR', weight: 400, size: 24, sample: 'Flour 180g · Sugar 60 g · Milk 250 ml' },
+              { name: 'Meta', font: 'Noto Sans KR', weight: 400, size: 16, sample: 'Newest First · 25 minutes · ChefAnna89' },
+            ],
+          },
+          {
+            // icons cut from the "Icon" rows of the Design frame (scripts/prepare-cookpad.mjs)
+            kind: 'icons',
+            groups: [
+              {
+                title: 'Recipe actions',
+                note: 'In Cookpad orange: the things people do with a recipe.',
+                items: [
+                  { src: '/images/cookpad/icon-1.png', label: 'Save' },
+                  { src: '/images/cookpad/icon-4.png', label: 'Saved' },
+                  { src: '/images/cookpad/icon-2.png', label: 'Add' },
+                  { src: '/images/cookpad/icon-3.png', label: 'Filter' },
+                  { src: '/images/cookpad/icon-5.png', label: 'Premium badge' },
+                ],
+              },
+              {
+                title: 'Navigation & tools',
+                note: 'The same rounded outline style in neutral grey: menus and page tools.',
+                items: [
+                  { src: '/images/cookpad/icon-7.png', label: 'Menu' },
+                  { src: '/images/cookpad/icon-9.png', label: 'Search' },
+                  { src: '/images/cookpad/icon-10.png', label: 'Time' },
+                  { src: '/images/cookpad/icon-11.png', label: 'Notifications' },
+                  { src: '/images/cookpad/icon-12.png', label: 'Share' },
+                  { src: '/images/cookpad/icon-8.png', label: 'Print' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'decisions',
+        label: 'Key decisions',
+        title: 'Key design decisions',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Reviews pointed to navigation friction in Cookpad’s features, so I simplified the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
+            ],
+          },
+          {
+            kind: 'feature',
+            plain: true,
+            tag: 'Secondary research: most visits come from mobile',
+            title: 'A responsive experience across devices',
+            body: [
+              'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
+            ],
+            figures: [],
+            // one device at a time: the screens from the "Overall UI" export, cut out of their old
+            // mockups (scripts/cut-cookpad-screens.mjs) and shown in current device frames
+            tabs: [
+              { label: 'Phone', device: 'phone', figure: cook('screen-phone', 'The redesigned Cookpad search page on a phone.', undefined, 202, 439) },
+              { label: 'Tablet', device: 'tablet', figure: cook('screen-tablet', 'The redesigned Cookpad search page on a tablet.', undefined, 395, 526) },
+              { label: 'Laptop', device: 'desktop', figure: cook('screen-laptop', 'The redesigned Cookpad search page on a laptop.', undefined, 564, 352) },
+              { label: 'Desktop', device: 'monitor', figure: cook('screen-desktop', 'The redesigned Cookpad search page on a desktop monitor.', undefined, 889, 499) },
+            ],
+          },
+          {
+            kind: 'feature',
+            plain: true,
+            tag: 'Insight: search is hard to narrow down',
+            title: 'Search filters that match how people cook',
+            body: [
+              'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
+            ],
+            figures: [],
+            // clicking the filter icon in the bar opens the panel (components/FilterDemo.tsx)
+            filterDemo: {
+              bar: cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', undefined, 1600, 143),
+            },
+          },
+          {
+            kind: 'feature',
+            plain: true,
+            tag: 'Insight: little sense of community',
+            title: 'Threaded comments',
+            reverse: true,
+            body: [
+              'Replies sit under the comment they answer, so a question and its answers stay together. This makes discussions easier to follow and questions more likely to get an answer.',
+            ],
+            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 730)],
+          },
+        ],
+      },
+      {
+        id: 'final',
+        label: 'Final design',
+        title: 'Final interface',
+        blocks: [
+          {
+            kind: 'devices',
+            plain: true,
+            device: 'desktop',
+            screens: [
+              // two Figma frames joined into one page (scripts/build-cookpad-recipe-page.mjs)
+              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. A + button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, addButton: true },
+            ],
+          },
+          {
+            kind: 'devices',
+            plain: true,
+            device: 'desktop',
+            screens: [
+              img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
+              img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
+            ],
+          },
+        ],
+      },
+      {
+        id: 'reflection',
+        label: 'Learning outcomes',
+        title: 'Learning outcomes',
+        blocks: [
+          {
+            kind: 'text',
+            boxed: true,
+            body: [
+              'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well. In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other. Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'What testers said', body: 'The site looked **simple** and was **much easier to navigate**. But it felt **similar to the original Cookpad**, and with **only a few pages** there was **not much content** to explore.' },
+              { title: 'Next iteration', body: 'Give the redesign a **more distinct look** of its own, and design **more pages** so people can see the full experience.' },
             ],
           },
         ],

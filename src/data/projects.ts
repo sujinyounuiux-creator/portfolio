@@ -1640,6 +1640,13 @@ export const projects: Project[] = glueAll<Project[]>([
               'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well. In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other. Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
             ],
           },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'What testers said', body: 'The site looked **simple** and was **much easier to navigate**. But it felt **similar to the original Cookpad**, and with **only a few pages** there was **not much content** to explore.' },
+              { title: 'Next iteration', body: 'Give the redesign a **more distinct look** of its own, and design **more pages** so people can see the full experience.' },
+            ],
+          },
         ],
       },
     ],

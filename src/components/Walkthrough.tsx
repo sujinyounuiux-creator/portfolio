@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Figure } from '../data/projects'
+import { Arrow } from './Arrow'
 import { DeviceFrame } from './DeviceFrame'
 
 type Step = { title: string; note: string; figure: Figure }
@@ -70,6 +71,13 @@ export function Walkthrough({ steps }: { steps: Step[] }) {
         <div key={step.figure.src} className="walk__screen">
           <DeviceFrame device="desktop" figure={step.figure} caption="" />
         </div>
+        {/* previous / next arrows on both sides of the laptop */}
+        <button type="button" className="walk__arrow walk__arrow--prev" onClick={() => setI((n) => (n - 1 + steps.length) % steps.length)} aria-label={`Previous screen: ${steps[(i - 1 + steps.length) % steps.length].title}`}>
+          <Arrow dir="left" />
+        </button>
+        <button type="button" className="walk__arrow walk__arrow--next" onClick={next} aria-label={`Next screen: ${steps[(i + 1) % steps.length].title}`}>
+          <Arrow />
+        </button>
         <p className="walk__count" aria-hidden="true">
           {i + 1} / {steps.length} · {step.title}
         </p>

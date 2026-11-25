@@ -1834,6 +1834,16 @@
   height: 100%;
   border: 0;
 }
+/* phones: a wide 16:9 box would be only ~190 px tall, so the live site gets a tall box and
+   shows its own phone layout at a readable size */
+@media (max-width: 720px) {
+  .cs-embed__frame {
+    aspect-ratio: auto;
+    height: min(78vh, 680px);
+    min-height: 480px;
+    border: 1px solid var(--c-line);
+  }
+}
 /* phone prototypes: tall enough to show the whole phone screen */
 .cs-embed--phone {
   justify-items: center;

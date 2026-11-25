@@ -623,7 +623,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              '**The core tasks felt easy; clarity still needs refinement.** We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks: find an event, subscribe to BCA News, sign up to volunteer and list a business.',
+              '**The core tasks felt easy, but clarity still needs work.** We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks: find an event, subscribe to BCA News, sign up to volunteer and list a business.',
             ],
           },
           {

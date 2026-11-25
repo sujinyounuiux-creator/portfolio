@@ -118,11 +118,29 @@
 @media (max-width: 819px) {
   .site-header {
     padding-top: 0.4rem;
-    transition: transform var(--t-med, 0.25s) var(--ease, ease);
+    pointer-events: none; /* only the bar itself takes taps, not the gap around it */
   }
-  /* slides up out of view while scrolling down (see SiteHeader.tsx) */
-  .site-header.is-hidden {
-    transform: translateY(calc(-100% - 8px));
+  .site-header .navbar {
+    pointer-events: auto;
+    transition: background-color var(--t-med, 0.25s) var(--ease, ease), border-color var(--t-med, 0.25s) var(--ease, ease);
+  }
+  .site-header .navbar__name {
+    transition: opacity var(--t-med, 0.25s) var(--ease, ease), transform var(--t-med, 0.25s) var(--ease, ease);
+  }
+  /* While scrolling down (see SiteHeader.tsx) the bar and the name fade away, and only the
+     round menu button stays, so the menu can always be opened. */
+  .site-header.is-hidden .navbar {
+    pointer-events: none;
+    border-color: transparent;
+    background: transparent;
+  }
+  .site-header.is-hidden .navbar__name {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  .site-header.is-hidden .navbar__toggle {
+    pointer-events: auto;
+    box-shadow: 0 4px 12px -6px rgba(31, 36, 48, 0.45);
   }
   .navbar {
     min-height: 50px;

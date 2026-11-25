@@ -118,6 +118,11 @@
 @media (max-width: 819px) {
   .site-header {
     padding-top: 0.4rem;
+    transition: transform var(--t-med, 0.25s) var(--ease, ease);
+  }
+  /* slides up out of view while scrolling down (see SiteHeader.tsx) */
+  .site-header.is-hidden {
+    transform: translateY(calc(-100% - 8px));
   }
   .navbar {
     min-height: 50px;

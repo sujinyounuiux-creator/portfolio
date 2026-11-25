@@ -42,24 +42,21 @@ export function SiteHeader() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
-  // Phones: the bar slides away while scrolling down and comes back on scrolling up, so it
-  // doesn't cover what is being read. (The hiding itself is only styled for phone widths.)
+  // Phones: once the page is scrolled down, the bar and the name fade away and only the menu
+  // button stays. They come back only near the top of the page (or when the menu is opened),
+  // so nothing covers what is being read. (The hiding itself is only styled for phone widths.)
   const [hidden, setHidden] = useState(false)
   useEffect(() => {
-    let last = window.scrollY
-    const onScroll = () => {
-      const y = window.scrollY
-      const d = y - last
-      if (y < 80) setHidden(false)
-      else if (d > 8) setHidden(true)
-      else if (d < -8) setHidden(false)
-      if (Math.abs(d) > 8 || y < 80) last = y
-    }
+    const onScroll = () => setHidden(window.scrollY >= 80)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-  // show it again on every new page
-  useEffect(() => setHidden(false), [pathname])
+  // check again on every new page (it usually opens at the top, so the bar shows)
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setHidden(window.scrollY >= 80))
+    return () => cancelAnimationFrame(id)
+  }, [pathname])
 
   return (
     <header

@@ -1343,7 +1343,8 @@ export const projects: Project[] = glueAll<Project[]>([
     slug: 'cookpad',
     title: 'Cookpad',
     disciplines: ['ux-ui', 'visual'],
-    featured: true,
+    // a first, early project: kept on the Case Study page, not on Home
+    featured: false,
     tagline: 'UI/UX improvement project',
     proof: { value: '5', label: 'testers searched faster and more easily with the new filters' },
     summary:
@@ -1445,7 +1446,7 @@ export const projects: Project[] = glueAll<Project[]>([
               },
               {
                 title: 'The interface feels complex',
-                body: 'Reviews called the UI complex, and testing showed navigation friction. → A **simpler UI** with a clear icon set.',
+                body: 'Reviews called the UI complex and hard to navigate. → A **simpler UI** with a clear icon set.',
               },
               {
                 title: 'Free members feel restricted',
@@ -1554,7 +1555,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'Usability testing helped me identify navigation challenges and friction points in Cookpad’s features. Based on these insights, I refined the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
+              'Reviews pointed to navigation friction in Cookpad’s features, so I simplified the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
             ],
           },
           {

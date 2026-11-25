@@ -4,7 +4,9 @@
  * joins them with a non-breaking space. Applied to all the site's text data (projects,
  * site, about, volunteer, asclo).
  */
-const SHORT = /(?<=^|[\s(“"‘'])(a|an|the|to|of|in|on|at|by|for|and|or|with|my|I)\s+(?=\S)/gi
+// Only the last short word of a run is joined: "for the Brazilian" keeps "the Brazilian"
+// together but can still break after "for", so phones don't get long unbreakable chunks.
+const SHORT = /(?<=^|[\s(“"‘'])(a|an|the|to|of|in|on|at|by|for|and|or|with|my|I)\s+(?=\S)(?!(?:a|an|the|to|of|in|on|at|by|for|and|or|with|my|I)\s)/gi
 
 export const glue = (s: string) => s.replace(SHORT, '$1 ')
 

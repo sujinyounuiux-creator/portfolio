@@ -35,7 +35,27 @@ export function RatingMatrix({
   const [col, setCol] = useState<number | null>(null)
   return (
     <figure className="rmatrix">
-      <p className="rmatrix__swipe" aria-hidden="true">Swipe the table sideways to see every site →</p>
+      {/* phones: one card per feature, each site named next to its dot, instead of a table
+          too wide for the screen (the table is hidden there by CSS, and this list elsewhere) */}
+      <ul className="rmatrix__cards">
+        {rows.map((r) => (
+          <li key={r.label} className={r.highlight ? 'is-gap' : ''}>
+            <p className="rmatrix__feature">{r.label}</p>
+            <ul className="rmatrix__sites">
+              {r.ratings.map((rt, i) => (
+                <li key={columns[i]}>
+                  <Dot rating={rt} />
+                  <span>{columns[i]}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="rmatrix__cardnote">
+              <span>{noteLabel}</span>
+              {r.note}
+            </p>
+          </li>
+        ))}
+      </ul>
       <div className="rmatrix__scroll" tabIndex={0} role="region" aria-label="Competitive analysis table (scrollable)">
         <table className={col === null ? '' : 'has-col'}>
           <thead>

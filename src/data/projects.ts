@@ -306,7 +306,7 @@ export const projects: Project[] = glueAll<Project[]>([
               { value: '2 of 4', label: 'had **no newsletter signup** and no clear main navigation.' },
               { value: '10 of 10', label: 'is our aim: one **accessible, bilingual** site that volunteers can keep up.' },
             ],
-            caption: 'Competitive analysis: four community and business sites, rated on the ten things BCA’s visitors come to do. Hover a site to compare it.',
+            caption: 'Competitive analysis: four community and business sites, rated on the ten things BCA’s visitors come to do.',
           },
           {
             kind: 'figure',

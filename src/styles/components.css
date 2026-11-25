@@ -344,10 +344,16 @@
     min-height: 48px;
     font-size: var(--fs-lg);
   }
+  /* the link fills its row (easy to tap), so the current page is underlined under the
+     word itself rather than with a fixed short line */
   .nav-link::after {
-    right: auto;
-    width: 2.5rem;
-    bottom: 10px;
+    display: none;
+  }
+  .nav-link.is-active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-color: var(--c-accent-strong);
   }
   .navbar__social {
     align-self: flex-start;

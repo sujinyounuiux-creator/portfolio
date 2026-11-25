@@ -19,6 +19,9 @@ const logos = { profitkey: 'profitkey', lastcow: 'lastcow', 'open-door-yoga': 'y
 const TOL = 40 // how far a pixel may differ from the background colour and still count as background
 
 const ONE_COLOUR = { yoga: [0x6a, 0x4e, 0x77] } // logo colour (Violet in the Yoga style guide)
+// logos whose enclosed holes (like the PROFITKEY key ring) should be see-through too, not
+// left white: every background coloured pixel is cleared, not only those joined to the edge
+const CLEAR_HOLES = new Set(['profitkey'])
 
 for (const [slug, file] of Object.entries(logos)) {
   const { data, info } = await sharp(`design-exports/logos/${file}.png`).ensureAlpha().raw().toBuffer({ resolveWithObject: true })
@@ -54,6 +57,7 @@ for (const [slug, file] of Object.entries(logos)) {
     data[i + 3] = 0
     stack.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1])
   }
+  if (CLEAR_HOLES.has(file)) for (let i = 0; i < data.length; i += 4) if (isBg(i)) data[i + 3] = 0
   const out = await sharp(data, { raw: info }).trim().resize({ height: 160 }).png().toFile(`public/images/logos/${slug}.png`)
   console.log(slug, out.width, out.height)
 }

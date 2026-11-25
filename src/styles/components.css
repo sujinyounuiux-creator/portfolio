@@ -112,6 +112,24 @@
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 24px -16px rgba(31, 36, 48, 0.45);
 }
+/* Phones: a slimmer, see-through bar so the page shows behind it while scrolling.
+   It turns solid again when the menu is open, so the links stay easy to read. */
+@media (max-width: 819px) {
+  .site-header {
+    padding-top: 0.4rem;
+  }
+  .navbar {
+    min-height: 52px;
+    padding-block: 0.25rem;
+    background: color-mix(in srgb, var(--c-surface) 55%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px -14px rgba(31, 36, 48, 0.4);
+  }
+  .navbar.is-open {
+    background: color-mix(in srgb, var(--c-surface) 96%, transparent);
+  }
+}
 .navbar__name {
   display: inline-flex;
   align-items: center;

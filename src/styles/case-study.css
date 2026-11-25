@@ -254,7 +254,13 @@
 }
 .cs-section__body {
   display: grid;
+  /* minmax(0, 1fr): a wide block (like the competitor table) scrolls inside its own box
+     instead of stretching the column past the screen on phones */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--s-5);
+}
+.cs-section__body > * {
+  min-width: 0;
 }
 
 .cs-prose {
@@ -2563,6 +2569,19 @@
 }
 .rmatrix__scroll {
   overflow-x: auto;
+}
+/* phones only: the table is wider than the screen, so say it can be swiped */
+.rmatrix__swipe {
+  display: none;
+  margin: 0 0 var(--s-2);
+  font-size: var(--fs-xs, 0.8rem);
+  font-weight: 600;
+  color: var(--c-accent-ink);
+}
+@media (max-width: 720px) {
+  .rmatrix__swipe {
+    display: block;
+  }
 }
 .rmatrix table {
   width: 100%;

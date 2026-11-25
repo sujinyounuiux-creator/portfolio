@@ -35,6 +35,7 @@ export function RatingMatrix({
   const [col, setCol] = useState<number | null>(null)
   return (
     <figure className="rmatrix">
+      <p className="rmatrix__swipe" aria-hidden="true">Swipe the table sideways to see every site →</p>
       <div className="rmatrix__scroll" tabIndex={0} role="region" aria-label="Competitive analysis table (scrollable)">
         <table className={col === null ? '' : 'has-col'}>
           <thead>

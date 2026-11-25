@@ -657,7 +657,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               { title: 'Worked well', body: 'Testers found the site **simple and easy to follow**, and responded well to the **design and colour palette**. Finding an event and subscribing were rated easiest.' },
-              { title: 'Improve next', body: 'Make the **menu and sorting** easier to find, **lighten the information** on a first visit, make the intro animation **shorter or skippable**, and make the **events map clearer**. Volunteering and listing a business got more mixed ratings.' },
+              { title: 'What testers asked for', body: 'Make the **menu and sorting** easier to find, **lighten the information** on a first visit, make the intro animation **shorter**, and make the **events map clearer**. Volunteering and listing a business got more mixed ratings.' },
             ],
           },
           {
@@ -666,6 +666,41 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               '**A limitation:** UXtweak reported 0% task success because the correct answer criteria were not set up, so it is not a failure rate. With small, uneven samples, we treat these findings as **directional**, not statistically significant.',
             ],
+          },
+        ],
+      },
+      {
+        id: 'iteration',
+        label: 'Iteration',
+        title: 'What we changed after feedback',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'The design changed twice: first with the **client**, then after **usability testing**.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              {
+                title: 'From the client meetings',
+                body: 'BCA’s manager wanted the site to focus more on the **newsletter** and the **membership program**. → The **BCA News sign up** sits in the hero and on every page, and **Become a member** got its own flow with a checkout.',
+              },
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Hero animation', body: 'Testers said the intro animation was **too long**. → We made it **shorter**.' },
+              { title: 'Events map', body: 'Testers wanted the map to be **clearer**. → It shows a **more specific location**, and clicking it **opens Google Maps**.' },
+              { title: 'First visit', body: 'Testers felt there was **too much information** at first. → We show **less on the first visit**.' },
+              { title: 'Donation', body: 'The donation page offered set amounts. → People can now **type their own amount**.' },
+            ],
+          },
+          {
+            kind: 'text',
+            body: ['**Still to do:** make the **menu and sorting** easier to find, which testers also asked for.'],
           },
         ],
       },
@@ -1023,7 +1058,11 @@ export const projects: Project[] = glueAll<Project[]>([
               },
               {
                 title: 'Learning Outcomes',
-                body: 'In user interviews, beginners told me it is **hard to start investing** right away, so I designed every screen from that view to make stocks **easier to approach**, and I grew a lot as a designer through it. In **usability testing with 12 users over 3 days**, people said the **AI comments made stocks easier to understand**, but some also **doubted whether they could trust the AI**. PROFITKEY’s picks and comments come from combined market data, so the next challenge is to **help users trust the AI’s recommendations**.',
+                body: 'In user interviews, beginners told me it is **hard to start investing** right away, so I designed every screen from that view to make stocks **easier to approach**, and I grew a lot as a designer through it.',
+              },
+              {
+                title: 'Next iteration',
+                body: 'In **usability testing with 12 users over 3 days**, people said the **AI comments made stocks easier to understand**, but some **doubted whether they could trust the AI**. → PROFITKEY’s picks and comments come from combined market data, so the next step is to **help users trust the AI’s recommendations**.',
               },
             ],
           },
@@ -1277,7 +1316,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               { title: 'What worked', body: 'Users found the app **easy to learn and navigate**, and most expected to find their **ticket information on their profile**.' },
-              { title: 'What to improve', body: 'Some found the flow between **past and upcoming events** in the calendar **confusing**, so those screens needed **simplifying**.' },
+              { title: 'Next iteration', body: 'Some testers found moving between **past and upcoming events** in the calendar **confusing**. → The next step is to **simplify those calendar screens**.' },
             ],
           },
         ],
@@ -1939,8 +1978,8 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               {
-                title: 'Testing & Feedback',
-                body: 'Feedback highlighted **inconsistencies in the use of imagery and visual styles** across different pages of the website. This showed that even well designed individual sections can **feel disconnected** when they don’t follow a **consistent visual direction**.',
+                title: 'Feedback & next iteration',
+                body: 'Feedback highlighted **inconsistencies in the use of imagery and visual styles** across different pages of the website. Even well designed sections can **feel disconnected** without a **consistent visual direction**. → The next step is to use **one visual direction** for imagery and styles on every page.',
               },
               {
                 title: 'What I Learned',

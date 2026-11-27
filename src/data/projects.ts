@@ -208,9 +208,9 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#00664E', ink: '#004131', surface: '#F4F8F1' },
     tldr: [
       { label: 'Problem', text: 'People could not tell what BCA offers, where to start, or how to find events, businesses and resources on the current site.' },
-      { label: 'My role', text: 'UI/UX designer in a team of 4. I led the mobile prototype, designed the iPad screens, refined the working website with vibe coding and built the final presentation.' },
-      { label: 'Solution', text: 'A clear, bilingual site built around accessibility, community engagement, business visibility and an English / Portuguese experience.' },
-      { label: 'Result', text: 'Desktop, tablet and mobile designs, a tested prototype, a design system and a working site BCA can run. The client liked the design.' },
+      { label: 'Insight', text: 'Our audit found three issues, discoverability, clarity and navigation. The client wanted more focus on the newsletter and membership.' },
+      { label: 'Decision', text: 'A clear, bilingual site with the BCA News sign up in the hero and on every page, and short paths to events, businesses and ways to help.' },
+      { label: 'Result', text: '4 of 4 testers rated subscribing to BCA News the easiest task. After testing we shortened the hero animation, made the map clearer and let donors type their own amount.' },
     ],
     sections: [
       {
@@ -756,9 +756,9 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
     tldr: [
       { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },
-      { label: 'My role', text: 'One of three designers on a class brief. I worked on the heuristic audit and designed the About and Pricing pages.' },
-      { label: 'Solution', text: 'Clearer page structures, a style guide and component library, and redesigned Home, Pricing, Teacher Training and About pages.' },
-      { label: 'Feedback', text: 'Testing showed that imagery and visual style need to stay consistent across every page.' },
+      { label: 'Insight', text: 'We checked 3 key tasks for first time students against Nielsen’s 10 heuristics. Prices sat halfway down long pages, and buttons looked different on every screen.' },
+      { label: 'Decision', text: 'Prices up front, schedules as easy tables, and one style guide and component library for every page. I designed the About and Pricing pages.' },
+      { label: 'Feedback', text: 'Imagery and visual style need to stay consistent on every page, so the next step is one visual direction for the whole site.' },
     ],
     sections: [
       {
@@ -1089,7 +1089,7 @@ export const projects: Project[] = glueAll<Project[]>([
     disciplines: ['ux-ui'],
     featured: true,
     tagline: 'Finding the key to investment success',
-    proof: { value: '1 + 5', label: 'one designer, five engineers' },
+    proof: { value: '12 users', label: 'tested it, and said the AI comments made stocks easier to understand' },
     summary:
       'A beginner friendly investment website with AI stock recommendations and plain language explanations of financial terms.',
     category: 'Website · Fintech · Group study project',
@@ -1104,9 +1104,9 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
-      { label: 'My role', text: 'A group study project with real developers. I was the only designer on a team of six. We planned the website together, and I designed almost all of it myself.' },
-      { label: 'Solution', text: 'AI stock recommendations with reasons, a plain language AI comment on every stock, and glossary tooltips.' },
-      { label: 'Delivered', text: 'A sitemap, 11 wireframe screens, a design system and 14 final screens, including 404 and 500 error pages.' },
+      { label: 'Insight', text: 'We interviewed 10 investment beginners. They didn’t know where to start, and the technical terms put them off.' },
+      { label: 'Decision', text: 'AI stock picks with reasons, a plain language AI comment on every stock, and glossary tooltips on hard terms.' },
+      { label: 'Result', text: 'In a test with 12 users over 3 days, people said the AI comments made stocks easier to understand. Some still doubted the AI, so building trust is the next step.' },
     ],
     cardNote: 'sole designer',
     sections: [
@@ -1424,9 +1424,9 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#4B17C1', ink: '#1B1B1B', surface: '#EFE9FB' },
     tldr: [
       { label: 'Problem', text: 'People aged 18 to 40 miss live events because they find out too late, when tickets are sold out or too expensive.' },
-      { label: 'My role', text: 'One of two designers. I ran the user interviews, designed the Event details and Ticket calendar screens and built the UI kit.' },
-      { label: 'Solution', text: 'A ticket discovery app with last minute and discounted tickets, related event suggestions and an in app calendar.' },
-      { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants.' },
+      { label: 'Insight', text: 'In our interviews, people said events are spread across many platforms, so they often find out too late.' },
+      { label: 'Decision', text: 'One app for last minute and discounted tickets, with related event suggestions and an in app calendar.' },
+      { label: 'Result', text: 'An average SUS score of 92.5 from four usability test participants, who found the app easy to learn and navigate.' },
     ],
     cardNote: 'newest!',
     sections: [

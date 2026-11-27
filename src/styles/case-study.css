@@ -46,6 +46,30 @@
   font-size: var(--fs-lead);
   color: var(--c-ink-soft);
 }
+/* key result: the metric from the project's card on Home, repeated up front */
+.cs-hero__result {
+  display: grid;
+  gap: 0.15rem;
+  max-width: 34rem;
+  margin: var(--s-4) 0 0;
+  padding: 0.7rem 1rem;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--p-accent, var(--c-accent)) 16%, var(--c-surface));
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+}
+.cs-hero__result-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+.cs-hero__result strong {
+  font-size: 1.35em;
+  font-weight: 800;
+  margin-right: 0.2rem;
+}
 .cs-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

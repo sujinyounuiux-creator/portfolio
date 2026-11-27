@@ -103,6 +103,13 @@ export function CaseStudyLayout({ project }: { project: Project }) {
                 </span>
               </p>
               <p className="cs-hero__summary">{project.summary}</p>
+              {/* the same key result as on the project's card on Home, as a reminder */}
+              <p className="cs-hero__result">
+                <span className="cs-hero__result-label">Key result</span>
+                <span>
+                  <strong>{project.proof.value}</strong> {project.proof.label}
+                </span>
+              </p>
               {/* the design fields this project covers, each linking to the filtered project list */}
               <ul className="feature__tags cs-hero__tags" aria-label="Design fields">
                 {project.disciplines.map((d) => (

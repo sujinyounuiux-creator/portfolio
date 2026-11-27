@@ -60,7 +60,7 @@ export function FeaturedWorks() {
         <header className="section-head-c">
           <p className="hand section-kicker">Explore my work!</p>
           <h2 id="featured-title" className="section-title">
-            Featured Works
+            Works
           </h2>
           <p className="section-lede">UX/UI case studies, from research and design decisions to final interfaces.</p>
         </header>

@@ -167,20 +167,20 @@ button.wiggle {
 .hero__intro {
   display: block;
 }
+/* the name is the accent: handwritten and in blue; "Hi, I’m" stays small and plain */
 .hero__hi {
-  display: inline-block;
-  font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
-  font-weight: 400;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
+  font-weight: 600;
   line-height: 1;
-  color: var(--c-accent-ink);
-  transform: rotate(-3deg);
+  color: var(--c-ink-soft);
 }
 .hero__name {
-  font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
-  font-weight: 800;
+  display: inline-block;
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.8rem);
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--c-ink);
+  color: var(--c-accent-ink);
+  transform: rotate(-2deg);
 }
 /* the main claim: one sentence to a line where it fits, with one accent phrase */
 .hero__claim {

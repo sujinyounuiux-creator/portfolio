@@ -42,11 +42,11 @@ await send('Emulation.setDeviceMetricsOverride', { width: 816, height: 1056, dev
 await send('Page.navigate', { url: pathToFileURL(resolve('scripts/resume.html')).href })
 await sleep(3000)
 const h = await send('Runtime.evaluate', {
-  expression: "document.fonts.ready.then(() => [document.body.scrollHeight, document.fonts.check('12px Inter')])",
+  expression: "document.fonts.ready.then(() => [document.body.scrollHeight, document.fonts.check('12px Archivo')])",
   awaitPromise: true,
   returnByValue: true,
 })
-console.log('page height (max 1056), Inter loaded:', h.result.result.value)
+console.log('page height (max 1056), Archivo loaded:', h.result.result.value)
 const pdf = await send('Page.printToPDF', { printBackground: true, preferCSSPageSize: true, displayHeaderFooter: false })
 writeFileSync('public/Sujin-Youn-Resume.pdf', Buffer.from(pdf.result.data, 'base64'))
 const png = await send('Page.captureScreenshot', { format: 'png' })

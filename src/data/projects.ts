@@ -1225,7 +1225,7 @@ export const projects: Project[] = glueAll<Project[]>([
               'The home page opens with AI recommended stocks, chosen from data such as stability, growth rate, profitability and financial health.',
               'The key part is the AI Comment under each pick. Instead of leaving beginners with only a price and a percentage, it explains in a few plain sentences why the stock was recommended, so they understand the reason before they decide.',
             ],
-            figures: [{ ...screen('profitkey-ai-pick', 'AI Recommended Stocks card: Apple, +20%, a price chart and key figures, ending in a yellow AI Comment box that explains the pick in plain sentences.', 'The AI Comment under each recommended stock explains the pick.', 566, 622), narrow: true }],
+            figures: [{ ...screen('profitkey-ai-pick', 'AI Recommended Stocks card: Apple, +20%, a price chart and key figures, ending in a yellow AI Comment box that explains the pick in plain sentences.', 'The AI Comment under each recommended stock explains the pick.', 881, 961), narrow: true }],
           },
           {
             kind: 'feature',

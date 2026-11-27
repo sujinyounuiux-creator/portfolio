@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -32,6 +33,12 @@ const groups: Group[] = [
       { src: '/images/projects/bca-m-events.webp', alt: 'BCA mobile events: “Find your next community moment” and the next event card.', w: 780, h: 1690, device: 'phone', label: 'Events' },
       { src: '/images/projects/bca-m-event-detail.webp', alt: 'BCA mobile event detail for the Brazilian Holiday Market, with a photo of the market.', w: 780, h: 1690, device: 'phone', label: 'Event detail' },
       { src: '/images/projects/bca-m-business-detail.webp', alt: 'BCA mobile business detail for Casa da Mesa Brazilian Kitchen, with contact buttons.', w: 780, h: 1690, device: 'phone', label: 'Business' },
+      { src: '/images/projects/bca-m-menu.webp', alt: 'BCA mobile full screen menu with an EN / PT switch and a Get BCA News button.', w: 780, h: 1690, device: 'phone', label: 'Menu' },
+      { src: '/images/projects/bca-m-events-month.webp', alt: 'BCA mobile event calendar in month view.', w: 780, h: 1690, device: 'phone', label: 'Event calendar' },
+      { src: '/images/projects/bca-m-business.webp', alt: 'BCA mobile business directory with search, filters and a featured business.', w: 780, h: 1690, device: 'phone', label: 'Business directory' },
+      { src: '/images/projects/bca-m-involved.webp', alt: 'BCA mobile get involved page with three ways to help.', w: 780, h: 1690, device: 'phone', label: 'Get involved' },
+      { src: '/images/projects/bca-m-list-business.webp', alt: 'BCA mobile list your business page with free and member listings.', w: 780, h: 1690, device: 'phone', label: 'List your business' },
+      { src: '/images/projects/bca-m-guides.webp', alt: 'BCA mobile guides and news with topic filters.', w: 780, h: 1690, device: 'phone', label: 'Guides and news' },
     ],
   },
   {
@@ -43,6 +50,33 @@ const groups: Group[] = [
       { src: '/images/projects/bca-ipad-home.webp', alt: 'BCA iPad home with the BCA News sign up and the next event.', w: 1100, h: 1525, device: 'tablet', label: 'Home' },
       { src: '/images/projects/bca-ipad-events-month.webp', alt: 'BCA iPad events with the community event calendar in month view.', w: 1100, h: 1525, device: 'tablet', label: 'Events calendar' },
       { src: '/images/projects/bca-ipad-business.webp', alt: 'BCA iPad business directory with search and filters.', w: 1100, h: 1525, device: 'tablet', label: 'Business directory' },
+    ],
+  },
+  {
+    id: 'profitkey',
+    kind: 'Website · Fintech',
+    title: 'PROFITKEY',
+    note: 'An investment website for beginners. I was the only designer on a team with five developers.',
+    shots: [
+      { src: '/images/screens-original/profitkey-web-home.webp', alt: 'PROFITKEY home: Finding the key to success, AI recommended stocks, stock rankings, market information and news.', w: 1400, h: 2029, device: 'web', label: 'Home' },
+      { src: '/images/screens-original/profitkey-web-detail.webp', alt: 'PROFITKEY stock detail: key indicators, a price chart, an AI comment, financial indicators and analyst opinions.', w: 1400, h: 2349, device: 'web', label: 'Stock detail' },
+      { src: '/images/screens-original/profitkey-en-community.webp', alt: 'PROFITKEY community tab with a comment box and threaded comments.', w: 1400, h: 1625, device: 'web', label: 'Community' },
+      { src: '/images/screens-original/profitkey-en-news.webp', alt: 'PROFITKEY news page with headline cards and a list of all news.', w: 1400, h: 1378, device: 'web', label: 'News' },
+      { src: '/images/screens-original/profitkey-en-watchlist.webp', alt: 'PROFITKEY my watchlist with saved stocks as chart cards.', w: 1400, h: 941, device: 'web', label: 'My watchlist' },
+      { src: '/images/screens-original/profitkey-en-notice-list.webp', alt: 'PROFITKEY notices list with an important maintenance notice first.', w: 1400, h: 734, device: 'web', label: 'Notices' },
+      { src: '/images/screens-original/profitkey-en-faq.webp', alt: 'PROFITKEY FAQ with questions in an accordion.', w: 1400, h: 1072, device: 'web', label: 'FAQ' },
+      { src: '/images/screens-original/profitkey-en-login.webp', alt: 'PROFITKEY login with email and password and social log in buttons.', w: 1400, h: 935, device: 'web', label: 'Login' },
+    ],
+  },
+  {
+    id: 'cookpad',
+    kind: 'Website · Responsive',
+    title: 'Cookpad',
+    note: 'A personal redesign of a recipe website: search, recipe list and recipe page.',
+    shots: [
+      { src: '/images/projects/cookpad-main.webp', alt: 'Cookpad home: the logo and a large search bar with a filter icon.', w: 1600, h: 900, device: 'web', label: 'Home' },
+      { src: '/images/projects/cookpad-list.webp', alt: 'Cookpad search results: recipe cards with photos, cooking times and bookmark icons.', w: 1600, h: 900, device: 'web', label: 'Search results' },
+      { src: '/images/projects/cookpad-recipe-scroll.webp', alt: 'Cookpad recipe page for butter pancakes with ingredients, steps, tips and a community thread.', w: 1600, h: 1765, device: 'web', label: 'Recipe' },
     ],
   },
   {
@@ -64,22 +98,51 @@ const groups: Group[] = [
       { src: '/images/rizsq/rizsq-communities.webp', alt: 'Rizsq post “Growing Food, Growing Communities” above a photo of women planting rice.', w: 1080, h: 1350, device: 'post', label: 'Post' },
       { src: '/images/rizsq/rizsq-growing.webp', alt: 'Rizsq post “Growing Together, Feeding the Future.” with farmers planting rice seedlings.', w: 1080, h: 1350, device: 'post', label: 'Post' },
       { src: '/images/rizsq/rizsq-farmer.webp', alt: 'Rizsq post: a woman carrying her baby while tending young plants.', w: 1080, h: 1080, device: 'post', label: 'Post' },
+      { src: '/images/rizsq/rizsq-harvest.webp', alt: 'Rizsq banner: a farmer carrying rice across a field at sunset, “Every harvest deserves a fair price”.', w: 1600, h: 900, device: 'post', label: 'Banner' },
+      { src: '/images/rizsq/rizsq-traditions.webp', alt: 'Rizsq banner: women washing in a canal beside a man on his phone, “Traditions must be side-by-side with technology”.', w: 1600, h: 900, device: 'post', label: 'Banner' },
     ],
   },
 ]
 
-function Screen({ s }: { s: Shot }) {
+function Screen({ s, onOpen }: { s: Shot; onOpen: (s: Shot) => void }) {
   return (
     <figure className={`scr-shot scr-shot--${s.device}`}>
-      <a className="scr-shot__frame" href={s.src} target="_blank" rel="noreferrer" aria-label={`${s.label}, open full size in a new tab`}>
+      <button type="button" className="scr-shot__frame" onClick={() => onOpen(s)} aria-label={`${s.label}, see it full size`}>
         <img src={s.src} alt={s.alt} width={s.w} height={s.h} loading="lazy" decoding="async" />
-      </a>
+      </button>
       <figcaption>{s.label}</figcaption>
     </figure>
   )
 }
 
+/** Full size view. Long pages scroll; clicking anywhere outside the image, or Esc, closes it. */
+function Viewer({ s, onClose }: { s: Shot; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prev
+    }
+  }, [onClose])
+  const outside = (e: React.MouseEvent) => e.target === e.currentTarget && onClose()
+  return (
+    <div className="scr-view" role="dialog" aria-modal="true" aria-label={s.label} onClick={outside}>
+      <button type="button" className="scr-view__close" onClick={onClose} aria-label="Close">
+        ×
+      </button>
+      <div className="scr-view__scroll" onClick={outside}>
+        <img className={`scr-view__img scr-view__img--${s.device}`} src={s.src} alt={s.alt} width={s.w} height={s.h} />
+      </div>
+    </div>
+  )
+}
+
 export function ScreensPage() {
+  const [open, setOpen] = useState<Shot | null>(null)
+  const close = useCallback(() => setOpen(null), [])
   usePageMeta('Screens', `${site.name}, interface design. Phone, tablet and website screens.`)
 
   return (
@@ -110,7 +173,7 @@ export function ScreensPage() {
           </div>
           <div className="scr-group__shots">
             {g.shots.map((s, i) => (
-              <Screen key={s.src + i} s={s} />
+              <Screen key={s.src + i} s={s} onOpen={setOpen} />
             ))}
           </div>
         </section>
@@ -122,6 +185,8 @@ export function ScreensPage() {
         </p>
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </footer>
+
+      {open && <Viewer s={open} onClose={close} />}
     </div>
   )
 }

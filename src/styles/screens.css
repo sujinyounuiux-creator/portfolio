@@ -189,3 +189,79 @@
     transition: none;
   }
 }
+
+/* screens are buttons: reset the button look */
+button.scr-shot__frame {
+  width: 100%;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+}
+.scr-shot--web button.scr-shot__frame,
+.scr-shot--post button.scr-shot__frame {
+  padding: 0;
+}
+
+/* full size viewer: click outside the image (or press Esc) to close */
+.scr-view {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(5, 6, 8, 0.92);
+  cursor: zoom-out;
+  animation: scr-fade 200ms ease;
+}
+@keyframes scr-fade {
+  from {
+    opacity: 0;
+  }
+}
+.scr-view__scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(3.5rem, 8vh, 5rem) clamp(0.75rem, 4vw, 3rem);
+}
+.scr-view__img {
+  display: block;
+  height: auto;
+  max-width: min(100%, 1200px);
+  margin: auto 0;
+  border-radius: 10px;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
+  cursor: default;
+}
+.scr-view__img--phone {
+  max-width: min(100%, 420px);
+  border-radius: 28px;
+}
+.scr-view__img--tablet {
+  max-width: min(100%, 760px);
+  border-radius: 18px;
+}
+.scr-view__img--post {
+  max-width: min(100%, 900px);
+}
+.scr-view__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.scr-view__close:hover,
+.scr-view__close:focus-visible {
+  background: rgba(255, 255, 255, 0.24);
+}

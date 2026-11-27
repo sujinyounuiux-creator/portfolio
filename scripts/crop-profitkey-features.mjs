@@ -8,7 +8,7 @@ import sharp from 'sharp'
 
 const crops = [
   // [output, source screen, left, top, width, height] in the 2400 px wide screen
-  ['profitkey-crop-ai-comment', 'profitkey-web-detail', 206, 1362, 1987, 566],
+  ['profitkey-crop-ai-comment', 'profitkey-web-detail', 206, 1362, 1987, 384],
   ['profitkey-crop-glossary', 'profitkey-web-detail', 206, 658, 968, 517],
   // the AI Recommended Stocks card on Home (575:3119 is 572 px wide, so 1 Figma px = 2400 / 572)
   ['profitkey-ai-pick', 'profitkey-web-home', 1246, 362, 817, 897],

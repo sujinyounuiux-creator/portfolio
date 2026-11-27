@@ -1092,11 +1092,11 @@ export const projects: Project[] = glueAll<Project[]>([
     proof: { value: '1 + 5', label: 'one designer, five engineers' },
     summary:
       'A beginner friendly investment website with AI stock recommendations and plain language explanations of financial terms.',
-    category: 'Website · Fintech',
+    category: 'Website · Fintech · Group study project',
     platform: 'Desktop web',
     role: 'UX/UI design (sole designer), planning with the team',
     timeline: '2025.01 to 2025.03',
-    team: '6 people: 5 front/back end engineers and 1 designer',
+    team: 'Group study project, 6 people: 5 front/back end developers and 1 designer',
     tools: ['Figma'],
     // cover: built by scripts/build-profitkey-cover.mjs from the home page design
     thumbnail: img('profitkey-cover', 'PROFITKEY cover: the logo and "Finding the key to success" with a yellow AI Recommended Stocks button, beside the home page on a laptop, a floating AI Recommended Stocks card for Apple (+20%, $28) with its price chart and key figures, a PER glossary row and a PROFITKEY News card.'),
@@ -1104,7 +1104,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
-      { label: 'My role', text: 'The only designer on a team of six. We planned the website together, and I designed almost all of it myself.' },
+      { label: 'My role', text: 'A group study project with real developers: I was the only designer on a team of six. We planned the website together, and I designed almost all of it myself.' },
       { label: 'Solution', text: 'AI stock recommendations with reasons, a plain language AI comment on every stock, and glossary tooltips.' },
       { label: 'Delivered', text: 'A sitemap, 11 wireframe screens, a design system and 14 final screens, including 404 and 500 error pages.' },
     ],
@@ -1120,7 +1120,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'Investment beginners told us they didn’t know where to start and found securities websites hard to understand because of all the technical terms. PROFITKEY is a desktop website that shows domestic and international stocks and financial news at a glance, with AI support written for beginners.',
-              'I was the only designer on a team of six, working with five front end and back end engineers. We planned the website together as a team, and I did almost all of the design myself, from the sitemap and wireframes to the final UI and components.',
+              'PROFITKEY was a group study project with real developers. I was the only designer on a team of six, working with five front end and back end engineers. We planned the website together as a team, and I did almost all of the design myself, from the sitemap and wireframes to the final UI and components.',
             ],
           },
           {
@@ -1236,7 +1236,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Each stock page sums up growth, profit, debt and paying bills in plain words, next to the detailed figures.',
             ],
-            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel explaining growth, profit, debt and paying bills in plain words.', 'AI Comment on the stock detail page.', 2051, 630)],
+            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel explaining growth, profit, debt and paying bills in plain words.', 'AI Comment on the stock detail page.', 2051, 448)],
           },
           {
             kind: 'feature',

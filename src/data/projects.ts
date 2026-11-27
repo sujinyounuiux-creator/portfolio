@@ -1379,21 +1379,20 @@ export const projects: Project[] = glueAll<Project[]>([
         title: 'Project review',
         blocks: [
           {
-            // Sujin's own account of working as the only designer with the engineers
-            kind: 'cards',
+            // Sujin's own account: one short paragraph, then the takeaways as an easy list
+            kind: 'text',
+            body: [
+              'On PROFITKEY I was the **only designer** on a team of engineers. Beginners told me investing is **hard to start**, so I designed every screen to make stocks **easier to approach**, balancing a **clean, attractive UI** with what beginners actually need.',
+            ],
+          },
+          {
+            kind: 'list',
+            intro: 'What I took away:',
             items: [
-              {
-                title: 'How I worked with engineers',
-                body: 'As the **only designer** on a team of engineers, I had **no one to talk design through with**, which I really missed. When design came up, the engineers often preferred the version that was **easier to build**, so we **disagreed** at times. They had good reasons, so I **respected the team’s view** while still finding room to **care for the design**. It showed me how hard it is to **build a website together through discussion**, and I learned a lot from it. I also enjoyed balancing a **clean, attractive UI** with the UX question of **what would help investment beginners** find their way into stocks.',
-              },
-              {
-                title: 'Learning Outcomes',
-                body: 'In user interviews, beginners told me it is **hard to start investing** right away, so I designed every screen from that view to make stocks **easier to approach**, and I grew a lot as a designer through it.',
-              },
-              {
-                title: 'Next iteration',
-                body: 'In **usability testing with 12 users over 3 days**, people said the **AI comments made stocks easier to understand**, but some **doubted whether they could trust the AI**. → PROFITKEY’s picks and comments come from combined market data, so the next step is to **help users trust the AI’s recommendations**.',
-              },
+              '**Working with engineers:** they often preferred what was easier to build. I respected their reasons and still found room to care for the design.',
+              '**Designing alone:** I missed having another designer to talk ideas through with, and learned how hard it is to build a website together through discussion.',
+              '**Testing with 12 users over 3 days:** the AI comments made stocks easier to understand, but some users doubted whether they could trust the AI.',
+              '**Next step:** help users trust the AI’s recommendations, which come from combined market data.',
             ],
           },
         ],

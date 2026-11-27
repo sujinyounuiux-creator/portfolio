@@ -167,7 +167,7 @@ button.wiggle {
 .hero__intro {
   display: block;
 }
-/* the name is the accent: large, extra bold and blue; "Hi, I’m" stays small and plain */
+/* the name is the accent: large, in the bold handwriting font, blue; "Hi, I’m" stays small and plain */
 .hero__hi {
   font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
   font-weight: 600;
@@ -176,10 +176,9 @@ button.wiggle {
 }
 .hero__name {
   display: inline-block;
-  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.8rem);
-  font-weight: 900;
+  font-size: clamp(2rem, 1.5rem + 1.7vw, 3rem);
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
   color: var(--c-accent-ink);
 }
 /* the main claim: one sentence to a line where it fits, with one accent phrase */

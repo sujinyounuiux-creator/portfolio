@@ -765,10 +765,22 @@ button.wiggle {
   padding: 0;
   list-style: none;
 }
-/* phones: one card per row, so the picture and text keep a readable size */
-@media (max-width: 600px) {
+/* phones and small tablets: one card per row, with bigger text so it reads easily */
+@media (max-width: 760px) {
   .folder-grid {
     grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+  }
+  /* .folder-grid in front so these win over the base sizes further down */
+  .folder-grid .folder__title {
+    font-size: 1.6rem;
+  }
+  .folder-grid .folder__meta,
+  .folder-grid .folder__proof {
+    font-size: 1rem;
+  }
+  .folder-grid .folder__tags .feature__tag {
+    font-size: 0.875rem;
   }
 }
 .folder {

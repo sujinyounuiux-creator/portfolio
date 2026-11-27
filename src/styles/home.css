@@ -806,12 +806,17 @@ button.wiggle {
   border-radius: 0 var(--r-lg) var(--r-lg) var(--r-lg);
   background: var(--f-bg);
   color: var(--f-fg);
-  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+  transition: background-color var(--t-med) var(--ease);
+}
+/* hover: the card and its tab just turn a little darker, no lift or shadow */
+.folder__tab {
+  transition: background-color var(--t-med) var(--ease);
 }
 .folder:hover .folder__body,
-.folder:focus-within .folder__body {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 40px -22px rgba(31, 36, 48, 0.55);
+.folder:focus-within .folder__body,
+.folder:hover .folder__tab,
+.folder:focus-within .folder__tab {
+  background: color-mix(in srgb, var(--f-bg) 90%, #1f2430);
 }
 /* white photo frame with the same slight tilt as Home */
 .folder__thumb {

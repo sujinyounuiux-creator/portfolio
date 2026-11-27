@@ -77,8 +77,9 @@ export function ContactCTA({ headingLevel: H = 'h2', card = false }: Props) {
             <span className="contact__line">not just a network.</span>
           </H>
           <p className="contact__lede">
-            I’m looking for junior UI/UX and product design roles in Canada. I’d love to hear about your team and the problems
-            you’re solving.
+            I’m looking for junior UI/UX and product design roles in Canada.
+            <br />
+            I’d love to hear about your team and the problems you’re solving.
           </p>
 
           {actions}

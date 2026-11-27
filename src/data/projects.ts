@@ -1289,10 +1289,11 @@ export const projects: Project[] = glueAll<Project[]>([
               { name: 'Key yellow', hex: '#FFB400', usage: 'Logo, highlights, main buttons' },
               { name: 'Ink', hex: '#333333', usage: 'Text, headings' },
               { name: 'Red', hex: '#D9001B', usage: 'Price rise, delete' },
+              { name: 'Blue', hex: '#0074D9', usage: 'Price fall' },
               { name: 'Grey', hex: '#6E6E6E', usage: 'Secondary text' },
               { name: 'Light grey', hex: '#D4D4D4', usage: 'Lines, disabled' },
             ],
-            note: 'From the project’s colour styles in Figma.',
+            note: 'From the project’s colour styles in Figma, with the blue the screens use for falling prices.',
           },
           {
             kind: 'cards',

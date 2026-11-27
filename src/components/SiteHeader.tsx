@@ -9,7 +9,7 @@ const links = [
   { to: '/about', label: 'About' },
 ]
 
-function isActive(to: string, pathname: string, hash: string) {
+function isActive(to: string, pathname: string) {
   if (to === '/') return pathname === '/'
   return pathname === to
 }
@@ -79,7 +79,7 @@ export function SiteHeader() {
           <nav id="main-menu" className="navbar__menu" aria-label="Main">
             <ul className="nav-list">
               {links.map((l) => {
-                const active = isActive(l.to, pathname, hash)
+                const active = isActive(l.to, pathname)
                 return (
                   <li key={l.to}>
                     <Link to={l.to} className={`nav-link ${active ? 'is-active' : ''}`} aria-current={active ? 'page' : undefined}>

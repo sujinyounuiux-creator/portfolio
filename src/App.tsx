@@ -4,11 +4,14 @@ import { AboutPage } from './pages/AboutPage'
 import { CaseStudyPage } from './pages/CaseStudyPage'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { ScreensPage } from './pages/ScreensPage'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* visual-first page for screen design applications; not in the menu, sent as a link */}
+        <Route path="screens" element={<ScreensPage />} />
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />

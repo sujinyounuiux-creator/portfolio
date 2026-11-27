@@ -1,0 +1,191 @@
+/* ── Screens page: a dark, cinematic, visual-first gallery (src/pages/ScreensPage.tsx) ── */
+.scr {
+  --scr-bg: #0b0d12;
+  --scr-panel: #13161e;
+  --scr-line: rgba(255, 255, 255, 0.08);
+  --scr-text: #eef1f6;
+  --scr-soft: #9aa3b2;
+  --scr-accent: #8fb4e3;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(120, 155, 196, 0.16), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(120, 155, 196, 0.08), transparent 60%),
+    var(--scr-bg);
+  color: var(--scr-text);
+  padding: 0 clamp(1rem, 4vw, 3.5rem) 4rem;
+}
+.scr a {
+  color: inherit;
+}
+.scr-top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  background: linear-gradient(var(--scr-bg) 60%, transparent);
+}
+.scr-top__name {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--scr-accent);
+}
+.scr-top__links {
+  display: flex;
+  gap: clamp(0.8rem, 2.5vw, 1.8rem);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.scr-top__links a {
+  text-decoration: none;
+  color: var(--scr-soft);
+  transition: color 160ms ease;
+}
+.scr-top__links a:hover,
+.scr-top__links a:focus-visible {
+  color: var(--scr-text);
+}
+.scr-intro {
+  max-width: 1200px;
+  margin: clamp(2rem, 8vw, 6rem) auto clamp(2.5rem, 7vw, 5rem);
+}
+.scr-intro__kicker,
+.scr-group__kind {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--scr-accent);
+}
+.scr-intro h1 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(3.2rem, 2rem + 6vw, 7.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.scr-intro__lede {
+  max-width: 34rem;
+  margin: 1.2rem 0 0;
+  font-size: 1.05rem;
+  color: var(--scr-soft);
+}
+.scr-group {
+  max-width: 1200px;
+  margin: 0 auto clamp(4rem, 10vw, 8rem);
+}
+.scr-group__head {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--scr-line);
+}
+.scr-group__head h2 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.scr-group__note {
+  margin: 0.4rem 0 0;
+  color: var(--scr-soft);
+}
+.scr-group__shots {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+}
+.scr-group--phone .scr-group__shots {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 260px));
+  justify-content: center;
+}
+.scr-group--tablet .scr-group__shots {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.scr-group--web .scr-group__shots {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+}
+.scr-group--post .scr-group__shots {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+.scr-shot {
+  margin: 0;
+}
+.scr-shot__frame {
+  display: block;
+  overflow: hidden;
+  background: var(--scr-panel);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--scr-line);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+}
+.scr-shot__frame:hover,
+.scr-shot__frame:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(143, 180, 227, 0.45);
+}
+.scr-shot__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* a plain dark bezel for phones and tablets, drawn in CSS */
+.scr-shot--phone .scr-shot__frame {
+  padding: 8px;
+  border-radius: 36px;
+  background: #050608;
+}
+.scr-shot--phone .scr-shot__frame img {
+  border-radius: 28px;
+}
+.scr-shot--tablet .scr-shot__frame {
+  padding: 10px;
+  border-radius: 26px;
+  background: #050608;
+}
+.scr-shot--tablet .scr-shot__frame img {
+  border-radius: 16px;
+}
+/* websites: a browser-height window of the top of the page; the full page opens on click */
+.scr-shot--web .scr-shot__frame {
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+.scr-shot--web .scr-shot__frame img {
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.scr-shot--post .scr-shot__frame {
+  border-radius: 10px;
+}
+.scr-shot figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--scr-soft);
+  text-align: center;
+}
+.scr-foot {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--scr-line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--scr-soft);
+  font-size: 0.9rem;
+}
+.scr-foot p {
+  margin: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scr-shot__frame {
+    transition: none;
+  }
+}

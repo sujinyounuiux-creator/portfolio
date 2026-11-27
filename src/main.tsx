@@ -7,6 +7,7 @@ import './styles/home.css'
 import './styles/about.css'
 import './styles/case-study.css'
 import './styles/motion.css'
+import './styles/screens.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

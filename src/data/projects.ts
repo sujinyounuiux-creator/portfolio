@@ -681,6 +681,23 @@ export const projects: Project[] = glueAll<Project[]>([
             ],
           },
           {
+            // before and after, side by side (scripts/prepare-bca-iteration.mjs)
+            kind: 'gallery',
+            row: true,
+            figures: [
+              img('bca-iter-donate-before', 'Donation form before testing: one time or monthly, then four amount buttons, $25, $50, $100 and Other, with no field for a custom amount.', 'Before. Only set amounts.', 1440, 1300),
+              img('bca-iter-donate-after', 'Donation form after testing: choosing Other opens a Your amount (CAD) field, where the donor types $35.', 'After. Other opens a field to type your own amount.', 1440, 1300),
+            ],
+          },
+          {
+            kind: 'gallery',
+            row: true,
+            figures: [
+              img('bca-iter-map-before', 'Events map before testing: the pop up for the Brazilian Holiday Market shows only Latin Plaza Hub, Vancouver.', 'Before. The map pop up named only the venue and city.', 1420, 1080),
+              img('bca-iter-map-after', 'Events map after testing: the pop up for the Brazilian Holiday Market shows Latin Plaza Hub, 66 Water St, Vancouver.', 'After. It shows the full street address, and opens Google Maps.', 1420, 1080),
+            ],
+          },
+          {
             kind: 'text',
             body: ['**Still to do:** make the **menu and sorting** easier to find, which testers also asked for.'],
           },

@@ -295,9 +295,8 @@ p.intro-hand {
   gap: var(--s-2);
   min-height: 48px;
   padding: 0.75rem 1.35rem;
-  /* a whole 2px outline, so the pill draws evenly on every side even at a fractional position
-     or with Windows display scaling (a 1.5px line made it look slightly tilted) */
-  border: 2px solid var(--c-ink);
+  /* no dark outline: filled buttons have none, light ones a soft line (see .btn--ghost) */
+  border: 1.5px solid transparent;
   border-radius: 999px;
   background: var(--btn-bg);
   color: var(--btn-fg);
@@ -313,17 +312,16 @@ p.intro-hand {
 }
 .btn:hover,
 .btn:focus-visible {
-  transform: translate(-2px, -2px);
   box-shadow: var(--shadow-hard);
   background: var(--btn-hover-bg);
   color: var(--btn-hover-fg);
 }
 .btn:active {
-  transform: translate(0, 0);
   box-shadow: none;
 }
 /* light buttons all sit on the site beige, so they match everywhere */
 .btn--ghost {
+  border-color: color-mix(in srgb, var(--c-ink) 16%, transparent);
   --btn-bg: var(--c-bg);
   --btn-fg: var(--c-ink);
   --btn-hover-bg: var(--c-accent-ink);

@@ -105,7 +105,7 @@
   gap: var(--s-4);
   min-height: 64px;
   padding: 0.5rem 0.75rem 0.5rem clamp(1rem, 2.5vw, 1.75rem);
-  border: 1.5px solid var(--c-ink);
+  border: 1px solid var(--c-line);
   border-radius: 999px;
   background: color-mix(in srgb, var(--c-surface) 92%, transparent);
   backdrop-filter: blur(10px);
@@ -145,7 +145,7 @@
   .navbar {
     min-height: 50px;
     padding-block: 0.2rem;
-    border-color: color-mix(in srgb, var(--c-ink) 55%, transparent);
+    border-color: var(--c-line);
     background: color-mix(in srgb, var(--c-surface) 22%, transparent);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -158,7 +158,7 @@
     background: var(--c-surface);
   }
   .navbar.is-open {
-    border-color: var(--c-ink);
+    border-color: color-mix(in srgb, var(--c-ink) 28%, transparent);
     background: color-mix(in srgb, var(--c-surface) 96%, transparent);
     box-shadow: 0 6px 18px -14px rgba(31, 36, 48, 0.4);
   }
@@ -239,7 +239,7 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1.5px solid var(--c-ink);
+  border: 1px solid var(--c-line);
   border-radius: 12px;
   background: var(--c-accent-wash);
   color: var(--c-accent-ink);
@@ -254,7 +254,7 @@
   background: var(--c-accent-strong);
   color: #fff;
   transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 
 /* mobile menu button: hidden on wide screens */
@@ -263,7 +263,7 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1.5px solid var(--c-ink);
+  border: 1px solid var(--c-line);
   border-radius: 999px;
   background: var(--c-surface);
   cursor: var(--cursor-link);
@@ -320,7 +320,7 @@
     align-items: stretch;
     gap: var(--s-3);
     padding: var(--s-4);
-    border: 1.5px solid var(--c-ink);
+    border: 1px solid var(--c-line);
     border-radius: var(--r-lg);
     background: var(--c-surface);
     box-shadow: var(--shadow-md);
@@ -427,7 +427,7 @@
   border: var(--border);
   border-radius: var(--r-lg);
   background: var(--c-accent-wash);
-  box-shadow: 6px 6px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
   max-width: var(--max-w);
   width: calc(100% - 2 * var(--gutter));
 }
@@ -469,16 +469,16 @@
   --btn-fg: #fff;
   min-height: 56px;
   padding-inline: 1.75rem;
-  border-color: var(--c-ink);
+  border-color: color-mix(in srgb, var(--c-ink) 28%, transparent);
   font-size: var(--fs-base);
-  box-shadow: 3px 3px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 /* hover: the opposite, cream with dark text */
 .contact__email-btn:hover,
 .contact__email-btn:focus-visible {
   --btn-hover-bg: var(--c-bg);
   --btn-hover-fg: var(--c-ink);
-  box-shadow: 5px 5px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 .contact .contact__copy,
 .contact-card .contact__copy {

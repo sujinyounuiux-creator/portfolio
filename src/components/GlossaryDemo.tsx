@@ -13,7 +13,7 @@ export type GlossaryTerm = {
 
 /**
  * The PROFITKEY indicator table with its "?" marks working as in the design: hovering, focusing
- * or tapping a mark lifts that row and opens a grey balloon with a plain explanation.
+ * or tapping a mark tints that row and opens a small dark balloon with a plain explanation.
  */
 export function GlossaryDemo({ figure, terms }: { figure: Figure; terms: GlossaryTerm[] }) {
   const [active, setActive] = useState<string | null>(null)
@@ -42,12 +42,13 @@ export function GlossaryDemo({ figure, terms }: { figure: Figure; terms: Glossar
                 onBlur={() => setActive(null)}
                 onClick={() => setActive(t.term)}
               />
-              <span className="glossary__arrow" style={{ left: `${t.x}%`, top: `${top + height}%` }} aria-hidden="true" />
+              {/* a small dark bubble just under the "?", pointing at it */}
+              <span className="glossary__arrow" style={{ left: `${t.x}%`, top: `${t.y}%` }} aria-hidden="true" />
               <span
                 id={`${id}-${i}`}
                 role="tooltip"
                 className="glossary__tip"
-                style={{ top: `${top + height}%`, ...(rightColumn ? { right: `${100 - left - width}%` } : { left: `${left}%` }) }}
+                style={{ top: `${t.y}%`, ...(rightColumn ? { right: `calc(${100 - t.x}% - 22px)` } : { left: `calc(${t.x}% - 22px)` }) }}
               >
                 {t.text}
               </span>

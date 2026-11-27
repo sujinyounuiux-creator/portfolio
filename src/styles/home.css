@@ -29,11 +29,11 @@
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 0.95rem;
-  border: 1.5px solid var(--c-ink);
+  border: 1px solid var(--c-line);
   border-radius: 999px;
   font-size: var(--fs-sm);
   font-weight: 700;
-  box-shadow: 2px 2px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
   white-space: nowrap;
 }
 .sticker--blue { background: var(--c-accent-wash); }
@@ -82,11 +82,11 @@
 .specialty--primary {
   min-height: 46px;
   padding: 0.5rem 1.25rem;
-  border-color: var(--c-ink);
+  border-color: color-mix(in srgb, var(--c-ink) 28%, transparent);
   background: var(--c-accent-ink);
   color: #fff;
   font-size: var(--fs-base);
-  box-shadow: 3px 3px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 /* hero hashtag groups: languages in coral, IT in teal (design keeps the blue) */
 .specialty--language {
@@ -103,7 +103,7 @@
 }
 a.specialty:hover,
 a.specialty:focus-visible {
-  box-shadow: 3px 3px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 /* The playful hover for the other stickers and labels (not the hashtag tags) */
 .wiggle {
@@ -318,7 +318,7 @@ button.wiggle {
   border: var(--border);
   border-radius: 22px;
   background: var(--c-surface);
-  box-shadow: 3px 3px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 .stamp-bar__pick {
   display: grid;
@@ -336,7 +336,7 @@ button.wiggle {
   transform: rotate(-8deg) scale(1.08);
 }
 .stamp-bar__pick[aria-pressed='true'] {
-  border-color: var(--c-ink);
+  border-color: color-mix(in srgb, var(--c-ink) 28%, transparent);
   background: var(--c-accent-wash);
 }
 .stamp-bar__sep {
@@ -525,7 +525,7 @@ button.wiggle {
   box-sizing: border-box;
   width: var(--dot);
   height: var(--dot);
-  border: 2px solid var(--c-ink);
+  border: 1.5px solid var(--c-line);
   border-radius: 50% 45% 52% 48%;
   background: var(--c-highlight);
 }
@@ -667,7 +667,7 @@ button.wiggle {
   outline: none;
 }
 .feature__link:focus-visible::after {
-  outline: 3px solid var(--c-ink);
+  outline: 3px solid var(--c-accent-ink);
   outline-offset: 4px;
   border-radius: var(--r-lg);
 }
@@ -711,9 +711,11 @@ button.wiggle {
   display: inline-flex;
   align-items: center;
   min-height: 30px;
-  padding: 0.25rem 0.65rem;
-  border: 1.5px solid currentColor;
+  padding: 0.25rem 0.7rem;
+  /* a soft filled chip, no outline */
+  border: 0;
   border-radius: 999px;
+  background: color-mix(in srgb, currentColor 9%, transparent);
   color: inherit;
   font-size: var(--fs-xs);
   font-weight: 700;
@@ -854,7 +856,7 @@ button.wiggle {
   outline: none;
 }
 .folder__link:focus-visible::after {
-  outline: 3px solid var(--c-ink);
+  outline: 3px solid var(--c-accent-ink);
   outline-offset: 4px;
   border-radius: var(--r-lg);
 }
@@ -889,14 +891,14 @@ button.wiggle {
   transition: background-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
 }
 .filter:hover {
-  box-shadow: 2px 3px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 /* the selected filter looks like the hero's "UX/UI Designer" label */
 .filter[aria-pressed='true'] {
-  border-color: var(--c-ink);
+  border-color: color-mix(in srgb, var(--c-ink) 28%, transparent);
   background: var(--c-accent-ink);
   color: #fff;
-  box-shadow: 3px 3px 0 var(--c-ink);
+  box-shadow: var(--shadow-sm);
 }
 .filter__count {
   display: inline-grid;
@@ -999,7 +1001,7 @@ button.wiggle {
 /* ── ASCLO photo gallery (Home only) ── */
 .asclo__label {
   padding: 0.3rem 0.85rem;
-  border: 1.5px solid var(--c-ink);
+  border: 1px solid var(--c-line);
   border-radius: 999px;
   font-size: var(--fs-xs);
   font-weight: 700;

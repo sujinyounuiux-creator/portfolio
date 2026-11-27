@@ -1236,7 +1236,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Each stock page sums up growth, profit, debt and paying bills in plain words, next to the detailed figures.',
             ],
-            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel explaining growth, profit, debt and paying bills in plain words.', 'AI Comment on the stock detail page.', 1284, 354)],
+            figures: [screen('profitkey-crop-ai-comment', 'AI Comment panel explaining growth, profit, debt and paying bills in plain words.', 'AI Comment on the stock detail page.', 2051, 630)],
           },
           {
             kind: 'feature',
@@ -1246,14 +1246,14 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'Terms such as PER, PBR, EPS and dividends carry a “?” mark. Hovering shows a short explanation, making unfamiliar terms easier for beginners.',
             ],
-            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Hover over or tap a “?” mark to see its explanation.', 664, 404)],
+            figures: [screen('profitkey-crop-glossary', 'Key indicator table: 52 week high and low, PER, PBR, EPS, BPS and dividends, with “?” marks beside the financial terms.', 'Hover over or tap a “?” mark to see its explanation.', 1032, 581)],
             // the tooltip wording for PER is from the Figma file; the others follow its style
             glossary: [
-              { term: 'PER', x: 15.4, y: 33.7, row: [6.8, 27.7, 42.9, 11.7], text: 'It is an indicator to determine whether the stock price is high or low compared to the company’s profits.' },
-              { term: 'PBR', x: 60.5, y: 33.7, row: [51.2, 27.7, 42, 11.7], text: 'It is an indicator to determine whether the stock price is high or low compared to the company’s net assets.' },
-              { term: 'EPS', x: 16, y: 48.8, row: [6.8, 42.8, 42.9, 11.7], text: 'It shows how much profit the company earned for each share.' },
-              { term: 'BPS', x: 60.5, y: 48.8, row: [51.2, 42.8, 42, 11.7], text: 'It shows how much of the company’s net assets each share is worth.' },
-              { term: 'Dividends', x: 20.9, y: 82.4, row: [6.8, 76.5, 42.9, 11.7], text: 'It is the part of the company’s profits paid to shareholders for each share.' },
+              { term: 'PER', x: 13.4, y: 33, row: [7.1, 24.6, 39.8, 16.4], text: 'It is an indicator to determine whether the stock price is high or low compared to the company’s profits.' },
+              { term: 'PBR', x: 59.3, y: 33, row: [53, 24.6, 39.8, 16.4], text: 'It is an indicator to determine whether the stock price is high or low compared to the company’s net assets.' },
+              { term: 'EPS', x: 13.4, y: 49.3, row: [7.1, 41, 39.8, 16.4], text: 'It shows how much profit the company earned for each share.' },
+              { term: 'BPS', x: 59.3, y: 49.3, row: [53, 41, 39.8, 16.4], text: 'It shows how much of the company’s net assets each share is worth.' },
+              { term: 'Dividends', x: 19.2, y: 82.1, row: [7.1, 73.7, 39.8, 16.4], text: 'It is the part of the company’s profits paid to shareholders for each share.' },
             ],
           },
           {
@@ -1317,57 +1317,57 @@ export const projects: Project[] = glueAll<Project[]>([
               {
                 title: 'Home',
                 note: 'AI recommended stocks, soaring stocks, main market information and PROFITKEY News.',
-                figure: { ...screen('profitkey-web-home', 'PROFITKEY home page: AI recommended stocks, soaring stocks, main market information and PROFITKEY News.', 'Home', 1400, 2029), tall: true },
+                figure: { ...screen('profitkey-web-home', 'PROFITKEY home page: AI recommended stocks, soaring stocks, main market information and PROFITKEY News.', 'Home', 2400, 3479), tall: true },
               },
               {
                 title: 'Stock detail',
                 note: 'Price chart, key indicators with “?” glossary tooltips, the AI comment, quarterly financials and investment firm opinions.',
-                figure: { ...screen('profitkey-web-detail', 'PROFITKEY stock detail page: price chart, key indicators, AI comment, quarterly financial indicators and investment firm opinions.', 'Stock detail with AI comment', 1400, 2349), tall: true },
+                figure: { ...screen('profitkey-web-detail', 'PROFITKEY stock detail page: price chart, key indicators, AI comment, quarterly financial indicators and investment firm opinions.', 'Stock detail with AI comment', 2400, 4498), tall: true },
               },
               {
                 title: 'Community',
                 note: 'Each stock has its own community, with threaded comments and replies.',
-                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 1400, 1625), tall: true },
+                figure: { ...screen('profitkey-en-community', 'PROFITKEY stock community tab: a comment box and a list of comments with nested replies.', 'Community', 2400, 2785), tall: true },
               },
               {
                 title: 'News',
                 note: 'Market headlines as cards, then a list of all news with pagination.',
-                figure: { ...screen('profitkey-en-news', 'PROFITKEY news page: market headline cards above a list of all news.', 'News', 1400, 1378), tall: true },
+                figure: { ...screen('profitkey-en-news', 'PROFITKEY news page: market headline cards above a list of all news.', 'News', 2400, 2368), tall: true },
               },
               {
                 title: 'Notices',
                 note: 'A list of service notices from the support team, with the newest and most important first.',
-                figure: { ...screen('profitkey-en-notice-list', 'PROFITKEY notices list: six notices with author and date, an important maintenance notice first, beside the FAQ tab.', 'Notices', 1400, 734), tall: true },
+                figure: { ...screen('profitkey-en-notice-list', 'PROFITKEY notices list: six notices with author and date, an important maintenance notice first, beside the FAQ tab.', 'Notices', 2400, 1258), tall: true },
               },
               {
                 title: 'Notice detail',
                 note: 'Opening a notice shows the full message, such as scheduled maintenance.',
-                figure: { ...screen('profitkey-en-notice', 'PROFITKEY notice detail: an important notice about scheduled maintenance, with date and author.', 'Notice detail', 1400, 780), tall: true },
+                figure: { ...screen('profitkey-en-notice', 'PROFITKEY notice detail: an important notice about scheduled maintenance, with date and author.', 'Notice detail', 2400, 1336), tall: true },
               },
               {
                 title: 'FAQ',
                 note: 'Frequently asked questions in an accordion, with a Contact Us button.',
-                figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 1400, 1072), tall: true },
+                figure: { ...screen('profitkey-en-faq', 'PROFITKEY FAQ page: questions in an expandable accordion and a Contact Us button.', 'FAQ', 2400, 1839), tall: true },
               },
               {
                 title: 'My watchlist',
                 note: 'Saved stocks with their price charts.',
-                figure: { ...screen('profitkey-en-watchlist', 'PROFITKEY my page, watchlist tab: saved stocks shown as cards with price charts.', 'My watchlist', 1400, 941), tall: true },
+                figure: { ...screen('profitkey-en-watchlist', 'PROFITKEY my page, watchlist tab: saved stocks shown as cards with price charts.', 'My watchlist', 2400, 1612), tall: true },
               },
               {
                 title: 'My comments',
                 note: 'A dated list of the comments a member has written.',
-                figure: { ...screen('profitkey-en-my-comments', 'PROFITKEY my page, comments tab: a dated list of the member’s comments.', 'My comments', 1400, 1144), tall: true },
+                figure: { ...screen('profitkey-en-my-comments', 'PROFITKEY my page, comments tab: a dated list of the member’s comments.', 'My comments', 2400, 1961), tall: true },
               },
               {
                 title: 'Edit profile',
                 note: 'Members can change their nickname and email address, or log out.',
-                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: nickname and email address fields, each with a yellow Save button, and a log out button.', 'Edit profile', 1400, 756), tall: true },
+                figure: { ...screen('profitkey-en-edit-profile', 'PROFITKEY edit profile page: nickname and email address fields, each with a yellow Save button, and a log out button.', 'Edit profile', 2400, 1296), tall: true },
               },
               {
                 title: 'LOGIN',
                 note: 'Members log in with an email address and password, or with a Google, Facebook or Apple account.',
-                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo, email address and password fields, Remember Me, Forgot password, a yellow Login button, then Log in with Google, Facebook and Apple.', 'LOGIN', 1400, 935), tall: true },
+                figure: { ...screen('profitkey-en-login', 'PROFITKEY login page: the logo, email address and password fields, Remember Me, Forgot password, a yellow Login button, then Log in with Google, Facebook and Apple.', 'LOGIN', 2400, 1602), tall: true },
               },
             ],
           },
@@ -1388,6 +1388,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'list',
             items: [
+              '**What I learned:** working side by side with five engineers taught me a lot. I now know how to design together with developers: explaining my decisions, hearing what is hard to build, and finding a version that works for both the users and the team.',
               '**What worked:** designing every screen for beginners. In usability testing with 12 users over 3 days, people said the AI comments made stocks easier to understand.',
               '**What I’d do differently:** the engineers often preferred what was easier to build, and as the only designer I had no one to talk design through with. Next time I’d agree on the key design decisions with the team earlier.',
               '**If I could, I’d measure:** how much users trust the AI’s picks, for example how many go on to open a stock after reading its AI comment, since some testers doubted the AI.',

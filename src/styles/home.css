@@ -763,6 +763,12 @@ button.wiggle {
   padding: 0;
   list-style: none;
 }
+/* phones: one card per row, so the picture and text keep a readable size */
+@media (max-width: 600px) {
+  .folder-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .folder {
   position: relative;
   padding-top: clamp(1.9rem, 4vw, 2.4rem);

@@ -87,7 +87,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
       <header className="cs-hero">
         <div className="container">
           <nav aria-label="Breadcrumb" className="cs-breadcrumb">
-            <Link to="/work" className="text-link">
+            <Link to="/#work" className="text-link">
               <Arrow dir="left" /> All projects
             </Link>
           </nav>
@@ -179,7 +179,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
           <PagerCard project={prev} dir="prev" />
           <PagerCard project={next} dir="next" />
         </nav>
-        <Link to="/work" className="cs-pager__all">
+        <Link to="/#work" className="cs-pager__all">
           View all projects
         </Link>
         <ContactCTA card />

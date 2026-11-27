@@ -105,7 +105,7 @@ export type Section = {
   note?: string
 }
 
-/** Categories used by the Case Study page filters and the homepage hashtags. */
+/** Categories shown as hashtags on the project cards and case studies. */
 export const disciplines = [
   { id: 'ux-ui', label: 'UX/UI Design' },
   { id: 'graphic', label: 'Graphic Design' },
@@ -117,7 +117,7 @@ export type DisciplineId = (typeof disciplines)[number]['id']
 export const disciplineLabel = (id: DisciplineId) => disciplines.find((d) => d.id === id)!.label
 
 /** Where a category tag links to. Graphic design work lives in the ASCLO gallery on Home. */
-export const disciplineHref = (id: DisciplineId) => (id === 'graphic' ? '/#asclo' : `/work?category=${id}`)
+export const disciplineHref = (id: DisciplineId) => (id === 'graphic' ? '/#asclo' : '/#work')
 
 export type Project = {
   slug: string
@@ -171,24 +171,6 @@ const issues = (name: string, alt: string, height: number): Figure => ({
   width: 1200,
   height,
   zoom: true,
-})
-
-/** A grayscale low fi Cookpad wireframe (SVG, 960 px wide) drawn by scripts/build-cookpad-wireframes.mjs. */
-const cwire = (name: string, alt: string, caption: string, height: number): Figure => ({
-  src: `/images/wireframes/cookpad-${name}.svg`,
-  alt,
-  caption,
-  width: 960,
-  height,
-})
-
-/** A clean UI export from the Cookpad frames in the Portfolio file (see scripts/prepare-cookpad.mjs). */
-const cook = (name: string, alt: string, caption: string | undefined, width: number, height: number): Figure => ({
-  src: `/images/cookpad/${name}.webp`,
-  alt,
-  caption,
-  width,
-  height,
 })
 
 /** A real screen export prepared for a device mockup (see scripts/prepare-screens.mjs). */
@@ -745,6 +727,354 @@ export const projects: Project[] = glueAll<Project[]>([
               'This project taught me how to **redesign** an existing website, especially on the **visual design** side. I also learned much more about **UX research**: **usability testing**, the **heuristic audit**, **competitor analysis** and **personas**.',
               'It was my **first client project**. We met the client’s manager **four times**, and their feedback helped us shape the website around what the client really needed. The client wanted to focus on **membership and news**, so we made it easy to **sign up for the newsletter** while visiting the site.',
               'I worked on the **competitor analysis**, the **persona** and the **audit**, and we discussed our **goals** together as a team. I also worked on the **mobile** and **iPad** designs, the **working website with vibe coding** and the **final presentation**.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // ───────────────────────────────────────────── Open Door Yoga
+  {
+    slug: 'open-door-yoga',
+    title: 'Open Door Yoga',
+    disciplines: ['ux-ui', 'visual'],
+    featured: true,
+    tagline: 'Redesigning the Open Door Yoga Website',
+    proof: { value: '10', label: 'Nielsen heuristics across 3 key tasks' },
+    summary:
+      'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing.',
+    category: 'Website · Redesign',
+    platform: 'Website',
+    role: 'UX/UI Design',
+    timeline: '2026.08 to 2026.09',
+    team: '3 designers',
+    tools: ['Figma', 'html.to.design'],
+    // cover: the dark version built by scripts/build-yoga-cover.mjs ('dark') from the redesigned pages
+    thumbnail: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the studio name, "A redesigned website where classes, passes and teacher training are easy to find." and an Explore the redesign button beside the redesigned About, Pricing and Home pages cascading as frosted glass windows (Welcome to Open Door Yoga, Passes & Pricing, then the Home page in front), over a violet wave.', undefined, 1600, 900),
+    hero: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the studio name, "A redesigned website where classes, passes and teacher training are easy to find." and an Explore the redesign button beside the redesigned About, Pricing and Home pages cascading as frosted glass windows (Welcome to Open Door Yoga, Passes & Pricing, then the Home page in front), over a violet wave.', undefined, 1600, 900),
+    theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
+    tldr: [
+      { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },
+      { label: 'My role', text: 'One of three designers on a class brief. I worked on the heuristic audit and designed the About and Pricing pages.' },
+      { label: 'Solution', text: 'Clearer page structures, a style guide and component library, and redesigned Home, Pricing, Teacher Training and About pages.' },
+      { label: 'Feedback', text: 'Testing showed that imagery and visual style need to stay consistent across every page.' },
+    ],
+    sections: [
+      {
+        id: 'overview',
+        label: 'Overview',
+        title: 'The challenge',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Open Door Yoga is a studio at Main & 14th in East Vancouver offering hatha, vinyasa, yin and prenatal classes. For this class brief, our group redesigned the website’s home, pricing, teacher training and about pages, starting from a usability review of the existing site.',
+            ],
+          },
+          {
+            kind: 'cards',
+            items: [
+              { title: 'Team', body: 'Three designers. We worked on every stage together, from the heuristic evaluation to the style guide, components and final pages.' },
+              { title: 'My part', body: 'I worked on the **heuristic audit**, and designed the **About** and **Pricing** pages, from wireframe to final design.' },
+              { title: 'Target user', body: 'First time yoga students in Vancouver looking for an in studio class.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'heuristic-evaluation',
+        label: 'Heuristic evaluation',
+        title: 'Heuristic evaluation of the existing site',
+        note: 'Nielsen’s 10 heuristics',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'We imported the live opendooryoga.bc.ca pages into Figma (with html.to.design) and reviewed them with Nielsen’s 10 usability heuristics, walking through three key tasks a first time student would try. The screens below mark the problem areas we found, coloured by the heuristic each one breaks.',
+            ],
+          },
+          {
+            kind: 'stats',
+            items: [
+              { value: '10', label: 'Nielsen heuristics' },
+              { value: '3', label: 'Key tasks evaluated' },
+              { value: '7', label: 'Existing pages audited' },
+            ],
+          },
+          {
+            // the three evaluation tasks, as scannable cards
+            kind: 'cards',
+            items: [
+              {
+                title: 'Task 1: Find a beginner class',
+                body: 'Find a beginner friendly class and its schedule. Are the class types, levels, dates and locations easy to understand?',
+              },
+              {
+                title: 'Task 2: Choose an intro pass',
+                body: 'Compare the introductory passes and pick one. Are the price, duration, who it’s for and the next step clear?',
+              },
+              {
+                title: 'Task 3: Plan the first visit',
+                body: 'Find the studio and what to know before attending. Are the address, entrance, contact details and what to bring easy to find?',
+              },
+            ],
+          },
+          {
+            // problem areas on the live opendooryoga.bc.ca pages, boxed by the heuristic they break
+            // (scripts/build-yoga-annotations.mjs); findings from the team's evaluation slides in Figma
+            kind: 'annotated',
+            legend: [
+              { type: 'visibility', label: 'Visibility of system status' },
+              { type: 'recognition', label: 'Recognition rather than recall' },
+              { type: 'consistency', label: 'Consistency and standards' },
+            ],
+            panels: [
+              {
+                label: 'Home, top of the page',
+                figure: issues('home-top', 'Original home page header: the menu over the hero photo, with Current Schedule highlighted in green and boxed.', 480),
+                notes: [{ n: 1, type: 'visibility', text: 'The menu doesn’t show where you are. On the Home page, the highlighted item is Current Schedule.' }],
+              },
+              {
+                label: 'Home, passes',
+                figure: issues('home-passes', 'Original pass offers on the home page: the First Time Student Special card and the Other passes card boxed in red, and four different looking buttons boxed in orange.', 1260),
+                notes: [
+                  { n: 2, type: 'recognition', text: 'Two intro offers, 5 weeks for $109 and 6 weeks for $109, share one card, so a first time student has to read closely to tell them apart.' },
+                  { n: 3, type: 'recognition', text: 'All the other passes are hidden behind Learn More, so their prices can’t be compared at a glance.' },
+                  { n: 4, type: 'consistency', text: 'Buttons on the same screen use different shapes, colours and wording: Buy 5 Week Pass, Learn More, Click here to subscribe.' },
+                ],
+              },
+              {
+                label: 'Schedule',
+                figure: issues('schedule', 'Original Schedule page: the block of booking notes and the small email screenshots, both boxed in red.', 863),
+                notes: [
+                  { n: 5, type: 'recognition', text: 'Prices, booking steps and cancellation rules sit in one long centred block of text.' },
+                  { n: 6, type: 'recognition', text: 'Help with online booking is given as small screenshots of emails, which are hard to read.' },
+                ],
+              },
+              {
+                label: 'Teacher Training',
+                figure: issues('training', 'Original Teacher Training page: the collapsed curriculum sections boxed in violet, the program schedule, and Prices & Payment boxed in red further down.', 1268),
+                notes: [
+                  { n: 7, type: 'visibility', text: 'Collapsed curriculum sections show up arrows, which suggest they are already open.' },
+                  { n: 8, type: 'recognition', text: 'The tuition only appears about halfway down a long page.' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'issues',
+        label: 'Usability issues',
+        title: 'Usability issues & design recommendations',
+        blocks: [
+          {
+            kind: 'cards',
+            items: [
+              {
+                title: 'Issue: price is hard to find',
+                body: 'On the Teacher Training page, readers had to scroll halfway down to find the tuition. Recommendation: show the total tuition (or “Tuition from $X”) at the top, and make tuition & payment a main section with deposit, installment plan, what’s included and the refund policy.',
+              },
+              {
+                title: 'Issue: long text, unclear benefits',
+                body: 'Lengthy vision text hid what the program offers. Recommendation: lead with three clear benefits, and present the curriculum as five cards or accordions with total hours and brief outcomes.',
+              },
+              {
+                title: 'Issue: schedule is hard to scan',
+                body: 'The time commitment wasn’t clear at a glance. Recommendation: keep the schedule on the same page but turn it into an easy to scan table or timeline (weekend intensive, weekly practice, practicum).',
+              },
+              {
+                title: 'Issue: dense, hard to read sections',
+                body: 'Three column long testimonials and full faculty bios were difficult to read, especially on mobile. Recommendation: keep 2 to 3 concise quotes, use photo cards with one sentence per teacher, and keep the FAQ as an accordion at the bottom.',
+              },
+            ],
+          },
+          {
+            // transcribed from the team's written recommendations (Figma)
+            kind: 'outline',
+            caption: 'Our recommended structure for the Teacher Training page.',
+            steps: [
+              {
+                title: 'Hero / At a glance',
+                points: [
+                  '200 hour Hatha Teacher Training',
+                  'Next start date | Vancouver | Format | Total tuition',
+                  'Apply now, Attend an info session',
+                  'The price should be clearly displayed here, or at least “Tuition from $X,” so that readers don’t have to scroll halfway through the page to find it.',
+                ],
+              },
+              { title: 'Why this program', points: ['3 clear benefits, avoid lengthy vision text'] },
+              {
+                title: 'What you’ll learn',
+                points: ['5 curriculum cards/accordions', 'Present them using total hours and brief results'],
+              },
+              {
+                title: 'Training schedule',
+                points: [
+                  'Keep it on the same page, but change it to an easy to scan table or timeline',
+                  'For example: Weekend intensive / Weekly practice / Practicum, making the time commitment clear at a glance',
+                ],
+              },
+              {
+                title: 'Tuition & payment',
+                note: 'Make it a main section of the page',
+                points: ['Total tuition', 'Deposit', 'Installment plan', 'What’s included', 'Refund/withdrawal policy link'],
+              },
+              {
+                title: 'Meet the faculty',
+                points: [
+                  'Keep three photo cards + name, role, and one sentence about expertise',
+                  'Detailed bio leads to a drawer/individual profile. Don’t cram the entire resume onto this page',
+                ],
+              },
+              {
+                title: 'Student testimonials',
+                points: [
+                  'Keep 2 to 3 concise quotes, including name and graduation year',
+                  'Avoid three column long texts, especially difficult to read on mobile devices',
+                ],
+              },
+              {
+                title: 'FAQ',
+                points: [
+                  'Keep it at the bottom. The accordion is reasonable',
+                  'Most frequently asked questions: qualifications, attendance, make up classes, payment, certificates, cancellation rules',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'wireframes',
+        label: 'Wireframes',
+        title: 'Wireframes',
+        blocks: [
+          {
+            // Wireframe page frames in the Open Door Yoga file: Home Page (119:479), Price (111:179,
+            // Sujin's) and Training 1 (238:639), prepared by scripts/prepare-yoga-wireframe.mjs
+            kind: 'pages',
+            full: true,
+            caption: 'Our wireframes for the Home, Pricing and Teacher Training pages. I designed the Pricing page. Click a page to see it larger.',
+            items: [
+              { label: 'Home', figure: { ...img('yoga-wireframe-home', 'Home page wireframe: a YOGA hero with a Schedule your Yoga Class button, four class cards (Hatha, Restorative, Vinyasa, Yin) with Pricing and Schedule buttons, About Us, Our Team with three teachers, and the footer.', undefined, 1122, 2285), tall: true } },
+              { label: 'Pricing (mine)', figure: { ...img('yoga-wireframe-pricing', 'Pricing page wireframe: a "Yoga Passes & Pricing" hero, a First time student offer, two rows of pass cards with Join buttons, a Give a Gift of Health section with a gift photo, and the footer.', undefined, 1122, 2399), tall: true } },
+              { label: 'Teacher Training', figure: { ...img('yoga-wireframe-training', 'Teacher Training page wireframe: a 200 hour teacher training hero, Apply Now and Have Questions buttons, About, What You Will Gain, The Complete Learning Process with the curriculum hours as a timeline, accreditation badges, and the footer.', undefined, 1122, 3476), tall: true } },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'design-system',
+        label: 'Style guide',
+        title: 'Style guide & components',
+        note: 'Checked for AAA',
+        blocks: [
+          {
+            kind: 'text',
+            body: [
+              'Each colour has light, normal and dark steps, with interaction states and contrast ratings documented. Headings use Cinzel and body text uses Nunito.',
+            ],
+          },
+          {
+            kind: 'swatches',
+            swatches: [
+              { name: 'Violet light', hex: '#F0EDF1', usage: 'Backgrounds' },
+              { name: 'Violet', hex: '#6A4E77', usage: 'Primary' },
+              { name: 'Violet darker', hex: '#251B2A', usage: 'Headings' },
+              { name: 'Green', hex: '#B2C95D', usage: 'Secondary' },
+              { name: 'Green dark', hex: '#869746', usage: 'Buttons' },
+              { name: 'Grey', hex: '#2E2E2E', usage: 'Text' },
+            ],
+          },
+          {
+            // the project's text styles, rendered live in their own fonts
+            kind: 'type',
+            styles: [
+              { name: 'H1', font: 'Cinzel', weight: 700, size: 128, sample: 'Yoga' },
+              { name: 'H2', font: 'Cinzel', weight: 700, size: 96, sample: 'Our Team' },
+              { name: 'H3', font: 'Cinzel', weight: 700, size: 36, sample: 'Passes & Pricing' },
+              { name: 'H4', font: 'Cinzel', weight: 700, size: 24, sample: 'Hatha Yoga' },
+              { name: 'Body 1', font: 'Nunito', weight: 700, size: 36, sample: 'First time student' },
+              { name: 'Body 2', font: 'Nunito', weight: 400, size: 24, sample: 'Find the yoga pass that best fits your practice.' },
+              { name: 'Body 3', font: 'Nunito', weight: 400, size: 20, sample: 'Geared for beginners with many variations given.' },
+              { name: 'Label', font: 'Nunito', weight: 400, size: 16, sample: '200-2940 Main St (enter on 14th)' },
+            ],
+          },
+          {
+            kind: 'list',
+            intro: 'Reusable components built from the style guide (Atomic Design: atoms, molecules, templates):',
+            items: [
+              'Pass and pricing cards, with a highlighted “Good Deal” variant',
+              'Class style cards and teacher profile cards',
+              'Schedule items and curriculum accordions',
+              'Header and footer variants',
+              'Gift card and call to action buttons',
+            ],
+          },
+          { kind: 'figure', figure: { ...img('yoga-components', 'Component sheet: pricing cards, gift card, class style cards, teacher cards, schedule items, curriculum accordion, headers and footers.', 'Molecules from the component library.', 1600, 939), zoom: true } },
+        ],
+      },
+      {
+        id: 'before-after',
+        label: 'Before & after',
+        title: 'My pages: before & after',
+        note: 'Drag to compare',
+        blocks: [
+          {
+            kind: 'text',
+            body: ['The original site (before) and our redesign (after) for the two pages I mainly designed, About and Pricing. Each opens on the redesign. Drag the handle to the right, or use the arrow keys, to reveal the original.'],
+          },
+          {
+            kind: 'compare',
+            label: 'Pricing page',
+            caption: 'Pricing: original site vs redesign',
+            before: screen('yoga-pricing-before', 'Original Open Door Yoga passes and pricing page: purple header with small navigation and a green first time student section.', 'Pricing, before', 1600, 1000),
+            after: screen('yoga-pricing-after', 'Redesigned Passes & Pricing page: lilac hero with a large serif title, a short introduction and a calm photo background.', 'Pricing, after', 1600, 1000),
+          },
+          {
+            kind: 'compare',
+            label: 'About page',
+            caption: 'About: original site vs redesign',
+            before: screen('yoga-about-before', 'Original Open Door Yoga about page: photo header with a promotion banner and a long block of centred text below.', 'About, before', 1600, 1000),
+            after: screen('yoga-about-after', 'Redesigned About page: full width photo hero with the large serif title “Welcome to Open Door Yoga!”.', 'About, after', 1600, 1000),
+          },
+        ],
+      },
+      {
+        id: 'final',
+        label: 'Final design',
+        title: 'Final pages',
+        blocks: [
+          {
+            kind: 'devices',
+            device: 'desktop',
+            screens: [
+              { ...img('yoga-home', 'Final home page: hero, class style cards, about us and the teacher team.', 'Home', 1075, 2400), tall: true },
+              { ...img('yoga-pricing', 'Final pricing page with first time student offer, pass cards and gift section.', 'Pricing', 1114, 2400), tall: true },
+              { ...img('yoga-training', 'Teacher training page with program details, video and a curriculum timeline.', 'Teacher training', 766, 2400), tall: true },
+              { ...img('yoga-about', 'About page with program promotion, vision and free month program.', 'About', 1400, 3222), tall: true },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'reflection',
+        label: 'Reflection',
+        title: 'Testing & reflection',
+        blocks: [
+          {
+            kind: 'cards',
+            items: [
+              {
+                title: 'Feedback & next iteration',
+                body: 'Feedback highlighted **inconsistencies in the use of imagery and visual styles** across different pages of the website. Even well designed sections can **feel disconnected** without a **consistent visual direction**. → The next step is to use **one visual direction** for imagery and styles on every page.',
+              },
+              {
+                title: 'What I Learned',
+                body: 'This project taught me the importance of **researching usability issues before jumping into design**. I learned to use **heuristic evaluation** to guide design decisions **with evidence** rather than visual preferences alone. I also gained a better understanding of how **consistent imagery, typography, and UI components** create a **cohesive user experience**.',
+              },
             ],
           },
         ],
@@ -1331,668 +1661,6 @@ export const projects: Project[] = glueAll<Project[]>([
             boxed: true,
             body: [
               'LastCow started with one question: how can people make the most of **last-minute tickets**, while the companies selling them still **turn unsold seats into revenue**? Going from **user interviews** to **wireframes**, a **prototype** and **usability testing** showed me how each step builds on the last. The interviews kept us focused on **real needs**, and testing confirmed the flows worked, with an **average SUS score of 92.5**. Most of all, I learned to **design for both sides**: a fast, simple way for users to grab a good deal, and a way for organizers to fill their events.',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  // ───────────────────────────────────────────── Open Door Yoga
-  {
-    slug: 'open-door-yoga',
-    title: 'Open Door Yoga',
-    disciplines: ['ux-ui', 'visual'],
-    featured: true,
-    tagline: 'Redesigning the Open Door Yoga Website',
-    proof: { value: '10', label: 'Nielsen heuristics across 3 key tasks' },
-    summary:
-      'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing.',
-    category: 'Website · Redesign',
-    platform: 'Website',
-    role: 'UX/UI Design',
-    timeline: '2026.08 to 2026.09',
-    team: '3 designers',
-    tools: ['Figma', 'html.to.design'],
-    // cover: the dark version built by scripts/build-yoga-cover.mjs ('dark') from the redesigned pages
-    thumbnail: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the studio name, "A redesigned website where classes, passes and teacher training are easy to find." and an Explore the redesign button beside the redesigned About, Pricing and Home pages cascading as frosted glass windows (Welcome to Open Door Yoga, Passes & Pricing, then the Home page in front), over a violet wave.', undefined, 1600, 900),
-    hero: img('yoga-cover-dark', 'Open Door Yoga cover on deep violet: the studio name, "A redesigned website where classes, passes and teacher training are easy to find." and an Explore the redesign button beside the redesigned About, Pricing and Home pages cascading as frosted glass windows (Welcome to Open Door Yoga, Passes & Pricing, then the Home page in front), over a violet wave.', undefined, 1600, 900),
-    theme: { accent: '#6A4E77', ink: '#2E2E2E', surface: '#F0EDF1' },
-    tldr: [
-      { label: 'Problem', text: 'A heuristic review of the studio’s site found prices, schedules and key details hard to find and scan.' },
-      { label: 'My role', text: 'One of three designers on a class brief. I worked on the heuristic audit and designed the About and Pricing pages.' },
-      { label: 'Solution', text: 'Clearer page structures, a style guide and component library, and redesigned Home, Pricing, Teacher Training and About pages.' },
-      { label: 'Feedback', text: 'Testing showed that imagery and visual style need to stay consistent across every page.' },
-    ],
-    sections: [
-      {
-        id: 'overview',
-        label: 'Overview',
-        title: 'The challenge',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Open Door Yoga is a studio at Main & 14th in East Vancouver offering hatha, vinyasa, yin and prenatal classes. For this class brief, our group redesigned the website’s home, pricing, teacher training and about pages, starting from a usability review of the existing site.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'Team', body: 'Three designers. We worked on every stage together, from the heuristic evaluation to the style guide, components and final pages.' },
-              { title: 'My part', body: 'I worked on the **heuristic audit**, and designed the **About** and **Pricing** pages, from wireframe to final design.' },
-              { title: 'Target user', body: 'First time yoga students in Vancouver looking for an in studio class.' },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'heuristic-evaluation',
-        label: 'Heuristic evaluation',
-        title: 'Heuristic evaluation of the existing site',
-        note: 'Nielsen’s 10 heuristics',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'We imported the live opendooryoga.bc.ca pages into Figma (with html.to.design) and reviewed them with Nielsen’s 10 usability heuristics, walking through three key tasks a first time student would try. The screens below mark the problem areas we found, coloured by the heuristic each one breaks.',
-            ],
-          },
-          {
-            kind: 'stats',
-            items: [
-              { value: '10', label: 'Nielsen heuristics' },
-              { value: '3', label: 'Key tasks evaluated' },
-              { value: '7', label: 'Existing pages audited' },
-            ],
-          },
-          {
-            // the three evaluation tasks, as scannable cards
-            kind: 'cards',
-            items: [
-              {
-                title: 'Task 1: Find a beginner class',
-                body: 'Find a beginner friendly class and its schedule. Are the class types, levels, dates and locations easy to understand?',
-              },
-              {
-                title: 'Task 2: Choose an intro pass',
-                body: 'Compare the introductory passes and pick one. Are the price, duration, who it’s for and the next step clear?',
-              },
-              {
-                title: 'Task 3: Plan the first visit',
-                body: 'Find the studio and what to know before attending. Are the address, entrance, contact details and what to bring easy to find?',
-              },
-            ],
-          },
-          {
-            // problem areas on the live opendooryoga.bc.ca pages, boxed by the heuristic they break
-            // (scripts/build-yoga-annotations.mjs); findings from the team's evaluation slides in Figma
-            kind: 'annotated',
-            legend: [
-              { type: 'visibility', label: 'Visibility of system status' },
-              { type: 'recognition', label: 'Recognition rather than recall' },
-              { type: 'consistency', label: 'Consistency and standards' },
-            ],
-            panels: [
-              {
-                label: 'Home, top of the page',
-                figure: issues('home-top', 'Original home page header: the menu over the hero photo, with Current Schedule highlighted in green and boxed.', 480),
-                notes: [{ n: 1, type: 'visibility', text: 'The menu doesn’t show where you are. On the Home page, the highlighted item is Current Schedule.' }],
-              },
-              {
-                label: 'Home, passes',
-                figure: issues('home-passes', 'Original pass offers on the home page: the First Time Student Special card and the Other passes card boxed in red, and four different looking buttons boxed in orange.', 1260),
-                notes: [
-                  { n: 2, type: 'recognition', text: 'Two intro offers, 5 weeks for $109 and 6 weeks for $109, share one card, so a first time student has to read closely to tell them apart.' },
-                  { n: 3, type: 'recognition', text: 'All the other passes are hidden behind Learn More, so their prices can’t be compared at a glance.' },
-                  { n: 4, type: 'consistency', text: 'Buttons on the same screen use different shapes, colours and wording: Buy 5 Week Pass, Learn More, Click here to subscribe.' },
-                ],
-              },
-              {
-                label: 'Schedule',
-                figure: issues('schedule', 'Original Schedule page: the block of booking notes and the small email screenshots, both boxed in red.', 863),
-                notes: [
-                  { n: 5, type: 'recognition', text: 'Prices, booking steps and cancellation rules sit in one long centred block of text.' },
-                  { n: 6, type: 'recognition', text: 'Help with online booking is given as small screenshots of emails, which are hard to read.' },
-                ],
-              },
-              {
-                label: 'Teacher Training',
-                figure: issues('training', 'Original Teacher Training page: the collapsed curriculum sections boxed in violet, the program schedule, and Prices & Payment boxed in red further down.', 1268),
-                notes: [
-                  { n: 7, type: 'visibility', text: 'Collapsed curriculum sections show up arrows, which suggest they are already open.' },
-                  { n: 8, type: 'recognition', text: 'The tuition only appears about halfway down a long page.' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'issues',
-        label: 'Usability issues',
-        title: 'Usability issues & design recommendations',
-        blocks: [
-          {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Issue: price is hard to find',
-                body: 'On the Teacher Training page, readers had to scroll halfway down to find the tuition. Recommendation: show the total tuition (or “Tuition from $X”) at the top, and make tuition & payment a main section with deposit, installment plan, what’s included and the refund policy.',
-              },
-              {
-                title: 'Issue: long text, unclear benefits',
-                body: 'Lengthy vision text hid what the program offers. Recommendation: lead with three clear benefits, and present the curriculum as five cards or accordions with total hours and brief outcomes.',
-              },
-              {
-                title: 'Issue: schedule is hard to scan',
-                body: 'The time commitment wasn’t clear at a glance. Recommendation: keep the schedule on the same page but turn it into an easy to scan table or timeline (weekend intensive, weekly practice, practicum).',
-              },
-              {
-                title: 'Issue: dense, hard to read sections',
-                body: 'Three column long testimonials and full faculty bios were difficult to read, especially on mobile. Recommendation: keep 2 to 3 concise quotes, use photo cards with one sentence per teacher, and keep the FAQ as an accordion at the bottom.',
-              },
-            ],
-          },
-          {
-            // transcribed from the team's written recommendations (Figma)
-            kind: 'outline',
-            caption: 'Our recommended structure for the Teacher Training page.',
-            steps: [
-              {
-                title: 'Hero / At a glance',
-                points: [
-                  '200 hour Hatha Teacher Training',
-                  'Next start date | Vancouver | Format | Total tuition',
-                  'Apply now, Attend an info session',
-                  'The price should be clearly displayed here, or at least “Tuition from $X,” so that readers don’t have to scroll halfway through the page to find it.',
-                ],
-              },
-              { title: 'Why this program', points: ['3 clear benefits, avoid lengthy vision text'] },
-              {
-                title: 'What you’ll learn',
-                points: ['5 curriculum cards/accordions', 'Present them using total hours and brief results'],
-              },
-              {
-                title: 'Training schedule',
-                points: [
-                  'Keep it on the same page, but change it to an easy to scan table or timeline',
-                  'For example: Weekend intensive / Weekly practice / Practicum, making the time commitment clear at a glance',
-                ],
-              },
-              {
-                title: 'Tuition & payment',
-                note: 'Make it a main section of the page',
-                points: ['Total tuition', 'Deposit', 'Installment plan', 'What’s included', 'Refund/withdrawal policy link'],
-              },
-              {
-                title: 'Meet the faculty',
-                points: [
-                  'Keep three photo cards + name, role, and one sentence about expertise',
-                  'Detailed bio leads to a drawer/individual profile. Don’t cram the entire resume onto this page',
-                ],
-              },
-              {
-                title: 'Student testimonials',
-                points: [
-                  'Keep 2 to 3 concise quotes, including name and graduation year',
-                  'Avoid three column long texts, especially difficult to read on mobile devices',
-                ],
-              },
-              {
-                title: 'FAQ',
-                points: [
-                  'Keep it at the bottom. The accordion is reasonable',
-                  'Most frequently asked questions: qualifications, attendance, make up classes, payment, certificates, cancellation rules',
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'wireframes',
-        label: 'Wireframes',
-        title: 'Wireframes',
-        blocks: [
-          {
-            // Wireframe page frames in the Open Door Yoga file: Home Page (119:479), Price (111:179,
-            // Sujin's) and Training 1 (238:639), prepared by scripts/prepare-yoga-wireframe.mjs
-            kind: 'pages',
-            full: true,
-            caption: 'Our wireframes for the Home, Pricing and Teacher Training pages. I designed the Pricing page. Click a page to see it larger.',
-            items: [
-              { label: 'Home', figure: { ...img('yoga-wireframe-home', 'Home page wireframe: a YOGA hero with a Schedule your Yoga Class button, four class cards (Hatha, Restorative, Vinyasa, Yin) with Pricing and Schedule buttons, About Us, Our Team with three teachers, and the footer.', undefined, 1122, 2285), tall: true } },
-              { label: 'Pricing (mine)', figure: { ...img('yoga-wireframe-pricing', 'Pricing page wireframe: a "Yoga Passes & Pricing" hero, a First time student offer, two rows of pass cards with Join buttons, a Give a Gift of Health section with a gift photo, and the footer.', undefined, 1122, 2399), tall: true } },
-              { label: 'Teacher Training', figure: { ...img('yoga-wireframe-training', 'Teacher Training page wireframe: a 200 hour teacher training hero, Apply Now and Have Questions buttons, About, What You Will Gain, The Complete Learning Process with the curriculum hours as a timeline, accreditation badges, and the footer.', undefined, 1122, 3476), tall: true } },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'design-system',
-        label: 'Style guide',
-        title: 'Style guide & components',
-        note: 'Checked for AAA',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Each colour has light, normal and dark steps, with interaction states and contrast ratings documented. Headings use Cinzel and body text uses Nunito.',
-            ],
-          },
-          {
-            kind: 'swatches',
-            swatches: [
-              { name: 'Violet light', hex: '#F0EDF1', usage: 'Backgrounds' },
-              { name: 'Violet', hex: '#6A4E77', usage: 'Primary' },
-              { name: 'Violet darker', hex: '#251B2A', usage: 'Headings' },
-              { name: 'Green', hex: '#B2C95D', usage: 'Secondary' },
-              { name: 'Green dark', hex: '#869746', usage: 'Buttons' },
-              { name: 'Grey', hex: '#2E2E2E', usage: 'Text' },
-            ],
-          },
-          {
-            // the project's text styles, rendered live in their own fonts
-            kind: 'type',
-            styles: [
-              { name: 'H1', font: 'Cinzel', weight: 700, size: 128, sample: 'Yoga' },
-              { name: 'H2', font: 'Cinzel', weight: 700, size: 96, sample: 'Our Team' },
-              { name: 'H3', font: 'Cinzel', weight: 700, size: 36, sample: 'Passes & Pricing' },
-              { name: 'H4', font: 'Cinzel', weight: 700, size: 24, sample: 'Hatha Yoga' },
-              { name: 'Body 1', font: 'Nunito', weight: 700, size: 36, sample: 'First time student' },
-              { name: 'Body 2', font: 'Nunito', weight: 400, size: 24, sample: 'Find the yoga pass that best fits your practice.' },
-              { name: 'Body 3', font: 'Nunito', weight: 400, size: 20, sample: 'Geared for beginners with many variations given.' },
-              { name: 'Label', font: 'Nunito', weight: 400, size: 16, sample: '200-2940 Main St (enter on 14th)' },
-            ],
-          },
-          {
-            kind: 'list',
-            intro: 'Reusable components built from the style guide (Atomic Design: atoms, molecules, templates):',
-            items: [
-              'Pass and pricing cards, with a highlighted “Good Deal” variant',
-              'Class style cards and teacher profile cards',
-              'Schedule items and curriculum accordions',
-              'Header and footer variants',
-              'Gift card and call to action buttons',
-            ],
-          },
-          { kind: 'figure', figure: { ...img('yoga-components', 'Component sheet: pricing cards, gift card, class style cards, teacher cards, schedule items, curriculum accordion, headers and footers.', 'Molecules from the component library.', 1600, 939), zoom: true } },
-        ],
-      },
-      {
-        id: 'before-after',
-        label: 'Before & after',
-        title: 'My pages: before & after',
-        note: 'Drag to compare',
-        blocks: [
-          {
-            kind: 'text',
-            body: ['The original site (before) and our redesign (after) for the two pages I mainly designed, About and Pricing. Each opens on the redesign. Drag the handle to the right, or use the arrow keys, to reveal the original.'],
-          },
-          {
-            kind: 'compare',
-            label: 'Pricing page',
-            caption: 'Pricing: original site vs redesign',
-            before: screen('yoga-pricing-before', 'Original Open Door Yoga passes and pricing page: purple header with small navigation and a green first time student section.', 'Pricing, before', 1600, 1000),
-            after: screen('yoga-pricing-after', 'Redesigned Passes & Pricing page: lilac hero with a large serif title, a short introduction and a calm photo background.', 'Pricing, after', 1600, 1000),
-          },
-          {
-            kind: 'compare',
-            label: 'About page',
-            caption: 'About: original site vs redesign',
-            before: screen('yoga-about-before', 'Original Open Door Yoga about page: photo header with a promotion banner and a long block of centred text below.', 'About, before', 1600, 1000),
-            after: screen('yoga-about-after', 'Redesigned About page: full width photo hero with the large serif title “Welcome to Open Door Yoga!”.', 'About, after', 1600, 1000),
-          },
-        ],
-      },
-      {
-        id: 'final',
-        label: 'Final design',
-        title: 'Final pages',
-        blocks: [
-          {
-            kind: 'devices',
-            device: 'desktop',
-            screens: [
-              { ...img('yoga-home', 'Final home page: hero, class style cards, about us and the teacher team.', 'Home', 1075, 2400), tall: true },
-              { ...img('yoga-pricing', 'Final pricing page with first time student offer, pass cards and gift section.', 'Pricing', 1114, 2400), tall: true },
-              { ...img('yoga-training', 'Teacher training page with program details, video and a curriculum timeline.', 'Teacher training', 766, 2400), tall: true },
-              { ...img('yoga-about', 'About page with program promotion, vision and free month program.', 'About', 1400, 3222), tall: true },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'reflection',
-        label: 'Reflection',
-        title: 'Testing & reflection',
-        blocks: [
-          {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Feedback & next iteration',
-                body: 'Feedback highlighted **inconsistencies in the use of imagery and visual styles** across different pages of the website. Even well designed sections can **feel disconnected** without a **consistent visual direction**. → The next step is to use **one visual direction** for imagery and styles on every page.',
-              },
-              {
-                title: 'What I Learned',
-                body: 'This project taught me the importance of **researching usability issues before jumping into design**. I learned to use **heuristic evaluation** to guide design decisions **with evidence** rather than visual preferences alone. I also gained a better understanding of how **consistent imagery, typography, and UI components** create a **cohesive user experience**.',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  // ───────────────────────────────────────────── Cookpad
-  {
-    slug: 'cookpad',
-    title: 'Cookpad',
-    disciplines: ['ux-ui', 'visual'],
-    // a first, early project: kept on the Case Study page, not on Home
-    featured: false,
-    tagline: 'UI/UX improvement project',
-    proof: { value: '5', label: 'testers searched faster and more easily with the new filters' },
-    summary:
-      'A personal redesign of the Cookpad recipe site focused on better search filters, a simpler UI and a more active community.',
-    category: 'Responsive web · Redesign',
-    platform: 'Responsive web',
-    role: 'UI/UX Design',
-    timeline: '2024.11 to 2025.01',
-    team: 'Personal project',
-    tools: ['Figma'],
-    // cover: Sujin's new Cookpad cover design (design-exports/cookpad-cover-2026.webp)
-    thumbnail: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
-    hero: img('cookpad-cover', 'Cookpad UIUX improvements project cover: the title and a View case study button beside the redesigned search page on a tilted tablet, with two phones showing the mobile pages.'),
-    theme: { accent: '#FF9934', ink: '#370000', surface: '#FFF1E3' },
-    tldr: [
-      { label: 'Problem', text: 'Cookpad’s ratings and user numbers were falling. Users found search hard to narrow down and the UI complex.' },
-      { label: 'My role', text: 'Personal project: research, UX strategy, wireframes, visual design and usability testing.' },
-      { label: 'Solution', text: 'Stronger search filters, a simpler UI with a clear icon set, and threaded comments.' },
-      { label: 'Result', text: 'A responsive redesign of the home, recipe list and recipe pages, from phone to desktop.' },
-    ],
-    sections: [
-      {
-        // Sources: the Cookpad frames in the Portfolio Figma file ("Overview", "Research", "Goal",
-        // "wireframe", "Design", "UI", "Filter", "Comment", "Main", "List", "Recipe").
-        id: 'overview',
-        label: 'Overview',
-        title: 'The challenge',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Cookpad is a recipe sharing service. Its ratings and reviews were low, its number of users was falling, and competitors were growing. I set out to find out why, and to redesign the experience around what users actually struggled with.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'Problem', body: 'Low ratings and reviews, a decrease in users, strong competitors and usability issues raised in feedback.' },
-              { title: 'Goal', body: 'A simpler, better experience that keeps existing users, wins new ones and makes the community more active.' },
-              { title: 'My role', body: 'A personal project: research, UX strategy, wireframes, visual design and usability testing.' },
-            ],
-          },
-        ],
-      },
-      {
-        // The competitor chart in the Research frame has no units or source, so its numbers are left out.
-        id: 'research',
-        label: 'Research',
-        title: 'Research findings',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'I reviewed what users said in public ratings and reviews and compared Cookpad with competing recipe services (kurashiru and Delish Kitchen). Secondary research on website traffic then showed how people reach the site.',
-            ],
-          },
-          {
-            kind: 'quotes',
-            source: 'What users said: recurring opinions I gathered from public ratings and reviews',
-            items: [
-              'Please strengthen the search filter feature',
-              'Complex and difficult to use UI',
-              'Too many restrictions for free members',
-              'Lack of community related features',
-            ],
-          },
-          {
-            // secondary research: estimated website traffic (not my own user research)
-            kind: 'bars',
-            eyebrow: 'Secondary research',
-            title: 'Website traffic by device',
-            source: 'Estimated website traffic to cookpad.com. Source: Exploding Topics,',
-            sourceUrl: 'https://analytics.explodingtopics.com/website/cookpad.com',
-            items: [
-              { label: 'Mobile web', value: 92.34 },
-              { label: 'Desktop web', value: 7.66 },
-            ],
-            takeaway:
-              'Website traffic estimates show that mobile devices account for the majority of visits to Cookpad.com. This highlighted the importance of designing a responsive experience that works well across different screen sizes.',
-          },
-        ],
-      },
-      {
-        id: 'insights',
-        label: 'Insights',
-        title: 'Key insights',
-        note: 'Search first!',
-        blocks: [
-          {
-            kind: 'cards',
-            items: [
-              {
-                title: 'Search is hard to narrow down',
-                body: 'Users asked for stronger search filters. → **Filters** for cooking time, difficulty, dish type, ingredients and allergies.',
-              },
-              {
-                title: 'Search results are hard to read',
-                body: 'Search results weren’t clear to read. → **Clearer results**, so people can easily see what their search found.',
-              },
-              {
-                title: 'The interface feels complex',
-                body: 'Reviews called the UI complex and hard to navigate. → A **simpler UI** with a clear icon set.',
-              },
-              {
-                title: 'Free members feel restricted',
-                body: 'Free members felt limited. → **Enhanced free membership features** became one of the planned solutions.',
-              },
-              {
-                title: 'Little sense of community',
-                body: 'Users missed community features. → **Threaded comments** so questions get answered and conversations stay easy to follow.',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'wireframes',
-        label: 'Wireframes',
-        title: 'Wireframes',
-        blocks: [
-          {
-            kind: 'text',
-            body: ['I planned the layout around the user flow: from the main page’s search, to the search results, to a recipe. A login modal opens over any page.'],
-          },
-          {
-            // redrawn from the original wireframe frame by scripts/build-cookpad-wireframes.mjs
-            kind: 'gallery',
-            figures: [
-              cwire('main', 'Main page wireframe: logo and ingredient search, a category grid and popular recipes.', '1. Main page', 1240),
-              cwire('search', 'Search page wireframe: search bar with a filter button, sort options and a list of recipe results.', '2. Search results', 1120),
-              cwire('recipe', 'Recipe page wireframe: food photo beside the title and ingredients, numbered steps, point, comments and more recipes.', '3. Recipe page', 1360),
-              cwire('login', 'Login modal wireframe: email and password fields, a log in button and a sign up link.', 'Login modal', 720),
-            ],
-          },
-        ],
-      },
-      {
-        id: 'visual-language',
-        label: 'Visual language',
-        title: 'Colour, type & icons',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'The palette builds on Cookpad’s brand image of friendliness, homely warmth and naturalness. The background is uniformly white, orange and dark red highlight the key areas, and text is dark grey for better readability.',
-            ],
-          },
-          {
-            kind: 'swatches',
-            swatches: [
-              { name: 'Main', hex: '#FF9934', usage: 'Key actions and highlights' },
-              { name: 'Sub', hex: '#FFD9B4', usage: 'Soft highlight areas' },
-              { name: 'Dark red', hex: '#370000', usage: 'Headings and emphasis' },
-              { name: 'Text', hex: '#646464', usage: 'Body text' },
-              { name: 'Black', hex: '#000000', usage: 'Strong text' },
-              { name: 'Base', hex: '#FFFFFF', usage: 'Background' },
-            ],
-          },
-          {
-            // sizes and weights taken from the real Recipe, List and Main frames
-            kind: 'type',
-            note: 'One typeface, Noto Sans KR, in three weights. Sizes and weights are taken from the real recipe and list pages.',
-            styles: [
-              { name: 'Recipe title', font: 'Noto Sans KR', weight: 700, size: 40, sample: 'Butter Pancake' },
-              { name: 'Section heading', font: 'Noto Sans KR', weight: 700, size: 32, sample: 'Ingredients' },
-              { name: 'Author', font: 'Noto Sans KR', weight: 500, size: 32, sample: 'ChefMario' },
-              { name: 'Card title', font: 'Noto Sans KR', weight: 700, size: 24, sample: 'Hearty Spaghetti Bolognese' },
-              { name: 'Body', font: 'Noto Sans KR', weight: 400, size: 24, sample: 'Flour 180g · Sugar 60 g · Milk 250 ml' },
-              { name: 'Meta', font: 'Noto Sans KR', weight: 400, size: 16, sample: 'Newest First · 25 minutes · ChefAnna89' },
-            ],
-          },
-          {
-            // icons cut from the "Icon" rows of the Design frame (scripts/prepare-cookpad.mjs)
-            kind: 'icons',
-            groups: [
-              {
-                title: 'Recipe actions',
-                note: 'In Cookpad orange: the things people do with a recipe.',
-                items: [
-                  { src: '/images/cookpad/icon-1.png', label: 'Save' },
-                  { src: '/images/cookpad/icon-4.png', label: 'Saved' },
-                  { src: '/images/cookpad/icon-2.png', label: 'Add' },
-                  { src: '/images/cookpad/icon-3.png', label: 'Filter' },
-                  { src: '/images/cookpad/icon-5.png', label: 'Premium badge' },
-                ],
-              },
-              {
-                title: 'Navigation & tools',
-                note: 'The same rounded outline style in neutral grey: menus and page tools.',
-                items: [
-                  { src: '/images/cookpad/icon-7.png', label: 'Menu' },
-                  { src: '/images/cookpad/icon-9.png', label: 'Search' },
-                  { src: '/images/cookpad/icon-10.png', label: 'Time' },
-                  { src: '/images/cookpad/icon-11.png', label: 'Notifications' },
-                  { src: '/images/cookpad/icon-12.png', label: 'Share' },
-                  { src: '/images/cookpad/icon-8.png', label: 'Print' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'decisions',
-        label: 'Key decisions',
-        title: 'Key design decisions',
-        blocks: [
-          {
-            kind: 'text',
-            body: [
-              'Reviews pointed to navigation friction in Cookpad’s features, so I simplified the UI and designed custom icons to make the interface more intuitive and easier to navigate.',
-            ],
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Secondary research: most visits come from mobile',
-            title: 'A responsive experience across devices',
-            body: [
-              'Based on these findings, I designed a responsive experience optimized for mobile web and tablet screens, with layouts that adapt to different screen sizes, clear navigation, and touch friendly controls. The goal was to make browsing and discovering recipes easy and intuitive across devices.',
-            ],
-            figures: [],
-            // one device at a time: the screens from the "Overall UI" export, cut out of their old
-            // mockups (scripts/cut-cookpad-screens.mjs) and shown in current device frames
-            tabs: [
-              { label: 'Phone', device: 'phone', figure: cook('screen-phone', 'The redesigned Cookpad search page on a phone.', undefined, 202, 439) },
-              { label: 'Tablet', device: 'tablet', figure: cook('screen-tablet', 'The redesigned Cookpad search page on a tablet.', undefined, 395, 526) },
-              { label: 'Laptop', device: 'desktop', figure: cook('screen-laptop', 'The redesigned Cookpad search page on a laptop.', undefined, 564, 352) },
-              { label: 'Desktop', device: 'monitor', figure: cook('screen-desktop', 'The redesigned Cookpad search page on a desktop monitor.', undefined, 889, 499) },
-            ],
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Insight: search is hard to narrow down',
-            title: 'Search filters that match how people cook',
-            body: [
-              'The filter button sits right in the search bar. It opens filters for cooking time, difficulty, type of dish and allergies alongside the ingredients you type, so people can quickly find the recipes they need.',
-            ],
-            figures: [],
-            // clicking the filter icon in the bar opens the panel (components/FilterDemo.tsx)
-            filterDemo: {
-              bar: cook('search-bar', 'Search bar with an ingredients field, a highlighted filter button and an orange Search button.', undefined, 1600, 143),
-            },
-          },
-          {
-            kind: 'feature',
-            plain: true,
-            tag: 'Insight: little sense of community',
-            title: 'Threaded comments',
-            reverse: true,
-            body: [
-              'Replies sit under the comment they answer, so a question and its answers stay together. This makes discussions easier to follow and questions more likely to get an answer.',
-            ],
-            figures: [cook('comments', 'Comment thread: my comment highlighted in peach, with replies from other users nested below and Reply links.', 'Comment thread with replies.', 1400, 730)],
-          },
-        ],
-      },
-      {
-        id: 'final',
-        label: 'Final design',
-        title: 'Final interface',
-        blocks: [
-          {
-            kind: 'devices',
-            plain: true,
-            device: 'desktop',
-            screens: [
-              // two Figma frames joined into one page (scripts/build-cookpad-recipe-page.mjs)
-              { ...img('cookpad-recipe-scroll', 'Recipe detail page for butter pancakes: photo, ingredients and steps, then cooking tips, Archive, Share and Print buttons, and a threaded community section. A + button stays fixed at the bottom right.', 'Recipe detail: scroll to see the whole page', 1600, 1765), tall: true, scrollInLaptop: true, addButton: true },
-            ],
-          },
-          {
-            kind: 'devices',
-            plain: true,
-            device: 'desktop',
-            screens: [
-              img('cookpad-main', 'Home page with the ingredient search bar.', 'Home'),
-              img('cookpad-list', 'Recipe list sorted by newest or popularity, with cooking times.', 'Recipe list'),
-            ],
-          },
-        ],
-      },
-      {
-        id: 'reflection',
-        label: 'Learning outcomes',
-        title: 'Learning outcomes',
-        blocks: [
-          {
-            kind: 'text',
-            boxed: true,
-            body: [
-              'Through research, I learned **where users felt friction** on Cookpad and thought hard about how to make it a site people find **easier and want to use more often**. Finding that **most visits come from mobile** led me to make the redesign **responsive** as well. In usability testing with **5 users**, the stronger filters let people **search faster and more easily** and find **more accurate recipes and results**. The **community features** were rated highly for helping people talk to each other. Overall, testers said the **improved UI** would make Cookpad **easier and more comfortable to use**.',
-            ],
-          },
-          {
-            kind: 'cards',
-            items: [
-              { title: 'What testers said', body: 'The site looked **simple** and was **much easier to navigate**. But it felt **similar to the original Cookpad**, and with **only a few pages** there was **not much content** to explore.' },
-              { title: 'Next iteration', body: 'Give the redesign a **more distinct look** of its own, and design **more pages** so people can see the full experience.' },
             ],
           },
         ],

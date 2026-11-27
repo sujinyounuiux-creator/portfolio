@@ -48,9 +48,9 @@ export const site = glueAll({
   // Design specialties, always in this order: UX/UI first (shown as the primary one).
   // Each links to matching work. Graphic Design points to the ASCLO gallery on Home.
   specialties: [
-    { label: 'UX/UI Design', href: '/work?category=ux-ui', primary: true },
+    { label: 'UX/UI Design', href: '/#work', primary: true },
     { label: 'Graphic Design', href: '/#asclo', primary: false },
-    { label: 'Visual Design', href: '/work?category=visual', primary: false },
+    { label: 'Visual Design', href: '/#work', primary: false },
   ],
 
   // Hashtags floating around the character on Home (the "UX/UI Designer" and

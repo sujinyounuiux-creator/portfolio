@@ -4,7 +4,6 @@ import { AboutPage } from './pages/AboutPage'
 import { CaseStudyPage } from './pages/CaseStudyPage'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
-import { WorkPage } from './pages/WorkPage'
 
 export default function App() {
   return (
@@ -13,9 +12,12 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
-          <Route path="work" element={<WorkPage />} />
+          {/* the Case Study page is gone: its projects are Featured Works on Home */}
+          <Route path="work" element={<Navigate to="/#work" replace />} />
           {/* ASCLO now lives as a gallery on Home; keep old links working */}
           <Route path="work/asclo" element={<Navigate to="/#asclo" replace />} />
+          {/* Cookpad was removed from the portfolio (it is in the 27 Nov 2026 snapshot) */}
+          <Route path="work/cookpad" element={<Navigate to="/#work" replace />} />
           <Route path="work/:slug" element={<CaseStudyPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

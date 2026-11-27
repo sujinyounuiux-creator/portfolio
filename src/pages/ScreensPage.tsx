@@ -14,16 +14,6 @@ type Group = { id: string; kind: string; title: string; note: string; shots: Sho
 
 const groups: Group[] = [
   {
-    id: 'lastcow',
-    kind: 'Phone app',
-    title: 'LastCow',
-    note: 'A ticket app for last minute events. I designed the Event details and Ticket calendar screens.',
-    shots: [
-      { src: '/images/screens/lastcow-event-hifi.webp', alt: 'LastCow event details: a concert photo, the host with a Follow button, overview, location and a Get Tickets bar.', w: 600, h: 1304, device: 'phone', label: 'Event details' },
-      { src: '/images/screens/lastcow-calendar-hifi.webp', alt: 'LastCow ticket calendar: the month view with the selected date and its events.', w: 600, h: 1304, device: 'phone', label: 'Ticket calendar' },
-    ],
-  },
-  {
     id: 'bca-mobile',
     kind: 'Phone app · Website',
     title: 'BCA, on a phone',
@@ -53,6 +43,34 @@ const groups: Group[] = [
     ],
   },
   {
+    id: 'yoga',
+    kind: 'Website',
+    title: 'Open Door Yoga',
+    note: 'A calm studio website. I designed the About and Pricing pages.',
+    shots: [
+      { src: '/images/projects/yoga-about.webp', alt: 'Open Door Yoga about page with a full width photo and the serif title “Welcome to Open Door Yoga!”.', w: 1400, h: 3222, device: 'web', label: 'About' },
+      { src: '/images/projects/yoga-pricing.webp', alt: 'Open Door Yoga passes and pricing page with a lilac hero and pass cards.', w: 1114, h: 2400, device: 'web', label: 'Pricing' },
+    ],
+  },
+  {
+    id: 'lastcow',
+    kind: 'Phone app',
+    title: 'LastCow',
+    note: 'A ticket app for last minute events, designed in a team of two. I designed the Event details and Ticket calendar screens.',
+    shots: [
+      { src: '/images/lastcow-screens/onboarding.webp', alt: 'LastCow onboarding: the purple cow logo and LastCow name on soft purple waves.', w: 804, h: 1748, device: 'phone', label: 'Onboarding' },
+      { src: '/images/lastcow-screens/login.webp', alt: 'LastCow log in with email and password, and Continue with Google or Apple.', w: 804, h: 1748, device: 'phone', label: 'Log in' },
+      { src: '/images/lastcow-screens/home.webp', alt: 'LastCow home: a location picker, search and event cards for Tame Impala and The Strokes with prices and 24 hour changes.', w: 804, h: 1748, device: 'phone', label: 'Home' },
+      { src: '/images/lastcow-screens/event-strokes.webp', alt: 'LastCow event details for The Strokes: a concert photo, the host with a Follow button, overview, location and a Get Tickets bar.', w: 804, h: 1748, device: 'phone', label: 'Event details' },
+      { src: '/images/lastcow-screens/event-birthday.webp', alt: 'LastCow event details for Victor’s Birthday at the Fairmont Hotel Vancouver.', w: 804, h: 1748, device: 'phone', label: 'Event details' },
+      { src: '/images/lastcow-screens/saved.webp', alt: 'LastCow saved events: Tame Impala and a birthday event with prices.', w: 804, h: 1748, device: 'phone', label: 'Saved events' },
+      { src: '/images/lastcow-screens/calendar.webp', alt: 'LastCow ticket calendar: the August month view with the selected date and its event.', w: 804, h: 1748, device: 'phone', label: 'Ticket calendar' },
+      { src: '/images/lastcow-screens/past-events.webp', alt: 'LastCow past events tab with the Vancouver Bird Celebration.', w: 804, h: 1748, device: 'phone', label: 'Past events' },
+      { src: '/images/lastcow-screens/past-event-detail.webp', alt: 'LastCow past event detail for the Vancouver Bird Celebration with two tickets purchased.', w: 804, h: 1748, device: 'phone', label: 'Past event' },
+      { src: '/images/lastcow-screens/profile.webp', alt: 'LastCow profile: the user, then preferences, help and legal settings.', w: 804, h: 1748, device: 'phone', label: 'Profile' },
+    ],
+  },
+  {
     id: 'profitkey',
     kind: 'Website · Fintech',
     title: 'PROFITKEY',
@@ -77,16 +95,6 @@ const groups: Group[] = [
       { src: '/images/projects/cookpad-main.webp', alt: 'Cookpad home: the logo and a large search bar with a filter icon.', w: 1600, h: 900, device: 'web', label: 'Home' },
       { src: '/images/projects/cookpad-list.webp', alt: 'Cookpad search results: recipe cards with photos, cooking times and bookmark icons.', w: 1600, h: 900, device: 'web', label: 'Search results' },
       { src: '/images/projects/cookpad-recipe-scroll.webp', alt: 'Cookpad recipe page for butter pancakes with ingredients, steps, tips and a community thread.', w: 1600, h: 1765, device: 'web', label: 'Recipe' },
-    ],
-  },
-  {
-    id: 'yoga',
-    kind: 'Website',
-    title: 'Open Door Yoga',
-    note: 'A calm studio website. I designed the About and Pricing pages.',
-    shots: [
-      { src: '/images/projects/yoga-about.webp', alt: 'Open Door Yoga about page with a full width photo and the serif title “Welcome to Open Door Yoga!”.', w: 1400, h: 3222, device: 'web', label: 'About' },
-      { src: '/images/projects/yoga-pricing.webp', alt: 'Open Door Yoga passes and pricing page with a lilac hero and pass cards.', w: 1114, h: 2400, device: 'web', label: 'Pricing' },
     ],
   },
   {

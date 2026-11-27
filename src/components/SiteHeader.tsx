@@ -7,14 +7,12 @@ import { site } from '../data/site'
 const links = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/#work', label: 'Case Study' },
   { to: '/#contact', label: 'Contact' },
 ]
 
 function isActive(to: string, pathname: string, hash: string) {
   if (to === '/#contact') return pathname === '/' && hash === '#contact'
-  if (to === '/') return pathname === '/' && hash !== '#contact' && hash !== '#work'
-  if (to === '/#work') return (pathname === '/' && hash === '#work') || pathname.startsWith('/work/')
+  if (to === '/') return pathname === '/' && hash !== '#contact'
   return pathname === to
 }
 

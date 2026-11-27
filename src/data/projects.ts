@@ -1387,12 +1387,10 @@ export const projects: Project[] = glueAll<Project[]>([
           },
           {
             kind: 'list',
-            intro: 'What I took away:',
             items: [
-              '**Working with engineers:** they often preferred what was easier to build. I respected their reasons and still found room to care for the design.',
-              '**Designing alone:** I missed having another designer to talk ideas through with, and learned how hard it is to build a website together through discussion.',
-              '**Testing with 12 users over 3 days:** the AI comments made stocks easier to understand, but some users doubted whether they could trust the AI.',
-              '**Next step:** help users trust the AI’s recommendations, which come from combined market data.',
+              '**What worked:** designing every screen for beginners. In usability testing with 12 users over 3 days, people said the AI comments made stocks easier to understand.',
+              '**What I’d do differently:** the engineers often preferred what was easier to build, and as the only designer I had no one to talk design through with. Next time I’d agree on the key design decisions with the team earlier.',
+              '**If I could, I’d measure:** how much users trust the AI’s picks, for example how many go on to open a stock after reading its AI comment, since some testers doubted the AI.',
             ],
           },
         ],

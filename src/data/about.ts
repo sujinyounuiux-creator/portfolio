@@ -8,7 +8,7 @@ export const about = glueAll({
 
   intro: [
     'A UX/UI designer in Vancouver. I’m passionate about **creating beautiful designs that empower people**.',
-    'My background in network engineering taught me to think logically and approach complex problems systematically. As I explored UI/UX design, I discovered a new way to combine that technical mindset with creativity and empathy. I’m naturally cheerful and find it easy to talk with anyone, so communicating with teammates and users is one of my strengths. I’m always curious about how people interact with digital products, and I enjoy finding inspiration in everyday details. I believe the best designs balance clarity and functionality with a little personality.',
+    'Network engineering taught me to think logically and solve complex problems. UI/UX design lets me combine that with creativity and empathy. I’m cheerful and easy to talk to, so working with teammates and users comes naturally. I aim for designs that are clear and useful, with a little personality.',
   ],
 
   // Names: Rizsq is an app; Samawada is a charity organization.

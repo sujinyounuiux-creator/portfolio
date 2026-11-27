@@ -40,5 +40,11 @@ export const volunteer = glueAll({
       width: 1080,
       height: 1350,
     },
+    {
+      src: '/images/rizsq/rizsq-communities.webp',
+      alt: 'Rizsq post: a dark green panel with “Growing Food, Growing Communities” and “Behind every harvest is hard work, passion, and purpose.” above a photo of women planting rice in a bright green field.',
+      width: 1080,
+      height: 1350,
+    },
   ],
 })

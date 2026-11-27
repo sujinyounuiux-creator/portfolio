@@ -1689,18 +1689,12 @@
 .walk .device__laptop {
   padding-inline: 4%;
 }
-@media (min-width: 900px) {
-  .walk {
-    grid-template-columns: 190px minmax(0, 1fr);
-    align-items: center;
-    gap: clamp(1rem, 2.5vw, 2rem);
-  }
+/* wider screens: the page tabs sit above the screen, wrapping into rows */
+@media (min-width: 721px) {
   .walk__steps {
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     overflow: visible;
-  }
-  .walk__step {
-    width: 100%;
   }
 }
 .walk__step {

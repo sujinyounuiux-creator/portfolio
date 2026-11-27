@@ -202,7 +202,7 @@ export const projects: Project[] = glueAll<Project[]>([
     role: 'UI/UX Design · Mobile prototype lead',
     timeline: '2026.10 to 2026.11',
     team: 'Team of 4 designers',
-    tools: ['Figma', 'FigJam', 'UXtweak', 'Whimsical', 'Notion', 'Claude (vibe coding)'],
+    tools: ['Figma', 'FigJam', 'UXtweak', 'Whimsical', 'Notion'],
     thumbnail: img('bca-cover', 'BCA Website Redesign cover: the BCA logo, the headline "Brazilian roots, at home in BC" and chips for Events calendar, Business directory and EN / PT, beside the new desktop home page and the Events page on a phone.'),
     hero: img('bca-cover', 'BCA Website Redesign cover: the BCA logo, the headline "Brazilian roots, at home in BC" and chips for Events calendar, Business directory and EN / PT, beside the new desktop home page and the Events page on a phone.'),
     theme: { accent: '#00664E', ink: '#004131', surface: '#F4F8F1' },
@@ -230,7 +230,7 @@ export const projects: Project[] = glueAll<Project[]>([
             items: [
               { title: 'Problem', body: 'The site did not explain **what BCA does**, had **no clear next step** and was hard to navigate, so services, events and businesses were easy to miss.' },
               { title: 'Goal', body: 'The client’s four goals were **accessibility**, **community engagement**, **business visibility** and a **bilingual** English and Portuguese experience.' },
-              { title: 'My part', body: 'I led the **mobile prototype** and designed the **iPad screens**. I also refined the **working website with vibe coding** and built our **final presentation**. Research, flows and visual design we did as a team.' },
+              { title: 'My part', body: 'I led the **mobile prototype** and designed the **iPad screens**. I also helped refine our **working website** and built our **final presentation**. Research, flows and visual design we did as a team.' },
             ],
           },
           {
@@ -712,7 +712,6 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'Because one volunteer runs everything, we didn’t stop at screens. We also built a **working version of the site** with a simple **admin**, so BCA can add and edit **events and businesses**, save drafts and publish them without touching code.',
-              'We built a lot of this with **vibe coding**. We described what we wanted to **Claude**, then checked and refined what it made against our Figma designs. It let a team of designers turn the design into a **working site**, and into our interactive final presentation, within the project.',
               'BCA already runs **WordPress**, so our plan rebuilds the redesign **inside the same install**, with a theme made from our design system, events and businesses as their own content types, forms that go to a review step, and an English and Portuguese setup. Nothing new for the team to learn.',
             ],
           },
@@ -743,7 +742,7 @@ export const projects: Project[] = glueAll<Project[]>([
             body: [
               'This project taught me how to **redesign** an existing website, especially on the **visual design** side. I also learned much more about **UX research**, like **usability testing**, the **heuristic audit**, **competitor analysis** and **personas**.',
               'It was my **first client project**. We met the client’s manager **four times**, and their feedback helped us shape the website around what the client really needed. The client wanted to focus on **membership and news**, so we made it easy to **sign up for the newsletter** while visiting the site.',
-              'I worked on the **competitor analysis**, the **persona** and the **audit**, and we discussed our **goals** together as a team. I also worked on the **mobile** and **iPad** designs, the **working website with vibe coding** and the **final presentation**.',
+              'I worked on the **competitor analysis**, the **persona** and the **audit**, and we discussed our **goals** together as a team. I also worked on the **mobile** and **iPad** designs, the **working website** and the **final presentation**.',
             ],
           },
         ],

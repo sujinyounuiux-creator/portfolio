@@ -42,10 +42,6 @@ export const about = glueAll({
       title: 'Visual Design',
       items: ['Typography', 'Color Theory', 'Visual Communication', 'UI Components', 'Branding', 'Visual Consistency'],
     },
-    {
-      title: 'AI-Assisted Development',
-      items: ['Vibe Coding with Claude, which I used to build this portfolio'],
-    },
   ],
 
   // Which photos appear in the smaller collage on Home (by file). The About page shows all.
@@ -65,15 +61,6 @@ export const about = glueAll({
     { src: '/images/about/photo-1.webp', width: 900, height: 672, caption: 'With Canadian goose', alt: 'Sujin smiling on a sandy beach in a blue cap, with a hand drawn note "With Canadian goose" pointing to a goose nearby.' },
     { src: '/images/about/photo-6.webp', width: 900, height: 675, caption: 'RIBFEST', alt: 'Pulled pork sandwich, barbecue ribs and corn on the cob on an outdoor table at Ribfest.' },
     { src: '/images/about/photo-9.webp', width: 900, height: 675, caption: 'KDD workshop', alt: 'A projected workshop slide titled “Core Values” listing six values, from continuous self development to aiming for a positive change.' },
-  ],
-
-  // "How I built this site", from Sujin's own words: one lead line, then four short points
-  builtLead: 'I built this portfolio with Claude as an AI-assisted development tool, but the creative and design decisions were mine.',
-  builtPoints: [
-    { title: 'I stayed the designer', body: 'I didn’t just take what the AI gave me. I checked every suggestion and made the final call myself.' },
-    { title: 'I kept iterating', body: 'I tried different layouts and interactions and kept refining them until they felt right.' },
-    { title: 'I asked for feedback', body: 'I showed my work to designers and instructors. Their honest feedback pushed me to make it better.' },
-    { title: 'I learned by building', body: 'I learned new tools as I went and turned my ideas into a real working website.' },
   ],
 
   tools: [

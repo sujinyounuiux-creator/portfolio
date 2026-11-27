@@ -62,7 +62,7 @@ export function FeaturedWorks() {
           <h2 id="featured-title" className="section-title">
             Featured Works
           </h2>
-          <p className="section-lede">UX/UI case studies: research, design decisions and final interfaces.</p>
+          <p className="section-lede">UX/UI case studies, from research and design decisions to final interfaces.</p>
         </header>
 
         <ol className="folder-grid">

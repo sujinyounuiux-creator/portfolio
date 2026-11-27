@@ -209,7 +209,7 @@ export const projects: Project[] = glueAll<Project[]>([
     tldr: [
       { label: 'Problem', text: 'People could not tell what BCA offers, where to start, or how to find events, businesses and resources on the current site.' },
       { label: 'My role', text: 'UI/UX designer in a team of 4. I led the mobile prototype, designed the iPad screens, refined the working website with vibe coding and built the final presentation.' },
-      { label: 'Solution', text: 'A clear, bilingual site built around four goals: accessibility, community engagement, business visibility and an English / Portuguese experience.' },
+      { label: 'Solution', text: 'A clear, bilingual site built around accessibility, community engagement, business visibility and an English / Portuguese experience.' },
       { label: 'Result', text: 'Desktop, tablet and mobile designs, a tested prototype, a design system and a working site BCA can run. The client liked the design.' },
     ],
     sections: [
@@ -222,14 +222,14 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'The **Brazilian Community Association of BC (BCA)** is a volunteer led non-profit that has helped Brazilians in British Columbia feel connected for 30 years. Its website is where newcomers, long-term residents and local Brazilian business owners should find events, guides and ways to take part, but the current site made that hard.',
-              'This was a **real client project**: Cornerstone College, where I studied, partnered with BCA, and we worked with the association’s own operator. Whether the redesign will go live is still open, but **the client told us they liked the design**.',
+              'This was a **real client project**. Cornerstone College, where I studied, partnered with BCA, and we worked with the association’s own operator. Whether the redesign will go live is still open, but **the client told us they liked the design**.',
             ],
           },
           {
             kind: 'cards',
             items: [
               { title: 'Problem', body: 'The site did not explain **what BCA does**, had **no clear next step** and was hard to navigate, so services, events and businesses were easy to miss.' },
-              { title: 'Goal', body: 'Four goals from the client: **accessibility**, **community engagement**, **business visibility** and a **bilingual** English and Portuguese experience.' },
+              { title: 'Goal', body: 'The client’s four goals were **accessibility**, **community engagement**, **business visibility** and a **bilingual** English and Portuguese experience.' },
               { title: 'My part', body: 'I led the **mobile prototype** and designed the **iPad screens**. I also refined the **working website with vibe coding** and built our **final presentation**. Research, flows and visual design we did as a team.' },
             ],
           },
@@ -248,7 +248,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'We started with an audit of the live site, page by page, on our FigJam board. The issues grouped into three themes: **discoverability**, **clarity** and **navigation**.',
+              'We started with an audit of the live site, page by page, on our FigJam board. The issues fell into three themes, **discoverability**, **clarity** and **navigation**.',
             ],
           },
           {
@@ -263,7 +263,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'We also audited the colours and type in use. The site used three typefaces, its three button styles each had a different corner radius, and the menu mixed English and Portuguese. BCA confirmed the current colours carried **no particular meaning** and could change, while **the logo would stay**.',
-              'Asking **"why" five times** led us to the root cause: the president builds and runs the whole site alone on a paid template, so over time the content had become **scattered**. A redesign had to be easy for a small volunteer team to keep up to date.',
+              'Asking **"why" five times** led us to the root cause. The president builds and runs the whole site alone on a paid template, so over time the content had become **scattered**. A redesign had to be easy for a small volunteer team to keep up to date.',
             ],
           },
           {
@@ -284,11 +284,11 @@ export const projects: Project[] = glueAll<Project[]>([
               { label: 'Volunteer', ratings: ['part', 'yes', 'yes', 'yes'], note: 'Make volunteer roles easier to find and apply for' },
             ],
             takeaways: [
-              { value: '0 of 4', label: 'sites met our **visual design** bar: contrast, readability and keyboard access.' },
+              { value: '0 of 4', label: 'sites met our **visual design** bar for contrast, readability and keyboard access.' },
               { value: '2 of 4', label: 'had **no newsletter signup** and no clear main navigation.' },
-              { value: '10 of 10', label: 'is our aim: one **accessible, bilingual** site that volunteers can keep up.' },
+              { value: '10 of 10', label: 'is our aim, with one **accessible, bilingual** site that volunteers can keep up.' },
             ],
-            caption: 'Competitive analysis: four community and business sites, rated on the ten things BCA’s visitors come to do.',
+            caption: 'Competitive analysis of four community and business sites, rated on the ten things BCA’s visitors come to do.',
           },
           {
             kind: 'figure',
@@ -399,7 +399,7 @@ export const projects: Project[] = glueAll<Project[]>([
                 { label: 'Back to top button' },
               ],
             },
-            caption: 'Sitemap: five sections under the homepage, with a success state for every form and the shared elements on every page.',
+            caption: 'The sitemap has five sections under the homepage, with a success state for every form and the shared elements on every page.',
           },
         ],
       },
@@ -427,7 +427,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'Since the logo stayed, we built the palette from it: **deep greens** for trust and calm, with a bright **lime** and a sunny **yellow** for actions and highlights. The type pairs **Bricolage Grotesque**, a friendly, characterful heading face, with **Inter** for clear, readable body text, and the icons come from **Lucide**.',
+              'Since the logo stayed, we built the palette from it, with **deep greens** for trust and calm and a bright **lime** and a sunny **yellow** for actions and highlights. The type pairs **Bricolage Grotesque**, a friendly, characterful heading face, with **Inter** for clear, readable body text, and the icons come from **Lucide**.',
             ],
           },
           {
@@ -469,14 +469,14 @@ export const projects: Project[] = glueAll<Project[]>([
             // current site: bca-bc.ca captured 2026-11-23; redesign: Figma 839:210 (scripts/prepare-bca-before-after.mjs)
             kind: 'compare',
             label: 'BCA home page',
-            caption: 'Home page: the current BCA site (left) and our redesign (right).',
+            caption: 'The current BCA home page (left) and our redesign (right).',
             before: img('bca-before-home', 'The current BCA home page: a dark stadium photo with the title "BCA: Uniting the Brazilian Community in British Columbia for Over 29 Years", a Subscribe bar and Donate button on top, a menu with only About and Notícias, and no clear next step.', 'Home, before', 2400, 1500),
             after: img('bca-after-home', 'The redesigned home page: "Brazilian roots, at home in BC" with an email field and Get BCA News, See upcoming events, the next event card, the 30 years and 128+ businesses badges, and a full menu with an EN / PT switch.', 'Home, after', 2400, 1500),
           },
           {
             kind: 'text',
             body: [
-              'The new home page says **who BCA is for** in one line, puts **the next event** and the **BCA News** sign up right in the hero, and leads to the four things people come for: events, businesses, guides and ways to get involved. Every page has an **EN / PT switch** in the header.',
+              'The new home page says **who BCA is for** in one line, puts **the next event** and the **BCA News** sign up right in the hero, and leads to the four things people come for, which are events, businesses, guides and ways to get involved. Every page has an **EN / PT switch** in the header.',
             ],
           },
           {
@@ -484,7 +484,7 @@ export const projects: Project[] = glueAll<Project[]>([
             plain: true,
             device: 'desktop',
             screens: [
-              { ...img('bca-web-home', 'Home page: a dark green hero with "Brazilian roots, at home in BC", a BCA News sign up and the next event, then One place for Brazilians in BC, upcoming events, Brazilian businesses, guides and news, 30 years of BCA, get involved, sponsors and the footer.', 'Home: scroll to see the whole page', 2400, 15305), tall: true, scrollInLaptop: true },
+              { ...img('bca-web-home', 'Home page: a dark green hero with "Brazilian roots, at home in BC", a BCA News sign up and the next event, then One place for Brazilians in BC, upcoming events, Brazilian businesses, guides and news, 30 years of BCA, get involved, sponsors and the footer.', 'Scroll to see the whole home page', 2400, 15305), tall: true, scrollInLaptop: true },
             ],
           },
           {
@@ -503,7 +503,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'I led the **mobile prototype**. On a phone the same flows had to stay just as easy: a **full screen menu** with the language switch and the BCA News button at the bottom, **search, filters and sorting** at the top of the directory, and the next event shown as a simple card with a map link. The two phones below play my prototype on their own, tapping the same links I wired in Figma.',
+              'I led the **mobile prototype**. On a phone the same flows had to stay just as easy. I used a **full screen menu** with the language switch and the BCA News button at the bottom, put **search, filters and sorting** at the top of the directory, and showed the next event as a simple card with a map link. The two phones below play my prototype on their own, tapping the same links I wired in Figma.',
             ],
           },
           {
@@ -554,19 +554,19 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'gallery',
             row: true,
             figures: [
-              { ...img('bca-ipad-home', 'iPad home: "Brazilian roots, at home in BC" with the BCA News sign up, the next event and the 30 years and 128+ businesses badges.', 'Home', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-home', 'Full iPad page: Home, from the top to the footer.', 'Home on iPad: the whole page', 1100, 14913), pageWidth: 760 } },
-              { ...img('bca-ipad-events-month', 'iPad events: "Find your next community moment" with the next event, then the community event calendar in month view with filters.', 'Events, month view', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-events-month', 'Full iPad page: Events, month view, from the top to the footer.', 'Events, month view on iPad: the whole page', 1100, 6026), pageWidth: 760 } },
-              { ...img('bca-ipad-business', 'iPad business directory: "Brazilian businesses in BC" with a search bar and category and location filters.', 'Business directory', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-business', 'Full iPad page: Business directory, from the top to the footer.', 'Business directory on iPad: the whole page', 1100, 6290), pageWidth: 760 } },
+              { ...img('bca-ipad-home', 'iPad home: "Brazilian roots, at home in BC" with the BCA News sign up, the next event and the 30 years and 128+ businesses badges.', 'Home', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-home', 'Full iPad page: Home, from the top to the footer.', 'Home on iPad, the whole page', 1100, 14913), pageWidth: 760 } },
+              { ...img('bca-ipad-events-month', 'iPad events: "Find your next community moment" with the next event, then the community event calendar in month view with filters.', 'Events, month view', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-events-month', 'Full iPad page: Events, month view, from the top to the footer.', 'Events, month view on iPad, the whole page', 1100, 6026), pageWidth: 760 } },
+              { ...img('bca-ipad-business', 'iPad business directory: "Brazilian businesses in BC" with a search bar and category and location filters.', 'Business directory', 1100, 1525), frameless: true, full: { ...img('bca-full-ipad-business', 'Full iPad page: Business directory, from the top to the footer.', 'Business directory on iPad, the whole page', 1100, 6290), pageWidth: 760 } },
             ],
           },
           {
             kind: 'devices',
             device: 'phone',
             screens: [
-              { ...img('bca-m-events-month', 'Mobile events: "Find your next community moment" with Browse the calendar and the next event, the Brazilian Holiday Market.', 'Events', 780, 1690), full: { ...img('bca-full-m-events-month', 'Full mobile page: Events, from the top to the footer.', 'Events on mobile: the whole page', 585, 7558), pageWidth: 420 } },
-              { ...img('bca-m-list-business', 'Mobile list your business: "List your business with BCA", free listings or membership, and two ways to appear in the directory.', 'List your business', 780, 1690), full: { ...img('bca-full-m-list-business', 'Full mobile page: List your business, from the top to the footer.', 'List your business on mobile: the whole page', 585, 8600), pageWidth: 420 } },
-              { ...img('bca-m-involved', 'Mobile get involved: "Be part of the BCA community" with Find your way to help and three ways to help.', 'Get involved', 780, 1690), full: { ...img('bca-full-m-involved', 'Full mobile page: Get involved, from the top to the footer.', 'Get involved on mobile: the whole page', 585, 6578), pageWidth: 420 } },
-              { ...img('bca-m-guides', 'Mobile guides and news: "Stories and updates from our community" with topic filters and article search.', 'Guides & news', 780, 1690), full: { ...img('bca-full-m-guides', 'Full mobile page: Guides & news, from the top to the footer.', 'Guides & news on mobile: the whole page', 585, 5446), pageWidth: 420 } },
+              { ...img('bca-m-events-month', 'Mobile events: "Find your next community moment" with Browse the calendar and the next event, the Brazilian Holiday Market.', 'Events', 780, 1690), full: { ...img('bca-full-m-events-month', 'Full mobile page: Events, from the top to the footer.', 'Events on mobile, the whole page', 585, 7558), pageWidth: 420 } },
+              { ...img('bca-m-list-business', 'Mobile list your business: "List your business with BCA", free listings or membership, and two ways to appear in the directory.', 'List your business', 780, 1690), full: { ...img('bca-full-m-list-business', 'Full mobile page: List your business, from the top to the footer.', 'List your business on mobile, the whole page', 585, 8600), pageWidth: 420 } },
+              { ...img('bca-m-involved', 'Mobile get involved: "Be part of the BCA community" with Find your way to help and three ways to help.', 'Get involved', 780, 1690), full: { ...img('bca-full-m-involved', 'Full mobile page: Get involved, from the top to the footer.', 'Get involved on mobile, the whole page', 585, 6578), pageWidth: 420 } },
+              { ...img('bca-m-guides', 'Mobile guides and news: "Stories and updates from our community" with topic filters and article search.', 'Guides & news', 780, 1690), full: { ...img('bca-full-m-guides', 'Full mobile page: Guides & news, from the top to the footer.', 'Guides & news on mobile, the whole page', 585, 5446), pageWidth: 420 } },
             ],
           },
           {
@@ -605,7 +605,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              '**The core tasks felt easy, but clarity still needs work.** We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks: find an event, subscribe to BCA News, sign up to volunteer and list a business.',
+              '**The core tasks felt easy, but clarity still needs work.** We tested the prototype on **UXtweak** on 17 and 18 November 2026, with four tasks. Testers had to find an event, subscribe to BCA News, sign up to volunteer and list a business.',
             ],
           },
           {
@@ -659,7 +659,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'The design changed twice: first with the **client**, then after **usability testing**.',
+              'The design changed twice, first with the **client** and then after **usability testing**.',
             ],
           },
           {
@@ -695,15 +695,15 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             body: [
               'Because one volunteer runs everything, we didn’t stop at screens. We also built a **working version of the site** with a simple **admin**, so BCA can add and edit **events and businesses**, save drafts and publish them without touching code.',
-              'We built a lot of this with **vibe coding**: describing what we wanted to **Claude**, then checking and refining what it made against our Figma designs. It let a team of designers turn the design into a **working site**, and into our interactive final presentation, within the project.',
-              'BCA already runs **WordPress**, so our plan rebuilds the redesign **inside the same install**: a theme made from our design system, events and businesses as their own content types, forms that go to a review step, and an English and Portuguese setup. Nothing new for the team to learn.',
+              'We built a lot of this with **vibe coding**. We described what we wanted to **Claude**, then checked and refined what it made against our Figma designs. It let a team of designers turn the design into a **working site**, and into our interactive final presentation, within the project.',
+              'BCA already runs **WordPress**, so our plan rebuilds the redesign **inside the same install**, with a theme made from our design system, events and businesses as their own content types, forms that go to a review step, and an English and Portuguese setup. Nothing new for the team to learn.',
             ],
           },
           {
             kind: 'embed',
             title: 'BCA admin: the events list, with published events and a draft',
             src: 'https://shimmering-cascaron-d892ee.netlify.app/admin',
-            caption: 'Try the admin: open an event, edit it or add a new one. It’s a prototype, so changes are only saved in your browser.',
+            caption: 'Try the admin. Open an event, edit it or add a new one. It’s a prototype, so changes are only saved in your browser.',
             link: { href: 'https://shimmering-cascaron-d892ee.netlify.app/', label: 'Open the live site' },
           },
           {
@@ -724,7 +724,7 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'text',
             boxed: true,
             body: [
-              'This project taught me how to **redesign** an existing website, especially on the **visual design** side. I also learned much more about **UX research**: **usability testing**, the **heuristic audit**, **competitor analysis** and **personas**.',
+              'This project taught me how to **redesign** an existing website, especially on the **visual design** side. I also learned much more about **UX research**, like **usability testing**, the **heuristic audit**, **competitor analysis** and **personas**.',
               'It was my **first client project**. We met the client’s manager **four times**, and their feedback helped us shape the website around what the client really needed. The client wanted to focus on **membership and news**, so we made it easy to **sign up for the newsletter** while visiting the site.',
               'I worked on the **competitor analysis**, the **persona** and the **audit**, and we discussed our **goals** together as a team. I also worked on the **mobile** and **iPad** designs, the **working website with vibe coding** and the **final presentation**.',
             ],
@@ -743,7 +743,7 @@ export const projects: Project[] = glueAll<Project[]>([
     tagline: 'Redesigning the Open Door Yoga Website',
     proof: { value: '10', label: 'Nielsen heuristics across 3 key tasks' },
     summary:
-      'A team redesign of the Open Door Yoga website: class styles, teacher training and pass pricing.',
+      'A team redesign of the Open Door Yoga website, covering class styles, teacher training and pass pricing.',
     category: 'Website · Redesign',
     platform: 'Website',
     role: 'UX/UI Design',
@@ -841,7 +841,7 @@ export const projects: Project[] = glueAll<Project[]>([
                 notes: [
                   { n: 2, type: 'recognition', text: 'Two intro offers, 5 weeks for $109 and 6 weeks for $109, share one card, so a first time student has to read closely to tell them apart.' },
                   { n: 3, type: 'recognition', text: 'All the other passes are hidden behind Learn More, so their prices can’t be compared at a glance.' },
-                  { n: 4, type: 'consistency', text: 'Buttons on the same screen use different shapes, colours and wording: Buy 5 Week Pass, Learn More, Click here to subscribe.' },
+                  { n: 4, type: 'consistency', text: 'Buttons on the same screen use different shapes, colours and wording, like Buy 5 Week Pass, Learn More and Click here to subscribe.' },
                 ],
               },
               {
@@ -873,20 +873,20 @@ export const projects: Project[] = glueAll<Project[]>([
             kind: 'cards',
             items: [
               {
-                title: 'Issue: price is hard to find',
-                body: 'On the Teacher Training page, readers had to scroll halfway down to find the tuition. Recommendation: show the total tuition (or “Tuition from $X”) at the top, and make tuition & payment a main section with deposit, installment plan, what’s included and the refund policy.',
+                title: 'Price is hard to find',
+                body: 'On the Teacher Training page, readers had to scroll halfway down to find the tuition. → Show the total tuition (or “Tuition from $X”) at the top, and make tuition & payment a main section with deposit, installment plan, what’s included and the refund policy.',
               },
               {
-                title: 'Issue: long text, unclear benefits',
-                body: 'Lengthy vision text hid what the program offers. Recommendation: lead with three clear benefits, and present the curriculum as five cards or accordions with total hours and brief outcomes.',
+                title: 'Long text, unclear benefits',
+                body: 'Lengthy vision text hid what the program offers. → Lead with three clear benefits, and present the curriculum as five cards or accordions with total hours and brief outcomes.',
               },
               {
-                title: 'Issue: schedule is hard to scan',
-                body: 'The time commitment wasn’t clear at a glance. Recommendation: keep the schedule on the same page but turn it into an easy to scan table or timeline (weekend intensive, weekly practice, practicum).',
+                title: 'Schedule is hard to scan',
+                body: 'The time commitment wasn’t clear at a glance. → Keep the schedule on the same page but turn it into an easy to scan table or timeline (weekend intensive, weekly practice, practicum).',
               },
               {
-                title: 'Issue: dense, hard to read sections',
-                body: 'Three column long testimonials and full faculty bios were difficult to read, especially on mobile. Recommendation: keep 2 to 3 concise quotes, use photo cards with one sentence per teacher, and keep the FAQ as an accordion at the bottom.',
+                title: 'Dense, hard to read sections',
+                body: 'Three column long testimonials and full faculty bios were difficult to read, especially on mobile. → Keep 2 to 3 concise quotes, use photo cards with one sentence per teacher, and keep the FAQ as an accordion at the bottom.',
               },
             ],
           },
@@ -913,7 +913,7 @@ export const projects: Project[] = glueAll<Project[]>([
                 title: 'Training schedule',
                 points: [
                   'Keep it on the same page, but change it to an easy to scan table or timeline',
-                  'For example: Weekend intensive / Weekly practice / Practicum, making the time commitment clear at a glance',
+                  'For example, Weekend intensive / Weekly practice / Practicum, making the time commitment clear at a glance',
                 ],
               },
               {
@@ -939,7 +939,7 @@ export const projects: Project[] = glueAll<Project[]>([
                 title: 'FAQ',
                 points: [
                   'Keep it at the bottom. The accordion is reasonable',
-                  'Most frequently asked questions: qualifications, attendance, make up classes, payment, certificates, cancellation rules',
+                  'The most frequent questions, like qualifications, attendance, make up classes, payment, certificates and cancellation rules',
                 ],
               },
             ],
@@ -1004,7 +1004,7 @@ export const projects: Project[] = glueAll<Project[]>([
           },
           {
             kind: 'list',
-            intro: 'Reusable components built from the style guide (Atomic Design: atoms, molecules, templates):',
+            intro: 'Reusable components built from the style guide with Atomic Design (atoms, molecules and templates).',
             items: [
               'Pass and pricing cards, with a highlighted “Good Deal” variant',
               'Class style cards and teacher profile cards',
@@ -1019,7 +1019,7 @@ export const projects: Project[] = glueAll<Project[]>([
       {
         id: 'before-after',
         label: 'Before & after',
-        title: 'My pages: before & after',
+        title: 'My pages, before and after',
         note: 'Drag to compare',
         blocks: [
           {
@@ -1029,14 +1029,14 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'compare',
             label: 'Pricing page',
-            caption: 'Pricing: original site vs redesign',
+            caption: 'Pricing, original site vs redesign',
             before: screen('yoga-pricing-before', 'Original Open Door Yoga passes and pricing page: purple header with small navigation and a green first time student section.', 'Pricing, before', 1600, 1000),
             after: screen('yoga-pricing-after', 'Redesigned Passes & Pricing page: lilac hero with a large serif title, a short introduction and a calm photo background.', 'Pricing, after', 1600, 1000),
           },
           {
             kind: 'compare',
             label: 'About page',
-            caption: 'About: original site vs redesign',
+            caption: 'About, original site vs redesign',
             before: screen('yoga-about-before', 'Original Open Door Yoga about page: photo header with a promotion banner and a long block of centred text below.', 'About, before', 1600, 1000),
             after: screen('yoga-about-after', 'Redesigned About page: full width photo hero with the large serif title “Welcome to Open Door Yoga!”.', 'About, after', 1600, 1000),
           },
@@ -1096,7 +1096,7 @@ export const projects: Project[] = glueAll<Project[]>([
     platform: 'Desktop web',
     role: 'UX/UI design (sole designer), planning with the team',
     timeline: '2025.01 to 2025.03',
-    team: 'Group study project, 6 people: 5 front/back end developers and 1 designer',
+    team: 'Group study project of 6, with 5 front/back end developers and 1 designer',
     tools: ['Figma'],
     // cover: built by scripts/build-profitkey-cover.mjs from the home page design
     thumbnail: img('profitkey-cover', 'PROFITKEY cover: the logo and "Finding the key to success" with a yellow AI Recommended Stocks button, beside the home page on a laptop, a floating AI Recommended Stocks card for Apple (+20%, $28) with its price chart and key figures, a PER glossary row and a PROFITKEY News card.'),
@@ -1104,7 +1104,7 @@ export const projects: Project[] = glueAll<Project[]>([
     theme: { accent: '#FFB400', ink: '#333333', surface: '#FFF6DE' },
     tldr: [
       { label: 'Problem', text: 'Investment beginners don’t know where to start and find securities websites full of confusing terms.' },
-      { label: 'My role', text: 'A group study project with real developers: I was the only designer on a team of six. We planned the website together, and I designed almost all of it myself.' },
+      { label: 'My role', text: 'A group study project with real developers. I was the only designer on a team of six. We planned the website together, and I designed almost all of it myself.' },
       { label: 'Solution', text: 'AI stock recommendations with reasons, a plain language AI comment on every stock, and glossary tooltips.' },
       { label: 'Delivered', text: 'A sitemap, 11 wireframe screens, a design system and 14 final screens, including 404 and 500 error pages.' },
     ],
@@ -1168,20 +1168,20 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'I mapped the whole site before any screens. The home page links to every main area: AI stock picks, market trends, stock analysis, news and notices. Each link is marked by who can reach it, so the team could see at a glance which pages need a login.',
+              'I mapped the whole site before any screens. The home page links to every main area, from AI stock picks and market trends to stock analysis, news and notices. Each link is marked by who can reach it, so the team could see at a glance which pages need a login.',
             ],
           },
           {
             kind: 'cards',
             items: [
               { title: 'Public', body: 'Home, Stock Analysis (stock details, AI commentary, community), News and Notices / FAQ.' },
-              { title: 'Logged in', body: 'Login with social sign in, and My Account: watchlist, my comments and edit profile.' },
+              { title: 'Logged in', body: 'Login with social sign in, and My Account with the watchlist, my comments and edit profile.' },
               { title: 'External', body: 'Full news articles open on the original publisher’s site.' },
             ],
           },
           {
             kind: 'figure',
-            figure: { src: '/images/screens/profitkey-sitemap.svg', alt: 'PROFITKEY sitemap: Home links to Stock Analysis (stock details, AI commentary, community), News (latest and all news, opening external articles), Notices / FAQ (with notice details) and Login (login and social login), which leads to My Account (watchlist, my comments, edit profile).', caption: 'Sitemap: every page and who can reach it.', width: 1200, height: 652, zoom: true },
+            figure: { src: '/images/screens/profitkey-sitemap.svg', alt: 'PROFITKEY sitemap: Home links to Stock Analysis (stock details, AI commentary, community), News (latest and all news, opening external articles), Notices / FAQ (with notice details) and Login (login and social login), which leads to My Account (watchlist, my comments, edit profile).', caption: 'Every page, and who can reach it.', width: 1200, height: 652, zoom: true },
           },
         ],
       },
@@ -1192,7 +1192,7 @@ export const projects: Project[] = glueAll<Project[]>([
         blocks: [
           {
             kind: 'text',
-            body: ['Low fidelity wireframes set the layout and hierarchy for each page before any visual design: what comes first, how stocks and news are grouped, and where AI comments and the community sit.'],
+            body: ['Low fidelity wireframes set the layout and hierarchy for each page before any visual design. They showed what comes first, how stocks and news are grouped, and where AI comments and the community sit.'],
           },
           {
             // redrawn from the original wireframe slide by scripts/build-profitkey-wireframes.mjs
@@ -1266,8 +1266,8 @@ export const projects: Project[] = glueAll<Project[]>([
               'I designed the 404 and 500 pages too, so a broken link or server problem keeps the PROFITKEY header and logo, explains what happened in one plain sentence and offers a clear Go Back button.',
             ],
             figures: [
-              screen('profitkey-404', 'PROFITKEY 404 page: lock and key icon, “Page not found. We couldn’t find the page you’re looking for.” and a yellow Go Back button.', '404: page not found.', 944, 630),
-              screen('profitkey-500', 'PROFITKEY 500 page: lock and key icon, “Internal Server Error. Sorry for the inconvenience. Please try again shortly.” and a yellow Go Back button.', '500: internal server error.', 944, 630),
+              screen('profitkey-404', 'PROFITKEY 404 page: lock and key icon, “Page not found. We couldn’t find the page you’re looking for.” and a yellow Go Back button.', 'The 404 page.', 944, 630),
+              screen('profitkey-500', 'PROFITKEY 500 page: lock and key icon, “Internal Server Error. Sorry for the inconvenience. Please try again shortly.” and a yellow Go Back button.', 'The 500 page.', 944, 630),
             ],
           },
         ],
@@ -1280,7 +1280,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'A small, consistent system kept the screens easy to build for five engineers: one typeface (Inter), a yellow key colour taken from the logo, red kept for price rises and destructive actions, and one shadow and corner style for cards.',
+              'A small, consistent system kept the screens easy to build for five engineers. It used one typeface (Inter), a yellow key colour taken from the logo, red for price rises and destructive actions, and one shadow and corner style for cards.',
             ],
           },
           {
@@ -1389,7 +1389,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'list',
             items: [
-              '**What I learned:** working side by side with five engineers taught me a lot. I now know how to design together with developers: explaining my decisions, hearing what is hard to build, and finding a version that works for both the users and the team.',
+              '**What I learned:** working side by side with five engineers taught me a lot. I now know how to design together with developers by explaining my decisions, hearing what is hard to build, and finding a version that works for both the users and the team.',
               '**What worked:** designing every screen for beginners. In usability testing with 12 users over 3 days, people said the AI comments made stocks easier to understand.',
               '**What I’d do differently:** the engineers often preferred what was easier to build, and as the only designer I had no one to talk design through with. Next time I’d agree on the key design decisions with the team earlier.',
               '**If I could, I’d measure:** how much users trust the AI’s picks, for example how many go on to open a stock after reading its AI comment, since some testers doubted the AI.',
@@ -1439,7 +1439,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'Adults aged 18 to 40 often miss live events because they discover them too late: tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
+              'Adults aged 18 to 40 often miss live events because they discover them too late, when tickets are sold out, too expensive or hard to plan for. Meanwhile, organisers are left with unsold tickets and empty seats.',
               'LastCow is a ticket discovery app that surfaces last minute and discounted tickets and matches events to personal taste.',
               '**Why “LastCow”?** “Last” is the last ticket you can still get. The cow is a friendly, familiar animal that people warm to, and a **hard worker**. We wanted the app to feel the same: approachable, and working hard to find you a ticket before it is gone.',
             ],
@@ -1462,7 +1462,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'Goal: understand why people who enjoy live entertainment miss out on events, and where the discovery process breaks down. I interviewed four people to learn their needs and motivations.',
+              'My goal was to understand why people who enjoy live entertainment miss out on events, and where the discovery process breaks down. I interviewed four people to learn their needs and motivations.',
             ],
           },
           {
@@ -1573,7 +1573,7 @@ export const projects: Project[] = glueAll<Project[]>([
           {
             kind: 'text',
             body: [
-              'We built the screens from a component library organised with Atomic Design: atoms such as inputs, icons and controls, combined into molecules such as buttons, menus, the location drop down and event detail blocks.',
+              'We built the screens from a component library organised with Atomic Design. Atoms such as inputs, icons and controls combine into molecules such as buttons, menus, the location drop down and event detail blocks.',
             ],
           },
           {

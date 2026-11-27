@@ -15,7 +15,7 @@ export function HeroSection() {
         <div className="hero__copy">
           <h1 id="hero-title" className="hero__title">
             <span className="hero__intro">
-              <span className="hero__hi">Hi, I’m</span> <span className="hero__name hand">{site.name}</span>
+              <span className="hero__hi">Hi, I’m</span> <span className="hero__name">{site.name}</span>
             </span>
             <span className="hero__claim">
               {site.headline.map((line) => (

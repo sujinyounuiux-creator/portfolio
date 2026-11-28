@@ -14,10 +14,10 @@ type Group = { id: string; kind: string; title: string; note: string; shots: Sho
 
 const groups: Group[] = [
   {
-    id: 'robert-story',
-    kind: 'Phone screens · Storytelling',
-    title: 'Robert Story',
-    note: 'Phone screens for a short thriller, told through two phones. It starts on Robert’s phone and ends on Emily’s.',
+    id: 'seen',
+    kind: 'Screen graphics · Short thriller',
+    title: 'Seen',
+    note: 'Phone screens for a short thriller about being watched. The story is told through two phones, starting on Robert’s and ending on Emily’s.',
     shots: [
       { src: '/images/robert-story/01-lock-screen.webp', alt: 'Robert’s lock screen at 9:41 with two Instagram notifications from emilyy.parker.', w: 786, h: 1704, device: 'phone', label: 'Lock screen' },
       { src: '/images/robert-story/02-instagram-profile.webp', alt: 'Emily’s Instagram profile as Robert sees it, with her photo grid and a Follow button.', w: 786, h: 1704, device: 'phone', label: 'Instagram profile' },

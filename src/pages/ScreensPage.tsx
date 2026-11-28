@@ -14,6 +14,24 @@ type Group = { id: string; kind: string; title: string; note: string; shots: Sho
 
 const groups: Group[] = [
   {
+    id: 'robert-story',
+    kind: 'Phone screens · Storytelling',
+    title: 'Robert Story',
+    note: 'Phone screens for a short thriller, told through two phones. It starts on Robert’s phone and ends on Emily’s.',
+    shots: [
+      { src: '/images/robert-story/01-lock-screen.webp', alt: 'Robert’s lock screen at 9:41 with two Instagram notifications from emilyy.parker.', w: 786, h: 1704, device: 'phone', label: 'Lock screen' },
+      { src: '/images/robert-story/02-instagram-profile.webp', alt: 'Emily’s Instagram profile as Robert sees it, with her photo grid and a Follow button.', w: 786, h: 1704, device: 'phone', label: 'Instagram profile' },
+      { src: '/images/robert-story/03-messages.webp', alt: 'Robert’s text messages to Emily. She asks how he got her number.', w: 786, h: 1704, device: 'phone', label: 'Messages' },
+      { src: '/images/robert-story/04-recent-calls.webp', alt: 'Robert’s recent calls, almost all to Emily Parker, late at night.', w: 786, h: 1704, device: 'phone', label: 'Recent calls' },
+      { src: '/images/robert-story/05-instagram-dm.webp', alt: 'An Instagram DM where Emily asks Robert to stop messaging her.', w: 786, h: 1704, device: 'phone', label: 'Instagram DM' },
+      { src: '/images/robert-story/06-location.webp', alt: 'A location app on Robert’s phone showing where Emily is right now.', w: 786, h: 1704, device: 'phone', label: 'Location' },
+      { src: '/images/robert-story/07-notes.webp', alt: 'Robert’s note titled Emily, with a checklist of her daily routine.', w: 786, h: 1704, device: 'phone', label: 'Notes' },
+      { src: '/images/robert-story/08-messages-friend.webp', alt: 'Emily texts her friend Sarah that Robert keeps contacting her.', w: 786, h: 1704, device: 'phone', label: 'Messages with a friend' },
+      { src: '/images/robert-story/09-notification-center.webp', alt: 'Emily’s notification center at 11:59 with messages, missed calls and new followers.', w: 786, h: 1704, device: 'phone', label: 'Notification center' },
+      { src: '/images/robert-story/10-final-message.webp', alt: 'Emily’s last message to an unknown number, “Please leave me alone. I’ve called the police.”', w: 786, h: 1704, device: 'phone', label: 'Final message' },
+    ],
+  },
+  {
     id: 'bca-mobile',
     kind: 'Phone app · Website',
     title: 'BCA, on a phone',

@@ -104,7 +104,7 @@
   justify-content: space-between;
   gap: var(--s-4);
   min-height: 64px;
-  padding: 0.5rem 0.75rem 0.5rem clamp(1rem, 2.5vw, 1.75rem);
+  padding: 0.5rem clamp(1rem, 2.5vw, 1.75rem); /* same space on both ends */
   border: 1px solid var(--c-line);
   border-radius: 999px;
   background: color-mix(in srgb, var(--c-surface) 92%, transparent);

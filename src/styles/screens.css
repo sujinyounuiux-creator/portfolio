@@ -190,6 +190,28 @@
   }
 }
 
+/* phones: two phone screens or posts per row, so the page isn't endless */
+@media (max-width: 600px) {
+  .scr-intro {
+    margin-top: 3rem;
+  }
+  .scr-group--phone .scr-group__shots,
+  .scr-group--post .scr-group__shots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.75rem;
+  }
+  .scr-shot--phone button.scr-shot__frame {
+    padding: 5px;
+    border-radius: 24px;
+  }
+  .scr-shot--phone .scr-shot__frame img {
+    border-radius: 19px;
+  }
+  .scr-shot figcaption {
+    font-size: 0.78rem;
+  }
+}
+
 /* screens are buttons: reset the button look */
 button.scr-shot__frame {
   width: 100%;

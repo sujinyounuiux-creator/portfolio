@@ -93,10 +93,12 @@ export function SiteHeader() {
                   Résumé
                 </a>
               </li>
+              <li>
+                <a className="nav-link" href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
+                  LinkedIn
+                </a>
+              </li>
             </ul>
-            <a className="navbar__social" href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
-              <LinkedInIcon />
-            </a>
           </nav>
         </div>
       </div>
